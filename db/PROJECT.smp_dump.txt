@@ -1,0 +1,77 @@
+
+State Machine - |PROJECT|state
+Name state.S_TOP_M1 state.S_TOP_UART state.S_TOP_VGA state.S_TOP_IDLE 
+state.S_TOP_IDLE 0 0 0 0 
+state.S_TOP_VGA 0 0 1 1 
+state.S_TOP_UART 0 1 0 1 
+state.S_TOP_M1 1 0 0 1 
+
+State Machine - |PROJECT|VGA_SRAM_interface:VGA_unit|VGA_SRAM_state
+Name VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_3 VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_2 VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_1 VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_0 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_5 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_4 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_3 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_2 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_1 VGA_SRAM_state.S_VS_WAIT_NEW_PIXEL_ROW 
+VGA_SRAM_state.S_VS_WAIT_NEW_PIXEL_ROW 0 0 0 0 0 0 0 0 0 0 
+VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_1 0 0 0 0 0 0 0 0 1 1 
+VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_2 0 0 0 0 0 0 0 1 0 1 
+VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_3 0 0 0 0 0 0 1 0 0 1 
+VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_4 0 0 0 0 0 1 0 0 0 1 
+VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_5 0 0 0 0 1 0 0 0 0 1 
+VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_0 0 0 0 1 0 0 0 0 0 1 
+VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_1 0 0 1 0 0 0 0 0 0 1 
+VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_2 0 1 0 0 0 0 0 0 0 1 
+VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_3 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |PROJECT|UART_SRAM_interface:UART_unit|UART_SRAM_state
+Name UART_SRAM_state.S_US_WRITE_SECOND_BYTE UART_SRAM_state.S_US_START_SECOND_BYTE_RECEIVE UART_SRAM_state.S_US_WRITE_FIRST_BYTE UART_SRAM_state.S_US_START_FIRST_BYTE_RECEIVE UART_SRAM_state.S_US_STRIP_FILE_HEADER_2 UART_SRAM_state.S_US_STRIP_FILE_HEADER_1 UART_SRAM_state.S_US_IDLE 
+UART_SRAM_state.S_US_IDLE 0 0 0 0 0 0 0 
+UART_SRAM_state.S_US_STRIP_FILE_HEADER_1 0 0 0 0 0 1 1 
+UART_SRAM_state.S_US_STRIP_FILE_HEADER_2 0 0 0 0 1 0 1 
+UART_SRAM_state.S_US_START_FIRST_BYTE_RECEIVE 0 0 0 1 0 0 1 
+UART_SRAM_state.S_US_WRITE_FIRST_BYTE 0 0 1 0 0 0 1 
+UART_SRAM_state.S_US_START_SECOND_BYTE_RECEIVE 0 1 0 0 0 0 1 
+UART_SRAM_state.S_US_WRITE_SECOND_BYTE 1 0 0 0 0 0 1 
+
+State Machine - |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state
+Name RXC_state.S_RXC_STOP_BIT RXC_state.S_RXC_ASSEMBLE_DATA RXC_state.S_RXC_SYNC RXC_state.S_RXC_IDLE 
+RXC_state.S_RXC_IDLE 0 0 0 0 
+RXC_state.S_RXC_SYNC 0 0 1 1 
+RXC_state.S_RXC_ASSEMBLE_DATA 0 1 0 1 
+RXC_state.S_RXC_STOP_BIT 1 0 0 1 
+
+State Machine - |PROJECT|Milestone_1:M1_unit|state
+Name state.S_M1_START state.S_END_LINE_5 state.S_END_LINE_4 state.S_END_LINE_3 state.S_END_LINE_2 state.S_END_LINE_1 state.S_END_LINE_0 state.S_RUN_5 state.S_RUN_4 state.S_RUN_3 state.S_RUN_2 state.S_RUN_1 state.S_RUN_0 state.S_START_LINE_9 state.S_START_LINE_8 state.S_START_LINE_7 state.S_START_LINE_6 state.S_START_LINE_5 state.S_START_LINE_4 state.S_START_LINE_3 state.S_START_LINE_2 state.S_START_LINE_1 state.S_START_LINE_0 state.S_M1_IDLE 
+state.S_M1_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_START_LINE_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_START_LINE_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_START_LINE_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_START_LINE_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_START_LINE_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_START_LINE_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_START_LINE_6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_START_LINE_7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_START_LINE_8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_START_LINE_9 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_3 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_5 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_3 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_4 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_5 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M1_START 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|sel_rgb_mul
+Name sel_rgb_mul.11 sel_rgb_mul.10 sel_rgb_mul.01 sel_rgb_mul.00 
+sel_rgb_mul.00 0 0 0 0 
+sel_rgb_mul.01 0 0 1 1 
+sel_rgb_mul.10 0 1 0 1 
+sel_rgb_mul.11 1 0 0 1 
+
+State Machine - |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|sel_mul_in
+Name sel_mul_in.11 sel_mul_in.01 sel_mul_in.10 
+sel_mul_in.01 0 0 0 
+sel_mul_in.10 0 1 1 
+sel_mul_in.11 1 1 0 

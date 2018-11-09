@@ -1,0 +1,420 @@
+/*
+Copyright by Henry Ko and Nicola Nicolici
+Developed for the Digital Systems Design course (COE3DQ4)
+Department of Electrical and Computer Engineering
+McMaster University
+Ontario, Canada
+*/
+
+`timescale 1ns/100ps
+`default_nettype none
+
+`include "define_state.h"
+
+// This is the top module
+// It connects the SRAM and VGA together
+// It will first write RGB data of an image with 8x8 rectangles of size 40x30 pixels into the SRAM
+// The VGA will then read the SRAM and display the image
+module PROJECT (
+		/////// board clocks                      ////////////
+		input logic CLOCK_50_I,                   // 50 MHz clock
+		
+		/////// pushbuttons/switches              ////////////
+		input logic[3:0] PUSH_BUTTON_I,           // pushbuttons
+		input logic[17:0] SWITCH_I,               // toggle switches
+		
+		
+		///////FIR 
+		//input int FIR_BUFF_U,
+		//input int FIR_BUFF_V,
+		output logic resetn,
+		output logic enable_U,
+		output logic enable_V,
+		output logic read_U_0,
+		output logic read_V_0,
+		output logic line_start,
+		output logic line_end,
+		output logic FIR_enable,
+		output logic cycle,
+		
+		////////RGB Converter
+//		input int R,
+//		input int G,
+//		input int B,
+		output int U_RGB,
+		output int V_RGB,
+		output int Y_RGB,
+		output logic enable_RGB,
+
+		/////// SRAM Interface                    ////////////
+		inout wire[15:0] SRAM_DATA_IO,            // SRAM data bus 16 bits
+		output logic[17:0] SRAM_ADDRESS_O,        // SRAM address bus 18 bits
+		output logic SRAM_UB_N_O,                 // SRAM high-byte data mask 
+		output logic SRAM_LB_N_O,                 // SRAM low-byte data mask 
+		output logic SRAM_WE_N_O,                 // SRAM write enable
+		output logic SRAM_CE_N_O,                 // SRAM chip enable
+		output logic SRAM_OE_N_O                  // SRAM output logic enable
+);
+
+
+state_type state;
+
+// For Push button
+logic [3:0] PB_pushed;
+
+
+//For FSM
+
+
+// For SRAM
+logic [17:0] SRAM_address;
+logic [15:0] SRAM_write_data;
+logic SRAM_we_n;
+logic [15:0] SRAM_read_data;
+logic SRAM_ready;
+
+
+//For FIR 
+logic [17:0] Y_address, Y_compare_address;
+logic [17:0] U_address;
+logic [17:0] V_address;
+int even_U;
+int even_V;
+int FIR_BUFF_U; 
+int FIR_BUFF_V;
+
+//For RGB Conversion
+//logic enable_RGB;
+logic [17:0] RGB_address;
+logic [7:0] Y_buff;
+int R, G, B;
+
+assign resetn = ~SWITCH_I[17] && SRAM_ready;
+
+ 
+
+//Finite Impulse Response (FIR) unit
+FIR FIR_unit (
+	.resetn(resetn),
+	.enable_U(enable_U),
+	.enable_V(enable_V),
+	.read_U_0(read_U_0),
+	.read_V_0(read_V_0),
+	
+	.cycle(cycle),
+	
+	.FIR_BUFF_U(FIR_BUFF_U),
+	.FIR_BUFF_V(FIR_BUFF_V),
+	.even_U(even_U),
+	.even_V(even_V),
+	
+	.line_end(line_end),
+	.line_start(line_start),
+	.SRAM_read_data(SRAM_read_data)
+
+);
+
+//RGB Conversion unit
+RGB_Converter RGB_unit(
+	//To RGB Converter
+	.resetn(resetn),
+	.enable_RGB(enable_RGB),
+	.U_in_RGB(U_RGB),
+	.V_in_RGB(V_RGB),
+	.Y_in_RGB(Y_RGB),
+	
+	//From RGB Converter
+	.R_buff(R),
+	.G_buff(G),
+	.B_buff(B)
+
+);
+
+// Push Button unit
+PB_Controller PB_unit (
+	.Clock_50(CLOCK_50_I),
+	.Resetn(resetn),
+	.PB_signal(PUSH_BUTTON_I),	
+	.PB_pushed(PB_pushed)
+);
+
+// SRAM unit
+SRAM_Controller SRAM_unit (
+	.Clock_50(CLOCK_50_I),
+	.Resetn(~SWITCH_I[17]),
+	.SRAM_address(SRAM_address),
+	.SRAM_write_data(SRAM_write_data),
+	.SRAM_we_n(SRAM_we_n),
+	.SRAM_read_data(SRAM_read_data),		
+	.SRAM_ready(SRAM_ready),
+		
+	// To the SRAM pins
+	.SRAM_DATA_IO(SRAM_DATA_IO),
+	.SRAM_ADDRESS_O(SRAM_ADDRESS_O),
+	.SRAM_UB_N_O(SRAM_UB_N_O),
+	.SRAM_LB_N_O(SRAM_LB_N_O),
+	.SRAM_WE_N_O(SRAM_WE_N_O),
+	.SRAM_CE_N_O(SRAM_CE_N_O),
+	.SRAM_OE_N_O(SRAM_OE_N_O)
+);
+
+
+
+
+
+
+always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
+	if (resetn == 1'b0) begin
+		state <= S_START;				
+		
+		SRAM_we_n <= 1'b1;
+		SRAM_write_data <= 16'd0;
+		
+		line_start <= 1'b1;
+		line_end <= 1'b0;
+		
+		cycle <= 1'b0;
+		
+		
+		
+		Y_address <= 18'd0;
+		Y_compare_address <= 18'd0;
+		U_address <= 18'd38400;
+		V_address <= 18'd57600;
+		RGB_address <= 18'd146944;
+		
+		SRAM_address <= 18'd38400;//Start by reading first U value U0/1
+	end else begin
+		case (state)
+		S_START: begin
+			SRAM_we_n = 1'b1; //Disable writing to SRAM
+			
+			SRAM_address <= V_address; //Set address to first V value V0/1
+			U_address <= U_address + 18'd1;
+			V_address <= V_address + 18'd1;
+			state <= S_START_LINE_0;
+		end
+		S_START_LINE_0: begin
+			SRAM_address <= U_address; //U2/3
+			U_address <= U_address + 18'd1;
+			state <= S_START_LINE_1;
+		end
+		S_START_LINE_1: begin
+			SRAM_address <= V_address;//V2/3
+			V_address <= V_address + 18'd1;
+			
+			state <= S_START_LINE_2;
+		end
+		S_START_LINE_2: begin
+			//Do not send address to read from for delay3
+			read_U_0 <= 1'b1; //Load U0 three times into U_SReg in the next clock cycle and U1 once
+			
+			state <= S_START_LINE_3;
+		end
+		S_START_LINE_3: begin
+			//Do not send address to read from for delay4
+			read_U_0 <= 1'b0;
+			read_V_0 <= 1'b1; // Load V0 three times into V_SReg in the next clock cycle and V1 once
+			
+			state <= S_START_LINE_4;
+		end
+		S_START_LINE_4: begin
+			SRAM_address <= U_address; //U4/5
+			U_address <= U_address;
+			read_V_0 <= 1'b0;
+			
+			state <= S_START_LINE_5;
+		end
+		S_START_LINE_5: begin
+		enable_U <= 1'b1; // Load U2/3 into U_SReg in the next clock cycle
+				SRAM_address <= Y_address; //Y0/1
+			Y_address <= Y_address + 18'd1;
+			enable_U <= 1'b0;
+			enable_V <= 1'b1;// Load V2/3 into V_SReg in the next clock cycle
+			
+			line_start <= 1'b0; // Signal to begin FIR calculations
+			state <= S_START_LINE_6;
+		end
+		S_START_LINE_6: begin
+			enable_V <= 1'b0;
+			state <= S_START_LINE_7;
+		end
+		S_START_LINE_7: begin	
+			SRAM_address <= V_address; // V4/5
+			V_address <= V_address + 18'd1;
+	
+			state <= S_START_LINE_8;
+		end
+		S_START_LINE_8: begin	
+			SRAM_address <= Y_address;
+			Y_address <= Y_address + 18'd1;
+			enable_U <= 1'b1; // Read U4/5 next cycle, Load U4 into SReg and buffer U5
+			enable_V <= 1'b0;				
+			state <= S_START_LINE_9;
+		
+		end
+		S_START_LINE_9: begin
+			enable_U <= 1'b0;
+			Y_RGB <= SRAM_read_data[15:8];
+			Y_buff <= SRAM_read_data[7:0];
+			U_RGB <= even_U;
+			V_RGB <= even_V;
+			enable_RGB <= 1'b1;
+			SRAM_we_n <= 1'b1; //Don't write on first RUN_0 of the line	
+			state <= S_RUN_0;
+		end
+
+		////////////////////////////////////////////////////////////
+		
+		S_RUN_0: begin
+
+			if(~cycle) begin
+				enable_V <= 1'b1;
+			end else begin
+				SRAM_address <= U_address;
+				U_address <= U_address + 18'd1;
+			end
+			
+			SRAM_we_n <= 1'b1;
+			state <= S_RUN_1;
+		end
+		
+		S_RUN_1: begin
+			
+			//if(~cycle) begin
+				
+				
+			//end else begin
+			SRAM_address <= Y_address;
+			Y_address <= Y_address + 18'd1;
+			//end	
+			enable_V <= 1'b0;
+			state <= S_RUN_2;
+		end
+		
+		S_RUN_2: begin
+			
+			//enable_V <= 1'b0;
+			
+			SRAM_we_n <= 1'b0; //enable writing for next cycle
+			SRAM_address <= RGB_address;
+			SRAM_write_data <= {R[7:0],G[7:0]};
+			
+			Y_RGB <= Y_buff;
+			U_RGB <= FIR_BUFF_U;
+			V_RGB <= FIR_BUFF_V;
+			state <= S_RUN_3;
+		end
+		
+		S_RUN_3: begin
+			SRAM_we_n <= 1'b1;
+			enable_U <= 1'b1;
+			if (~cycle) begin
+				
+			end else begin
+				SRAM_address <= V_address;
+				V_address <= V_address + 18'd1;
+				
+			end
+			state <= S_RUN_4;
+		end
+		
+		S_RUN_4: begin
+			SRAM_we_n <= 1'b0;
+			enable_U <= 1'b0;
+			SRAM_address <= RGB_address;
+			RGB_address <= RGB_address + 18'd1;
+			SRAM_write_data <= {B[7:0],R[7:0]};
+			state <= S_RUN_5;
+		end
+		
+		S_RUN_5: begin
+			SRAM_address <= RGB_address;
+			SRAM_write_data <= {G[7:0],B[7:0]};
+			RGB_address <= RGB_address + 18'd1;		
+			Y_buff <= SRAM_read_data[7:0];
+			U_RGB <= even_U;
+			V_RGB <= even_V;
+			
+			if ( Y_address - Y_compare_address == 18'd157 ) begin 
+				state <= S_END_LINE_0;
+				line_end <= 1'b1;
+			end else begin
+				state <= S_RUN_0;
+			end
+			
+		end
+		
+		////////////////////////////////////////////////////////////
+		
+		//End line cases are similar to common cases but not reading
+		S_END_LINE_0: begin
+			enable_V <= 1'b1;
+			SRAM_we_n <= 1'b1;
+			state <= S_END_LINE_1;
+		end
+		
+		S_END_LINE_1: begin
+			SRAM_address <= Y_address 
+			Y_address <= Y_address + 18'd1;
+			enable_V <= 1'b0;
+			
+			state <= S_END_LINE_2;
+		end
+		
+		S_END_LINE_2: begin
+			
+			SRAM_we_n <= 1'b0; //Enable writing for next cycle
+			SRAM_write_data <= {R[7:0], G[7:0]};
+		
+			Y_RGB <= Y_buff;
+			U_RGB <= FIR_BUFF_U;
+			V_RGB <= FIR_BUFF_V;
+			
+			
+			state <= S_END_LINE_3;
+		end
+		
+		S_END_LINE_3: begin
+			
+			SRAM_we_n <= 1'b1; // Disable writing
+			
+			enable_U <= 1'b1;
+			state <= S_END_LINE_4;
+		
+		end
+		
+		S_END_LINE_4: begin
+			enable_U <= 1'b0;
+			
+			SRAM_we_n <= 1'b0; //Enable writing
+			SRAM_address <= RGB_address;
+			RGB_address <= RGB_address + 18'd1;
+			SRAM_write_data <= {B[7:0], R[7:0]};
+			state <= S_END_LINE_5;
+		end
+		
+		S_END_LINE_5: begin
+		
+			SRAM_we_n <= 1'b0; //Enable writing
+			SRAM_address <= RGB_address;
+			RGB_address <= RGB_address + 18'd1;
+			SRAM_write_data <= {B[7:0], R[7:0]};
+			
+			if ( Y_address - Y_compare_address == 18'd159 ) begin
+				state <= S_START;
+			end else begin
+				state <= S_END_LINE_0;
+			end
+		
+		
+		end
+		
+		default: state <= S_IDLE;
+		endcase
+	end
+end
+
+
+
+endmodule

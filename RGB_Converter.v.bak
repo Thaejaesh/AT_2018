@@ -1,0 +1,322 @@
+/*
+Copyright by Henry Ko and Nicola Nicolici
+Developed for the Digital Systems Design course (COE3DQ4)
+Department of Electrical and Computer Engineering
+McMaster University
+Ontario, Canada
+*/
+
+`timescale 1ns/100ps
+`default_nettype none
+
+//`include "define_state.h"
+
+// This is the top module
+// It connects the SRAM and VGA together
+// It will first write RGB data of an image with 8x8 rectangles of size 40x30 pixels into the SRAM
+// The VGA will then read the SRAM and display the image
+module FIR (
+		/////// board clocks                      ////////////
+		input logic CLOCK_50_I,                   // 50 MHz clock
+
+		/////// Top level module
+		input logic enable_U,
+		input logic enable_V,
+		input logic read_U_0,
+		input logic read_V_0,
+		input logic resetn, 
+		input logic line_start,
+		input logic line_end,
+		input logic FIR_enable,
+		
+		/////// pushbuttons/switches              ////////////
+		input logic[3:0] PUSH_BUTTON_I,           // pushbuttons
+		input logic[17:0] SWITCH_I,               // toggle switches
+
+
+		/////// SRAM Interface                    ////////////
+		inout wire[15:0] SRAM_DATA_IO,            // SRAM data bus 16 bits
+		output logic[17:0] SRAM_ADDRESS_O,        // SRAM address bus 18 bits
+		output logic SRAM_UB_N_O,                 // SRAM high-byte data mask 
+		output logic SRAM_LB_N_O,                 // SRAM low-byte data mask 
+		output logic SRAM_WE_N_O,                 // SRAM write enable
+		output logic SRAM_CE_N_O,                 // SRAM chip enable
+		output logic SRAM_OE_N_O                  // SRAM output logic enable
+);
+
+parameter NUM_ROW_RECTANGLE = 8,
+		  NUM_COL_RECTANGLE = 8,
+		  RECT_WIDTH = 40,
+		  RECT_HEIGHT = 30,
+		  VIEW_AREA_LEFT = 160,
+		  VIEW_AREA_RIGHT = 480,
+		  VIEW_AREA_TOP = 120,
+		  VIEW_AREA_BOTTOM = 360;
+
+//state_type state;
+
+// For Push button
+logic [3:0] PB_pushed;
+
+
+//logic resetn;
+
+// For SRAM
+logic [17:0] SRAM_address;
+logic [15:0] SRAM_write_data;
+logic SRAM_we_n;
+logic [15:0] SRAM_read_data;
+logic SRAM_ready;
+
+
+//Shift Register to hold surrounding values
+int U_SReg [5:0];
+int V_SReg [5:0];
+int current_sum;
+int current_product;
+int constant;
+int coeff;
+//Register to hold output
+int FIR_BUFF_U;
+int FIR_BUFF_V;
+//Accumulator value
+int FIR_accum;
+
+logic [1:0] sel_mul_in;
+logic [8:0] j; //Column number 0->319 //Incremented in steps of 1
+logic [16:0] i; //Row number 0->239*320 //Incremented in steps of 320
+
+//logic line_start; // Work as a disable
+//logic line_end;
+logic U_Reg_full;
+logic V_Reg_full;
+logic U_V; //Determine which matrix to interpolate //U = 0 V = 1
+logic end_of_memory; //Determine end of values to read
+
+
+// SRAM unit
+SRAM_Controller SRAM_unit (
+	.Clock_50(CLOCK_50_I),
+	.Resetn(~SWITCH_I[17]),
+	.SRAM_address(SRAM_address),
+	.SRAM_write_data(SRAM_write_data),
+	.SRAM_we_n(SRAM_we_n),
+	.SRAM_read_data(SRAM_read_data),		
+	.SRAM_ready(SRAM_ready),
+		
+	// To the SRAM pins
+	.SRAM_DATA_IO(SRAM_DATA_IO),
+	.SRAM_ADDRESS_O(SRAM_ADDRESS_O),
+	.SRAM_UB_N_O(SRAM_UB_N_O),
+	.SRAM_LB_N_O(SRAM_LB_N_O),
+	.SRAM_WE_N_O(SRAM_WE_N_O),
+	.SRAM_CE_N_O(SRAM_CE_N_O),
+	.SRAM_OE_N_O(SRAM_OE_N_O)
+);
+
+
+
+
+//Sel_mul_in is modulo 3 counter going from 01 to 11
+
+always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
+	if (~resetn) begin
+		sel_mul_in <= 2'b01;
+		U_V <= 1'b0; // Start off with loading U registers
+	end else begin
+		if ( sel_mul_in == 2'b11) begin
+			sel_mul_in <= 2'b01; // Reset to 01
+			U_V <= ~U_V;
+		end else begin
+			if (~line_start) //Do not increment at start of a line
+				sel_mul_in <= sel_mul_in + 2'b01; 
+		end	
+	end	
+end
+
+
+//i is a counter used to determine which line to read from
+always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
+	if (~resetn) begin
+		i <= 17'd0;
+		end_of_memory <= 1'b0;
+	end else begin
+		if (i < 17'd76480) begin
+			if (j == 9'd319) //Increment when j reaches the end of a row
+				i <= i + 17'd320;
+		end else begin
+			if (j == 9'd319)
+				end_of_memory <= 1'b1; //Raise flag when end of memeory
+		end
+	end
+end
+
+
+
+
+//Buffers to save outputs while next value is being calculated
+always_ff @ (posedge CLOCK_50_I or negedge resetn) begin 
+	if (~resetn) begin
+		FIR_BUFF_U <= 0;
+		FIR_BUFF_V <= 0;
+	end else begin
+		if (sel_mul_in == 2'b11) begin //At end of FIR calculations
+			if (~U_V) begin //In U' mode
+				FIR_BUFF_U <= 8 << FIR_accum; //Save accumulator value // Left shift to divide by 256
+			end else begin //In V' mode
+				FIR_BUFF_V <= 8 << FIR_accum; //Save accumulator value // Left shift to divide by 256
+			end
+		end 
+	end
+end 
+
+//Multiplexer determining the multiplication coefficient
+always_comb begin 
+	//If U_V == 0: use values from U
+	//If U_V == 1: use values from V
+	case (sel_mul_in)
+		01: begin
+				coeff = 21;
+				current_sum = (~U_V)? (U_SReg[2] + U_SReg[3]) : (V_SReg[2] + V_SReg[3]) ;
+				//constant = 0;
+			end
+		10: begin
+				coeff = 52;
+				current_sum = (~U_V)? (U_SReg[1] + U_SReg[4]) : (V_SReg[1] + V_SReg[4]) ;
+				//constant = 0;
+			end
+		11: begin 
+				coeff = 159;
+				current_sum = (~U_V)? (U_SReg[0] + U_SReg[5]) : (V_SReg[0] + V_SReg[5]) ;
+				//constant = 128;
+			end
+	default: begin
+			coeff = 21;
+			current_sum = 0;
+			//constant = 0;
+		end
+	endcase
+	
+	current_product = current_sum * coeff;// + constant;
+	
+end
+
+//Accumulator to store partial values throughout calculation cycle
+always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
+	if (~resetn) begin
+		FIR_accum <= 0;
+	end else begin
+		case (sel_mul_in) 
+			01: begin
+				FIR_accum <= current_product; // 21*((j-1)+(j+1))
+			end
+			10: begin
+				FIR_accum <=  FIR_accum - current_product;// -56*((j-3)+(j+3))
+			end
+			11: begin
+				FIR_accum <= FIR_accum + current_product + 128; // 159*((j-5)+(j+5))
+			end
+			default: begin 
+				FIR_accum <= 0;
+			end
+		endcase
+	end
+end
+
+
+//Shift registers holding surrounding values for interpolation
+always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
+	if (~resetn) begin
+		//Clear shift register used to calculate U'
+		U_SReg[0] <= 0;// Fill register with zeros
+		U_SReg[1] <= 0;
+		U_SReg[2] <= 0;
+		U_SReg[3] <= 0;
+		U_SReg[4] <= 0;
+		U_SReg[5] <= 0;
+		//U_SReg <= 0; //Fill register with zeros
+		U_Reg_full <= 1'b0; //Empty U register
+		//Clear shift register used to calculate V'
+		//V_SReg <= '0; 
+		V_SReg[0] <= 0;
+		V_SReg[1] <= 0;
+		V_SReg[2] <= 0;
+		V_SReg[3] <= 0;
+		V_SReg[4] <= 0;
+		V_SReg[5] <= 0;
+		V_Reg_full <= 1'b0; //Empty V register
+	end else begin
+		
+		if(line_start) begin //Do when starting a line
+		
+			//Parallel load border values to first 3 register elements
+			if (read_U_0) begin
+				U_SReg[0] <= SRAM_read_data;
+				U_SReg[1] <= SRAM_read_data;
+				U_SReg[2] <= SRAM_read_data;
+			end 
+			if (read_V_0) begin
+				V_SReg[0] <= SRAM_read_data;
+				V_SReg[1] <= SRAM_read_data;
+				V_SReg[2] <= SRAM_read_data;
+			end
+			if (enable_U) begin //Add remaining data to shift registers
+				U_SReg[0] <= SRAM_read_data; //Add next value to U Shift Register
+				U_SReg[1] <= U_SReg[0];
+				U_SReg[2] <= U_SReg[1];
+				U_SReg[3] <= U_SReg[2];
+				U_SReg[4] <= U_SReg[3];
+				U_SReg[5] <= U_SReg[4];
+			end else if (enable_V) begin
+				V_SReg[0] <= SRAM_read_data; //Add next value to V Shift Register
+				V_SReg[1] <= V_SReg[0];
+				V_SReg[2] <= V_SReg[1];
+				V_SReg[3] <= V_SReg[2];
+				V_SReg[4] <= V_SReg[3];
+				V_SReg[5] <= V_SReg[4];
+			end
+			
+		end  else if (line_end) begin // End of a line
+			if (enable_U) begin //Funnel back final value to shift registers
+				U_SReg[0] <= U_SReg[0]; //Keep adding end value to U Shift Register
+				U_SReg[1] <= U_SReg[0];
+				U_SReg[2] <= U_SReg[1];
+				U_SReg[3] <= U_SReg[2];
+				U_SReg[4] <= U_SReg[3];
+				U_SReg[5] <= U_SReg[4];
+			end else if (enable_V) begin
+				V_SReg[0] <= U_SReg[0]; //Keep adding end value to V Shift Register
+				V_SReg[1] <= V_SReg[0];
+				V_SReg[2] <= V_SReg[1];
+				V_SReg[3] <= V_SReg[2];
+				V_SReg[4] <= V_SReg[3];
+				V_SReg[5] <= V_SReg[4];
+			end				
+
+		
+		end else begin //Common case
+			if (enable_U) begin //Add to shift registers
+				U_SReg[0] <= SRAM_read_data; //Add next value to U Shift Register
+				U_SReg[1] <= U_SReg[0];
+				U_SReg[2] <= U_SReg[1];
+				U_SReg[3] <= U_SReg[2];
+				U_SReg[4] <= U_SReg[3];
+				U_SReg[5] <= U_SReg[4];
+			end else if (enable_V) begin
+				V_SReg[0] <= SRAM_read_data; //Add next value to V Shift Register
+				V_SReg[1] <= V_SReg[0];
+				V_SReg[2] <= V_SReg[1];
+				V_SReg[3] <= V_SReg[2];
+				V_SReg[4] <= V_SReg[3];
+				V_SReg[5] <= V_SReg[4];
+			end		
+		
+		end
+		
+		
+	end
+end
+
+
+
+endmodule
