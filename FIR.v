@@ -182,10 +182,10 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		V_SReg[4] <= 8'd0;
 		V_SReg[5] <= 8'd0;
 		
-		U_in_buff2[1] <= 8'b0;
-		U_in_buff2[0] <= 8'b0;
-		V_in_buff2[1] <= 8'b0;
-		V_in_buff2[0] <= 8'b0;
+		U_in_buffer[1] <= 8'b0;
+		U_in_buffer[0] <= 8'b0;
+		V_in_buffer[1] <= 8'b0;
+		V_in_buffer[0] <= 8'b0;
 		//V_Reg_full <= 1'b0; //Empty V register
 	end else begin
 		
@@ -264,12 +264,10 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		end else begin //Common case
 			if (enable_U) begin //Add to shift registers	
 
-				if (~cycle) begin
-				
-				
+				if (~cycle) begin				
+					U_SReg[0] <= U_in_buffer[0];
 				end else begin
-				
-				
+					U_SReg[0] <= U_in_buffer[1];				
 				end
 							
 				U_SReg[1] <= U_SReg[0];
@@ -281,9 +279,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			if (enable_V) begin
 				if (~cycle) begin
-				
+					V_SReg[0] <= V_in_buffer[0];
 				end else begin
-				
+					V_SReg[0] <= V_in_buffer[1];
 				end
 				
 				V_SReg[1] <= V_SReg[0];
