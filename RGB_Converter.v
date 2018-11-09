@@ -38,6 +38,7 @@ module RGB_Converter (
 
 logic signed [31:0] y,u,v; // Values of Y,U,V after subtraction portion of conversion
 logic signed [31:0] mult_in; // Value to feed logic [31:0]o multipliers
+logic signed [63:0] mult_out_long [1:0]; //Values out of the multipliers
 logic signed [31:0] mult_out [1:0]; //Values out of the multipliers
 logic signed [31:0] coeff [1:0]; //Coefficients to multiply the y,u,v values
 logic signed [31:0] R_acc,G_acc,B_acc;//,R_buff,G_buff,B_buff;
@@ -78,8 +79,11 @@ always_comb begin
 	endcase
 end
 
-assign mult_out[1] = mult_in * coeff[1]; //Calculate R and B
-assign mult_out[0] = mult_in * coeff[0]; //Calculate G
+assign mult_out_long[1] = mult_in * coeff[1]; //Calculate R and B
+assign mult_out_long[0] = mult_in * coeff[0]; //Calculate G
+
+assign mult_out[1] = mult_out_long[1][31:0];
+assign mult_out[0] = mult_out_long[0][31:0];
 
 always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 	if (~resetn) begin

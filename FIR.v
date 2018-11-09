@@ -19,22 +19,25 @@ module FIR (
 		/////// board clocks                      ////////////
 		input logic CLOCK_50_I,                   // 50 MHz clock
 
-		/////// Top level module
-		input logic enable_U,
-		input logic double_enable_U,
-		input logic enable_V,
-		input logic read_U_0,
-		input logic read_V_0,
 		input logic resetn, 
 		input logic line_start,
 		input logic line_end,
 		input logic common_case,
+		
+		input logic enable_U,
+		input logic enable_V,
+		input logic load_U_buffer,
+		input logic load_V_buffer,
+		
+		input logic read_U_0,
+		input logic read_V_0,
+		
+
 		//input logic FIR_enable,
 		input logic [15:0] SRAM_read_data,
 		input logic cycle,
-		input logic common_U,
-		//output int U,
-		//output int V,
+
+		
 		output logic signed [31:0] FIR_BUFF_U,
 		output logic signed [31:0] FIR_BUFF_V,
 		output logic signed [31:0] even_U,
@@ -52,7 +55,8 @@ logic signed [31:0] constant;
 logic signed [31:0] coeff;
 
 logic [7:0] U_in_buff;
-logic [7:0] U_in_buff2 [1:0];
+logic [7:0] U_in_buffer [1:0];
+logic [7:0] V_in_buffer [1:0];
 logic [7:0] V_in_buff;
 //Accumulator value
 logic signed [31:0] FIR_accum;
@@ -180,19 +184,29 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		U_in_buff2[1] <= 8'b0;
 		U_in_buff2[0] <= 8'b0;
+		V_in_buff2[1] <= 8'b0;
+		V_in_buff2[0] <= 8'b0;
 		//V_Reg_full <= 1'b0; //Empty V register
 	end else begin
-		///*		
-		if (double_enable_U) begin
+		
+		if (load_U_buffer) begin
+			U_in_buffer[1] <= SRAM_read_data[15:8];
+			U_in_buffer[0] <= SRAM_read_data[7:0];
 			$write("\n\n\t U Read %h\n", SRAM_read_data);	
-			$write("Loading U buffers");
-			U_in_buff2[1] <= SRAM_read_data[15:8];
-			U_in_buff2[0] <= SRAM_read_data[7:0];
+			$write("Loading U buffers");			
 			$write("\n\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
-			$write("\n\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);
-			
+			$write("\n\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);		
 		end 
-		//*/		
+		
+		if (load_V_buffer) begin
+			V_in_buffer[1] <= SRAM_read_data[15:8];
+			V_in_buffer[0] <= SRAM_read_data[7:0];
+			$write("\n\n\t V Read %h\n", SRAM_read_data);	
+			$write("Loading V buffers");			
+			$write("\n\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
+			$write("\n\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);					
+		end
+		
 	
 		if(line_start) begin //Do when starting a line
 			
@@ -249,37 +263,23 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		end else begin //Common case
 			if (enable_U) begin //Add to shift registers	
-				if ( common_U ) begin
-					if (~cycle) begin
-						U_SReg[0] <= SRAM_read_data[15:8]; //Add next value to U Shift Register
-						U_in_buff <= SRAM_read_data[7:0];
-						
-						$write("U in buff %h \n\n", U_in_buff2[1]);
-						$write("U in buff %h \n\n", U_in_buff2[0]);
-					end else begin 
-						U_SReg[0] <=  U_in_buff;
-						
-					end
-				end else begin
-					if (cycle) begin
-					
-						//U_SReg[0] <= {24'd0,SRAM_read_data[15:8]}; //Add next value to U Shift Register
-						U_in_buff <= SRAM_read_data[7:0];
-						U_SReg[0] <=  U_in_buff2[1];
-					end else begin 
-						//U_SReg[0] <= {24'd0, U_in_buff};
-						U_SReg[0] <= U_in_buff2[0];
-					end				
-				end
+
+				if (~cycle) begin
 				
+				
+				end else begin
+				
+				
+				end
 							
 				U_SReg[1] <= U_SReg[0];
 				U_SReg[2] <= U_SReg[1];
 				U_SReg[3] <= U_SReg[2];
 				U_SReg[4] <= U_SReg[3];
 				U_SReg[5] <= U_SReg[4];
-			end else if (enable_V) begin
-			$write("\n\n\t V Read %h\n", SRAM_read_data);
+			end
+
+			if (enable_V) begin
 				if (~cycle) begin
 					V_SReg[0] <= SRAM_read_data[15:8]; //Add next value to V Shift Register
 					V_in_buff <= SRAM_read_data[7:0];

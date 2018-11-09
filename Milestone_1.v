@@ -79,6 +79,9 @@ FIR FIR_unit (
 	.enable_U(enable_U),
 	.enable_V(enable_V),
 	
+	.load_U_buffer(load_U_buffer),
+	.load_V_buffer(load_V_buffer),
+	
 	.read_U_0(read_U_0),
 	.read_V_0(read_V_0),
 	
@@ -214,15 +217,16 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			state <= S_START_LINE_3;
 		end
 		S_START_LINE_3: begin
-			//Do not send address to read from for delay4
+			//send address to read from for delay4
+			SRAM_address <= U_address; //U4/5
+			U_address <= U_address;
 			
 			enable_U <= 1'b1; // Load U2/3 into U_SReg in the next clock cycle
 			read_V_0 <= 1'b0;
 			state <= S_START_LINE_4;
 		end
 		S_START_LINE_4: begin
-			SRAM_address <= U_address; //U4/5
-			U_address <= U_address;
+
 			
 			enable_U <= 1'b0;
 			enable_V <= 1'b1;// Load V2/3 into V_SReg in the next clock cycle
@@ -242,23 +246,20 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			SRAM_address <= V_address; // V4/5
 			V_address <= V_address + 18'd1;
 			
+			load_U_buffer <= 1'b1;
 			line_start <= 1'b0; // Signal to begin FIR calculations
 			state <= S_START_LINE_7;
 		end
 		S_START_LINE_7: begin	
-			//SRAM_address <= V_address; // V4/5
-			//V_address <= V_address + 18'd1;
+			
+			load_U_buffer <= 1'b0;
+			
 			enable_U <= 1'b1; // Read U4/5 next cycle, Load U4 into SReg and buffer U5
-			common_U <= 1'b1;
 			state <= S_START_LINE_8;
 		end
 		S_START_LINE_8: begin	
-			//SRAM_address <= Y_address;
-			//Y_address <= Y_address + 18'd1;
-			//enable_U <= 1'b1; // Read U4/5 next cycle, Load U4 into SReg and buffer U5
 			enable_U <= 1'b0;
-			common_U <= 1'b0;
-			//enable_V <= 1'b0;				
+				
 			state <= S_START_LINE_9;
 		
 		end
