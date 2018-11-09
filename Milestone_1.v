@@ -278,9 +278,13 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		S_RUN_0: begin
 			
+			//Don't change enable to allow for first run to not write empty values
+			
 			load_V_buffer <= 1'b1; //Store read values for V into a buffer
 			
-			
+			SRAM_address <= RGB_address; //Assert RGB address to write to
+			RGB_address <= RGB_address + 18'd1; //Increment RGB address for the next write
+			SRAM_write_data <= {G, B};
 			
 			state <= S_RUN_1;
 			$write("\t R %h  \t %h \n",  R, R2);
