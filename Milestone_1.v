@@ -316,6 +316,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			load_U_buffer <= 1'b0;
 			
 			
+			//MONKEY BUTT
+			
 			//$write("\n\t V_address %h \t SRAM_address %h \t\n", V_address, SRAM_address);
 			
 			
