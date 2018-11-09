@@ -137,7 +137,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		enable_U <= 1'b0;
 		enable_V <= 1'b0;
-		double_enable_U <= 1'b0;
+		
+		load_U_buffer <= 1'b0;
+		load_V_buffer <= 1'b0;
 		
 		M1_done <= 1'b0;
 		
@@ -173,7 +175,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				
 				enable_U <= 1'b0;
 				enable_V <= 1'b0;
-				double_enable_U <= 1'b0;				
+				load_U_buffer <= 1'b0;				
+				load_V_buffer <= 1'b0;				
 				
 				cycle <= 1'b1;
 				common_case <= 1'b0;
