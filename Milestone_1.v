@@ -86,7 +86,7 @@ FIR FIR_unit (
 	.read_V_0(read_V_0),
 	
 	.cycle(cycle),
-	.common_U(common_U),
+	
 	
 	.FIR_BUFF_U(FIR_BUFF_U),
 	.FIR_BUFF_V(FIR_BUFF_V),
@@ -132,9 +132,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		line_start <= 1'b1;
 		line_end <= 1'b0;
 		
-		cycle <= 1'b0;
+		cycle <= 1'b1;
 		common_case <= 1'b0;
-		common_U <= 1'b0;
 		
 		enable_U <= 1'b0;
 		enable_V <= 1'b0;
@@ -176,9 +175,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				enable_V <= 1'b0;
 				double_enable_U <= 1'b0;				
 				
-				cycle <= 1'b0;
+				cycle <= 1'b1;
 				common_case <= 1'b0;
-				common_U <= 1'b0;
 				
 				M1_done <= 1'b0;
 				
@@ -264,7 +262,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		end
 		S_START_LINE_9: begin
-			//enable_U <= 1'b0;
+			cycle <= 1'b0;
 			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
 			Y_buff <= {24'd0,SRAM_read_data[7:0]};
 			U_RGB <= even_U;
@@ -272,6 +270,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			enable_RGB <= 1'b1;
 			SRAM_we_n <= 1'b1; //Don't write on first RUN_0 of the line	
 			state <= S_RUN_0;
+			$write("#########################################################################\n\n");		
+			$write(" END OF LEAD IN \n");		
 			$write("#########################################################################\n\n");		
 		end
 
