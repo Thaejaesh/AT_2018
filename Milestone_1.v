@@ -32,8 +32,9 @@ M1_state_type state;
 
 ///////FIR 
 logic resetn;
+logic load_U_buffer;
+logic load_V_buffer;
 logic enable_U;
-logic double_enable_U;
 logic enable_V;
 logic read_U_0;
 logic read_V_0;
@@ -279,6 +280,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			load_V_buffer <= 1'b1; //Store read values for V into a buffer
 			
+			
+			
 			state <= S_RUN_1;
 			$write("\t R %h  \t %h \n",  R, R2);
 			$write("\t G %h  \t %h \n",  G, G2);
@@ -302,7 +305,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			enable_V <= 1'b0;
 
-			load_U_buffer <= 1'b1;
+			if (cycle) load_U_buffer <= 1'b1;
 
 			
 			Y_RGB <= Y_buff;
@@ -313,13 +316,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		S_RUN_3: begin
 
-			load_U_buffer <= 1'b0;
+			if (cycle) load_U_buffer <= 1'b0;
 			
-			
-			//MONKEY BUTT
-			
-			//$write("\n\t V_address %h \t SRAM_address %h \t\n", V_address, SRAM_address);
-			
+
 			
 			SRAM_address <= RGB_address; //Set RGB address to write to
 			RGB_address <= RGB_address + 18'd1; //Increment RGB_address for next write
