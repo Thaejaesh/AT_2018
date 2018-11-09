@@ -286,10 +286,13 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			load_V_buffer <= 1'b1; //Store read values for V into a buffer
 			
-			SRAM_address <= RGB_address; //Assert RGB address to write to
-			RGB_address <= RGB_address + 18'd1; //Increment RGB address for the next write
-			SRAM_write_data <= {G, B};
-			
+			if (common_case) begin
+				SRAM_address <= RGB_address; //Assert RGB address to write to
+				RGB_address <= RGB_address + 18'd1; //Increment RGB address for the next write
+				SRAM_write_data <= {G, B};
+			end else begin
+				common_case <= 1'b1;
+			end
 			state <= S_RUN_1;
 			$write("\t R %h  \t %h \n",  R, R2);
 			$write("\t G %h  \t %h \n",  G, G2);
