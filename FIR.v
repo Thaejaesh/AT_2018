@@ -38,29 +38,29 @@ module FIR (
 		input logic cycle,
 
 		
-		output logic signed [31:0] FIR_BUFF_U,
-		output logic signed [31:0] FIR_BUFF_V,
-		output logic signed [31:0] even_U,
-		output logic signed [31:0] even_V
+		output logic /*signed*/ [31:0] FIR_BUFF_U,
+		output logic /*signed*/ [31:0] FIR_BUFF_V,
+		output logic /*signed*/ [31:0] even_U,
+		output logic /*signed*/ [31:0] even_V
 		
 );
 
 //Shift Register to hold surrounding values
-logic signed [8:0] U_SReg [5:0];
-logic signed [8:0] V_SReg [5:0];
-logic signed [31:0] current_sum;
-logic signed [31:0] current_product;
-logic signed [63:0] current_product_long;
-logic signed [31:0] constant;
-logic signed [31:0] coeff;
+logic /*signed*/ [8:0] U_SReg [5:0];
+logic /*signed*/ [8:0] V_SReg [5:0];
+logic /*signed*/ [31:0] current_sum;
+logic /*signed*/ [31:0] current_product;
+logic /*signed*/ [63:0] current_product_long;
+logic /*signed*/ [31:0] constant;
+logic /*signed*/ [31:0] coeff;
 
 logic [7:0] U_in_buff;
 logic [7:0] U_in_buffer [1:0];
 logic [7:0] V_in_buffer [1:0];
 logic [7:0] V_in_buff;
 //Accumulator value
-logic signed [31:0] FIR_accum;
-logic signed [31:0] FIR_accum_before;
+logic /*signed*/ [31:0] FIR_accum;
+logic /*signed*/ [31:0] FIR_accum_before;
 
 logic [1:0] sel_mul_in;
 
@@ -142,8 +142,10 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				
 					if (~U_V) begin //In U' mode 
 						FIR_BUFF_U <= ({{8{(FIR_accum_before[31])}} , FIR_accum_before[31:8]}); //8 << (FIR_accum + current_product + 32'd128); //Save accumulator value // Left shift to divide by 256
+						//$write("FIR_BUFF_U");
 					end else begin //In V' mode
 						FIR_BUFF_V <= ({{8{(FIR_accum_before[31])}} , FIR_accum_before[31:8]});//8 << (FIR_accum + current_product + 32'd128); //Save accumulator value // Left shift to divide by 256
+						//$write("FIR_BUFF_V");
 					end
 					
 				end
@@ -192,19 +194,19 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		if (load_U_buffer) begin
 			U_in_buffer[1] <= SRAM_read_data[15:8];
 			U_in_buffer[0] <= SRAM_read_data[7:0];
-			$write("\n\n\t U Read %h\n", SRAM_read_data);	
+			$write("\n\t U Read %h\n", SRAM_read_data);	
 			$write("Loading U buffers");			
-			$write("\n\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
-			$write("\n\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);		
+			$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
+			$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);		
 		end 
 		
 		if (load_V_buffer) begin
 			V_in_buffer[1] <= SRAM_read_data[15:8];
 			V_in_buffer[0] <= SRAM_read_data[7:0];
-			$write("\n\n\t V Read %h\n", SRAM_read_data);	
+			$write("\n\t V Read %h\n", SRAM_read_data);	
 			$write("Loading V buffers");			
-			$write("\n\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
-			$write("\n\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);					
+			$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
+			$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);					
 		end
 		
 	

@@ -46,9 +46,9 @@ logic common_case;
 logic common_U;
 
 ////////RGB Converter
-logic signed [31:0] U_RGB;
-logic signed [31:0] V_RGB;
-logic signed [31:0] Y_RGB;
+logic /*signed*/ [31:0] U_RGB;
+logic /*signed*/ [31:0] V_RGB;
+logic /*signed*/ [31:0] Y_RGB;
 logic enable_RGB;
 
 
@@ -56,19 +56,19 @@ logic enable_RGB;
 logic [17:0] Y_address, Y_compare_address;
 logic [17:0] U_address;
 logic [17:0] V_address;
-logic signed [31:0] even_U;
-logic signed [31:0] even_V;
-logic signed [31:0] FIR_BUFF_U; 
-logic signed [31:0] FIR_BUFF_V;
+logic /*signed*/ [31:0] even_U;
+logic /*signed*/ [31:0] even_V;
+logic /*signed*/ [31:0] FIR_BUFF_U; 
+logic /*signed*/ [31:0] FIR_BUFF_V;
 
 //For RGB Conversion
 //logic enable_RGB;
 logic [17:0] RGB_address;
-logic signed [31:0] Y_buff;
-//logic signed [31:0] R, G, B;
-logic unsigned [7:0] R,G,B;
-logic unsigned [7:0] R2,G2,B2;
-logic unsigned [7:0] B_out_buffer;
+logic /*signed*/ [31:0] Y_buff;
+//logic /*signed*/ [31:0] R, G, B;
+logic /*unsigned*/ [7:0] R,G,B;
+logic /*unsigned*/ [7:0] R2,G2,B2;
+logic /*unsigned*/ [7:0] B_out_buffer;
 
 
 //Finite Impulse Response (FIR) unit
@@ -305,6 +305,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		S_RUN_1: begin
 			
+			$write("\t R %h  \t %h \n",  R, R2);
+			$write("\t G %h  \t %h \n",  G, G2);
+			$write("\t B %h  \t %h \n",  B, B2);			
 			//load_V_buffer <= 1'b0;
 			enable_V <= 1'b1; //Load next V value into shift register
 			
@@ -317,6 +320,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			SRAM_address <= Y_address; //Assert Read Address for next Y values
 			Y_address <= Y_address + 18'd1;
 
+			Y_RGB <= Y_buff;
+			U_RGB <= FIR_BUFF_U;
+			//V_RGB <= FIR_BUFF_V;
 			state <= S_RUN_2;
 		end
 		
@@ -332,9 +338,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			end			
 			
-			Y_RGB <= Y_buff;
-			U_RGB <= FIR_BUFF_U;
-			V_RGB <= FIR_BUFF_V;
+			//Y_RGB <= Y_buff;
+			//U_RGB <= FIR_BUFF_U;
+			//V_RGB <= FIR_BUFF_V;
 			state <= S_RUN_3;
 		end
 		
@@ -342,7 +348,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			if (cycle) load_U_buffer <= 1'b0;
 			
-
+			V_RGB <= FIR_BUFF_V;
 			
 			SRAM_address <= RGB_address; //Set RGB address to write to
 			RGB_address <= RGB_address + 18'd1; //Increment RGB_address for next write
