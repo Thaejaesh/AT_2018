@@ -1,0 +1,4133 @@
+# 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# load designs
+# 
+# insert files specific to your design here
+# 
+# vlog -sv -svinputport=var -work rtl_work convert_hex_to_seven_segment.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module convert_hex_to_seven_segment
+# 
+# Top level modules:
+# 	convert_hex_to_seven_segment
+# vlog -sv -svinputport=var -work rtl_work VGA_Controller.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module VGA_Controller
+# 
+# Top level modules:
+# 	VGA_Controller
+# vlog -sv -svinputport=var -work rtl_work PB_Controller.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module PB_Controller
+# 
+# Top level modules:
+# 	PB_Controller
+# vlog -sv -svinputport=var -work rtl_work +define+SIMULATION SRAM_Controller.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module SRAM_Controller
+# 
+# Top level modules:
+# 	SRAM_Controller
+# vlog -sv -svinputport=var -work rtl_work tb_SRAM_Emulator.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module tb_SRAM_Emulator
+# 
+# Top level modules:
+# 	tb_SRAM_Emulator
+# vlog -sv -svinputport=var -work rtl_work +define+SIMULATION UART_Receive_Controller.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package UART_Receive_Controller_v_unit
+# -- Compiling module UART_Receive_Controller
+# 
+# Top level modules:
+# 	UART_Receive_Controller
+# vlog -sv -svinputport=var -work rtl_work VGA_SRAM_interface.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package VGA_SRAM_interface_v_unit
+# -- Compiling module VGA_SRAM_interface
+# 
+# Top level modules:
+# 	VGA_SRAM_interface
+# vlog -sv -svinputport=var -work rtl_work UART_SRAM_interface.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package UART_SRAM_interface_v_unit
+# -- Compiling module UART_SRAM_interface
+# 
+# Top level modules:
+# 	UART_SRAM_interface
+# vlog -sv -svinputport=var -work rtl_work Clock_100_PLL.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Clock_100_PLL
+# 
+# Top level modules:
+# 	Clock_100_PLL
+# vlog -sv -svinputport=var -work rtl_work project.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package project_v_unit
+# -- Compiling module PROJECT
+# 
+# Top level modules:
+# 	PROJECT
+#vlog -sv -svinputport=var -work rtl_work tb_project.v
+# vlog -sv -svinputport=var -work rtl_work tb_project_v2.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module tb_project_v2
+# 
+# Top level modules:
+# 	tb_project_v2
+# vlog -sv -svinputport=var -work rtl_work Milestone_1.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package Milestone_1_v_unit
+# -- Compiling module Milestone_1
+# 
+# Top level modules:
+# 	Milestone_1
+# vlog -sv -svinputport=var -work rtl_work FIR.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module FIR
+# 
+# Top level modules:
+# 	FIR
+# vlog -sv -svinputport=var -work rtl_work RGB_Converter.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module RGB_Converter
+# 
+# Top level modules:
+# 	RGB_Converter
+# 
+# specify library for simulation
+#vsim -t 100ps -L altera_mf_ver -lib rtl_work tb_project
+# vsim -t 100ps -L altera_mf_ver -lib rtl_work tb_project_v2
+# vsim -L altera_mf_ver -lib rtl_work -t 100ps tb_project_v2 
+# Loading sv_std.std
+# Loading rtl_work.tb_project_v2
+# Loading rtl_work.project_v_unit
+# Loading rtl_work.PROJECT
+# Loading rtl_work.Milestone_1_v_unit
+# Loading rtl_work.Milestone_1
+# Loading rtl_work.FIR
+# Loading rtl_work.RGB_Converter
+# Loading rtl_work.PB_Controller
+# Loading rtl_work.SRAM_Controller
+# Loading rtl_work.UART_SRAM_interface_v_unit
+# Loading rtl_work.UART_SRAM_interface
+# Loading rtl_work.UART_Receive_Controller_v_unit
+# Loading rtl_work.UART_Receive_Controller
+# Loading rtl_work.VGA_SRAM_interface_v_unit
+# Loading rtl_work.VGA_SRAM_interface
+# Loading rtl_work.VGA_Controller
+# Loading rtl_work.convert_hex_to_seven_segment
+# Loading rtl_work.tb_SRAM_Emulator
+# ** Warning: (vsim-3017) Milestone_1.v(100): [TFMPC] - Too few port connections. Expected 17, found 16.
+# 
+#         Region: /tb_project_v2/uut/M1_unit/FIR_unit
+# ** Warning: (vsim-3722) Milestone_1.v(100): [TFMPC] - Missing connection for port 'common_case'.
+# 
+# ** Warning: (vsim-3017) project.v(349): [TFMPC] - Too few port connections. Expected 15, found 14.
+# 
+#         Region: /tb_project_v2/uut/VGA_unit
+# ** Warning: (vsim-3722) project.v(349): [TFMPC] - Missing connection for port 'VGA_adjust'.
+# 
+# 
+# Clear previous simulation
+# restart -f
+# Loading sv_std.std
+# Loading rtl_work.tb_project_v2
+# Loading rtl_work.project_v_unit
+# Loading rtl_work.PROJECT
+# Loading rtl_work.Milestone_1_v_unit
+# Loading rtl_work.Milestone_1
+# Loading rtl_work.FIR
+# Loading rtl_work.RGB_Converter
+# Loading rtl_work.PB_Controller
+# Loading rtl_work.SRAM_Controller
+# Loading rtl_work.UART_SRAM_interface_v_unit
+# Loading rtl_work.UART_SRAM_interface
+# Loading rtl_work.UART_Receive_Controller_v_unit
+# Loading rtl_work.UART_Receive_Controller
+# Loading rtl_work.VGA_SRAM_interface_v_unit
+# Loading rtl_work.VGA_SRAM_interface
+# Loading rtl_work.VGA_Controller
+# Loading rtl_work.convert_hex_to_seven_segment
+# Loading rtl_work.tb_SRAM_Emulator
+# ** Warning: (vsim-3017) Milestone_1.v(100): [TFMPC] - Too few port connections. Expected 17, found 16.
+# 
+#         Region: /tb_project_v2/uut/M1_unit/FIR_unit
+# ** Warning: (vsim-3722) Milestone_1.v(100): [TFMPC] - Missing connection for port 'common_case'.
+# 
+# ** Warning: (vsim-3017) project.v(349): [TFMPC] - Too few port connections. Expected 15, found 14.
+# 
+#         Region: /tb_project_v2/uut/VGA_unit
+# ** Warning: (vsim-3722) project.v(349): [TFMPC] - Missing connection for port 'VGA_adjust'.
+# 
+# 
+# activate waveform simulation
+# view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+# 
+# add waveforms
+# workaround for no block comments: call another .do file, or as many as you like
+# or just add the waveforms here like done the labs
+# do add_my_waveforms.do
+# 
+# 
+# add waves to waveform
+# add wave Clock_50
+# add wave -divider {some label for my divider}
+# add wave uut/SRAM_we_n
+# add wave -decimal uut/SRAM_write_data
+# add wave -decimal uut/SRAM_read_data
+# add wave -hexadecimal uut/SRAM_address
+# 
+# 
+#do add_some_more_waveforms.do
+# 
+# format signal names in waveform
+# configure wave -signalnamewidth 1
+# 
+# run complete simulation
+# run -all
+# Simulation started at    0.00 ms
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul x 
+# 	 enable_RGB x 
+# 	 R_buff   x  	 xx 
+# 	 G_buff   x  	 xx 
+# 	 B_buff   x  	 xx 
+# 	 sel_mul_in x 
+# 	 U_V x
+# 	 U buff           x
+# 	 V buff           x
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State 
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# Applying global reset...
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  0000
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  0000
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# Removing global reset...
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  0000
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  0 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  1 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  2 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  3 
+# Opening file "panda.sram_d1" for initializing SRAM
+# 
+# Opening file "panda.sram_d0" to get SRAM verification data
+# 
+# SRAM is now filled at    0.00 ms
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  4 
+# Starting Decoder at    0.00 ms
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  5 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  6 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  7 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  8 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter  9 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# start counter 10 
+#########################################################################
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_IDLE
+# 	 Y Location      x
+# 	 Write enable   x
+# 	 Write data xxxx
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address      x
+# 
+# 	 cycle x
+# 
+# 	 common_case x
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_M1_START
+# 	 Y Location      0
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address  38400
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_START_LINE_0
+# 	 Y Location      0
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address  57600
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_START_LINE_1
+# 	 Y Location      0
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  xxxx
+# 
+# 	 SRAM address  38401
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]    x 		 V [3]    x
+# 	 U [2]    x 		 V [2]    x
+# 	 U [1]    x 		 V [1]    x
+# 	 U [0]    x 		 V [0]    x
+# 
+# 
+# 
+# 
+# 
+# State S_START_LINE_2
+# 	 Y Location      0
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  8383
+# 
+# 	 SRAM address  57601
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]  131 		 V [3]    x
+# 	 U [2]  131 		 V [2]    x
+# 	 U [1]  131 		 V [1]    x
+# 	 U [0]  131 		 V [0]    x
+# 
+# 
+# 
+# 	 V Read 7e7e
+# 
+# 
+# 
+# 
+# State S_START_LINE_3
+# 	 Y Location      0
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address  57601
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]    x 		 V [5]    x
+# 	 U [4]    x 		 V [4]    x
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 U Read 8383
+# 
+# 
+# 
+# 
+# State S_START_LINE_4
+# 	 Y Location      0
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  8383
+# 
+# 	 SRAM address  38402
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]    x
+# 	 U [4]  131 		 V [4]    x
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 U Read 7e7e
+# 
+# 
+# 
+# 
+# State S_START_LINE_5
+# 	 Y Location      0
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address  38402
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_START_LINE_6
+# 	 Y Location      1
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address      0
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 U Read 8383
+# Loading U buffers
+# 
+#  Buffer_1 	 131 	 83
+# 
+# 
+#  Buffer_2 	 131 	 83
+# 
+# 
+# 
+# 
+# State S_START_LINE_7
+# 	 Y Location      1
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  8383
+# 
+# 	 SRAM address  57602
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_START_LINE_8
+# 	 Y Location      1
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  8383
+# 
+# 	 SRAM address  57602
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+# 	 Y           x 
+# 	 U           x 
+# 	 V           x 
+# 	 mult_in           x 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]           x 
+# 	 mult_out[0]           x 
+# 	 sel_rgb_mul X 
+# 	 enable_RGB x 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff           0
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_START_LINE_9
+# 	 Y Location      1
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  c2c2
+# 
+# 	 SRAM address  57602
+# 
+# 	 cycle 1
+# 
+# 	 common_case 0
+# 
+#########################################################################
+# 
+#  END OF LEAD IN 
+#########################################################################
+# 
+# 	 Y         194 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         178 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13578552 
+# 	 mult_out[0]    13578552 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 V Read 7e7e
+# Loading V buffers
+# 
+#  Buffer_1 	 126 	 7e
+# 
+# 
+#  Buffer_2 	 126 	 7e
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      1
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address  57602
+# 
+# 	 cycle 0
+# 
+# 	 common_case 0
+# 
+# 	 SRAM READ DATA 	 7e7e 
+# 	 R 00  	 cf 
+# 	 G 00  	 30 
+# 	 B 00  	 cf 
+# 	 Y         194 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff   0  	 00 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 R_prebuff  cc 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      1
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address  57602
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         194 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 204  	 cc 
+# 	 G_buff   0  	 00 
+# 	 B_buff   0  	 00 
+# 	 GB DONE 
+# 	 R_prebuff  d5 
+# 	 G_prebuff  cf 
+# 	 B_prebuff  d5 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff           0
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      2
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address      1
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         194 
+# 	 U         131 
+# 	 V           0 
+# 	 mult_in         178 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13578552 
+# 	 mult_out[0]    13578552 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 204  	 cc 
+# 	 G_buff 207  	 cf 
+# 	 B_buff 213  	 d5 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      2
+# 	 Write enable   1
+# 	 Write data 0000
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address      1
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R cc  	 cc 
+# 	 G cf  	 cf 
+# 	 B d5  	 d5 
+# 	 Y         194 
+# 	 U         131 
+# 	 V           0 
+# 	 mult_in        -128 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]   -13388160 
+# 	 mult_out[0]    -6819968 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 204  	 cc 
+# 	 G_buff 207  	 cf 
+# 	 B_buff 213  	 d5 
+# 	 R_prebuff  02 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      2
+# 	 Write enable   0
+# 	 Write data cccf
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address 146944
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R cc  	 02 
+# 	 G cf  	 37 
+# 	 B d5  	 02 
+# 	 Y         194 
+# 	 U         131 
+# 	 V           0 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff   2  	 02 
+# 	 G_buff 207  	 cf 
+# 	 B_buff 213  	 d5 
+# 	 GB DONE 
+# 	 R_prebuff  d5 
+# 	 G_prebuff  36 
+# 	 B_prebuff  d5 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      2
+# 	 Write enable   1
+# 	 Write data cccf
+# 	 SRAM Read  c3c3
+# 
+# 	 SRAM address  38402
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R 02  	 d5 
+# 	 G cf  	 36 
+# 	 B d5  	 d5 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         195 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         179 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13654836 
+# 	 mult_out[0]    13654836 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff   2  	 02 
+# 	 G_buff  54  	 36 
+# 	 B_buff 213  	 d5 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      2
+# 	 Write enable   0
+# 	 Write data d502
+# 	 SRAM Read  c3c3
+# 
+# 	 SRAM address 146945
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 c3c3 
+# 	 R 02  	 9f 
+# 	 G 36  	 66 
+# 	 B d5  	 9f 
+# 	 Y         195 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff   2  	 02 
+# 	 G_buff  54  	 36 
+# 	 B_buff 213  	 d5 
+# 	 R_prebuff  cd 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      2
+# 	 Write enable   0
+# 	 Write data 36d5
+# 	 SRAM Read  cccf
+# 
+# 	 SRAM address 146946
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# error: wrote value 54530 (d502 hex) to location 146945 (23e01 hex), should be value  54732 (0d5cc hex)
+# sim time    0.00 ms
+# print some useful debug info here...
+# ...or take a look at the last few clock cycles in the waveforms that lead up to this error
+# 	 Y         195 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 205  	 cd 
+# 	 G_buff  54  	 36 
+# 	 B_buff 213  	 d5 
+# 	 GB DONE 
+# 	 R_prebuff  d6 
+# 	 G_prebuff  d0 
+# 	 B_prebuff  d6 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 U Read 8383
+# Loading U buffers
+# 
+#  Buffer_1 	 131 	 83
+# 
+# 
+#  Buffer_2 	 131 	 83
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      3
+# 	 Write enable   1
+# 	 Write data 36d5
+# 	 SRAM Read  8383
+# 
+# 	 SRAM address      2
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# error: wrote value 14037 (36d5 hex) to location 146946 (23e02 hex), should be value  53205 (0cfd5 hex)
+# sim time    0.00 ms
+# print some useful debug info here...
+# ...or take a look at the last few clock cycles in the waveforms that lead up to this error
+# 	 Y         195 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         179 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13654836 
+# 	 mult_out[0]    13654836 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 205  	 cd 
+# 	 G_buff 208  	 d0 
+# 	 B_buff 214  	 d6 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      3
+# 	 Write enable   1
+# 	 Write data 36d5
+# 	 SRAM Read  d502
+# 
+# 	 SRAM address  57603
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R cd  	 cd 
+# 	 G d0  	 d0 
+# 	 B d6  	 d6 
+# 	 Y         195 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 205  	 cd 
+# 	 G_buff 208  	 d0 
+# 	 B_buff 214  	 d6 
+# 	 R_prebuff  cd 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      3
+# 	 Write enable   0
+# 	 Write data cdd0
+# 	 SRAM Read  36d5
+# 
+# 	 SRAM address 146947
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R cd  	 cd 
+# 	 G d0  	 d1 
+# 	 B d6  	 cd 
+# 	 Y         195 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 205  	 cd 
+# 	 G_buff 208  	 d0 
+# 	 B_buff 214  	 d6 
+# 	 GB DONE 
+# 	 R_prebuff  d6 
+# 	 G_prebuff  d0 
+# 	 B_prebuff  d6 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      3
+# 	 Write enable   1
+# 	 Write data cdd0
+# 	 SRAM Read  c4c5
+# 
+# 	 SRAM address 146947
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R cd  	 d6 
+# 	 G d0  	 d0 
+# 	 B d6  	 d6 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         196 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         180 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13731120 
+# 	 mult_out[0]    13731120 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 205  	 cd 
+# 	 G_buff 208  	 d0 
+# 	 B_buff 214  	 d6 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 V Read 7e7e
+# Loading V buffers
+# 
+#  Buffer_1 	 126 	 7e
+# 
+# 
+#  Buffer_2 	 126 	 7e
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      3
+# 	 Write enable   0
+# 	 Write data d6cd
+# 	 SRAM Read  7e7e
+# 
+# 	 SRAM address 146948
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 7e7e 
+# 	 R cd  	 a1 
+# 	 G d0  	 00 
+# 	 B d6  	 a1 
+# 	 Y         196 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 205  	 cd 
+# 	 G_buff 208  	 d0 
+# 	 B_buff 214  	 d6 
+# 	 R_prebuff  ce 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      3
+# 	 Write enable   0
+# 	 Write data d0d6
+# 	 SRAM Read  cdd0
+# 
+# 	 SRAM address 146949
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         196 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 206  	 ce 
+# 	 G_buff 208  	 d0 
+# 	 B_buff 214  	 d6 
+# 	 GB DONE 
+# 	 R_prebuff  d7 
+# 	 G_prebuff  d1 
+# 	 B_prebuff  d7 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      4
+# 	 Write enable   1
+# 	 Write data d0d6
+# 	 SRAM Read  cdd0
+# 
+# 	 SRAM address      3
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         197 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         181 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13807404 
+# 	 mult_out[0]    13807404 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 206  	 ce 
+# 	 G_buff 209  	 d1 
+# 	 B_buff 215  	 d7 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      4
+# 	 Write enable   1
+# 	 Write data d0d6
+# 	 SRAM Read  d6cd
+# 
+# 	 SRAM address      3
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R ce  	 ce 
+# 	 G d1  	 d1 
+# 	 B d7  	 d7 
+# 	 Y         197 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 206  	 ce 
+# 	 G_buff 209  	 d1 
+# 	 B_buff 215  	 d7 
+# 	 R_prebuff  cf 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      4
+# 	 Write enable   0
+# 	 Write data ced1
+# 	 SRAM Read  d0d6
+# 
+# 	 SRAM address 146950
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R ce  	 cf 
+# 	 G d1  	 d4 
+# 	 B d7  	 cf 
+# 	 Y         197 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 207  	 cf 
+# 	 G_buff 209  	 d1 
+# 	 B_buff 215  	 d7 
+# 	 GB DONE 
+# 	 R_prebuff  d8 
+# 	 G_prebuff  d3 
+# 	 B_prebuff  d8 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      4
+# 	 Write enable   1
+# 	 Write data ced1
+# 	 SRAM Read  c6c6
+# 
+# 	 SRAM address  38403
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R cf  	 d8 
+# 	 G d1  	 d3 
+# 	 B d7  	 d8 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         198 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         182 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13883688 
+# 	 mult_out[0]    13883688 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 207  	 cf 
+# 	 G_buff 211  	 d3 
+# 	 B_buff 216  	 d8 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      4
+# 	 Write enable   0
+# 	 Write data d7cf
+# 	 SRAM Read  c6c6
+# 
+# 	 SRAM address 146951
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 c6c6 
+# 	 R cf  	 a6 
+# 	 G d3  	 00 
+# 	 B d8  	 a6 
+# 	 Y         198 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 207  	 cf 
+# 	 G_buff 211  	 d3 
+# 	 B_buff 216  	 d8 
+# 	 R_prebuff  d0 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      4
+# 	 Write enable   0
+# 	 Write data d3d8
+# 	 SRAM Read  ced1
+# 
+# 	 SRAM address 146952
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 Y         198 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 208  	 d0 
+# 	 G_buff 211  	 d3 
+# 	 B_buff 216  	 d8 
+# 	 GB DONE 
+# 	 R_prebuff  d9 
+# 	 G_prebuff  d4 
+# 	 B_prebuff  d9 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 U Read 8383
+# Loading U buffers
+# 
+#  Buffer_1 	 131 	 83
+# 
+# 
+#  Buffer_2 	 131 	 83
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      5
+# 	 Write enable   1
+# 	 Write data d3d8
+# 	 SRAM Read  8383
+# 
+# 	 SRAM address      4
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 Y         198 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         182 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13883688 
+# 	 mult_out[0]    13883688 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 208  	 d0 
+# 	 G_buff 212  	 d4 
+# 	 B_buff 217  	 d9 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      5
+# 	 Write enable   1
+# 	 Write data d3d8
+# 	 SRAM Read  d7cf
+# 
+# 	 SRAM address  57604
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d0  	 d0 
+# 	 G d4  	 d4 
+# 	 B d9  	 d9 
+# 	 Y         198 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 208  	 d0 
+# 	 G_buff 212  	 d4 
+# 	 B_buff 217  	 d9 
+# 	 R_prebuff  d0 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      5
+# 	 Write enable   0
+# 	 Write data d0d4
+# 	 SRAM Read  d3d8
+# 
+# 	 SRAM address 146953
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d0  	 d0 
+# 	 G d4  	 d5 
+# 	 B d9  	 d0 
+# 	 Y         198 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 208  	 d0 
+# 	 G_buff 212  	 d4 
+# 	 B_buff 217  	 d9 
+# 	 GB DONE 
+# 	 R_prebuff  d9 
+# 	 G_prebuff  d4 
+# 	 B_prebuff  d9 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      5
+# 	 Write enable   1
+# 	 Write data d0d4
+# 	 SRAM Read  c7c8
+# 
+# 	 SRAM address 146953
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d0  	 d9 
+# 	 G d4  	 d4 
+# 	 B d9  	 d9 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         199 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         183 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    13959972 
+# 	 mult_out[0]    13959972 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 208  	 d0 
+# 	 G_buff 212  	 d4 
+# 	 B_buff 217  	 d9 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 	 V Read 7f7f
+# Loading V buffers
+# 
+#  Buffer_1 	 127 	 7f
+# 
+# 
+#  Buffer_2 	 127 	 7f
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      5
+# 	 Write enable   0
+# 	 Write data d9d0
+# 	 SRAM Read  7f7f
+# 
+# 	 SRAM address 146954
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 7f7f 
+# 	 R d0  	 a8 
+# 	 G d4  	 00 
+# 	 B d9  	 a8 
+# 	 Y         199 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 208  	 d0 
+# 	 G_buff 212  	 d4 
+# 	 B_buff 217  	 d9 
+# 	 R_prebuff  d1 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      5
+# 	 Write enable   0
+# 	 Write data d4d9
+# 	 SRAM Read  d0d4
+# 
+# 	 SRAM address 146955
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         199 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 209  	 d1 
+# 	 G_buff 212  	 d4 
+# 	 B_buff 217  	 d9 
+# 	 GB DONE 
+# 	 R_prebuff  db 
+# 	 G_prebuff  d5 
+# 	 B_prebuff  db 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  126
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      6
+# 	 Write enable   1
+# 	 Write data d4d9
+# 	 SRAM Read  d0d4
+# 
+# 	 SRAM address      5
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         184 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14036256 
+# 	 mult_out[0]    14036256 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 209  	 d1 
+# 	 G_buff 213  	 d5 
+# 	 B_buff 219  	 db 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      6
+# 	 Write enable   1
+# 	 Write data d4d9
+# 	 SRAM Read  d9d0
+# 
+# 	 SRAM address      5
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d1  	 d1 
+# 	 G d5  	 d5 
+# 	 B db  	 db 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 209  	 d1 
+# 	 G_buff 213  	 d5 
+# 	 B_buff 219  	 db 
+# 	 R_prebuff  d2 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      6
+# 	 Write enable   0
+# 	 Write data d1d5
+# 	 SRAM Read  d4d9
+# 
+# 	 SRAM address 146956
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d1  	 d2 
+# 	 G d5  	 d7 
+# 	 B db  	 d2 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 213  	 d5 
+# 	 B_buff 219  	 db 
+# 	 GB DONE 
+# 	 R_prebuff  dc 
+# 	 G_prebuff  d6 
+# 	 B_prebuff  dc 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      6
+# 	 Write enable   1
+# 	 Write data d1d5
+# 	 SRAM Read  c8c8
+# 
+# 	 SRAM address  38404
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d2  	 dc 
+# 	 G d5  	 d6 
+# 	 B db  	 dc 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         184 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14036256 
+# 	 mult_out[0]    14036256 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      6
+# 	 Write enable   0
+# 	 Write data dbd2
+# 	 SRAM Read  c8c8
+# 
+# 	 SRAM address 146957
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 c8c8 
+# 	 R d2  	 ac 
+# 	 G d6  	 01 
+# 	 B dc  	 ac 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 R_prebuff  d2 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      6
+# 	 Write enable   0
+# 	 Write data d6dc
+# 	 SRAM Read  d1d5
+# 
+# 	 SRAM address 146958
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 GB DONE 
+# 	 R_prebuff  dc 
+# 	 G_prebuff  d6 
+# 	 B_prebuff  dc 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  126
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 	 U Read 8282
+# Loading U buffers
+# 
+#  Buffer_1 	 130 	 82
+# 
+# 
+#  Buffer_2 	 130 	 82
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      7
+# 	 Write enable   1
+# 	 Write data d6dc
+# 	 SRAM Read  8282
+# 
+# 	 SRAM address      6
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         184 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14036256 
+# 	 mult_out[0]    14036256 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      7
+# 	 Write enable   1
+# 	 Write data d6dc
+# 	 SRAM Read  dbd2
+# 
+# 	 SRAM address  57605
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d2  	 d2 
+# 	 G d6  	 d6 
+# 	 B dc  	 dc 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 R_prebuff  d2 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      7
+# 	 Write enable   0
+# 	 Write data d2d6
+# 	 SRAM Read  d6dc
+# 
+# 	 SRAM address 146959
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d2  	 d2 
+# 	 G d6  	 d7 
+# 	 B dc  	 d2 
+# 	 Y         200 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 GB DONE 
+# 	 R_prebuff  dc 
+# 	 G_prebuff  d6 
+# 	 B_prebuff  dc 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  131 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      7
+# 	 Write enable   1
+# 	 Write data d2d6
+# 	 SRAM Read  c9ca
+# 
+# 	 SRAM address 146959
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d2  	 dc 
+# 	 G d6  	 d6 
+# 	 B dc  	 dc 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         201 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         185 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14112540 
+# 	 mult_out[0]    14112540 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 	 V Read 7f7f
+# Loading V buffers
+# 
+#  Buffer_1 	 127 	 7f
+# 
+# 
+#  Buffer_2 	 127 	 7f
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      7
+# 	 Write enable   0
+# 	 Write data dcd2
+# 	 SRAM Read  7f7f
+# 
+# 	 SRAM address 146960
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 7f7f 
+# 	 R d2  	 ad 
+# 	 G d6  	 00 
+# 	 B dc  	 ad 
+# 	 Y         201 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 210  	 d2 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 R_prebuff  d4 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      7
+# 	 Write enable   0
+# 	 Write data d6dc
+# 	 SRAM Read  d2d6
+# 
+# 	 SRAM address 146961
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         201 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 212  	 d4 
+# 	 G_buff 214  	 d6 
+# 	 B_buff 220  	 dc 
+# 	 GB DONE 
+# 	 R_prebuff  dd 
+# 	 G_prebuff  d7 
+# 	 B_prebuff  dd 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  126
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      8
+# 	 Write enable   1
+# 	 Write data d6dc
+# 	 SRAM Read  d2d6
+# 
+# 	 SRAM address      7
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         186 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14188824 
+# 	 mult_out[0]    14188824 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 212  	 d4 
+# 	 G_buff 215  	 d7 
+# 	 B_buff 221  	 dd 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      8
+# 	 Write enable   1
+# 	 Write data d6dc
+# 	 SRAM Read  dcd2
+# 
+# 	 SRAM address      7
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d4  	 d4 
+# 	 G d7  	 d7 
+# 	 B dd  	 dd 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 212  	 d4 
+# 	 G_buff 215  	 d7 
+# 	 B_buff 221  	 dd 
+# 	 R_prebuff  d5 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      8
+# 	 Write enable   0
+# 	 Write data d4d7
+# 	 SRAM Read  d6dc
+# 
+# 	 SRAM address 146962
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d4  	 d5 
+# 	 G d7  	 da 
+# 	 B dd  	 d5 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 215  	 d7 
+# 	 B_buff 221  	 dd 
+# 	 GB DONE 
+# 	 R_prebuff  de 
+# 	 G_prebuff  d8 
+# 	 B_prebuff  de 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  131 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      8
+# 	 Write enable   1
+# 	 Write data d4d7
+# 	 SRAM Read  caca
+# 
+# 	 SRAM address  38405
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d5  	 de 
+# 	 G d7  	 d8 
+# 	 B dd  	 de 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         186 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14188824 
+# 	 mult_out[0]    14188824 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      8
+# 	 Write enable   0
+# 	 Write data ddd5
+# 	 SRAM Read  caca
+# 
+# 	 SRAM address 146963
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 caca 
+# 	 R d5  	 b1 
+# 	 G d8  	 01 
+# 	 B de  	 b1 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 R_prebuff  d5 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      8
+# 	 Write enable   0
+# 	 Write data d8de
+# 	 SRAM Read  d4d7
+# 
+# 	 SRAM address 146964
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 GB DONE 
+# 	 R_prebuff  de 
+# 	 G_prebuff  d8 
+# 	 B_prebuff  de 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         126
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  126
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 	 U Read 8282
+# Loading U buffers
+# 
+#  Buffer_1 	 130 	 82
+# 
+# 
+#  Buffer_2 	 130 	 82
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location      9
+# 	 Write enable   1
+# 	 Write data d8de
+# 	 SRAM Read  8282
+# 
+# 	 SRAM address      8
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in         186 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14188824 
+# 	 mult_out[0]    14188824 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location      9
+# 	 Write enable   1
+# 	 Write data d8de
+# 	 SRAM Read  ddd5
+# 
+# 	 SRAM address  57606
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d5  	 d5 
+# 	 G d8  	 d8 
+# 	 B de  	 de 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in          -2 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -209190 
+# 	 mult_out[0]     -106562 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 R_prebuff  d5 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location      9
+# 	 Write enable   0
+# 	 Write data d5d8
+# 	 SRAM Read  d8de
+# 
+# 	 SRAM address 146965
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d5  	 d5 
+# 	 G d8  	 da 
+# 	 B de  	 d5 
+# 	 Y         202 
+# 	 U         131 
+# 	 V         126 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 GB DONE 
+# 	 R_prebuff  de 
+# 	 G_prebuff  d8 
+# 	 B_prebuff  de 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  131 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location      9
+# 	 Write enable   1
+# 	 Write data d5d8
+# 	 SRAM Read  cbcc
+# 
+# 	 SRAM address 146965
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 R d5  	 de 
+# 	 G d8  	 d8 
+# 	 B de  	 de 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         203 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in         187 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14265108 
+# 	 mult_out[0]    14265108 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 	 V Read 7f7f
+# Loading V buffers
+# 
+#  Buffer_1 	 127 	 7f
+# 
+# 
+#  Buffer_2 	 127 	 7f
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location      9
+# 	 Write enable   0
+# 	 Write data ded5
+# 	 SRAM Read  7f7f
+# 
+# 	 SRAM address 146966
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 7f7f 
+# 	 R d5  	 b2 
+# 	 G d8  	 00 
+# 	 B de  	 b2 
+# 	 Y         203 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in          -1 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -104595 
+# 	 mult_out[0]      -53281 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 213  	 d5 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 R_prebuff  d8 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location      9
+# 	 Write enable   0
+# 	 Write data d8de
+# 	 SRAM Read  d5d8
+# 
+# 	 SRAM address 146967
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# error: wrote value 57045 (ded5 hex) to location 146966 (23e16 hex), should be value  57046 (0ded6 hex)
+# sim time    0.00 ms
+# print some useful debug info here...
+# ...or take a look at the last few clock cycles in the waveforms that lead up to this error
+# 	 Y         203 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 216  	 d8 
+# 	 G_buff 216  	 d8 
+# 	 B_buff 222  	 de 
+# 	 GB DONE 
+# 	 R_prebuff  df 
+# 	 G_prebuff  d9 
+# 	 B_prebuff  df 
+# 	 sel_mul_in 3 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  126
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_2
+# 	 Y Location     10
+# 	 Write enable   1
+# 	 Write data d8de
+# 	 SRAM Read  d5d8
+# 
+# 	 SRAM address      9
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 Y         204 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in         188 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14341392 
+# 	 mult_out[0]    14341392 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 216  	 d8 
+# 	 G_buff 217  	 d9 
+# 	 B_buff 223  	 df 
+# 	 sel_mul_in 1 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  127
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_3
+# 	 Y Location     10
+# 	 Write enable   1
+# 	 Write data d8de
+# 	 SRAM Read  ded5
+# 
+# 	 SRAM address      9
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d8  	 d8 
+# 	 G d9  	 d9 
+# 	 B df  	 df 
+# 	 Y         204 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in          -1 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -104595 
+# 	 mult_out[0]      -53281 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 216  	 d8 
+# 	 G_buff 217  	 d9 
+# 	 B_buff 223  	 df 
+# 	 R_prebuff  d9 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  127
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_4
+# 	 Y Location     10
+# 	 Write enable   0
+# 	 Write data d8d9
+# 	 SRAM Read  d8de
+# 
+# 	 SRAM address 146968
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d8  	 d9 
+# 	 G d9  	 db 
+# 	 B df  	 d9 
+# 	 Y         204 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in           3 
+# 	 coeff[1]      132251 
+# 	 coeff[0]       25624 
+# 	 mult_out[1]      396753 
+# 	 mult_out[0]       76872 
+# 	 sel_rgb_mul 2 
+# 	 enable_RGB 1 
+# 	 R_buff 217  	 d9 
+# 	 G_buff 217  	 d9 
+# 	 B_buff 223  	 df 
+# 	 GB DONE 
+# 	 R_prebuff  e0 
+# 	 G_prebuff  da 
+# 	 B_prebuff  e0 
+# 	 sel_mul_in 3 
+# 	 U_V 0
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  127
+# 	 U [3]  131 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_5
+# 	 Y Location     10
+# 	 Write enable   1
+# 	 Write data d8d9
+# 	 SRAM Read  cccc
+# 
+# 	 SRAM address  38406
+# 
+# 	 cycle 0
+# 
+# 	 common_case 1
+# 
+# 	 R d9  	 e0 
+# 	 G d9  	 da 
+# 	 B df  	 e0 
+#########################################################################
+# 
+#########################################################################
+# 
+#########################################################################
+# 
+# 	 Y         204 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in         188 
+# 	 coeff[1]       76284 
+# 	 coeff[0]       76284 
+# 	 mult_out[1]    14341392 
+# 	 mult_out[0]    14341392 
+# 	 sel_rgb_mul 0 
+# 	 enable_RGB 1 
+# 	 R_buff 217  	 d9 
+# 	 G_buff 218  	 da 
+# 	 B_buff 224  	 e0 
+# 	 sel_mul_in 1 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  127
+# 	 U [3]  130 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_0
+# 	 Y Location     10
+# 	 Write enable   0
+# 	 Write data dfd9
+# 	 SRAM Read  cccc
+# 
+# 	 SRAM address 146969
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# 	 SRAM READ DATA 	 cccc 
+# 	 R d9  	 b5 
+# 	 G da  	 00 
+# 	 B e0  	 b5 
+# 	 Y         204 
+# 	 U         131 
+# 	 V         127 
+# 	 mult_in          -1 
+# 	 coeff[1]      104595 
+# 	 coeff[0]       53281 
+# 	 mult_out[1]     -104595 
+# 	 mult_out[0]      -53281 
+# 	 sel_rgb_mul 1 
+# 	 enable_RGB 1 
+# 	 R_buff 217  	 d9 
+# 	 G_buff 218  	 da 
+# 	 B_buff 224  	 e0 
+# 	 R_prebuff  d9 
+# 	 R DONE 
+# 	 sel_mul_in 2 
+# 	 U_V 1
+# 	 U buff         131
+# 	 V buff         127
+# 
+# 
+# 	 U [5]  131 		 V [5]  126
+# 	 U [4]  131 		 V [4]  127
+# 	 U [3]  130 		 V [3]  127
+# 	 U [2]  130 		 V [2]  127
+# 	 U [1]  130 		 V [1]  127
+# 	 U [0]  130 		 V [0]  127
+# 
+# 
+# 
+# 
+# 
+# State S_RUN_1
+# 	 Y Location     10
+# 	 Write enable   0
+# 	 Write data dae0
+# 	 SRAM Read  d8d9
+# 
+# 	 SRAM address 146970
+# 
+# 	 cycle 1
+# 
+# 	 common_case 1
+# 
+# error: wrote value 57305 (dfd9 hex) to location 146969 (23e19 hex), should be value  56793 (0ddd9 hex)
+# sim time    0.00 ms
+# print some useful debug info here...
+# ...or take a look at the last few clock cycles in the waveforms that lead up to this error
+# Break in Module tb_project_v2 at tb_project_v2.v line 330
+# 
+# destroy .structure
+# destroy .signals
+# destroy .source
+# 
+# simstats
+# {elab memory} 0
+# {elab working set} 27074560
+# {elab time} 0.0690671
+# {elab cpu time} 0.078125
+# {elab context} 0
+# {elab page faults} 86
+# memory 0
+# {working set} 86745088
+# time 0.823002
+# {cpu time} 0.734375
+# context 0
+# {page faults} 11393
+# A time value could not be extracted from the current line

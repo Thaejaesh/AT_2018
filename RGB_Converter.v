@@ -128,7 +128,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				//Finish Calculating R
 				R_buff <=  R_prebuff[23:16];//(R_acc + mult_out[1]); //76284*(Y-16) + 0*(U-128) + 104595*(V-128)
 				
-				
+				$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
 				B_acc <= B_acc;// + mult_out[1]; //76284*(Y-16) + 0*(V-128)
 				G_acc <= G_acc - mult_out[0]; //76284*(Y-16) - 25624*(U-128)
 				sel_rgb_mul <= (enable_RGB)? 2'b10 : 2'b11;
@@ -137,7 +137,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			2'b10: begin
 			///////////////////////////DO CLIPPING
-				//R_buff <=  R_prebuff[23:16];//(R_acc + mult_out[1]); //76284*(Y-16) + 0*(U-128) + 104595*(V-128)
+					R_buff <=  R_prebuff[23:16];//(R_acc + mult_out[1]); //76284*(Y-16) + 0*(U-128) + 104595*(V-128)
 				B_buff <=  B_prebuff[23:16];//(B_acc); 			  //76284*(Y-16) + 132251*(U-128) + 0*(V-128)
 				G_buff <=  G_prebuff[23:16];//(G_acc - mult_out[0]); //76284*(Y-16) - 25624*(U-128) - 53281*(V_128)
 				sel_rgb_mul <= (enable_RGB)? 2'b00 : 2'b11;

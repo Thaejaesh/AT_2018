@@ -270,6 +270,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			Y_buff <= {24'd0,SRAM_read_data[7:0]};
 			U_RGB <= even_U;
 			V_RGB <= even_V;
+			
+			load_V_buffer <= 1'b1;
+			
 			enable_RGB <= 1'b1;
 			SRAM_we_n <= 1'b1; //Don't write on first RUN_0 of the line	
 			state <= S_RUN_0;
@@ -284,7 +287,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			//Don't change enable to allow for first run to not write empty values
 			
-			load_V_buffer <= 1'b1; //Store read values for V into a buffer
+			load_V_buffer <= 1'b0; //Store read values for V into a buffer
 			
 			if (common_case) begin
 				SRAM_address <= RGB_address; //Assert RGB address to write to
@@ -294,6 +297,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				common_case <= 1'b1;
 			end
 			state <= S_RUN_1;
+			$write("\t SRAM READ DATA \t %h \n", SRAM_read_data);
 			$write("\t R %h  \t %h \n",  R, R2);
 			$write("\t G %h  \t %h \n",  G, G2);
 			$write("\t B %h  \t %h \n",  B, B2);			
@@ -301,11 +305,15 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		S_RUN_1: begin
 			
-			load_V_buffer <= 1'b0;
+			//load_V_buffer <= 1'b0;
 			enable_V <= 1'b1; //Load next V value into shift register
 			
 			SRAM_we_n <= 1'b1;
 
+			if ( cycle ) begin
+				load_U_buffer <= 1'b1;
+			end
+				
 			SRAM_address <= Y_address; //Assert Read Address for next Y values
 			Y_address <= Y_address + 18'd1;
 
@@ -315,9 +323,14 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		S_RUN_2: begin
 			
 			enable_V <= 1'b0;
+			load_U_buffer <= 1'b0;
+			if (cycle) begin
 
-			if (cycle) load_U_buffer <= 1'b1;
+				//load_U_buffer <= 1'b1;
+				SRAM_address <= V_address; //Assert Read Address for next Y values
+				V_address <= V_address + 18'd1;
 
+			end			
 			
 			Y_RGB <= Y_buff;
 			U_RGB <= FIR_BUFF_U;
@@ -364,6 +377,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		end
 		
 		S_RUN_5: begin
+			
+			if (cycle) load_V_buffer <= 1'b1;
 			
 			SRAM_we_n <= 1'b0; //Enable writing for the next cycle
 			
