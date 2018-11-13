@@ -38,35 +38,38 @@ module FIR (
 		input logic cycle,
 
 		
-		output logic /*signed*/ [31:0] FIR_BUFF_U,
-		output logic /*signed*/ [31:0] FIR_BUFF_V,
-		output logic /*signed*/ [31:0] even_U,
-		output logic /*signed*/ [31:0] even_V
+		output logic  [31:0] FIR_BUFF_U,
+		output logic  [31:0] FIR_BUFF_V,
+		output logic  [31:0] even_U,
+		output logic  [31:0] even_V
 		
 );
 
 //Shift Register to hold surrounding values
-logic /*signed*/ [8:0] U_SReg [5:0];
-logic /*signed*/ [8:0] V_SReg [5:0];
-logic /*signed*/ [31:0] current_sum;
-logic /*signed*/ [31:0] current_product;
-logic /*signed*/ [63:0] current_product_long;
-logic /*signed*/ [31:0] constant;
-logic /*signed*/ [31:0] coeff;
+logic  [8:0] U_SReg [5:0];
+logic  [8:0] V_SReg [5:0];
+logic  [31:0] current_sum;
+logic  [31:0] current_product;
+logic  [63:0] current_product_long;
+logic  [31:0] constant;
+logic  [31:0] coeff;
 
 logic [7:0] U_in_buff;
 logic [7:0] U_in_buffer [1:0];
 logic [7:0] V_in_buffer [1:0];
 logic [7:0] V_in_buff;
 //Accumulator value
-logic /*signed*/ [31:0] FIR_accum;
-logic /*signed*/ [31:0] FIR_accum_before;
+logic  [31:0] FIR_accum;
+logic  [31:0] FIR_accum_before;
 
 logic [1:0] sel_mul_in;
 
 logic U_V; //Determine which matrix to interpolate //U = 0 V = 1
 logic end_of_memory; //Determine end of values to read
 
+//Even values to send for RGB calculations
+assign even_U = {24'd0,U_SReg[4]};
+assign even_V = {24'd0,V_SReg[3]};
 
 //Multiplexer determining the multiplication coefficient
 always_comb begin 
@@ -76,7 +79,7 @@ always_comb begin
 		2'b01: begin
 				coeff = 32'd21;
 				current_sum = (~U_V)? ({24'd0,U_SReg[0]} + {24'd0,U_SReg[5]}) : ({24'd0,V_SReg[0]} + {24'd0,V_SReg[5]}) ;		
-				
+				$write("\n\n\n\n Calibrate FIR \n\n\n\n");
 			end
 		2'b10: begin
 				coeff = 32'd52;
@@ -298,9 +301,6 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 	end
 end
-
-assign even_U = {24'd0,U_SReg[4]};
-assign even_V = {24'd0,V_SReg[3]};
 
 
 endmodule

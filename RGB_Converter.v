@@ -18,33 +18,33 @@ module RGB_Converter (
 		input logic enable_RGB,
 		input logic resetn,
 		
-		input logic /*signed*/ [31:0] Y_in_RGB,
-		input logic /*signed*/ [31:0] U_in_RGB,
-		input logic /*signed*/ [31:0] V_in_RGB,
+		input logic  [31:0] Y_in_RGB,
+		input logic [31:0] U_in_RGB,
+		input logic [31:0] V_in_RGB,
 		
-		output logic /*signed*/ [7:0] R_buff,
-		output logic /*signed*/ [7:0] G_buff,
-		output logic /*signed*/ [7:0] B_buff,
+		output logic [7:0] R_buff,
+		output logic [7:0] G_buff,
+		output logic  [7:0] B_buff,
 
 
-		output logic /*signed*/ [7:0] R_buffer,
-		output logic /*signed*/ [7:0] G_buffer,
-		output logic /*signed*/ [7:0] B_buffer
+		output logic  [7:0] R_buffer,
+		output logic  [7:0] G_buffer,
+		output logic  [7:0] B_buffer
 
 				
 );
 
 
 
-//logic /*signed*/ [31:0] y,u,v; // Values of Y,U,V after subtraction portion of conversion
-logic /*signed*/ [31:0] mult_in; // Value to feed logic [31:0]o multipliers
-logic /*signed*/ [63:0] mult_out_long [1:0]; //Values out of the multipliers
-logic /*signed*/ [31:0] mult_out [1:0]; //Values out of the multipliers
-logic /*signed*/ [31:0] coeff [1:0]; //Coefficients to multiply the y,u,v values
-logic /*signed*/ [31:0] R_acc,G_acc,B_acc;//,R_buff,G_buff,B_buff;
+//logic  [31:0] y,u,v; // Values of Y,U,V after subtraction portion of conversion
+logic  [31:0] mult_in; // Value to feed logic [31:0]o multipliers
+logic  [63:0] mult_out_long [1:0]; //Values out of the multipliers
+logic  [31:0] mult_out [1:0]; //Values out of the multipliers
+logic  [31:0] coeff [1:0]; //Coefficients to multiply the y,u,v values
+logic  [31:0] R_acc,G_acc,B_acc;//,R_buff,G_buff,B_buff;
 logic [1:0] sel_rgb_mul;
 
-logic /*signed*/ [31:0] R_prebuff, G_prebuff, B_prebuff;
+logic  [31:0] R_prebuff, G_prebuff, B_prebuff;
 
 /* assign y = Y_in_RGB - 32'd16;
 assign u = U_in_RGB - 32'd128;
@@ -135,7 +135,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				R_acc <= mult_out[1]; //76284*(Y-16)
 				B_acc <= mult_out[1]; //76284*(Y-16)
 				G_acc <= mult_out[1]; //76284*(Y-16)	
-				sel_rgb_mul <= (enable_RGB)? 2'b01 : 2'b11;
+				sel_rgb_mul <= (enable_RGB)? 2'b01 : 2'b00;
 			end
 			
 			2'b01: begin //V
@@ -146,7 +146,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
 				B_acc <= B_acc;// + mult_out[1]; //76284*(Y-16) + 0*(V-128)
 				G_acc <= G_acc - mult_out[0]; //76284*(Y-16) - 25624*(U-128)
-				sel_rgb_mul <= (enable_RGB)? 2'b10 : 2'b11;
+				sel_rgb_mul <= (enable_RGB)? 2'b10 : 2'b01;
 				$write("\t R DONE \n" );
 			end 
 			
@@ -155,11 +155,12 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 					//R_buff <=  R_prebuff[23:16];//(R_acc + mult_out[1]); //76284*(Y-16) + 0*(U-128) + 104595*(V-128)
 				B_buff <=  B_prebuff[23:16];//(B_acc); 			  //76284*(Y-16) + 132251*(U-128) + 0*(V-128)
 				G_buff <=  G_prebuff[23:16];//(G_acc - mult_out[0]); //76284*(Y-16) - 25624*(U-128) - 53281*(V_128)
-				sel_rgb_mul <= (enable_RGB)? 2'b00 : 2'b11;
+				sel_rgb_mul <= (enable_RGB)? 2'b00 : 2'b10;
 				$write("\t GB DONE \n" );
 				$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
 				$write("\t G_prebuff  %h \n",  G_prebuff[23:16]);
 				$write("\t B_prebuff  %h \n",  B_prebuff[23:16]);
+				$write("\n\n\n\n Calibrate RGB_Converter \n\n\n\n");
 			end
 			
 			default: begin
@@ -169,7 +170,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				R_buff <= 32'd0;
 				G_buff <= 32'd0;
 				B_buff <= 32'd0;	
-				sel_rgb_mul <= 2'b0;
+				sel_rgb_mul <= 2'b00;
 			end
 		endcase
 	end

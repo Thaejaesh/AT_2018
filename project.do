@@ -46,6 +46,7 @@ view wave
 do add_my_waveforms.do
 #do add_some_more_waveforms.do
 
+
 # format signal names in waveform
 configure wave -signalnamewidth 1
 
