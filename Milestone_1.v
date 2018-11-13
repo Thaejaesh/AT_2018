@@ -245,7 +245,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			SRAM_address <= Y_address; //Y0/1
 			Y_address <= Y_address + 18'd1;
 			enable_V <= 1'b0;
-			
+			line_start <= 1'b0; // Signal to begin FIR calculations
 			state <= S_START_LINE_6;
 		end
 		S_START_LINE_6: begin
