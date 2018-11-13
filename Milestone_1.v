@@ -302,14 +302,17 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			end else begin
 				common_case <= 1'b1;
 			end
+			
+			enable_V <= 1'b1; //Load next V value into shift register
+			
 			state <= S_RUN_1;			
 		end
 		
 		S_RUN_1: begin
 					
 			//load_V_buffer <= 1'b0;
-			enable_V <= 1'b1; //Load next V value into shift register
-			
+			//enable_V <= 1'b1; //Load next V value into shift register
+			enable_V <= 1'b0; //Load next V value into shift register
 			SRAM_we_n <= 1'b1;
 
 			if ( cycle ) begin
@@ -326,7 +329,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		S_RUN_2: begin
 			
-			enable_V <= 1'b0;
+			//enable_V <= 1'b0;
 			load_U_buffer <= 1'b0;
 			if (cycle) begin
 
@@ -337,7 +340,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			state <= S_RUN_3;
 		end
-		
+			
 		S_RUN_3: begin
 
 			if (cycle) load_U_buffer <= 1'b0;
