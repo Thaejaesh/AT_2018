@@ -135,7 +135,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				R_acc <= mult_out[1]; //76284*(Y-16)
 				B_acc <= mult_out[1]; //76284*(Y-16)
 				G_acc <= mult_out[1]; //76284*(Y-16)	
-				sel_rgb_mul <= (enable_RGB)? 2'b01 : sel_rgb_mul;
+				if (enable_RGB) sel_rgb_mul <= 2'b01;
 			end
 			
 			2'b01: begin //V
@@ -146,7 +146,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
 				B_acc <= B_acc;// + mult_out[1]; //76284*(Y-16) + 0*(V-128)
 				G_acc <= G_acc - mult_out[0]; //76284*(Y-16) - 25624*(U-128)
-				sel_rgb_mul <= (enable_RGB)? 2'b10 : sel_rgb_mul;
+				if (enable_RGB) sel_rgb_mul <= 2'b10;
 				$write("\t R DONE \n" );
 			end 
 			
@@ -155,7 +155,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 					//R_buff <=  R_prebuff[23:16];//(R_acc + mult_out[1]); //76284*(Y-16) + 0*(U-128) + 104595*(V-128)
 				B_buff <=  B_prebuff[23:16];//(B_acc); 			  //76284*(Y-16) + 132251*(U-128) + 0*(V-128)
 				G_buff <=  G_prebuff[23:16];//(G_acc - mult_out[0]); //76284*(Y-16) - 25624*(U-128) - 53281*(V_128)
-				sel_rgb_mul <= (enable_RGB)? 2'b00 : sel_rgb_mul;
+				if (enable_RGB) sel_rgb_mul <= 2'b00;
 				$write("\t GB DONE \n" );
 				$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
 				$write("\t G_prebuff  %h \n",  G_prebuff[23:16]);

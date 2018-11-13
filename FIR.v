@@ -88,6 +88,7 @@ always_comb begin
 		2'b11: begin 
 				coeff = 32'd159;
 				current_sum = (~U_V)? ({24'd0,U_SReg[2]} + {24'd0,U_SReg[3]}) : ({24'd0,V_SReg[2]} + {24'd0,V_SReg[3]}) ;
+				//current_sum = (~U_V)? ({24'd0,U_SReg[4]} + {24'd0,U_SReg[3]}) : ({24'd0,V_SReg[4]} + {24'd0,V_SReg[3]}) ;
 			end
 	default: begin
 			coeff = 32'd21;

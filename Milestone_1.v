@@ -225,7 +225,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		S_START_LINE_3: begin
 			//send address to read from for delay4
 			SRAM_address <= U_address; //U4/5
-			U_address <= U_address;
+			U_address <= U_address + 18'd1;
 			
 			enable_U <= 1'b1; // Load U2/3 into U_SReg in the next clock cycle
 			read_V_0 <= 1'b0;
@@ -233,7 +233,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		end
 		S_START_LINE_4: begin
 
-			
+			SRAM_address <= Y_address; //Y0/1
+			Y_address <= Y_address + 18'd1;
 			enable_U <= 1'b0;
 			enable_V <= 1'b1;// Load V2/3 into V_SReg in the next clock cycle
 			
@@ -242,8 +243,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		end
 		S_START_LINE_5: begin
 			
-			SRAM_address <= Y_address; //Y0/1
-			Y_address <= Y_address + 18'd1;
+			//SRAM_address <= Y_address; //Y0/1
+			//Y_address <= Y_address + 18'd1;
 			enable_V <= 1'b0;
 			line_start <= 1'b0; // Signal to begin FIR calculations
 			state <= S_START_LINE_6;
@@ -264,6 +265,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			state <= S_START_LINE_8;
 		end
 		S_START_LINE_8: begin	
+			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
+			Y_buff <= {24'd0,SRAM_read_data[7:0]};		
 			enable_U <= 1'b0;
 				
 			state <= S_START_LINE_9;
@@ -271,12 +274,14 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		end
 		S_START_LINE_9: begin
 			cycle <= 1'b0;
-			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
-			Y_buff <= {24'd0,SRAM_read_data[7:0]};
+			//Y_RGB <= {24'd0,SRAM_read_data[15:8]};
+			//Y_buff <= {24'd0,SRAM_read_data[7:0]};
 			U_RGB <= even_U;
 			V_RGB <= even_V;
 			
 			load_V_buffer <= 1'b1;
+			
+			//enable_V <= 1'b1; //Load next V value into shift register
 			
 			enable_RGB <= 1'b1;
 			SRAM_we_n <= 1'b1; //Don't write on first RUN_0 of the line	
@@ -301,10 +306,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				SRAM_write_data <= {G, B};
 			end else begin
 				common_case <= 1'b1;
+				//enable_RGB <= 1'b1;
 			end
 			
-			enable_V <= 1'b1; //Load next V value into shift register
-			
+			//enable_V <= 1'b1; //Load next V value into shift register
+			enable_V <= 1'b0; //Load next V value into shift register
 			state <= S_RUN_1;			
 		end
 		
@@ -312,7 +318,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 					
 			//load_V_buffer <= 1'b0;
 			//enable_V <= 1'b1; //Load next V value into shift register
-			enable_V <= 1'b0; //Load next V value into shift register
+			//enable_V <= 1'b0; //Load next V value into shift register
 			SRAM_we_n <= 1'b1;
 
 			if ( cycle ) begin
@@ -354,10 +360,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			SRAM_write_data <= {R,G};
 			B_out_buffer <= B; //Save B value to write along with the next R value
-
+			enable_U <= 1'b1;
 			state <= S_RUN_4;
 					
 		end
+		
 		
 		S_RUN_4: begin
 			
@@ -368,8 +375,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				U_address <= U_address + 18'd1;
 			end				
 			
-			enable_U <= 1'b1;
-					
+			//enable_U <= 1'b1;
+			enable_U <= 1'b0;	
 			state <= S_RUN_5;			
 		end
 		
@@ -383,7 +390,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			RGB_address <= RGB_address + 18'd1; //Increment RGB address for the next write
 			SRAM_write_data <= {B_out_buffer, R};
 			
-			enable_U <= 1'b0;
+			//enable_U <= 1'b0;
 
 			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
 			Y_buff <= {24'd0, SRAM_read_data[7:0]};
@@ -400,7 +407,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			end else begin
 				state <= S_RUN_0;
 			end
-									
+					
+			enable_V <= 1'b1; //Load next V value into shift register
 			$write("#########################################################################\n\n");		
 			$write("#########################################################################\n\n");		
 			$write("#########################################################################\n\n");		

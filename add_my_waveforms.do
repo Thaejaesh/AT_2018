@@ -37,4 +37,8 @@ add wave -hexadecimal uut/M1_unit/R
 add wave -hexadecimal uut/M1_unit/G
 add wave -hexadecimal uut/M1_unit/B
 
-#add wave -decimal error_count
+add wave -hexadecimal uut/M1_unit/RGB_unit/Y_in_RGB
+add wave -hexadecimal uut/M1_unit/RGB_unit/U_in_RGB
+add wave -hexadecimal uut/M1_unit/RGB_unit/V_in_RGB
+
+#add wave -hexadecimal SRAM_ARRAY[uut.SRAM_address]
