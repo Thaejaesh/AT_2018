@@ -285,7 +285,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			if (enable_V) begin
 				if (~cycle) begin
-					V_SReg[0] <= V_in_buffer[0];
+					V_SReg[0] <= SRAM_read_data[15:8]; //V_in_buffer[0];
 				end else begin
 					V_SReg[0] <= V_in_buffer[1];
 				end
