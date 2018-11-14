@@ -1,6 +1,6 @@
 
-R = hex2dec('3f');
-G = hex2dec('4e');
+R = hex2dec('3e');
+G = hex2dec('4f');
 B = hex2dec('45');
 
 RGB = [R; G; B];

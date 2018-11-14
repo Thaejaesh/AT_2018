@@ -404,9 +404,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			//Going to end of line 
 			if ( Y_address - Y_compare_address == 18'd156 ) begin 
 				state <= S_END_LINE_0;
-				//$write("entering end case");
 				U_address <= U_address - 18'd1;
-				line_end <= 1'b1;
+				//line_end <= 1'b1;
+				
 			end else begin
 				state <= S_RUN_0;
 			end
@@ -425,6 +425,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			SRAM_write_data <= {G, B};			
 			
 			if (~read_end_Y) enable_V <= 1'b1;
+			
 			state <= S_END_LINE_1;
 		end
 		
@@ -436,7 +437,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				SRAM_address <= Y_address; 
 				Y_address <= Y_address + 18'd1;
 			end
-			
+			line_end <= 1'b1;
 			enable_V <= 1'b0;
 			
 			state <= S_END_LINE_2;

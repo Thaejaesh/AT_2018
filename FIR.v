@@ -118,12 +118,12 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			//$write("\t accumulator %d\n",FIR_accum);
 			//$write("\t product %d\n", current_product);
 			
-			$write("\n\n\t U [5] %d \t\t V [5] %d\n", 	U_SReg[5], V_SReg[5]);
+			/* $write("\n\n\t U [5] %d \t\t V [5] %d\n", 	U_SReg[5], V_SReg[5]);
 			$write("\t U [4] %d \t\t V [4] %d\n",		U_SReg[4], V_SReg[4]);
 			$write("\t U [3] %d \t\t V [3] %d\n",		U_SReg[3], V_SReg[3]);
 			$write("\t U [2] %d \t\t V [2] %d\n",		U_SReg[2], V_SReg[2]);
 			$write("\t U [1] %d \t\t V [1] %d\n",		U_SReg[1], V_SReg[1]);
-			$write("\t U [0] %d \t\t V [0] %d\n\n",		U_SReg[0], V_SReg[0]);	
+			$write("\t U [0] %d \t\t V [0] %d\n\n",		U_SReg[0], V_SReg[0]);	 */
 
 	
 			

@@ -91,9 +91,9 @@ assign B_prebuff = B_acc + mult_out[1];
 assign G_prebuff = G_acc - mult_out[0];
 
 //Clipping
-assign R_buffer =  ($signed(R_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(R_prebuff[31:16]) < $signed(16'd0))? 8'h00: R_prebuff[23:16] );
-assign G_buffer =  ($signed(G_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(G_prebuff[31:16]) < $signed(16'd0))? 8'h00: G_prebuff[23:16] );
-assign B_buffer =  ($signed(B_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(B_prebuff[31:16]) < $signed(16'd0))? 8'h00: B_prebuff[23:16] );
+assign R_buffer =  ($signed(R_prebuff[31:16]) > $signed(16'd255) )? 8'hFF : ( ($signed(R_prebuff[31:16]) < $signed(16'd0) )? 8'h00: R_prebuff[23:16] );
+assign G_buffer =  ($signed(G_prebuff[31:16]) > $signed(16'd255) )? 8'hFF : ( ($signed(G_prebuff[31:16]) < $signed(16'd0) )? 8'h00: G_prebuff[23:16] );
+assign B_buffer =  ($signed(B_prebuff[31:16]) > $signed(16'd255) )? 8'hFF : ( ($signed(B_prebuff[31:16]) < $signed(16'd0) )? 8'h00: B_prebuff[23:16] );
 
 always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 	if (~resetn) begin
