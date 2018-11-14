@@ -334,6 +334,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			Y_address <= Y_address + 18'd1;
 
 			Y_RGB <= Y_buff;
+			
 			U_RGB <= FIR_BUFF_U;
 			state <= S_RUN_2;
 		end
@@ -349,6 +350,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			end			
 			
+			V_RGB <= FIR_BUFF_V;
+			
 			state <= S_RUN_3;
 		end
 			
@@ -356,7 +359,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			if (cycle) load_U_buffer <= 1'b0;
 			
-			V_RGB <= FIR_BUFF_V;
+			//V_RGB <= FIR_BUFF_V;
 			
 			SRAM_address <= RGB_address; //Set RGB address to write to
 			RGB_address <= RGB_address + 18'd1; //Increment RGB_address for next write
