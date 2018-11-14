@@ -105,10 +105,10 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		B_buff <= 32'd0;
 		sel_rgb_mul <= 2'b00;
 	end else begin
-		$write("\t Y %d \n", Y_in_RGB );
+		/* $write("\t Y %d \n", Y_in_RGB );
 		$write("\t U %d \n", U_in_RGB );
 		$write("\t V %d \n", V_in_RGB );
-
+ */
 		
 		
 /* 		$write("\t mult_in %d \n", mult_in);

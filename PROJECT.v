@@ -119,10 +119,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		case (state)
 			
 			S_TOP_IDLE: begin
-				//if(start) begin
-					//start <= 1'b0;
-					//state <= S_TOP_UART;
-				//end
+
 				$write("start counter %d \n", start_counter);
 				start_counter <= start_counter + 4'd1;
 				if (start_counter == 4'd10) begin
@@ -138,10 +135,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			S_TOP_M1: begin
 				//M1_start <= 1'b1;
-				M1_start <= 1'b1;
-				//SRAM_address <= M1_SRAM_address;
-				//SRAM_write_data <= M1_SRAM_write_data;
-				//SRAM_we_n <= M1_SRAM_we_n;				
+				M1_start <= 1'b1;				
 				if(M1_done) begin
 					start <= 1'b0;
 					state <= S_TOP_IDLE;

@@ -539,9 +539,10 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			
 			
-			if ( Y_address == 18'd38399) begin
+			if ( Y_address == 18'd38400) begin
 				state <= S_M1_IDLE;
 				M1_done <= 1'b1;
+				$write("WE DID IT");
 			end else begin
 				state <= S_M1_START;
 			
