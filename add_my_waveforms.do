@@ -22,6 +22,7 @@ add wave uut/M1_unit/RGB_unit/sel_rgb_mul
 
 add wave -hexadecimal uut/M1_unit/FIR_unit/U_SReg
 add wave -hexadecimal uut/M1_unit/FIR_unit/V_SReg
+add wave -hexadecimal uut/M1_unit/FIR_unit/V_in_buffer
 
 add wave -unsigned uut/M1_unit/Y_RGB
 add wave -unsigned uut/M1_unit/Y_buff

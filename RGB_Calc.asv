@@ -2,8 +2,8 @@ clear;
 %clc;
 close all;
 
-Y = 217;
-U = 130;
+Y = 214;
+U = 131;
 V = 128;
 
 yuv = [Y;U;V];

@@ -198,19 +198,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		if (load_U_buffer) begin
 			U_in_buffer[1] <= SRAM_read_data[15:8];
 			U_in_buffer[0] <= SRAM_read_data[7:0];
-			//$write("\n\t U Read %h\n", SRAM_read_data);	
-			//$write("Loading U buffers");			
-			//$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
-			//$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);		
 		end 
 		
 		if (load_V_buffer) begin
 			V_in_buffer[1] <= SRAM_read_data[15:8];
 			V_in_buffer[0] <= SRAM_read_data[7:0];
-			//$write("\n\t V Read %h\n", SRAM_read_data);	
-			//$write("Loading V buffers");			
-			//$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
-			//$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);					
 		end
 		
 	
@@ -285,9 +277,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			if (enable_V) begin
 				if (~cycle) begin
-					V_SReg[0] <=  V_in_buffer[0];//SRAM_read_data[15:8];
+					V_SReg[0] <=  V_in_buffer[1];
 				end else begin
-					V_SReg[0] <= V_in_buffer[1];
+					V_SReg[0] <= V_in_buffer[0];
 				end
 				
 				V_SReg[1] <= V_SReg[0];
@@ -296,10 +288,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				V_SReg[4] <= V_SReg[3];
 				V_SReg[5] <= V_SReg[4];
 			end		
-		
-		end
-		
-		
+		end		
 	end
 end
 
