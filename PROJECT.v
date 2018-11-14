@@ -139,9 +139,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			S_TOP_M1: begin
 				//M1_start <= 1'b1;
 				M1_start <= 1'b1;
-				SRAM_address <= M1_SRAM_address;
-				SRAM_write_data <= M1_SRAM_write_data;
-				SRAM_we_n <= M1_SRAM_we_n;				
+				//SRAM_address <= M1_SRAM_address;
+				//SRAM_write_data <= M1_SRAM_write_data;
+				//SRAM_we_n <= M1_SRAM_we_n;				
 				if(M1_done) begin
 					start <= 1'b0;
 					state <= S_TOP_IDLE;
@@ -161,6 +161,10 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 	
 	end
 end
+
+assign SRAM_address = M1_SRAM_address;
+assign SRAM_write_data = M1_SRAM_write_data;
+assign SRAM_we_n = M1_SRAM_we_n;
 
 /* //Case for UART transmitter
 always @(posedge CLOCK_50_I or negedge resetn) begin

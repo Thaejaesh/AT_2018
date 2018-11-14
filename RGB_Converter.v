@@ -143,11 +143,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				//Finish Calculating R
 				R_buff <=  R_buffer;//(R_acc + mult_out[1]); //76284*(Y-16) + 0*(U-128) + 104595*(V-128)
 				
-				$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
+				//$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
 				B_acc <= B_acc;// + mult_out[1]; //76284*(Y-16) + 0*(V-128)
 				G_acc <= G_acc - mult_out[0]; //76284*(Y-16) - 25624*(U-128)
 				if (enable_RGB) sel_rgb_mul <= 2'b10;
-				$write("\t R DONE \n" );
+				//$write("\t R DONE \n" );
 			end 
 			
 			2'b10: begin //U
@@ -156,11 +156,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				B_buff <=  B_prebuff[23:16];//(B_acc); 			  //76284*(Y-16) + 132251*(U-128) + 0*(V-128)
 				G_buff <=  G_prebuff[23:16];//(G_acc - mult_out[0]); //76284*(Y-16) - 25624*(U-128) - 53281*(V_128)
 				if (enable_RGB) sel_rgb_mul <= 2'b00;
-				$write("\t GB DONE \n" );
-				$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
-				$write("\t G_prebuff  %h \n",  G_prebuff[23:16]);
-				$write("\t B_prebuff  %h \n",  B_prebuff[23:16]);
-				$write("\n\n\n\n Calibrate RGB_Converter \n\n\n\n");
+				//$write("\t GB DONE \n" );
+				//$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
+				//$write("\t G_prebuff  %h \n",  G_prebuff[23:16]);
+				//$write("\t B_prebuff  %h \n",  B_prebuff[23:16]);
+				//$write("\n\n\n\n Calibrate RGB_Converter \n\n\n\n");
 			end
 			
 			default: begin

@@ -79,7 +79,7 @@ always_comb begin
 		2'b01: begin
 				coeff = 32'd21;
 				current_sum = (~U_V)? ({24'd0,U_SReg[0]} + {24'd0,U_SReg[5]}) : ({24'd0,V_SReg[0]} + {24'd0,V_SReg[5]}) ;		
-				$write("\n\n\n\n Calibrate FIR \n\n\n\n");
+				//$write("\n\n\n\n Calibrate FIR \n\n\n\n");
 			end
 		2'b10: begin
 				coeff = 32'd52;
@@ -198,19 +198,19 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		if (load_U_buffer) begin
 			U_in_buffer[1] <= SRAM_read_data[15:8];
 			U_in_buffer[0] <= SRAM_read_data[7:0];
-			$write("\n\t U Read %h\n", SRAM_read_data);	
-			$write("Loading U buffers");			
-			$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
-			$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);		
+			//$write("\n\t U Read %h\n", SRAM_read_data);	
+			//$write("Loading U buffers");			
+			//$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
+			//$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);		
 		end 
 		
 		if (load_V_buffer) begin
 			V_in_buffer[1] <= SRAM_read_data[15:8];
 			V_in_buffer[0] <= SRAM_read_data[7:0];
-			$write("\n\t V Read %h\n", SRAM_read_data);	
-			$write("Loading V buffers");			
-			$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
-			$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);					
+			//$write("\n\t V Read %h\n", SRAM_read_data);	
+			//$write("Loading V buffers");			
+			//$write("\n Buffer_1 \t %d \t %h\n", SRAM_read_data[15:8],SRAM_read_data[15:8]);
+			//$write("\n Buffer_2 \t %d \t %h\n", SRAM_read_data[7:0],SRAM_read_data[7:0]);					
 		end
 		
 	
@@ -285,7 +285,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 			if (enable_V) begin
 				if (~cycle) begin
-					V_SReg[0] <= SRAM_read_data[15:8]; //V_in_buffer[0];
+					V_SReg[0] <=  V_in_buffer[0];//SRAM_read_data[15:8];
 				end else begin
 					V_SReg[0] <= V_in_buffer[1];
 				end

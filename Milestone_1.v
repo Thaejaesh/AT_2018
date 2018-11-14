@@ -208,18 +208,21 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		S_START_LINE_0: begin
 			SRAM_address <= U_address; //U2/3
 			U_address <= U_address + 18'd1;
+			read_U_0 <= 1'b1; //Load U0 three times into U_SReg in the next clock cycle and U1 once
 			state <= S_START_LINE_1;
 		end
 		S_START_LINE_1: begin
 			SRAM_address <= V_address;//V2/3
 			V_address <= V_address + 18'd1;
-			read_U_0 <= 1'b1; //Load U0 three times into U_SReg in the next clock cycle and U1 once
+			read_U_0 <= 1'b0; //Load U0 three times into U_SReg in the next clock cycle and U1 once
+			read_V_0 <= 1'b1;
 			state <= S_START_LINE_2;
 		end
 		S_START_LINE_2: begin
 			//Do not send address to read from for delay3
-			read_U_0 <= 1'b0;
-			read_V_0 <= 1'b1; // Load V0 three times into V_SReg in the next clock cycle and V1 once
+			//read_U_0 <= 1'b0;
+			read_V_0 <= 1'b0; // Load V0 three times into V_SReg in the next clock cycle and V1 once
+			enable_U <= 1'b1; // Load U2/3 into U_SReg in the next clock cycle
 			state <= S_START_LINE_3;
 		end
 		S_START_LINE_3: begin
@@ -227,15 +230,15 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			SRAM_address <= U_address; //U4/5
 			U_address <= U_address + 18'd1;
 			
-			enable_U <= 1'b1; // Load U2/3 into U_SReg in the next clock cycle
-			read_V_0 <= 1'b0;
+			enable_U <= 1'b0; // Load U2/3 into U_SReg in the next clock cycle
+			//read_V_0 <= 1'b0;
 			state <= S_START_LINE_4;
 		end
 		S_START_LINE_4: begin
 
 			SRAM_address <= Y_address; //Y0/1
 			Y_address <= Y_address + 18'd1;
-			enable_U <= 1'b0;
+			//enable_U <= 1'b0;
 			enable_V <= 1'b1;// Load V2/3 into V_SReg in the next clock cycle
 			
 			
@@ -247,19 +250,20 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			//Y_address <= Y_address + 18'd1;
 			enable_V <= 1'b0;
 			line_start <= 1'b0; // Signal to begin FIR calculations
+			load_U_buffer <= 1'b1;
 			state <= S_START_LINE_6;
 		end
 		S_START_LINE_6: begin
 			SRAM_address <= V_address; // V4/5
 			V_address <= V_address + 18'd1;
 			
-			load_U_buffer <= 1'b1;
+			load_U_buffer <= 1'b0;
 			line_start <= 1'b0; // Signal to begin FIR calculations
 			state <= S_START_LINE_7;
 		end
 		S_START_LINE_7: begin	
 			
-			load_U_buffer <= 1'b0;
+			
 			
 			enable_U <= 1'b1; // Read U4/5 next cycle, Load U4 into SReg and buffer U5
 			state <= S_START_LINE_8;
@@ -268,7 +272,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
 			Y_buff <= {24'd0,SRAM_read_data[7:0]};		
 			enable_U <= 1'b0;
-				
+			load_V_buffer <= 1'b1;
 			state <= S_START_LINE_9;
 		
 		end
@@ -279,7 +283,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			U_RGB <= even_U;
 			V_RGB <= even_V;
 			
-			load_V_buffer <= 1'b1;
+			load_V_buffer <= 1'b0;
 			
 			//enable_V <= 1'b1; //Load next V value into shift register
 			
@@ -298,8 +302,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			//Don't change enable to allow for first run to not write empty values
 			//U_RGB <= even_U;
 			//V_RGB <= even_V;
-			load_V_buffer <= 1'b0;
 			
+			load_V_buffer <= 1'b0;
 			if (common_case) begin
 				SRAM_address <= RGB_address; //Assert RGB address to write to
 				RGB_address <= RGB_address + 18'd1; //Increment RGB address for the next write
@@ -308,6 +312,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				common_case <= 1'b1;
 				//enable_RGB <= 1'b1;
 			end
+			if ( cycle ) begin
+				load_U_buffer <= 1'b1;
+			end			
 			
 			//enable_V <= 1'b1; //Load next V value into shift register
 			enable_V <= 1'b0; //Load next V value into shift register
@@ -317,14 +324,12 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		S_RUN_1: begin
 					
 			//load_V_buffer <= 1'b0;
-			//enable_V <= 1'b1; //Load next V value into shift register
+			enable_V <= 1'b1; //Load next V value into shift register
 			//enable_V <= 1'b0; //Load next V value into shift register
 			SRAM_we_n <= 1'b1;
 
-			if ( cycle ) begin
-				load_U_buffer <= 1'b1;
-			end
-				
+
+			load_U_buffer <= 1'b0;
 			SRAM_address <= Y_address; //Assert Read Address for next Y values
 			Y_address <= Y_address + 18'd1;
 
@@ -335,8 +340,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		S_RUN_2: begin
 			
-			//enable_V <= 1'b0;
-			load_U_buffer <= 1'b0;
+			enable_V <= 1'b0;
+			
 			if (cycle) begin
 
 				SRAM_address <= V_address; //Assert Read Address for next Y values
@@ -373,17 +378,25 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			if(~cycle) begin
 				SRAM_address <= U_address;
 				U_address <= U_address + 18'd1;
-			end				
+			end	else begin
+				load_V_buffer <= 1'b1;
+			end
+			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
+			Y_buff <= {24'd0, SRAM_read_data[7:0]};
+			U_RGB <= even_U;
+			V_RGB <= even_V;
+						
 			
 			//enable_U <= 1'b1;
 			enable_U <= 1'b0;	
-			state <= S_RUN_5;			
+			state <= S_RUN_5;	
+			enable_V <= 1'b0;
 		end
 		
 		S_RUN_5: begin
 			
-			if (cycle) load_V_buffer <= 1'b1;
 			
+			load_V_buffer <= 1'b0;
 			SRAM_we_n <= 1'b0; //Enable writing for the next cycle
 			
 			SRAM_address <= RGB_address; //Assert RGB address to write to
@@ -392,23 +405,23 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			//enable_U <= 1'b0;
 
-			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
+/* 			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
 			Y_buff <= {24'd0, SRAM_read_data[7:0]};
 			U_RGB <= even_U;
 			V_RGB <= even_V;
-			
+			 */
 			cycle <= ~cycle;			
 			
 			//Going to end of line 
 			if ( Y_address - Y_compare_address == 18'd157 ) begin 
 				state <= S_END_LINE_0;
-				
+				$write("entering end case");
 				line_end <= 1'b1;
 			end else begin
 				state <= S_RUN_0;
 			end
 					
-			enable_V <= 1'b1; //Load next V value into shift register
+			enable_V <= 1'b0; //Load next V value into shift register
 			$write("#########################################################################\n\n");		
 			$write("#########################################################################\n\n");		
 			$write("#########################################################################\n\n");		
