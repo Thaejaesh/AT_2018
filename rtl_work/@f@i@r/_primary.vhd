@@ -13,6 +13,7 @@ entity FIR is
         load_V_buffer   : in     vl_logic;
         read_U_0        : in     vl_logic;
         read_V_0        : in     vl_logic;
+        clear_SReg      : in     vl_logic;
         SRAM_read_data  : in     vl_logic_vector(15 downto 0);
         cycle           : in     vl_logic;
         FIR_BUFF_U      : out    vl_logic_vector(31 downto 0);

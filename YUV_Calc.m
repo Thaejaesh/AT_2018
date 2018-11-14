@@ -1,7 +1,7 @@
 
-R = 236;
-G = 235;
-B = 240;
+R = hex2dec('3f');
+G = hex2dec('4e');
+B = hex2dec('45');
 
 RGB = [R; G; B];
 const = [16;128;128];

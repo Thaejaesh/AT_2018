@@ -28,6 +28,8 @@ typedef enum logic [4:0] {
 	S_END_LINE_3,
 	S_END_LINE_4,
 	S_END_LINE_5,
+	S_END_LINE_6,
+	S_END_LINE_7,
 	
 	S_M1_IDLE
 } M1_state_type;

@@ -32,6 +32,7 @@ module FIR (
 		input logic read_U_0,
 		input logic read_V_0,
 		
+		input logic clear_SReg,
 
 		//input logic FIR_enable,
 		input logic [15:0] SRAM_read_data,
@@ -109,11 +110,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		FIR_BUFF_U <= 32'd0;
 		FIR_BUFF_V <= 32'd0;
 	end else begin
-			$write("\t sel_mul_in %d \n", sel_mul_in);
-			$write("\t U_V %d\n",U_V);	
+			//$write("\t sel_mul_in %d \n", sel_mul_in);
+			//$write("\t U_V %d\n",U_V);	
 			
-			$write("\t U buff %d\n",FIR_BUFF_U);
-			$write("\t V buff %d\n",FIR_BUFF_V);
+			//$write("\t U buff %d\n",FIR_BUFF_U);
+			//$write("\t V buff %d\n",FIR_BUFF_V);
 			//$write("\t accumulator %d\n",FIR_accum);
 			//$write("\t product %d\n", current_product);
 			
@@ -207,6 +208,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 	
 		if(line_start) begin //Do when starting a line
+
 			
 			//Parallel load border values to first 3 register elements
 			if (read_U_0) begin
@@ -217,24 +219,24 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				U_SReg[3] <= SRAM_read_data[15:8];
 			end 
 			if (read_V_0) begin
-				$write("\n\n\t V Read %h\n", SRAM_read_data);
+				//$write("\n\n\t V Read %h\n", SRAM_read_data);
 				V_SReg[0] <= SRAM_read_data[7:0];
 				V_SReg[1] <= SRAM_read_data[15:8];
 				V_SReg[2] <= SRAM_read_data[15:8];
 				V_SReg[3] <= SRAM_read_data[15:8];
 			end
 			if (enable_U) begin //Add remaining data to shift registers
-			$write("\n\n\t U Read %h\n", SRAM_read_data);
-				U_SReg[0] <= SRAM_read_data[15:8]; //Add next value to U Shift Register
-				U_SReg[1] <= SRAM_read_data[7:0];
+			//$write("\n\n\t U Read %h\n", SRAM_read_data);
+				U_SReg[0] <= SRAM_read_data[7:0]; //Add next value to U Shift Register
+				U_SReg[1] <= SRAM_read_data[15:8];
 				U_SReg[2] <= U_SReg[0];
 				U_SReg[3] <= U_SReg[1];
 				U_SReg[4] <= U_SReg[2];
 				U_SReg[5] <= U_SReg[3];
 			end else if (enable_V) begin
-			$write("\n\n\t U Read %h\n", SRAM_read_data);
-				V_SReg[0] <= SRAM_read_data[15:8]; //Add next value to V Shift Register
-				V_SReg[1] <= SRAM_read_data[7:0];
+			//$write("\n\n\t U Read %h\n", SRAM_read_data);
+				V_SReg[0] <= SRAM_read_data[7:0]; //Add next value to V Shift Register
+				V_SReg[1] <= SRAM_read_data[15:8];
 				V_SReg[2] <= V_SReg[0];
 				V_SReg[3] <= V_SReg[1];
 				V_SReg[4] <= V_SReg[2];
@@ -249,8 +251,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				U_SReg[3] <= U_SReg[2];
 				U_SReg[4] <= U_SReg[3];
 				U_SReg[5] <= U_SReg[4];
-			end else if (enable_V) begin
-				V_SReg[0] <= U_SReg[0]; //Keep adding end value to V Shift Register
+			end
+			if (enable_V) begin
+				V_SReg[0] <= V_SReg[0]; //Keep adding end value to V Shift Register
 				V_SReg[1] <= V_SReg[0];
 				V_SReg[2] <= V_SReg[1];
 				V_SReg[3] <= V_SReg[2];
@@ -289,6 +292,29 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				V_SReg[5] <= V_SReg[4];
 			end		
 		end		
+	
+		if(clear_SReg) begin
+		
+		U_SReg[0] <= 8'd0;// Fill register with zeros
+		U_SReg[1] <= 8'd0;
+		U_SReg[2] <= 8'd0;
+		U_SReg[3] <= 8'd0;
+		U_SReg[4] <= 8'd0;
+		U_SReg[5] <= 8'd0;	
+
+		V_SReg[0] <= 8'd0;
+		V_SReg[1] <= 8'd0;
+		V_SReg[2] <= 8'd0;
+		V_SReg[3] <= 8'd0;
+		V_SReg[4] <= 8'd0;
+		V_SReg[5] <= 8'd0;
+		
+		U_in_buffer[1] <= 8'b0;
+		U_in_buffer[0] <= 8'b0;
+		V_in_buffer[1] <= 8'b0;
+		V_in_buffer[0] <= 8'b0;		
+		
+		end
 	end
 end
 

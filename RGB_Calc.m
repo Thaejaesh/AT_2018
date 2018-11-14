@@ -2,9 +2,9 @@ clear;
 %clc;
 close all;
 
-Y = 217;
-U = 131;
-V = 128;
+Y = 79;
+U = 127;
+V = 121;
 
 yuv = [Y;U;V];
 const = [16;128;128];

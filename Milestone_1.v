@@ -40,6 +40,7 @@ logic read_U_0;
 logic read_V_0;
 logic line_start;
 logic line_end;
+logic read_end_Y;
 //output logic FIR_enable;
 logic cycle;
 logic common_case;
@@ -56,16 +57,16 @@ logic enable_RGB;
 logic [17:0] Y_address, Y_compare_address;
 logic [17:0] U_address;
 logic [17:0] V_address;
-logic  [31:0] even_U;
-logic  [31:0] even_V;
-logic  [31:0] FIR_BUFF_U; 
-logic  [31:0] FIR_BUFF_V;
+logic [31:0] even_U;
+logic [31:0] even_V;
+logic [31:0] FIR_BUFF_U; 
+logic [31:0] FIR_BUFF_V;
+logic clear_SReg;
 
 //For RGB Conversion
 //logic enable_RGB;
 logic [17:0] RGB_address;
-logic  [31:0] Y_buff;
-//logic  [31:0] R, G, B;
+logic [31:0] Y_buff;
 logic [7:0] R,G,B;
 logic [7:0] R2,G2,B2;
 logic [7:0] B_out_buffer;
@@ -86,6 +87,7 @@ FIR FIR_unit (
 	.read_V_0(read_V_0),
 	
 	.cycle(cycle),
+	.clear_SReg(clear_SReg),
 	
 	
 	.FIR_BUFF_U(FIR_BUFF_U),
@@ -112,11 +114,7 @@ RGB_Converter RGB_unit(
 	//From RGB Converter
 	.R_buff(R),
 	.G_buff(G),
-	.B_buff(B)/* ,
-	
-	.R_buffer(R2),
-	.G_buffer(G2),
-	.B_buffer(B2) */
+	.B_buff(B)
 
 );
 
@@ -131,12 +129,15 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		line_start <= 1'b1;
 		line_end <= 1'b0;
+		read_end_Y <= 1'b0;
 		
 		cycle <= 1'b1;
 		common_case <= 1'b0;
+		clear_SReg <= 1'b0;
 		
 		enable_U <= 1'b0;
 		enable_V <= 1'b0;
+		enable_RGB <= 1'b0;
 		
 		load_U_buffer <= 1'b0;
 		load_V_buffer <= 1'b0;
@@ -154,16 +155,16 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		SRAM_address <= 18'd38400;//Start by reading first U value U0/1
 	end else begin
 		$write("\n\n\n\nState %s\n", state);
-		$write("\t Y Location %d\n", Y_address);
+		$write("\t Y Location %d\n", Y_address); 
 		$write("\t Write enable   %d\n", SRAM_we_n);
 		$write("\t Write data %h\n", SRAM_write_data); 
 		$write("\t SRAM Read  %h\n\n", SRAM_read_data);
 		$write("\t SRAM address %d\n\n", SRAM_address);
-		$write("\t cycle %d\n\n", cycle);
+/* 		$write("\t cycle %d\n\n", cycle);
 		$write("\t common_case %d\n\n", common_case);
 		$write("\t R %h  \n",  R);
 		$write("\t G %h  \n",  G);
-		$write("\t B %h  \n",  B);		
+		$write("\t B %h  \n",  B);		 */
 		
 		
 		case (state)
@@ -175,14 +176,17 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				
 				line_start <= 1'b1;
 				line_end <= 1'b0;
+				read_end_Y <= 1'b0;
 				
 				enable_U <= 1'b0;
 				enable_V <= 1'b0;
+				enable_RGB <= 1'b0;
 				load_U_buffer <= 1'b0;				
 				load_V_buffer <= 1'b0;				
 				
 				cycle <= 1'b1;
 				common_case <= 1'b0;
+				clear_SReg <= 1'b0;
 				
 				M1_done <= 1'b0;
 				
@@ -197,8 +201,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			end
 		end
 		S_M1_START: begin
-			SRAM_we_n = 1'b1; //Disable writing to SRAM
-			
+			SRAM_we_n <= 1'b1; //Disable writing to SRAM
+			clear_SReg <= 1'b0;
 			SRAM_address <= V_address; //Set address to first V value V0/1
 			U_address <= U_address + 18'd1;
 			V_address <= V_address + 18'd1;
@@ -290,9 +294,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			enable_RGB <= 1'b1;
 			SRAM_we_n <= 1'b1; //Don't write on first RUN_0 of the line	
 			state <= S_RUN_0;
-			$write("##################################################################################################################################################\n\n");		
+			/* $write("##################################################################################################################################################\n\n");		
 			$write(" END OF LEAD IN \n");		
-			$write("##################################################################################################################################################\n\n");		
+			$write("##################################################################################################################################################\n\n");		 */
 		end
 
 		////////////////////////////////////////////////////////////
@@ -318,15 +322,14 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		end
 		
 		S_RUN_1: begin
-					
-			enable_V <= 1'b0; //Load next V value into shift register
+								
 			SRAM_we_n <= 1'b1;
 
-
-			load_U_buffer <= 1'b0;
 			SRAM_address <= Y_address; //Assert Read Address for next Y values
 			Y_address <= Y_address + 18'd1;
-
+			
+			load_U_buffer <= 1'b0;
+			enable_V <= 1'b0; //Load next V value into shift register
 			state <= S_RUN_2;
 		end
 		
@@ -337,7 +340,6 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 				SRAM_address <= V_address; //Assert Read Address for next Y values
 				V_address <= V_address + 18'd1;
-
 			end			
 			
 			Y_RGB <= Y_buff;
@@ -376,6 +378,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			end	else begin
 				load_V_buffer <= 1'b1;
 			end
+			
 			Y_RGB <= {24'd0,SRAM_read_data[15:8]};
 			Y_buff <= {24'd0, SRAM_read_data[7:0]};
 
@@ -399,35 +402,41 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			cycle <= ~cycle;			
 			
 			//Going to end of line 
-			if ( Y_address - Y_compare_address == 18'd157 ) begin 
+			if ( Y_address - Y_compare_address == 18'd156 ) begin 
 				state <= S_END_LINE_0;
-				$write("entering end case");
+				//$write("entering end case");
+				U_address <= U_address - 18'd1;
 				line_end <= 1'b1;
 			end else begin
 				state <= S_RUN_0;
 			end
 					
 			
-			$write("###########################################################################################################################################################################################################################\n\n");		
+			//$write("###########################################################################################################################################################################################################################\n\n");		
 		end
 		
 		////////////////////////////////////////////////////////////
 		
 		//End line cases are similar to common cases but not reading
 		S_END_LINE_0: begin
-			enable_V <= 1'b1;
 
 			SRAM_address <= RGB_address; //Assert RGB address to write to
 			RGB_address <= RGB_address + 18'd1; //Increment RGB address for the next write
 			SRAM_write_data <= {G, B};			
 			
+			if (~read_end_Y) enable_V <= 1'b1;
 			state <= S_END_LINE_1;
 		end
 		
 		S_END_LINE_1: begin
-			SRAM_address <= Y_address; 
-			Y_address <= Y_address + 18'd1;
+		
 			SRAM_we_n <= 1'b1;
+			
+			if (~read_end_Y) begin
+				SRAM_address <= Y_address; 
+				Y_address <= Y_address + 18'd1;
+			end
+			
 			enable_V <= 1'b0;
 			
 			state <= S_END_LINE_2;
@@ -446,44 +455,96 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		S_END_LINE_3: begin
 			
-			SRAM_we_n <= 1'b0; 
 			SRAM_address <= RGB_address;
 			RGB_address <= RGB_address + 18'd1;
 			
+			SRAM_we_n <= 1'b0; 
+			
 			SRAM_write_data <= {R, G};
-			enable_U <= 1'b1;
+			B_out_buffer <= B; //Save B value to write along with the next R value
+			
+			if (~read_end_Y) enable_U <= 1'b1;
 			state <= S_END_LINE_4;
 		
 		end
 		
 		S_END_LINE_4: begin
-			enable_U <= 1'b0;
 			
-			SRAM_we_n <= 1'b0; //Enable writing
-			SRAM_address <= RGB_address;
-			RGB_address <= RGB_address + 18'd1;
-			SRAM_write_data <= {B, R};
+			
+			SRAM_we_n <= 1'b1; //Enable writing
+
+			if (~read_end_Y)Y_RGB <= {24'd0,SRAM_read_data[15:8]};
+			Y_buff <= {24'd0, SRAM_read_data[7:0]};			
+			
+			enable_U <= 1'b0;
 			state <= S_END_LINE_5;
 		end
 		
 		S_END_LINE_5: begin
 		
 			SRAM_we_n <= 1'b0; //Enable writing
+			
 			SRAM_address <= RGB_address;
 			RGB_address <= RGB_address + 18'd1;
-			SRAM_write_data <= {G, B};
+			SRAM_write_data <= {B_out_buffer, R};
 			
-			if ( Y_address == 18'd38399) begin
-				state <= S_M1_IDLE;
-				M1_done <= 1'b1;
-			end else if ( Y_address - Y_compare_address == 18'd159 ) begin
-				Y_compare_address <= Y_compare_address + 18'd160;
-				state <= S_M1_START;
+			
+			if (~read_end_Y) U_RGB <= even_U;
+			if (~read_end_Y) V_RGB <= even_V;
+			
+
+			if ( Y_address - Y_compare_address == 18'd160 ) begin
+				
+				if (read_end_Y) begin
+					Y_compare_address <= Y_compare_address + 18'd160;
+					state <= S_END_LINE_6;
+				end else begin
+					read_end_Y <= 1'b1;
+					state <= S_END_LINE_0;
+				end
 			end else begin
 				state <= S_END_LINE_0;
 			end
 		
 		
+		end
+		
+		S_END_LINE_6: begin
+			
+			SRAM_we_n <= 1'b0;
+			
+			SRAM_address <= RGB_address; //Assert RGB address to write to
+			RGB_address <= RGB_address + 18'd1; //Increment RGB address for the next write
+			SRAM_write_data <= {G, B};
+			
+
+			
+			state <= S_END_LINE_7;
+		end
+		
+		S_END_LINE_7: begin
+		
+			SRAM_we_n <= 1'b1;
+			
+			SRAM_address <= U_address;
+			//U_address <= U_address + 18'd1;
+			
+			common_case <= 1'b0;
+			line_end <= 1'b0;
+			line_start <= 1'b1;
+			clear_SReg <= 1'b1;
+			enable_RGB <= 1'b0;
+			read_end_Y <= 1'b0;
+			
+			
+			
+			if ( Y_address == 18'd38399) begin
+				state <= S_M1_IDLE;
+				M1_done <= 1'b1;
+			end else begin
+				state <= S_M1_START;
+			
+			end
 		end
 		
 		default: state <= S_M1_IDLE;

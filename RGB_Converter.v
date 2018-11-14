@@ -91,9 +91,9 @@ assign B_prebuff = B_acc + mult_out[1];
 assign G_prebuff = G_acc - mult_out[0];
 
 //Clipping
-assign R_buffer =  ($signed(R_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(R_prebuff[31:16]) < 16'd0)? 8'h00: R_prebuff[23:16] );
-assign G_buffer =  ($signed(G_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(G_prebuff[31:16]) < 16'd0)? 8'h00: G_prebuff[23:16] );
-assign B_buffer =  ($signed(B_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(B_prebuff[31:16]) < 16'd0)? 8'h00: B_prebuff[23:16] );
+assign R_buffer =  ($signed(R_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(R_prebuff[31:16]) < $signed(16'd0))? 8'h00: R_prebuff[23:16] );
+assign G_buffer =  ($signed(G_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(G_prebuff[31:16]) < $signed(16'd0))? 8'h00: G_prebuff[23:16] );
+assign B_buffer =  ($signed(B_prebuff[31:16]) > 16'd255)? 8'hFF : ( ($signed(B_prebuff[31:16]) < $signed(16'd0))? 8'h00: B_prebuff[23:16] );
 
 always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 	if (~resetn) begin
@@ -111,7 +111,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 
 		
 		
-		$write("\t mult_in %d \n", mult_in);
+/* 		$write("\t mult_in %d \n", mult_in);
 		$write("\t coeff[1] %d \n", coeff[1]);
 		$write("\t coeff[0] %d \n", coeff[0]);
 		
@@ -119,36 +119,48 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		$write("\t mult_out[1] %d \n", mult_out[1]);
 		$write("\t mult_out[0] %d \n", mult_out[0]);
 		$write("\t sel_rgb_mul %d \n", sel_rgb_mul);
-		$write("\t enable_RGB %d \n", enable_RGB);
+		$write("\t enable_RGB %d \n", enable_RGB); */
 		
-		$write("\t R_buff %d  \t %h \n",  R_buff, R_buff );
+/* 		$write("\t R_buff %d  \t %h \n",  R_buff, R_buff );
 		$write("\t G_buff %d  \t %h \n",  G_buff, G_buff );
-		$write("\t B_buff %d  \t %h \n",  B_buff, B_buff );
+		$write("\t B_buff %d  \t %h \n",  B_buff, B_buff ); */
 		case (sel_rgb_mul) 
 		
 			2'b00: begin //Y
 				R_acc <= mult_out[1]; //76284*(Y-16)
 				B_acc <= mult_out[1]; //76284*(Y-16)
 				G_acc <= mult_out[1]; //76284*(Y-16)	
-				if (enable_RGB) sel_rgb_mul <= 2'b01;
+				if (enable_RGB) begin
+					sel_rgb_mul <= 2'b01;
+				end else begin
+					sel_rgb_mul <= 2'b00;
+				end
+					
 			end
 			
 			2'b01: begin //V
 				//Finish Calculating R
 				R_buff <=  R_buffer;//(R_acc + mult_out[1]); //76284*(Y-16) + 0*(U-128) + 104595*(V-128)
 				
-				//$write("\t R_prebuff  %h \n",  R_prebuff[23:16]);
 				B_acc <= B_acc;// + mult_out[1]; //76284*(Y-16) + 0*(V-128)
 				G_acc <= G_acc - mult_out[0]; //76284*(Y-16) - 25624*(U-128)
-				if (enable_RGB) sel_rgb_mul <= 2'b10;
-				//$write("\t R DONE \n" );
+				if (enable_RGB) begin
+					sel_rgb_mul <= 2'b10;
+				end else begin
+					sel_rgb_mul <= 2'b00;
+				end
+				
 			end 
 			
 			2'b10: begin //U
 			///////////////////////////DO CLIPPING
 				B_buff <=  B_buffer;//(B_acc); 			  //76284*(Y-16) + 132251*(U-128) + 0*(V-128)
 				G_buff <=  G_buffer;//(G_acc - mult_out[0]); //76284*(Y-16) - 25624*(U-128) - 53281*(V_128)
-				if (enable_RGB) sel_rgb_mul <= 2'b00;;
+				if (enable_RGB) begin
+					sel_rgb_mul <= 2'b00;
+				end else begin
+					sel_rgb_mul <= 2'b00;
+				end
 			end
 			
 			default: begin

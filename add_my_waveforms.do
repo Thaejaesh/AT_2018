@@ -11,6 +11,8 @@ add wave -unsigned uut/SRAM_address
 add wave -hexadecimal uut/SRAM_write_data
 add wave -hexadecimal uut/SRAM_read_data
 
+add wave uut/M1_unit/read_end_Y
+
 add wave uut/M1_unit/enable_U
 add wave uut/M1_unit/enable_V
 add wave uut/M1_unit/load_U_buffer
