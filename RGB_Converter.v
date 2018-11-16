@@ -105,25 +105,25 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		B_buff <= 32'd0;
 		sel_rgb_mul <= 2'b00;
 	end else begin
-		/* $write("\t Y %d \n", Y_in_RGB );
-		$write("\t U %d \n", U_in_RGB );
-		$write("\t V %d \n", V_in_RGB );
+		/* ////$write("\t Y %d \n", Y_in_RGB );
+		////$write("\t U %d \n", U_in_RGB );
+		////$write("\t V %d \n", V_in_RGB );
  */
 		
 		
-/* 		$write("\t mult_in %d \n", mult_in);
-		$write("\t coeff[1] %d \n", coeff[1]);
-		$write("\t coeff[0] %d \n", coeff[0]);
+/* 		////$write("\t mult_in %d \n", mult_in);
+		////$write("\t coeff[1] %d \n", coeff[1]);
+		////$write("\t coeff[0] %d \n", coeff[0]);
 		
 		
-		$write("\t mult_out[1] %d \n", mult_out[1]);
-		$write("\t mult_out[0] %d \n", mult_out[0]);
-		$write("\t sel_rgb_mul %d \n", sel_rgb_mul);
-		$write("\t enable_RGB %d \n", enable_RGB); */
+		////$write("\t mult_out[1] %d \n", mult_out[1]);
+		////$write("\t mult_out[0] %d \n", mult_out[0]);
+		////$write("\t sel_rgb_mul %d \n", sel_rgb_mul);
+		////$write("\t enable_RGB %d \n", enable_RGB); */
 		
-/* 		$write("\t R_buff %d  \t %h \n",  R_buff, R_buff );
-		$write("\t G_buff %d  \t %h \n",  G_buff, G_buff );
-		$write("\t B_buff %d  \t %h \n",  B_buff, B_buff ); */
+/* 		////$write("\t R_buff %d  \t %h \n",  R_buff, R_buff );
+		////$write("\t G_buff %d  \t %h \n",  G_buff, G_buff );
+		////$write("\t B_buff %d  \t %h \n",  B_buff, B_buff ); */
 		case (sel_rgb_mul) 
 		
 			2'b00: begin //Y

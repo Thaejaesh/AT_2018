@@ -80,7 +80,7 @@ always_comb begin
 		2'b01: begin
 				coeff = 32'd21;
 				current_sum = (~U_V)? ({24'd0,U_SReg[0]} + {24'd0,U_SReg[5]}) : ({24'd0,V_SReg[0]} + {24'd0,V_SReg[5]}) ;		
-				//$write("\n\n\n\n Calibrate FIR \n\n\n\n");
+				//////$write("\n\n\n\n Calibrate FIR \n\n\n\n");
 			end
 		2'b10: begin
 				coeff = 32'd52;
@@ -110,20 +110,20 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		FIR_BUFF_U <= 32'd0;
 		FIR_BUFF_V <= 32'd0;
 	end else begin
-			//$write("\t sel_mul_in %d \n", sel_mul_in);
-			//$write("\t U_V %d\n",U_V);	
+			//////$write("\t sel_mul_in %d \n", sel_mul_in);
+			//////$write("\t U_V %d\n",U_V);	
 			
-			//$write("\t U buff %d\n",FIR_BUFF_U);
-			//$write("\t V buff %d\n",FIR_BUFF_V);
-			//$write("\t accumulator %d\n",FIR_accum);
-			//$write("\t product %d\n", current_product);
+			//////$write("\t U buff %d\n",FIR_BUFF_U);
+			//////$write("\t V buff %d\n",FIR_BUFF_V);
+			//////$write("\t accumulator %d\n",FIR_accum);
+			//////$write("\t product %d\n", current_product);
 			
-			/* $write("\n\n\t U [5] %d \t\t V [5] %d\n", 	U_SReg[5], V_SReg[5]);
-			$write("\t U [4] %d \t\t V [4] %d\n",		U_SReg[4], V_SReg[4]);
-			$write("\t U [3] %d \t\t V [3] %d\n",		U_SReg[3], V_SReg[3]);
-			$write("\t U [2] %d \t\t V [2] %d\n",		U_SReg[2], V_SReg[2]);
-			$write("\t U [1] %d \t\t V [1] %d\n",		U_SReg[1], V_SReg[1]);
-			$write("\t U [0] %d \t\t V [0] %d\n\n",		U_SReg[0], V_SReg[0]);	 */
+			/* ////$write("\n\n\t U [5] %d \t\t V [5] %d\n", 	U_SReg[5], V_SReg[5]);
+			////$write("\t U [4] %d \t\t V [4] %d\n",		U_SReg[4], V_SReg[4]);
+			////$write("\t U [3] %d \t\t V [3] %d\n",		U_SReg[3], V_SReg[3]);
+			////$write("\t U [2] %d \t\t V [2] %d\n",		U_SReg[2], V_SReg[2]);
+			////$write("\t U [1] %d \t\t V [1] %d\n",		U_SReg[1], V_SReg[1]);
+			////$write("\t U [0] %d \t\t V [0] %d\n\n",		U_SReg[0], V_SReg[0]);	 */
 
 	
 			
@@ -147,10 +147,10 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				
 					if (~U_V) begin //In U' mode 
 						FIR_BUFF_U <= ({{8{(FIR_accum_before[31])}} , FIR_accum_before[31:8]}); //8 << (FIR_accum + current_product + 32'd128); //Save accumulator value // Left shift to divide by 256
-						//$write("FIR_BUFF_U");
+						//////$write("FIR_BUFF_U");
 					end else begin //In V' mode
 						FIR_BUFF_V <= ({{8{(FIR_accum_before[31])}} , FIR_accum_before[31:8]});//8 << (FIR_accum + current_product + 32'd128); //Save accumulator value // Left shift to divide by 256
-						//$write("FIR_BUFF_V");
+						//////$write("FIR_BUFF_V");
 					end
 					
 				end
@@ -212,21 +212,21 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			//Parallel load border values to first 3 register elements
 			if (read_U_0) begin
-				//$write("\n\n\t U Read %h\n", SRAM_read_data);
+				//////$write("\n\n\t U Read %h\n", SRAM_read_data);
 				U_SReg[0] <= SRAM_read_data[7:0];
 				U_SReg[1] <= SRAM_read_data[15:8];
 				U_SReg[2] <= SRAM_read_data[15:8];
 				U_SReg[3] <= SRAM_read_data[15:8];
 			end 
 			if (read_V_0) begin
-				//$write("\n\n\t V Read %h\n", SRAM_read_data);
+				//////$write("\n\n\t V Read %h\n", SRAM_read_data);
 				V_SReg[0] <= SRAM_read_data[7:0];
 				V_SReg[1] <= SRAM_read_data[15:8];
 				V_SReg[2] <= SRAM_read_data[15:8];
 				V_SReg[3] <= SRAM_read_data[15:8];
 			end
 			if (enable_U) begin //Add remaining data to shift registers
-			//$write("\n\n\t U Read %h\n", SRAM_read_data);
+			//////$write("\n\n\t U Read %h\n", SRAM_read_data);
 				U_SReg[0] <= SRAM_read_data[7:0]; //Add next value to U Shift Register
 				U_SReg[1] <= SRAM_read_data[15:8];
 				U_SReg[2] <= U_SReg[0];
@@ -234,7 +234,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				U_SReg[4] <= U_SReg[2];
 				U_SReg[5] <= U_SReg[3];
 			end else if (enable_V) begin
-			//$write("\n\n\t U Read %h\n", SRAM_read_data);
+			//////$write("\n\n\t U Read %h\n", SRAM_read_data);
 				V_SReg[0] <= SRAM_read_data[7:0]; //Add next value to V Shift Register
 				V_SReg[1] <= SRAM_read_data[15:8];
 				V_SReg[2] <= V_SReg[0];

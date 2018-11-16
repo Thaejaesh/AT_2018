@@ -120,11 +120,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			
 			S_TOP_IDLE: begin
 
-				$write("start counter %d \n", start_counter);
+				//$write("start counter %d \n", start_counter);
 				start_counter <= start_counter + 4'd1;
 				if (start_counter == 4'd10) begin
 					state <= S_TOP_M1;
-					$write("#########################################################################\n\n");
+					//$write("#########################################################################\n\n");
 				end
 			end
 			

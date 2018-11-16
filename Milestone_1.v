@@ -154,17 +154,17 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		
 		SRAM_address <= 18'd38400;//Start by reading first U value U0/1
 	end else begin
-		$write("\n\n\n\nState %s\n", state);
-		$write("\t Y Location %d\n", Y_address); 
-		$write("\t Write enable   %d\n", SRAM_we_n);
-		$write("\t Write data %h\n", SRAM_write_data); 
-		$write("\t SRAM Read  %h\n\n", SRAM_read_data);
-		$write("\t SRAM address %d\n\n", SRAM_address);
-/* 		$write("\t cycle %d\n\n", cycle);
-		$write("\t common_case %d\n\n", common_case);
-		$write("\t R %h  \n",  R);
-		$write("\t G %h  \n",  G);
-		$write("\t B %h  \n",  B);		 */
+		////$write("\n\n\n\nState %s\n", state);
+		////$write("\t Y Location %d\n", Y_address); 
+		////$write("\t Write enable   %d\n", SRAM_we_n);
+		////$write("\t Write data %h\n", SRAM_write_data); 
+		////$write("\t SRAM Read  %h\n\n", SRAM_read_data);
+		////$write("\t SRAM address %d\n\n", SRAM_address);
+/* 		////$write("\t cycle %d\n\n", cycle);
+		////$write("\t common_case %d\n\n", common_case);
+		////$write("\t R %h  \n",  R);
+		////$write("\t G %h  \n",  G);
+		////$write("\t B %h  \n",  B);		 */
 		
 		
 		case (state)
@@ -294,9 +294,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			enable_RGB <= 1'b1;
 			SRAM_we_n <= 1'b1; //Don't write on first RUN_0 of the line	
 			state <= S_RUN_0;
-			/* $write("##################################################################################################################################################\n\n");		
-			$write(" END OF LEAD IN \n");		
-			$write("##################################################################################################################################################\n\n");		 */
+			/* ////$write("##################################################################################################################################################\n\n");		
+			////$write(" END OF LEAD IN \n");		
+			////$write("##################################################################################################################################################\n\n");		 */
 		end
 
 		////////////////////////////////////////////////////////////
@@ -412,7 +412,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			end
 					
 			
-			//$write("###########################################################################################################################################################################################################################\n\n");		
+			//////$write("###########################################################################################################################################################################################################################\n\n");		
 		end
 		
 		////////////////////////////////////////////////////////////
@@ -542,7 +542,7 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 			if ( Y_address == 18'd38400) begin
 				state <= S_M1_IDLE;
 				M1_done <= 1'b1;
-				$write("WE DID IT");
+				////$write("WE DID IT");
 			end else begin
 				state <= S_M1_START;
 			
