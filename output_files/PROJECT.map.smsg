@@ -1,2 +1,2 @@
-Warning (10268): Verilog HDL information at Milestone_1.v(121): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at Milestone_2.v(20): object "Resetn" differs only in case from object "resetn" in the same scope
 Info (10281): Verilog HDL Declaration information at Milestone_1.v(19): object "Resetn" differs only in case from object "resetn" in the same scope

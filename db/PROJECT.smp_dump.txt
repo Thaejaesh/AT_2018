@@ -1,4 +1,10 @@
 
+State Machine - |PROJECT|UART_state
+Name UART_state.S_UART_IDLE UART_state.S_TOP_UART UART_state.S_ENABLE_UART_RX 
+UART_state.S_UART_IDLE 0 0 0 
+UART_state.S_ENABLE_UART_RX 1 0 1 
+UART_state.S_TOP_UART 1 1 0 
+
 State Machine - |PROJECT|state
 Name state.S_TOP_M1 state.S_TOP_UART state.S_TOP_VGA state.S_TOP_IDLE 
 state.S_TOP_IDLE 0 0 0 0 
@@ -37,38 +43,39 @@ RXC_state.S_RXC_ASSEMBLE_DATA 0 1 0 1
 RXC_state.S_RXC_STOP_BIT 1 0 0 1 
 
 State Machine - |PROJECT|Milestone_1:M1_unit|state
-Name state.S_M1_START state.S_END_LINE_5 state.S_END_LINE_4 state.S_END_LINE_3 state.S_END_LINE_2 state.S_END_LINE_1 state.S_END_LINE_0 state.S_RUN_5 state.S_RUN_4 state.S_RUN_3 state.S_RUN_2 state.S_RUN_1 state.S_RUN_0 state.S_START_LINE_9 state.S_START_LINE_8 state.S_START_LINE_7 state.S_START_LINE_6 state.S_START_LINE_5 state.S_START_LINE_4 state.S_START_LINE_3 state.S_START_LINE_2 state.S_START_LINE_1 state.S_START_LINE_0 state.S_M1_IDLE 
-state.S_M1_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-state.S_START_LINE_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
-state.S_START_LINE_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
-state.S_START_LINE_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
-state.S_START_LINE_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
-state.S_START_LINE_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
-state.S_START_LINE_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
-state.S_START_LINE_6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
-state.S_START_LINE_7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
-state.S_START_LINE_8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
-state.S_START_LINE_9 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
-state.S_RUN_0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
-state.S_RUN_1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_RUN_2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_RUN_3 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_RUN_4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_RUN_5 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_END_LINE_0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_END_LINE_1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_END_LINE_2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_END_LINE_3 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_END_LINE_4 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_END_LINE_5 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-state.S_M1_START 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Name state.S_M1_START state.S_END_LINE_7 state.S_END_LINE_6 state.S_END_LINE_5 state.S_END_LINE_4 state.S_END_LINE_3 state.S_END_LINE_2 state.S_END_LINE_1 state.S_END_LINE_0 state.S_RUN_5 state.S_RUN_4 state.S_RUN_3 state.S_RUN_2 state.S_RUN_1 state.S_RUN_0 state.S_START_LINE_9 state.S_START_LINE_8 state.S_START_LINE_7 state.S_START_LINE_6 state.S_START_LINE_5 state.S_START_LINE_4 state.S_START_LINE_3 state.S_START_LINE_2 state.S_START_LINE_1 state.S_START_LINE_0 state.S_M1_IDLE 
+state.S_M1_IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_START_LINE_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_START_LINE_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_START_LINE_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_START_LINE_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_START_LINE_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_START_LINE_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_START_LINE_6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_START_LINE_7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_START_LINE_8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_START_LINE_9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_3 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_4 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_RUN_5 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_3 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_4 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_5 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_6 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_END_LINE_7 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M1_START 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|sel_rgb_mul
-Name sel_rgb_mul.11 sel_rgb_mul.10 sel_rgb_mul.01 sel_rgb_mul.00 
-sel_rgb_mul.00 0 0 0 0 
-sel_rgb_mul.01 0 0 1 1 
-sel_rgb_mul.10 0 1 0 1 
-sel_rgb_mul.11 1 0 0 1 
+Name sel_rgb_mul.00 sel_rgb_mul.10 sel_rgb_mul.01 
+sel_rgb_mul.00 0 0 0 
+sel_rgb_mul.01 1 0 1 
+sel_rgb_mul.10 1 1 0 
 
 State Machine - |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|sel_mul_in
 Name sel_mul_in.11 sel_mul_in.01 sel_mul_in.10 

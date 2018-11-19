@@ -100,7 +100,7 @@ assign VGA_base_address = 18'd146944; //Beginning location of RGB values in SRAM
 
 
 Top_Level_FSM_state_type state;
-top_state_type top_state;
+UART_state_type UART_state;
 
 logic start, UART_done;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,34 +113,41 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		state <= S_TOP_IDLE;
 		start <= 1'b1;
 		start_counter <= 4'd0;
-		top_state <= S_WAIT_UART_RX;
+		//UART_state <= S_WAIT_UART_RX;
 		VGA_enable <= 1'b0;
 	end else begin
 		case (state)
 			
 			S_TOP_IDLE: begin
-
+				if (PB_pushed[1]) begin //exit idle state once push button 1 is pressed		
+					state <= S_TOP_UART;
+				end
 				//$write("start counter %d \n", start_counter);
-				start_counter <= start_counter + 4'd1;
+/* 				start_counter <= start_counter + 4'd1;
 				if (start_counter == 4'd10) begin
 					state <= S_TOP_M1;
 					//$write("#########################################################################\n\n");
-				end
+				end */
 			end
 			
 			S_TOP_UART: begin
 				if(UART_done) 
 					state <= S_TOP_M1;
+					//state <= S_TOP_M2;
+					//state <= S_TOP_M3;
 			end
+/* 			
+			S_TOP_M2: begin
+				
+			end */
 			
 			S_TOP_M1: begin
 				//M1_start <= 1'b1;
 				M1_start <= 1'b1;				
 				if(M1_done) begin
-					start <= 1'b0;
-					state <= S_TOP_IDLE;
+					//start <= 1'b0;
+					state <= S_TOP_VGA;
 					VGA_enable <= 1'b1;
-					top_state <= S_IDLE;
 				end
 			end			
 			
@@ -156,14 +163,11 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 	end
 end
 
-assign SRAM_address = M1_SRAM_address;
-assign SRAM_write_data = M1_SRAM_write_data;
-assign SRAM_we_n = M1_SRAM_we_n;
 
-/* //Case for UART transmitter
+ //Case for UART transmitter
 always @(posedge CLOCK_50_I or negedge resetn) begin
 	if (~resetn) begin
-		top_state <= S_IDLE;
+		UART_state <= S_UART_IDLE;
 		
 		UART_rx_initialize <= 1'b0;
 		UART_rx_enable <= 1'b0;
@@ -172,7 +176,7 @@ always @(posedge CLOCK_50_I or negedge resetn) begin
 		//VGA_enable <= 1'b1;
 		UART_done <= 1'b0;
 	end else begin
-		if (state == S_TOP_UART) begin
+		if (UART_state == S_TOP_UART) begin
 					UART_rx_initialize <= 1'b0; 
 					UART_rx_enable <= 1'b0; 
 					
@@ -181,8 +185,8 @@ always @(posedge CLOCK_50_I or negedge resetn) begin
 					if (UART_rx_initialize | ~UART_SRAM_we_n) UART_timer <= 26'd0;
 					else UART_timer <= UART_timer + 26'd1;
 
-					case (top_state)
-					S_IDLE: begin
+					case (UART_state)
+					S_UART_IDLE: begin
 						//VGA_enable <= 1'b1;   
 						if (~UART_RX_I | PB_pushed[0]) begin
 							// UART detected a signal, or PB0 is pressed
@@ -190,13 +194,13 @@ always @(posedge CLOCK_50_I or negedge resetn) begin
 							
 							//VGA_enable <= 1'b0;
 											
-							top_state <= S_ENABLE_UART_RX;
+							UART_state <= S_ENABLE_UART_RX;
 						end
 					end
 					S_ENABLE_UART_RX: begin
 						// Enable the UART receiver
 						UART_rx_enable <= 1'b1;
-						top_state <= S_WAIT_UART_RX;
+						UART_state <= S_WAIT_UART_RX;
 					end
 					S_WAIT_UART_RX: begin
 						if ((UART_timer == 26'd49999999) && (UART_SRAM_address != 18'h00000)) begin
@@ -204,41 +208,30 @@ always @(posedge CLOCK_50_I or negedge resetn) begin
 							UART_rx_initialize <= 1'b1;
 							UART_done <= 1'b1;			
 							//VGA_enable <= 1'b1;
-							top_state <= S_IDLE;
+							UART_state <= S_UART_IDLE;
 						end
 					end
-					default: top_state <= S_IDLE;
+					default: UART_state <= S_UART_IDLE;
 					endcase
 		end else begin
-			top_state <= S_IDLE;
+			UART_state <= S_UART_IDLE;
 		end
 	end
 end
-  */
-
-
-
-// Give access to SRAM for UART and VGA at appropriate time
-//assign SRAM_address = ((top_state == S_ENABLE_UART_RX) | (top_state == S_WAIT_UART_RX)) 
-//						? UART_SRAM_address 
-//						: VGA_SRAM_address;
-//
-//assign SRAM_write_data = UART_SRAM_write_data;
-//
-//assign SRAM_we_n = ((top_state == S_ENABLE_UART_RX) | (top_state == S_WAIT_UART_RX)) 
-//						? UART_SRAM_we_n 
-//						: 1'b1;
-
+  
+/* 
+assign SRAM_address = M1_SRAM_address;
+assign SRAM_write_data = M1_SRAM_write_data;
+assign SRAM_we_n = M1_SRAM_we_n; */
 
 //Give access to SRAM depending on current state	
-/* always_comb begin
+always_comb begin
 	case (state)
 		
 		S_TOP_UART: begin
-			//if ( top_state == S_ENABLE_UART_RX) 
-				SRAM_address = UART_SRAM_address;
+			SRAM_address = UART_SRAM_address;
 			SRAM_write_data = UART_SRAM_write_data;
-			SRAM_we_n = ((top_state == S_ENABLE_UART_RX) | (top_state == S_WAIT_UART_RX)) ? UART_SRAM_we_n : 1'b1;		
+			SRAM_we_n = ((UART_state == S_ENABLE_UART_RX) | (UART_state == S_WAIT_UART_RX)) ? UART_SRAM_we_n : 1'b1;		
 		end
 		
 		S_TOP_M1: begin
@@ -248,7 +241,7 @@ end
 		end
 		
 		S_TOP_VGA: begin
-			//if (top_state == S_WAIT_UART_RX)
+			
 			SRAM_address = VGA_SRAM_address;
 			SRAM_we_n = 1'b1;
 			SRAM_write_data = 18'd0;
@@ -262,7 +255,7 @@ end
 	
 	endcase
 end		
- */
+ 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////						
 
 //Unit for Milestone 1 up-sampler and RGB converter
@@ -289,7 +282,7 @@ PB_Controller PB_unit (
 	.PB_pushed(PB_pushed)
 );
 
- SRAM_Controller SRAM_unit (
+SRAM_Controller SRAM_unit (
 	.Clock_50(CLOCK_50_I),
 	.Resetn(~SWITCH_I[17]),
 	.SRAM_address(SRAM_address),

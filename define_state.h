@@ -3,6 +3,17 @@
 // This defines the states
 
 typedef enum logic [4:0] {
+	S_M2_START,
+	
+	S_FS,
+	S_CT,
+	S_CS,
+	S_WS,
+	
+	S_M2_IDLE
+}M2_state_type;
+
+typedef enum logic [4:0] {
 	S_M1_START,
 	S_START_LINE_0,
 	S_START_LINE_1,
@@ -35,17 +46,19 @@ typedef enum logic [4:0] {
 } M1_state_type;
 
 typedef enum logic [1:0] {
-	S_IDLE,
+	S_UART_IDLE,
 	S_ENABLE_UART_RX,
 	S_WAIT_UART_RX
-} top_state_type;
+} UART_state_type;
 
-typedef enum logic [1:0] {
+typedef enum logic [2:0] {
 	
 	S_TOP_IDLE,
 	S_TOP_VGA,
 	S_TOP_UART,
-	S_TOP_M1
+	S_TOP_M1,
+	S_TOP_M2,
+	S_TOP_M3
 	
 } Top_Level_FSM_state_type;
 
