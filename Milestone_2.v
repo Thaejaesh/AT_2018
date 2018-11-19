@@ -140,7 +140,8 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		S_FS: begin
 			
 			
-			if (SC == 6'd63) begin
+			
+			if (SC == 6'd63) begin //Counter Logic to determine Read/Write Addresses
 				
 				if (CB == C_END) begin //Change C_END depending on whether in Y or U/V
 					CB <= 6'd0;
