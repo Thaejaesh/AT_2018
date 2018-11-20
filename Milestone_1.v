@@ -31,7 +31,6 @@ module Milestone_1 (
 M1_state_type state;
 
 ///////FIR 
-logic resetn;
 logic load_U_buffer;
 logic load_V_buffer;
 logic enable_U;
@@ -121,7 +120,7 @@ RGB_Converter RGB_unit(
 
 
 always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
-	if (resetn == 1'b0) begin
+	if (~Resetn) begin
 		state <= S_M1_IDLE;				
 		
 		SRAM_we_n <= 1'b1;

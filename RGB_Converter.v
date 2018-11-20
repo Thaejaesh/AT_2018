@@ -100,9 +100,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		R_acc <= 32'd0;
 		G_acc <= 32'd0;
 		B_acc <= 32'd0;
-		R_buff <= 32'd0;
-		G_buff <= 32'd0;
-		B_buff <= 32'd0;
+		R_buff <= 8'd0;
+		G_buff <= 8'd0;
+		B_buff <= 8'd0;
 		sel_rgb_mul <= 2'b00;
 	end else begin
 		/* ////$write("\t Y %d \n", Y_in_RGB );
@@ -167,9 +167,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 				R_acc <= 32'd0;
 				G_acc <= 32'd0;
 				B_acc <= 32'd0;
-				R_buff <= 32'd0;
-				G_buff <= 32'd0;
-				B_buff <= 32'd0;	
+				R_buff <= 8'd0;
+				G_buff <= 8'd0;
+				B_buff <= 8'd0;	
 				sel_rgb_mul <= 2'b00;
 			end
 		endcase

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PROJECT
-Mon Nov 19 17:50:23 2018
+Tue Nov 20 10:17:39 2018
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -65,7 +65,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Nov 19 17:50:23 2018           ;
+; Analysis & Synthesis Status        ; Successful - Tue Nov 20 10:17:39 2018           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PROJECT                                         ;
 ; Top-level Entity Name              ; PROJECT                                         ;
@@ -425,7 +425,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_V                                                        ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_U[0..31]                                          ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_V[0..31]                                          ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -434,7 +433,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -443,7 +441,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -452,7 +449,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -461,7 +457,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -470,7 +465,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -479,7 +473,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -488,7 +481,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[4][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[4][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[4][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[4][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -497,7 +489,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[4][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[4][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[4][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -506,7 +497,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -515,7 +505,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -524,7 +513,6 @@ Encoding Type:  One-Hot
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][2]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][1]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][0]                                               ; Stuck at GND due to stuck port clear                ;
-; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[0][8]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[0][7]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[0][6]                                               ; Stuck at GND due to stuck port clear                ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[0][5]                                               ; Stuck at GND due to stuck port clear                ;
@@ -604,6 +592,7 @@ Encoding Type:  One-Hot
 ; UART_state.S_ENABLE_UART_RX                                                                 ; Lost fanout                                         ;
 ; state~8                                                                                     ; Lost fanout                                         ;
 ; state~9                                                                                     ; Lost fanout                                         ;
+; state~10                                                                                    ; Lost fanout                                         ;
 ; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~14                                               ; Lost fanout                                         ;
 ; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~15                                               ; Lost fanout                                         ;
 ; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~16                                               ; Lost fanout                                         ;
@@ -711,7 +700,7 @@ Encoding Type:  One-Hot
 ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data_in                    ; Lost fanout                                         ;
 ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[0..9]             ; Lost fanout                                         ;
 ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_IDLE          ; Lost fanout                                         ;
-; Total Number of Removed Registers = 770                                                     ;                                                     ;
+; Total Number of Removed Registers = 759                                                     ;                                                     ;
 +---------------------------------------------------------------------------------------------+-----------------------------------------------------+
 
 
@@ -962,9 +951,9 @@ Encoding Type:  One-Hot
 ;                                                                                    ;                           ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[9]                 ;
 ; Milestone_1:M1_unit|RGB_Converter:RGB_unit|sel_rgb_mul.01                          ; Stuck at GND              ; Milestone_1:M1_unit|RGB_Converter:RGB_unit|sel_rgb_mul.00,                                   ;
 ;                                                                                    ; due to stuck port clear   ; Milestone_1:M1_unit|RGB_Converter:RGB_unit|sel_rgb_mul.10                                    ;
-; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][8]                                      ; Stuck at GND              ; Milestone_1:M1_unit|read_U_0                                                                 ;
+; Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[3][7]                                      ; Stuck at GND              ; Milestone_1:M1_unit|read_U_0                                                                 ;
 ;                                                                                    ; due to stuck port clear   ;                                                                                              ;
-; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][8]                                      ; Stuck at GND              ; Milestone_1:M1_unit|read_V_0                                                                 ;
+; Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[3][7]                                      ; Stuck at GND              ; Milestone_1:M1_unit|read_V_0                                                                 ;
 ;                                                                                    ; due to stuck port clear   ;                                                                                              ;
 ; Milestone_1:M1_unit|FIR:FIR_unit|U_in_buffer[1][7]                                 ; Stuck at GND              ; Milestone_1:M1_unit|load_U_buffer                                                            ;
 ;                                                                                    ; due to stuck port clear   ;                                                                                              ;
@@ -1525,7 +1514,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Nov 19 17:50:18 2018
+    Info: Processing started: Tue Nov 20 10:17:35 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PROJECT -c PROJECT
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file milestone_2.v
@@ -1567,24 +1556,13 @@ Info (12021): Found 1 design units, including 1 entities, in source file clock_1
 Info (12127): Elaborating entity "PROJECT" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at PROJECT.v(105): object "start" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at PROJECT.v(108): object "start_counter" assigned a value but never read
-Warning (10230): Verilog HDL assignment warning at PROJECT.v(241): truncated value with size 18 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at PROJECT.v(247): truncated value with size 18 to match size of target (16)
-Info (10264): Verilog HDL Case Statement information at PROJECT.v(223): all case item expressions in this case statement are onehot
+Warning (10230): Verilog HDL assignment warning at PROJECT.v(253): truncated value with size 18 to match size of target (16)
+Info (10264): Verilog HDL Case Statement information at PROJECT.v(229): all case item expressions in this case statement are onehot
 Warning (10034): Output port "LED_GREEN_O" at PROJECT.v(30) has no driver
 Info (12128): Elaborating entity "Milestone_1" for hierarchy "Milestone_1:M1_unit"
 Info (12128): Elaborating entity "FIR" for hierarchy "Milestone_1:M1_unit|FIR:FIR_unit"
-Warning (10230): Verilog HDL assignment warning at FIR.v(72): truncated value with size 33 to match size of target (32)
-Warning (10230): Verilog HDL assignment warning at FIR.v(73): truncated value with size 33 to match size of target (32)
-Warning (10230): Verilog HDL assignment warning at FIR.v(82): truncated value with size 33 to match size of target (32)
-Warning (10230): Verilog HDL assignment warning at FIR.v(87): truncated value with size 33 to match size of target (32)
-Warning (10230): Verilog HDL assignment warning at FIR.v(91): truncated value with size 33 to match size of target (32)
 Info (12128): Elaborating entity "RGB_Converter" for hierarchy "Milestone_1:M1_unit|RGB_Converter:RGB_unit"
-Warning (10230): Verilog HDL assignment warning at RGB_Converter.v(103): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at RGB_Converter.v(104): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at RGB_Converter.v(105): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at RGB_Converter.v(170): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at RGB_Converter.v(171): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at RGB_Converter.v(172): truncated value with size 32 to match size of target (8)
 Info (12128): Elaborating entity "PB_Controller" for hierarchy "PB_Controller:PB_unit"
 Info (12128): Elaborating entity "SRAM_Controller" for hierarchy "SRAM_Controller:SRAM_unit"
 Info (12128): Elaborating entity "Clock_100_PLL" for hierarchy "SRAM_Controller:SRAM_unit|Clock_100_PLL:Clock_100_PLL_inst"
@@ -1688,7 +1666,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "VGA_SYNC_O" is stuck at GND
     Warning (13410): Pin "SRAM_WE_N_O" is stuck at VCC
     Warning (13410): Pin "UART_TX_O" is stuck at VCC
-Info (17049): 154 registers lost all their fanouts during netlist optimizations.
+Info (17049): 155 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/output_files/PROJECT.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
@@ -1720,10 +1698,10 @@ Info (21057): Implemented 445 device resources after synthesis - the final resou
     Info (21060): Implemented 16 bidirectional pins
     Info (21061): Implemented 279 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 73 warnings
-    Info: Peak virtual memory: 4627 megabytes
-    Info: Processing ended: Mon Nov 19 17:50:23 2018
-    Info: Elapsed time: 00:00:05
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 62 warnings
+    Info: Peak virtual memory: 4630 megabytes
+    Info: Processing ended: Tue Nov 20 10:17:39 2018
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 
 

@@ -244,13 +244,13 @@ always_comb begin
 			
 			SRAM_address = VGA_SRAM_address;
 			SRAM_we_n = 1'b1;
-			SRAM_write_data = 18'd0;
+			SRAM_write_data = 16'd0;
 		end
 		
 		default: begin
 			SRAM_we_n = 1'b1;
 			SRAM_address = 18'd0;
-			SRAM_write_data = 18'd0;
+			SRAM_write_data = 16'd0;
 		end
 	
 	endcase

@@ -47,8 +47,8 @@ module FIR (
 );
 
 //Shift Register to hold surrounding values
-logic  [8:0] U_SReg [5:0];
-logic  [8:0] V_SReg [5:0];
+logic  [7:0] U_SReg [5:0];
+logic  [7:0] V_SReg [5:0];
 logic  [31:0] current_sum;
 logic  [31:0] current_product;
 logic  [63:0] current_product_long;
