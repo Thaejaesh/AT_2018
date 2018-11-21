@@ -29,8 +29,10 @@ typedef enum logic [4:0] {
 
 typedef enum logic [3:0] {
 	
-	S_MATRIX_MULT_START,
-	S_MATRIX_MULT_IDLE
+	S_MM_START,
+	S_MM_IDLE,
+	S_MM_CT,
+	S_MM_CS
 	
 	
 }MATRIX_MULT_state_type;

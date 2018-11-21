@@ -24,6 +24,9 @@ module MATRIX_MULT (
 		input  logic CS_start,
 		output logic CS_done,
 		
+		input  logic MM_start,
+		output logic MM_done,
+		
 		output logic [31:0] CS_write_data,
 		output logic [6:0]  CS_write_address,
 		output logic 		CS_write_enable,
@@ -38,111 +41,90 @@ module MATRIX_MULT (
 
 MATRIX_MULT_state_type state;
 
+//logic [8:0]  god_counter;
+// | A | BBB | CCC | DDD |
+// D <= position across row 
+// C <= position down column S'/T
+// B <= position down column Ct/C
+// A <= CS or CT
+logic [8:0]  god_counter; 
+logic 		 count_enable;
 
-always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
+logic [6:0]  A_counter; //S'/T
+logic [6:0]  C_counter; //C/Ct
+logic [6:0]  R_counter; //Result counter T/S
+logic 		 C_T_S;		//Determine if calculating T or S
+
+logic [31:0] mult_in_C	   [1:0];
+logic [31:0] mult_in_T_S   [1:0];
+logic [63:0] mult_out_long [3:0];
+logic [31:0] mult_out 	   [3:0];
+
+assign 
+	mult_out_long[0] = mult_in_C[0] * mult_in_T_S[0],
+	mult_out_long[1] = mult_in_C[0] * mult_in_T_S[1],
+	mult_out_long[2] = mult_in_C[1] * mult_in_T_S[0],
+	mult_out_long[3] = mult_in_C[1] * mult_in_T_S[1];
+
+assign
+	mult_out[0] = mult_out_long[0][31:0],
+	mult_out[1] = mult_out_long[1][31:0],
+	mult_out[2] = mult_out_long[2][31:0],
+	mult_out[3] = mult_out_long[3][31:0];
+
+always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (~Resetn) begin
-		state <= S_M2_IDLE;				
 		
-		SRAM_we_n <= 1'b1;	
-		SRAM_write_data <= 16'd0;
-		
-		common_case <= 1'b0;
-		
-		FS_done <= 1'b0;
-		
-		Y_address <= 18'd0;
-		U_address <= 18'd38400;
-		V_address <= 18'd57600;
+		god_counter <= 10'd0;
 	
-		Base_address <= 18'd76800;
-		SC <= 6'd0;
-		CB <= 6'd0;
-		RB <= 5'd0;
-		C_END <= 6'd39;
+	end else begin
 		
-		SRAM_address <= 18'd0;
+		if (count_enable) begin
+			god_counter <= god_counter + 10'd1;
+		end
+	end
+
+end
+
+assign A_counter = { 1'd1, god_counter[7:5] , god_counter[2:0] };
+assign C_counter = { 2'd0, god_counter[2:0] , god_counter[4:3] };
+assign R_counter = { 1'b1, god_counter[7:3] };
+assign C_T_S 	 = god_counter[8]; 
+
+always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
+	if (~Resetn) begin
+	
+		count_enable <= 1'b0;
+		state <= S_MM_IDLE;				
 	end else begin
 
 		case (state)
-		S_M2_IDLE	: begin
-			if (M2_start) begin
-				state <= S_M2_START;
-				SRAM_we_n <= 1'b1;
-				SRAM_write_data <= 16'd0;
-				
-				common_case <= 1'b0;
-				
-				M2_done <= 1'b0;
-				
-				SRAM_address <= 18'd76800;
-				Y_address <= 18'd0;
-				U_address <= 18'd38400;
-				V_address <= 18'd57600;	
-					
-				Base_address <= 18'd76800;
-				C_END <= 6'd39;
-				SC <= 6'd1;
-				CB <= 6'd0;
-				RB <= 5'd0;				
-							
-			end
+		
+		S_MM_START: begin
+			count_enable <= 1'b0;
+			state <= S_MM_IDLE;
 		end
 		
-		S_M2_START: begin
+		S_MM_IDLE: begin
 			
-			state <= S_FS;
-		end
-		
-		S_FS: begin
 			
-			//Address = 320*Row_Address + Col_Address
+			count_enable <= 1'b1;
 			
-			SRAM_address <= {2'd0, RB, SC[5:3], 8'd0} + {4'd0, RB, SC[5:3], 6'd0} + {9'd0, CB, SC[2:0]} + Base_address;
+			state <= S_MM_CS;
+		end
+		
+		S_MM_CS: begin 
 			
-			if (SC == 6'd63) begin //Counter Logic to determine Read/Write Addresses
-				
-				if (CB == C_END) begin //Change C_END depending on whether in Y or U/V
-					CB <= 6'd0;
-					if (RB == 5'd29) begin
-						RB <= 5'd0;
-						C_END <= 6'd19;
-						
-						if (Base_address == 18'd76800) begin
-							Base_address <= 18'd153600;
-						end else if (Base_address == 18'd153600) begin
-							Base_address <= 18'd192000;
-						end
-						
-					end else begin
-						RB <= RB + 5'd1;
-						
-					end
-				end else begin
-					CB <= CB + 6'd1;
-				end
-				
-				state <= S_CT; // Go to Compute T when all 64 values have been loaded in
-				
-				SC <= 6'd0;
-			end else begin
-				SC <= SC + 6'd1;
-			end
-		end
+			
+			
+		end		
 		
-		S_CT: begin
+		S_MM_CT: begin
+		
 		
 		end
 		
-		S_CS: begin
-		
-		end
-		
-		S_WS: begin
-		
-		end
-		
-		
-		default: state <= S_M2_IDLE;
+		default: state <= S_MM_IDLE;
 		endcase
 	end
 end

@@ -31,7 +31,6 @@ module Milestone_2 (
 
 M2_state_type state;
  
-logic resetn;
 logic common_case;
 
 logic [5:0] SC, CB, C_END;
@@ -52,8 +51,8 @@ logic  		 FS_done;
 logic  		 FS_start;
 
 
-always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
-	if (resetn == 1'b0) begin
+always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
+	if (Resetn == 1'b0) begin
 		state <= S_M2_IDLE;				
 	end else begin
 
@@ -109,8 +108,8 @@ FS FS_unit (
 );
 
 dual_port_RAM0 dual_port_RAM_inst0 (
-	.address_a ( read_address[0] ),
-	.address_b ( write_address[0] ),
+	.address_a ( RAM0_address[0] ),
+	.address_b ( RAM0_address[1] ),
 	.clock ( CLOCK_50_I ),
 	.data_a ( 32'd0 ),
 	.data_b ( write_data_b[0] ),
@@ -121,20 +120,20 @@ dual_port_RAM0 dual_port_RAM_inst0 (
 );
 	
 dual_port_RAM1 dual_port_RAM_inst1 (
-	.address_a ( read_address[1] ),
-	.address_b ( write_address[1] ),
+	.address_a ( RAM1_address[0] ),
+	.address_b ( RAM1_address[1] ),
 	.clock ( CLOCK_50_I ),
 	.data_a ( 32'd0 ),
 	.data_b ( write_data_b[1] ),
 	.wren_a ( 1'b0 ),
-	.wren_b ( write_enable_b[1] ),
+	.wren_b ( 1'b0 ),
 	.q_a ( read_data_a[1] ),
 	.q_b ( read_data_b[1] )
 );
 
 dual_port_RAM2 dual_port_RAM_inst2 (
-	.address_a ( read_address[2] ),
-	.address_b ( write_address[2] ),
+	.address_a ( RAM2_address[0														] ),
+	.address_b ( RAM2_address[1] ),
 	.clock ( CLOCK_50_I ),
 	.data_a ( 32'd0 ),
 	.data_b ( write_data_b[2] ),
