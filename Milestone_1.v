@@ -74,7 +74,7 @@ logic [7:0] B_out_buffer;
 //Finite Impulse Response (FIR) unit
 FIR FIR_unit (
 	.CLOCK_50_I(CLOCK_50_I),
-	.resetn(resetn),
+	.resetn(Resetn),
 	
 	.enable_U(enable_U),
 	.enable_V(enable_V),
@@ -104,7 +104,7 @@ FIR FIR_unit (
 RGB_Converter RGB_unit(
 	//To RGB Converter
 	.CLOCK_50_I(CLOCK_50_I),
-	.resetn(resetn),
+	.resetn(Resetn),
 	.enable_RGB(enable_RGB),
 	.U_in_RGB(U_RGB),
 	.V_in_RGB(V_RGB),
@@ -119,7 +119,7 @@ RGB_Converter RGB_unit(
 
 
 
-always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
+always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (~Resetn) begin
 		state <= S_M1_IDLE;				
 		

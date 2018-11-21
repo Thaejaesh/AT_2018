@@ -1,4 +1,6 @@
 vendor_name = ModelSim
+source_file = 1, C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/MATRIX_MULT.v
+source_file = 1, C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/FS.v
 source_file = 1, C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/Milestone_2.v
 source_file = 1, C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_RAM2.v
 source_file = 1, C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_RAM1.v

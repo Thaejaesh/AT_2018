@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
--- DATE "11/20/2018 10:17:59"
+-- DATE "11/21/2018 10:33:37"
 
 -- 
 -- Device: Altera EP2C35F672C6 Package FBGA672
@@ -617,20 +617,20 @@ SIGNAL \SRAM_unit|SRAM_LB_N_O~0_combout\ : std_logic;
 SIGNAL \SRAM_unit|SRAM_LB_N_O~regout\ : std_logic;
 SIGNAL \SRAM_unit|SRAM_CE_N_O~feeder_combout\ : std_logic;
 SIGNAL \SRAM_unit|SRAM_CE_N_O~regout\ : std_logic;
-SIGNAL \VGA_unit|VGA_unit|oVGA_G\ : std_logic_vector(9 DOWNTO 0);
-SIGNAL \VGA_unit|VGA_unit|V_Cont\ : std_logic_vector(9 DOWNTO 0);
-SIGNAL \SWITCH_I~combout\ : std_logic_vector(17 DOWNTO 0);
-SIGNAL \VGA_unit|VGA_unit|oVGA_R\ : std_logic_vector(9 DOWNTO 0);
-SIGNAL \PB_unit|push_button_status_buf\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \PB_unit|push_button_status\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \VGA_unit|VGA_blue\ : std_logic_vector(9 DOWNTO 0);
-SIGNAL \UART_unit|SRAM_address\ : std_logic_vector(17 DOWNTO 0);
-SIGNAL \PUSH_BUTTON_I~combout\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \PB_unit|clock_1kHz_div_count\ : std_logic_vector(15 DOWNTO 0);
-SIGNAL \SRAM_unit|SRAM_read_data\ : std_logic_vector(15 DOWNTO 0);
+SIGNAL \VGA_unit|VGA_blue\ : std_logic_vector(9 DOWNTO 0);
+SIGNAL \PB_unit|push_button_status_buf\ : std_logic_vector(3 DOWNTO 0);
+SIGNAL \PUSH_BUTTON_I~combout\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \VGA_unit|VGA_unit|H_Cont\ : std_logic_vector(9 DOWNTO 0);
-SIGNAL \SRAM_unit|SRAM_ADDRESS_O\ : std_logic_vector(17 DOWNTO 0);
 SIGNAL \VGA_unit|VGA_unit|oVGA_B\ : std_logic_vector(9 DOWNTO 0);
+SIGNAL \SWITCH_I~combout\ : std_logic_vector(17 DOWNTO 0);
+SIGNAL \SRAM_unit|SRAM_ADDRESS_O\ : std_logic_vector(17 DOWNTO 0);
+SIGNAL \UART_unit|SRAM_address\ : std_logic_vector(17 DOWNTO 0);
+SIGNAL \VGA_unit|VGA_unit|V_Cont\ : std_logic_vector(9 DOWNTO 0);
+SIGNAL \PB_unit|push_button_status\ : std_logic_vector(3 DOWNTO 0);
+SIGNAL \SRAM_unit|SRAM_read_data\ : std_logic_vector(15 DOWNTO 0);
+SIGNAL \VGA_unit|VGA_unit|oVGA_R\ : std_logic_vector(9 DOWNTO 0);
+SIGNAL \VGA_unit|VGA_unit|oVGA_G\ : std_logic_vector(9 DOWNTO 0);
 SIGNAL \SRAM_unit|Clock_100_PLL_inst|altpll_component|ALT_INV__clk0~clkctrl_outclk\ : std_logic;
 SIGNAL \UART_unit|UART_RX|ALT_INV_Empty~regout\ : std_logic;
 SIGNAL \SRAM_unit|ALT_INV_SRAM_CE_N_O~regout\ : std_logic;

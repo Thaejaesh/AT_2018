@@ -46,7 +46,7 @@ logic [5:0] SC, CB, C_END;
 logic [4:0] RB;
 logic [17:0] Y_address, U_address, V_address, Base_address, read_address;
 
-logic [6:0] read_address, write_address;
+logic [6:0] write_address;//read_address, write_address;
 
 
 assign read_address = {2'd0, RB, SC[5:3], 8'd0} + {4'd0, RB, SC[5:3], 6'd0} + {9'd0, CB, SC[2:0]} + Base_address;
@@ -87,9 +87,9 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		state <= S_FS_START;				
 		
 		//SRAM_we_n <= 1'b1;	
-		SRAM_write_data <= 16'd0;
+		//SRAM_write_data <= 16'd0;
 		
-		common_case <= 1'b0;
+		//common_case <= 1'b0;
 		
 		FS_done <= 1'b0;
 		FS_write_enable <= 1'b0;
@@ -112,9 +112,9 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		S_FS_START: begin
 
 			//SRAM_we_n <= 1'b1;
-			SRAM_write_data <= 16'd0;
+			//SRAM_write_data <= 16'd0;
 			
-			common_case <= 1'b0;
+			//common_case <= 1'b0;
 			
 			FS_done <= 1'b0;
 			

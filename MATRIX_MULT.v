@@ -86,6 +86,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 
 end
 
+//
 assign A_counter = { 1'd1, god_counter[7:5] , god_counter[2:0] };
 assign C_counter = { 2'd0, god_counter[2:0] , god_counter[4:3] };
 assign R_counter = { 1'b1, god_counter[7:3] };

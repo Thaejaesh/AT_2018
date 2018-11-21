@@ -1,5 +1,5 @@
 Fitter report for PROJECT
-Tue Nov 20 10:17:49 2018
+Wed Nov 21 10:33:25 2018
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -65,7 +65,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Tue Nov 20 10:17:49 2018           ;
+; Fitter Status                      ; Successful - Wed Nov 21 10:33:25 2018           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PROJECT                                         ;
 ; Top-level Entity Name              ; PROJECT                                         ;
@@ -2423,7 +2423,7 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.23 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.19 seconds.
 Info (306004): Started post-fitting delay annotation
 Warning (306006): Found 141 output pins without output pin load capacitance assignment
     Info (306007): Pin "SRAM_DATA_IO[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
@@ -2591,10 +2591,10 @@ Warning (169064): Following 16 pins have no output enable or a GND or VCC output
 Warning (169174): The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
 Info (144001): Generated suppressed messages file C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/output_files/PROJECT.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 4843 megabytes
-    Info: Processing ended: Tue Nov 20 10:17:49 2018
+    Info: Peak virtual memory: 4835 megabytes
+    Info: Processing ended: Wed Nov 21 10:33:25 2018
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:08
+    Info: Total CPU time (on all processors): 00:00:06
 
 
 +----------------------------+

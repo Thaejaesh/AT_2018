@@ -85,9 +85,9 @@ assign write_data_b[0] 		= FS_write_data;
 assign write_enable_b[0] 	= FS_write_enable;
 assign write_address[0] 	= FS_write_address; //OR CT
 
-assign read_address[0] = CT
-assign write_enable_b[1] = CT
-assign write_address[1] = CT or CS
+//assign read_address[0] = CT
+//assign write_enable_b[1] = CT
+//assign write_address[1] = CT or CS
 
 
 
@@ -106,7 +106,7 @@ FS FS_unit (
 	.FS_write_enable(FS_write_enable)
 
 );
-
+/* 
 dual_port_RAM0 dual_port_RAM_inst0 (
 	.address_a ( RAM0_address[0] ),
 	.address_b ( RAM0_address[1] ),
@@ -132,7 +132,7 @@ dual_port_RAM1 dual_port_RAM_inst1 (
 );
 
 dual_port_RAM2 dual_port_RAM_inst2 (
-	.address_a ( RAM2_address[0														] ),
+	.address_a ( RAM2_address[0] ),													] ),
 	.address_b ( RAM2_address[1] ),
 	.clock ( CLOCK_50_I ),
 	.data_a ( 32'd0 ),
@@ -141,7 +141,7 @@ dual_port_RAM2 dual_port_RAM_inst2 (
 	.wren_b ( write_enable_b[2] ),
 	.q_a ( read_data_a[2] ),
 	.q_b ( read_data_b[2] )
-);	
+);	 */
 
 endmodule
 

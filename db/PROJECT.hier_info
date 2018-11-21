@@ -169,7 +169,7 @@ UART_TX_O <= <VCC>
 
 |PROJECT|Milestone_1:M1_unit
 CLOCK_50_I => CLOCK_50_I.IN2
-Resetn => ~NO_FANOUT~
+Resetn => Resetn.IN2
 SRAM_address[0] <= SRAM_address[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 SRAM_address[1] <= SRAM_address[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 SRAM_address[2] <= SRAM_address[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
