@@ -37,6 +37,15 @@ typedef enum logic [3:0] {
 	
 }MATRIX_MULT_state_type;
 
+typedef enum logic [3:0] {
+	
+	S_WS_START,
+	S_WS_IDLE, 
+	S_WS_LI_1,
+	S_WS_LI_2,
+	S_WS_COMMON_CASE
+}
+
 typedef enum logic [4:0] {
 	S_M1_START,
 	S_START_LINE_0,

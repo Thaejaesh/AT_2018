@@ -33,15 +33,8 @@ module FS (
 
 );
 
-
-/* parameter Y_pre_address = 76800;
-parameter U_pre_address = 153600;
-parameter V_pre_address = 192000; */
-
 FS_state_type state;
  
-//logic common_case;
-
 logic [5:0] SC, CB, C_END;
 logic [4:0] RB;
 logic [17:0] Y_address, U_address, V_address, Base_address, read_address;
@@ -49,8 +42,16 @@ logic [17:0] Y_address, U_address, V_address, Base_address, read_address;
 logic [6:0] write_address;//read_address, write_address;
 
 
-assign read_address = {2'd0, RB, SC[5:3], 8'd0} + {4'd0, RB, SC[5:3], 6'd0} + {9'd0, CB, SC[2:0]} + Base_address;
-assign FS_write_address = {1'b1,write_address};//Concatenating with a leading one means writing in bottom half of memory //+ 7'd64; //64 to write to bottom half of the memory
+always_comb begin
+	if (Base_address == 18'd76800) begin
+		//For Y: address = 320*RA + CA = (256 + 64)*RA + CA
+		read_address = {2'd0, RB, SC[5:3], 8'd0} + {4'd0, RB, SC[5:3], 6'd0} + {9'd0, CB, SC[2:0]} + Base_address;
+	end else begin
+		//For U and V: address = 160 + CA = (128 + 32)*RA + CA
+		read_address = {3'd0, RB, SC[5:3], 7'd0} + {5'd0, RB, SC[5:3], 5'd0} + {9'd0, CB, SC[2:0]} + Base_address;
+	end
+end
+assign FS_write_address = {0'b1,write_address};//Concatenating with a leading zero means writing in top half of memory //+ 7'd64; //64 to write to bottom half of the memory
 assign FS_write_data = {16'd0, SRAM_read_data}; // Pad 8 bit input with zeros to get an equivalent 32 bit value
 
 //Determine FS_write_address
@@ -87,17 +88,10 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		state <= S_FS_START;				
 		
 		//SRAM_we_n <= 1'b1;	
-		//SRAM_write_data <= 16'd0;
-		
-		//common_case <= 1'b0;
 		
 		FS_done <= 1'b0;
 		FS_write_enable <= 1'b0;
-		
-		Y_address <= 18'd0;
-		U_address <= 18'd38400;
-		V_address <= 18'd57600;
-	
+		SRAM_address <= 18'd76800;				
 		Base_address <= 18'd76800;
 		SC <= 6'd0;
 		CB <= 6'd0;
@@ -112,17 +106,9 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		S_FS_START: begin
 
 			//SRAM_we_n <= 1'b1;
-			//SRAM_write_data <= 16'd0;
-			
-			//common_case <= 1'b0;
-			
 			FS_done <= 1'b0;
 			
-			SRAM_address <= 18'd76800;
-			Y_address <= 18'd0;
-			U_address <= 18'd38400;
-			V_address <= 18'd57600;	
-				
+			SRAM_address <= 18'd76800;				
 			Base_address <= 18'd76800;
 			C_END <= 6'd39;
 			SC <= 6'd0;

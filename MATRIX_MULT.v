@@ -27,27 +27,26 @@ module MATRIX_MULT (
 		input  logic MM_start,
 		output logic MM_done,
 		
-		output logic [31:0] CS_write_data,
-		output logic [6:0]  CS_write_address,
-		output logic 		CS_write_enable,
+		input  logic [31:0] read_data_R0 	[1:0],
+		output logic [31:0] write_data_R0 	[1:0],
+		output logic [6:0]  rw_address_R0 	[1:0],
+		output logic 		write_enable_R0 [1:0],
 		
+		input  logic [31:0] read_data_R1	[1:0],		
+		output logic [31:0] write_data_R1 	[1:0],
+		output logic [6:0]  rw_address_R1 	[1:0],
+		output logic 		write_enable_R1 [1:0],
 		
-		output logic [31:0] CT_write_data,
-		output logic [6:0]  CT_write_address,
-		output logic 		CT_write_enable
+		input  logic [31:0] read_data_R2 	[1:0],
+		output logic [6:0]  read_address_R2 [1:0]
+		//No writing to R2 //Contains C values
 
 );
 
 
 MATRIX_MULT_state_type state;
 
-//logic [8:0]  god_counter;
-// | A | BBB | CCC | DDD |
-// D <= position across row 
-// C <= position down column S'/T
-// B <= position down column Ct/C
-// A <= CS or CT
-logic [8:0]  god_counter; 
+logic [7:0]  god_counter; 
 logic 		 count_enable;
 
 logic [6:0]  A_counter; //S'/T
@@ -75,22 +74,64 @@ assign
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (~Resetn) begin
 		
-		god_counter <= 10'd0;
+		god_counter <= 9'd0;
 	
 	end else begin
 		
 		if (count_enable) begin
-			god_counter <= god_counter + 10'd1;
+			god_counter <= god_counter + 9'd1;
 		end
 	end
 
 end
 
-//
-assign A_counter = { 1'd1, god_counter[7:5] , god_counter[2:0] };
-assign C_counter = { 2'd0, god_counter[2:0] , god_counter[4:3] };
-assign R_counter = { 1'b1, god_counter[7:3] };
-assign C_T_S 	 = god_counter[8]; 
+//Locations to read/write to memory locations from/to
+assign A_counter = { god_counter[7], god_counter[6:4] , god_counter[1:0] }; //read from either top half or bottom half depending on state
+assign C_counter = { 2'd0, god_counter[1:0] , god_counter[3:2] }; //reading from first quarter of the memory
+assign R_counter = { 1'b1, god_counter[6:2] };
+assign C_T_S 	 = god_counter[7]; 
+
+
+assign read_address_R2[0] = {1'b0, god_counter[1:0] , 1'b0, god_counter[3:2]};
+assign read_address_R2[1] = {1'b0, god_counter[1:0] , 1'b1, god_counter[3:2]};
+
+
+
+always_comb begin
+	if (~C_T_S) begin
+		rw_address_R0[0]   = { god_counter[7] , god_counter[6:4], god_counter[1:0], 1'b0};
+		rw_address_R0[1]   = { god_counter[7] , god_counter[6:4], god_counter[1:0], 1'b1);
+		write_enable_R0[0] = 1'b0;
+		write_enable_R0[1] = 1'b0;
+		
+		rw_address_R1[0]   = { 
+		rw_address_R1[1]   = {  
+	end else begin
+		
+		
+	
+	end
+end
+
+//CT 
+/*
+*Reading from:
+*	R2: top quarter
+*	R0: top half
+*
+*Writing to:
+*	R1: bottom half
+*/
+//CS 
+/*
+*Reading from:
+*	R2: top quarter
+*	R1: bottom half
+*
+*Writing to:
+*	R0: bottom half
+*/
+
 
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (~Resetn) begin
@@ -111,7 +152,9 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			
 			count_enable <= 1'b1;
 			
-			state <= S_MM_CS;
+			if (C_T_S) begin
+				state <= S_MM_CS;
+			end
 		end
 		
 		S_MM_CS: begin 
