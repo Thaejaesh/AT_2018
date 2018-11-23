@@ -22,7 +22,7 @@ module FIR (
 		input logic resetn, 
 		input logic line_start,
 		input logic line_end,
-		input logic common_case,
+		//input logic common_case,
 		
 		input logic enable_U,
 		input logic enable_V,

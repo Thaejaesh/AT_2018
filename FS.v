@@ -39,7 +39,7 @@ logic [5:0] SC, CB, C_END;
 logic [4:0] RB;
 logic [17:0] Y_address, U_address, V_address, Base_address, read_address;
 
-logic [6:0] write_address;//read_address, write_address;
+logic [5:0] write_address;//read_address, write_address;
 
 
 always_comb begin
@@ -51,8 +51,10 @@ always_comb begin
 		read_address = {3'd0, RB, SC[5:3], 7'd0} + {5'd0, RB, SC[5:3], 5'd0} + {9'd0, CB, SC[2:0]} + Base_address;
 	end
 end
-assign FS_write_address = {0'b1,write_address};//Concatenating with a leading zero means writing in top half of memory //+ 7'd64; //64 to write to bottom half of the memory
+
 assign FS_write_data = {16'd0, SRAM_read_data}; // Pad 8 bit input with zeros to get an equivalent 32 bit value
+assign FS_write_address = {1'b1,write_address};//Concatenating with a leading zero means writing in top half of memory //+ 7'd64; //64 to write to bottom half of the memory
+
 
 //Determine FS_write_address
 always_comb begin
@@ -77,7 +79,7 @@ always_comb begin
 		
 		
 		default: begin
-			FS_write_address = 6'd0;
+			write_address = 6'd0;
 		end
 	endcase
 	
@@ -200,7 +202,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		end
 				
 		
-		default: state <= S_M2_IDLE;
+		default: state <= S_FS_IDLE;
 		endcase
 	end
 end

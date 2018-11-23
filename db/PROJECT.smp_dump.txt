@@ -1,16 +1,17 @@
 
 State Machine - |PROJECT|UART_state
-Name UART_state.S_UART_IDLE UART_state.S_TOP_UART UART_state.S_ENABLE_UART_RX 
+Name UART_state.S_UART_IDLE UART_state.S_WAIT_UART_RX UART_state.S_ENABLE_UART_RX 
 UART_state.S_UART_IDLE 0 0 0 
 UART_state.S_ENABLE_UART_RX 1 0 1 
-UART_state.S_TOP_UART 1 1 0 
+UART_state.S_WAIT_UART_RX 1 1 0 
 
 State Machine - |PROJECT|state
-Name state.S_TOP_M1 state.S_TOP_UART state.S_TOP_VGA state.S_TOP_IDLE 
-state.S_TOP_IDLE 0 0 0 0 
-state.S_TOP_VGA 0 0 1 1 
-state.S_TOP_UART 0 1 0 1 
-state.S_TOP_M1 1 0 0 1 
+Name state.S_TOP_M1 state.S_TOP_UART state.S_TOP_VGA state.S_TOP_IDLE state.S_TOP_M2 
+state.S_TOP_IDLE 0 0 0 0 0 
+state.S_TOP_VGA 0 0 1 1 0 
+state.S_TOP_UART 0 1 0 1 0 
+state.S_TOP_M1 1 0 0 1 0 
+state.S_TOP_M2 0 0 0 1 1 
 
 State Machine - |PROJECT|VGA_SRAM_interface:VGA_unit|VGA_SRAM_state
 Name VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_3 VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_2 VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_1 VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_0 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_5 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_4 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_3 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_2 VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_1 VGA_SRAM_state.S_VS_WAIT_NEW_PIXEL_ROW 
@@ -82,3 +83,20 @@ Name sel_mul_in.11 sel_mul_in.01 sel_mul_in.10
 sel_mul_in.01 0 0 0 
 sel_mul_in.10 0 1 1 
 sel_mul_in.11 1 1 0 
+
+State Machine - |PROJECT|Milestone_2:M2_unit|state
+Name state.S_M2_START 
+state.S_M2_IDLE 0 
+state.S_M2_START 1 
+
+State Machine - |PROJECT|Milestone_2:M2_unit|FS:FS_unit|state
+Name state.S_FS_LO_2 state.S_FS_LO_1 state.S_FS_COMMON_CASE state.S_FS_LI_3 state.S_FS_LI_2 state.S_FS_LI_1 state.S_FS_IDLE state.S_FS_START state.S_FS_LO_3 
+state.S_FS_START 0 0 0 0 0 0 0 0 0 
+state.S_FS_IDLE 0 0 0 0 0 0 1 1 0 
+state.S_FS_LI_1 0 0 0 0 0 1 0 1 0 
+state.S_FS_LI_2 0 0 0 0 1 0 0 1 0 
+state.S_FS_LI_3 0 0 0 1 0 0 0 1 0 
+state.S_FS_COMMON_CASE 0 0 1 0 0 0 0 1 0 
+state.S_FS_LO_1 0 1 0 0 0 0 0 1 0 
+state.S_FS_LO_2 1 0 0 0 0 0 0 1 0 
+state.S_FS_LO_3 0 0 0 0 0 0 0 1 1 

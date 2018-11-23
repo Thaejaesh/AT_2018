@@ -29,6 +29,14 @@ vlog -sv -svinputport=var -work rtl_work tb_project_v2.v
 vlog -sv -svinputport=var -work rtl_work Milestone_1.v
 vlog -sv -svinputport=var -work rtl_work FIR.v
 vlog -sv -svinputport=var -work rtl_work RGB_Converter.v
+vlog -sv -svinputport=var -work rtl_work Milestone_2.v
+vlog -sv -svinputport=var -work rtl_work FS.v
+vlog -sv -svinputport=var -work rtl_work WS.v
+vlog -sv -svinputport=var -work rtl_work MATRIX_MULT.v
+vlog -sv -svinputport=var -work rtl_work dual_port_RAM2.v
+vlog -sv -svinputport=var -work rtl_work dual_port_RAM1.v
+vlog -sv -svinputport=var -work rtl_work dual_port_RAM0.v
+
 
 # specify library for simulation
 #vsim -t 100ps -L altera_mf_ver -lib rtl_work tb_project

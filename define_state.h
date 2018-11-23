@@ -27,10 +27,12 @@ typedef enum logic [4:0] {
 	
 }FS_state_type;
 
-typedef enum logic [3:0] {
+typedef enum logic [4:0] {
 	
 	S_MM_START,
 	S_MM_IDLE,
+	S_CT_LI_0,
+	S_CT_LI_1,		
 	S_MM_CT,
 	S_MM_CS
 	
@@ -44,7 +46,8 @@ typedef enum logic [3:0] {
 	S_WS_LI_1,
 	S_WS_LI_2,
 	S_WS_COMMON_CASE
-}
+	
+}WS_state_type;
 
 typedef enum logic [4:0] {
 	S_M1_START,

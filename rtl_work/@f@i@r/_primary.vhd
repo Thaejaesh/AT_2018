@@ -6,7 +6,6 @@ entity FIR is
         resetn          : in     vl_logic;
         line_start      : in     vl_logic;
         line_end        : in     vl_logic;
-        common_case     : in     vl_logic;
         enable_U        : in     vl_logic;
         enable_V        : in     vl_logic;
         load_U_buffer   : in     vl_logic;

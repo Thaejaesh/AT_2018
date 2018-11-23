@@ -64,6 +64,13 @@ logic [17:0] M1_SRAM_address;
 logic [15:0] M1_SRAM_write_data;
 logic M1_SRAM_we_n;
 
+//For M2
+logic M2_start;
+logic M2_done;
+logic [17:0] M2_SRAM_address;
+logic [15:0] M2_SRAM_write_data;
+logic M2_SRAM_we_n;
+
 
 // For VGA SRAM interface
 logic VGA_enable;
@@ -112,6 +119,9 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 	if (~resetn) begin
 		state <= S_TOP_IDLE;
 		start <= 1'b1;
+		M1_start <= 1'b0;
+		M2_start <= 1'b0;
+		
 		start_counter <= 4'd0;
 		//UART_state <= S_WAIT_UART_RX;
 		VGA_enable <= 1'b0;
@@ -119,27 +129,32 @@ always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
 		case (state)
 			
 			S_TOP_IDLE: begin
-				if (PB_pushed[1]) begin //exit idle state once push button 1 is pressed		
-					state <= S_TOP_UART;
-				end
+				//if (PB_pushed[1]) begin //exit idle state once push button 1 is pressed	
+					M1_start <= 1'b0;
+					//state <= S_TOP_UART;
+				//end
 				//$write("start counter %d \n", start_counter);
-/* 				start_counter <= start_counter + 4'd1;
+ 				start_counter <= start_counter + 4'd1;
 				if (start_counter == 4'd10) begin
-					state <= S_TOP_M1;
+					state <= S_TOP_M2;
 					//$write("#########################################################################\n\n");
-				end */
+				end 
 			end
 			
 			S_TOP_UART: begin
-				if(UART_done) 
-					state <= S_TOP_M1;
-					//state <= S_TOP_M2;
+				M1_start <= 1'b0;
+				if(UART_done | PB_pushed[0]) 
+					//state <= S_TOP_M1;
+					state <= S_TOP_M2;
 					//state <= S_TOP_M3;
 			end
-/* 			
+			
 			S_TOP_M2: begin
-				
-			end */
+				M2_start <= 1'b1;
+				if(M2_done) begin
+					state <= S_TOP_M1;
+				end
+			end 
 			
 			S_TOP_M1: begin
 				//M1_start <= 1'b1;
@@ -176,7 +191,7 @@ always @(posedge CLOCK_50_I or negedge resetn) begin
 		//VGA_enable <= 1'b1;
 		UART_done <= 1'b0;
 	end else begin
-		if (UART_state == S_TOP_UART) begin
+		if (state == S_TOP_UART) begin
 					UART_rx_initialize <= 1'b0; 
 					UART_rx_enable <= 1'b0; 
 					
@@ -238,6 +253,12 @@ always_comb begin
 			SRAM_address = M1_SRAM_address;
 			SRAM_write_data = M1_SRAM_write_data;
 			SRAM_we_n = M1_SRAM_we_n;
+		end	
+
+		S_TOP_M2: begin
+			SRAM_address = M2_SRAM_address;
+			SRAM_write_data = M2_SRAM_write_data;
+			SRAM_we_n = M2_SRAM_we_n;
 		end
 		
 		S_TOP_VGA: begin
@@ -257,6 +278,22 @@ always_comb begin
 end		
  
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////						
+
+//Unit for Milestone 1 up-sampler and RGB converter
+Milestone_2 M2_unit (
+
+	.CLOCK_50_I(CLOCK_50_I),
+	
+	.Resetn(resetn),
+	.SRAM_address(M2_SRAM_address),
+	.SRAM_we_n(M2_SRAM_we_n),
+	.SRAM_write_data(M2_SRAM_write_data),
+	.SRAM_read_data(SRAM_read_data),
+	
+	.M2_done(M2_done),
+	.M2_start(M2_start)
+	
+);
 
 //Unit for Milestone 1 up-sampler and RGB converter
 Milestone_1 M1_unit (

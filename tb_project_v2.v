@@ -27,7 +27,7 @@ you will get false errors, so use the original testbench instead.
 // This is the top testbench file
 
 `define FEOF 32'hFFFFFFFF
-`define MAX_MISMATCHES 2
+`define MAX_MISMATCHES 6
 
 // file for output
 // this is only useful if decoding is done all the way through (e.g. milestone 1 is used)
@@ -35,13 +35,13 @@ you will get false errors, so use the original testbench instead.
 
 // file for comparison
 // to test milestone 2 independently, use the .sram_d1 file to check the output
-`define VERIFICATION_FILE_NAME "panda.sram_d0"
+`define VERIFICATION_FILE_NAME "panda.sram_d1"
 
 //// for milestone 1
-`define INPUT_FILE_NAME "panda.sram_d1"
+//`define INPUT_FILE_NAME "panda.sram_d1"
 
-//// for milestone 2
-//`define INPUT_FILE_NAME "motorcycle.sram_d2"
+// for milestone 2
+`define INPUT_FILE_NAME "panda.sram_d2"
 
 //// for milestone 3 (completed project)
 //`define INPUT_FILE_NAME "motorcycle.mic12”
@@ -190,7 +190,7 @@ begin
 	
 	//NOTE: this is for milestone 1, in different milestones we will be
 	//writing to different regions so modify as needed
-	for (i=146944; i<262144; i=i+1) begin
+	for (i=0; i<76800; i=i+1) begin
 		if (SRAM_ARRAY_write_count[i]==0) begin
 			if (error_count < `MAX_MISMATCHES) begin
 				$write("error: did not write to location %d (%x hex)\n", i, i);
@@ -282,10 +282,10 @@ initial begin
 	//so just force the timer to a value that is nearly that of the "time-out"
 	@ (posedge Clock_50);	
 	uut.UART_timer = 26'd49999990;
-	wait (uut.top_state != 0);	//this assumes S_IDLE is the first in the list where the states are enumerated
+	wait (uut.state != 0);	//this assumes S_IDLE is the first in the list where the states are enumerated
 	$write("Starting Decoder at %t\n\n", $realtime);
 	
-	wait (uut.top_state == 0);	//this assumes we go back to S_IDLE when we are done
+	wait (uut.state == 0);	//this assumes we go back to S_IDLE when we are done
 //	wait (uut.done == 1);		//otherwise change as needed, could use a done signal
 
 	@ (posedge Clock_50);		//let sram writes finish, not sure if this is really needed...
@@ -309,9 +309,9 @@ always @ (posedge Clock_50) begin
 	if (uut.SRAM_we_n == 1'b0) begin	//signal names within project (instantiated as uut) should match here, assuming names from experiment4a
 	
 		//IMPORTANT: this is the "no write" memory region for milestone 1, change region for different milestones
-		if (uut.SRAM_address < 146944) begin
+		if (uut.SRAM_address > 76800) begin
 			if (warn_writing_out_of_region < `MAX_MISMATCHES) begin
-				$write("critical warning: writing outside of the RGB data region, may corrupt source data in SRAM\n");
+				$write("critical warning: writing outside of the YUV data region, may corrupt source data in SRAM\n");
 				$write("  writing value %d (%x hex) to location %d (%x hex), sim time %t\n", 
 					uut.SRAM_write_data, uut.SRAM_write_data, uut.SRAM_address, uut.SRAM_address, $realtime);
 				warn_writing_out_of_region = warn_writing_out_of_region + 1;

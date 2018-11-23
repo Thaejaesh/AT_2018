@@ -45,9 +45,9 @@ logic [7:0]  read_data_a;
 logic [7:0]  read_data_b;
 
 
-always_ff @ (posedge CLOCK_50_I or negedge resetn) begin
-	if (resetn == 1'b0) begin
-		state <= S_M2_IDLE;				
+always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
+	if (Resetn == 1'b0) begin
+		state <= S_WS_IDLE;				
 		
 		SRAM_we_n <= 1'b1;	
 		SRAM_write_data <= 16'd0;
