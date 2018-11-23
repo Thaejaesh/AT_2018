@@ -15,7 +15,7 @@ add wave -hexadecimal uut/M2_unit/FS_unit/FS_write_data
 add wave -hexadecimal uut/M2_unit/SRAM_read_data
 
 
-
+add wave uut/M2_unit/MM_unit/mult_in_C
 
 #add wave uut/M1_unit/state
 #add wave uut/M1_unit/cycle

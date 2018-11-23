@@ -49,8 +49,7 @@ logic  		 FS_write_enable;
 logic  		 FS_done;
 logic  		 FS_start;
 
-
-logic 
+logic 		 MM_done, MM_start; 
 
 
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
@@ -122,28 +121,29 @@ assign
 	RAM0_write_data[1]	 = FS_write_data,
 	RAM0_write_enable[1] = FS_write_enable;
 
-MATRIX_MULT MM_unit(
+MATRIX_MULTIPLIER MM_unit_CT(
 	.CLOCK_50_I(CLOCK_50_I),
 	.Resetn(Resetn),
 
 	.MM_start(MM_start),
 	.MM_done(MM_done),
 	
-	.read_data_R0(RAM0_read_data),
-	.write_data_R0(RAM0_read_data),
-	.rw_address_R0(RAM0_address),
-	.write_enable_R0(RAM0_write_enable),
-
-	.read_data_R1(RAM1_read_data),
-	.write_data_R1(RAM1_read_data),
-	.rw_address_R1(RAM1_address),
-	.write_enable_R1(RAM1_write_enable),
+	.T_S(1'b0),
 	
-	.read_data_R2(RAM2_read_data),
-	.read_address_R2(RAM2_address)
+	
+	.A_read_data(RAM0_read_data[1]),
+	.A_read_address(RAM0_address[1]),
+	.A_write_enable(RAM0_write_enable[1]),
+	
+	.C_read_data(RAM2_read_data),
+	.C_read_address(RAM2_address),
+	
+	.P_write_data(RAM1_write_data),
+	.P_write_address(RAM1_address),
+	.P_write_enable(RAM1_write_enable)
 	
 
-)
+);
 
 //DPRAM for S and S' values
 dual_port_RAM0 dual_port_RAM_inst0 (

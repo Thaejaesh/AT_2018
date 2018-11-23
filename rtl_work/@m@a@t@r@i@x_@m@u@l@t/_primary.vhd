@@ -4,10 +4,6 @@ entity MATRIX_MULT is
     port(
         CLOCK_50_I      : in     vl_logic;
         Resetn          : in     vl_logic;
-        CT_start        : in     vl_logic;
-        CT_done         : out    vl_logic;
-        CS_start        : in     vl_logic;
-        CS_done         : out    vl_logic;
         MM_start        : in     vl_logic;
         MM_done         : out    vl_logic;
         read_data_R0    : in     vl_logic;
