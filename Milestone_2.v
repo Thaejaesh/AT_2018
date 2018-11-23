@@ -49,6 +49,12 @@ logic  		 FS_write_enable;
 logic  		 FS_done;
 logic  		 FS_start;
 
+logic [31:0] s_read_data;
+logic [6:0]	 s_read_address;
+logic		 s_write_enable;
+logic		 WS_done;
+logic		 WS_start;
+
 logic 		 MM_done, MM_start; 
 logic [31:0] MM_CT_RAM0_read_data;
 logic [6:0]  MM_CT_RAM0_address;
@@ -131,6 +137,22 @@ FS FS_unit (
 
 );
 
+WS WS_unit (
+	.CLOCK_50_I(CLOCK_50_I),
+	.Resetn(Resetn),
+	
+	.SRAM_address(SRAM_address),
+	.SRAM_we_n(SRAM_we_n),
+	.SRAM_write_data(SRAM_write_data),
+	
+	.WS_done(WS_done),
+	.WS_start(WS_start),
+	
+	.s_read_data(s_read_data),
+	.s_read_address(s_read_address),
+	.s_write_enable(s_write_enable)
+	
+);
 //FS assignments
 /* assign
 	RAM0_address[1]  	 = FS_write_address,

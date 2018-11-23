@@ -82,8 +82,8 @@ always_comb begin
 end
 
 always_comb begin
-	read_data_a = ($signed(s_read_data[31:16]) > $signed(8'd255))? 8'd255 : (($signed(s_read_data[31:16]) < $signed(8'd0))? 8'd0: s_read_data[31:16]);
-	read_data_b = ($signed(s_read_data[15:0]) > $signed(8'd255))? 8'd255 : (($signed(s_read_data[15:0]) < $signed(8'd0))? 8'd0: s_read_data[15:0]);
+	read_data_a = ($signed(s_read_data[23:16]) > $signed(8'd255))? 8'd255 : (($signed(s_read_data[23:16]) < $signed(8'd0))? 8'd0: s_read_data[23:16]);
+	read_data_b = ($signed(s_read_data[7:0]) > $signed(8'd255))? 8'd255 : (($signed(s_read_data[7:0]) < $signed(8'd0))? 8'd0: s_read_data[7:0]);
 end
 
 assign SRAM_write_data = {read_data_a, read_data_b};
