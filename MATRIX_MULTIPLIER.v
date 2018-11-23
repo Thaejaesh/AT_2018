@@ -41,6 +41,8 @@ module MATRIX_MULTIPLIER (
 MATRIX_MULT_state_type state;
 
 logic [6:0]  god_counter; 
+logic [6:0]  w_counter; 
+logic [5:0]  product_counter;
 logic 		 count_enable;
 logic 		 first_run;
 logic 		 last_run;
@@ -102,17 +104,81 @@ end
 
 
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
+	
+	if (~Resetn) begin
+		product[0]	 	<= 32'd0;
+		product[1]  	<= 32'd0;
+		product[2]  	<= 32'd0;
+		product[3]  	<= 32'd0;	
+		product_counter <=  6'd0;
+	end else begin
+	
+		if (w_counter[2:0] == 3'd0) begin
+			product[0] <= mult_out[0];
+			product[1] <= mult_out[1];
+			product[2] <= mult_out[2];
+			product[3] <= mult_out[3];
+						
+		end else begin
+			
+			product[0] <= product[0] + mult_out[0];
+			product[1] <= product[1] + mult_out[1];
+			product[2] <= product[2] + mult_out[2];
+			product[3] <= product[3] + mult_out[3];
+			
+		end
+		
+		if (w_counter[2:0] == 3'd7) begin
+
+			product_out[0] <= product[0];
+			product_out[1] <= product[1];
+			product_out[2] <= product[2];
+			product_out[3] <= product[3];		
+		
+		end
+		
+		
+		if (~first_run) begin
+			
+			if ( w_counter[2:0] == 3'd0) begin
+				P_write_enable <= 1'b1;
+			end else if ( w_counter[2:0] == 3'd1) begin
+				P_write_data 	<= product_out[0];
+				P_write_address <= product_counter;
+				product_counter <= product_counter + 6'd1;
+			
+			end else if ( w_counter[2:0] == 3'd2) begin
+				P_write_data	<= product_out[1];
+				P_write_address <= product_counter;
+				product_counter <= product_counter + 6'd1;
+			
+			end else if ( w_counter[2:0] == 3'd3) begin
+				P_write_data	<= product_out[2];
+				P_write_address <= product_counter;
+				product_counter <= product_counter + 6'd1;			
+			
+			end else if ( w_counter[2:0] == 3'd4) begin
+				P_write_data 	<= product_out[3];
+				P_write_address <= product_counter;
+				product_counter <= product_counter + 6'd1;
+			
+			end else if ( w_counter[2:0] == 3'd5) begin
+				P_write_enable  <= 1'b0;			
+			end
+		
+		end
+	
+	end
+end
+
+always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (~Resetn) begin
 		
 		MM_done 		<= 1'b0;
 		god_counter 	<= 7'd0;
+		w_counter	 	<= 7'd0;
 		count_enable 	<= 1'b0;
 		first_run 	 	<= 1'b1;
-		
-		product[0]	 	<= 32'd0;
-		product[1]  	<= 32'd0;
-		product[2]  	<= 32'd0;
-		product[3]  	<= 32'd0;
 		
 		CT_done 		<= 1'b0;
 		CT_start 		<= 1'b0;
@@ -127,6 +193,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		
 		S_MM_START: begin
 			god_counter  <= 7'd0;
+			w_counter 	 <= 7'd0;
 			count_enable <= 1'b0;
 			first_run 	 <= 1'b1;
 			state <= S_MM_IDLE;
@@ -142,6 +209,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 				end else begin
 					CS_start <= 1'b1;
 				end
+				MM_done <= 1'b0;
 			end
 
 		end
@@ -163,6 +231,13 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		
 		S_MM_CC: begin
 			
+			w_counter <= w_counter + 7'd1; //Used for calculating write positions
+			
+			if (w_counter[2:0] == 3'd7 && first_run) begin
+			
+				first_run <= 1'b0;
+			end
+			
 			god_counter <= god_counter + 7'd1;
 			
 			if (god_counter == 7'd127) begin
@@ -174,12 +249,25 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		
 		S_MM_LO_0: begin
 			
+			w_counter <= w_counter + 7'd1;
+			
 			state <= S_MM_LO_1;
 		end
 		
 		S_MM_LO_1: begin
+			w_counter <= w_counter + 7'd1;
+			state <= S_MM_LO_2;
+		end
 		
-			state <= S_MM_IDLE;
+		S_MM_LO_2: begin
+			
+			w_counter <= w_counter + 7'd1;
+			
+			
+			if (w_counter == 7'd6) begin
+				MM_done <= 1'b1;
+				state <= S_MM_IDLE;
+			end
 		end
 		
 		default: begin

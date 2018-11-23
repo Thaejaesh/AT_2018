@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PROJECT
-Thu Nov 22 17:41:25 2018
+Fri Nov 23 13:30:12 2018
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -23,33 +23,33 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  15. State Machine - |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|sel_rgb_mul
  16. State Machine - |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|sel_mul_in
  17. State Machine - |PROJECT|Milestone_2:M2_unit|state
- 18. State Machine - |PROJECT|Milestone_2:M2_unit|FS:FS_unit|state
- 19. Registers Removed During Synthesis
- 20. Removed Registers Triggering Further Register Optimizations
- 21. General Register Statistics
- 22. Inverted Register Statistics
- 23. Multiplexer Restructuring Statistics (Restructuring Performed)
- 24. Source assignments for Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component|altsyncram_tq92:auto_generated
- 25. Source assignments for Milestone_2:M2_unit|dual_port_RAM1:dual_port_RAM_inst1|altsyncram:altsyncram_component|altsyncram_uq92:auto_generated
- 26. Source assignments for Milestone_2:M2_unit|dual_port_RAM2:dual_port_RAM_inst2|altsyncram:altsyncram_component|altsyncram_vq92:auto_generated
- 27. Parameter Settings for User Entity Instance: Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component
- 28. Parameter Settings for User Entity Instance: Milestone_2:M2_unit|dual_port_RAM1:dual_port_RAM_inst1|altsyncram:altsyncram_component
- 29. Parameter Settings for User Entity Instance: Milestone_2:M2_unit|dual_port_RAM2:dual_port_RAM_inst2|altsyncram:altsyncram_component
- 30. Parameter Settings for User Entity Instance: SRAM_Controller:SRAM_unit|Clock_100_PLL:Clock_100_PLL_inst|altpll:altpll_component
- 31. Parameter Settings for User Entity Instance: VGA_SRAM_interface:VGA_unit
- 32. Parameter Settings for User Entity Instance: VGA_SRAM_interface:VGA_unit|VGA_Controller:VGA_unit
- 33. altsyncram Parameter Settings by Entity Instance
- 34. altpll Parameter Settings by Entity Instance
- 35. Port Connectivity Checks: "convert_hex_to_seven_segment:unit3"
- 36. Port Connectivity Checks: "VGA_SRAM_interface:VGA_unit"
- 37. Port Connectivity Checks: "UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX"
- 38. Port Connectivity Checks: "UART_SRAM_interface:UART_unit"
- 39. Port Connectivity Checks: "PB_Controller:PB_unit"
- 40. Port Connectivity Checks: "Milestone_1:M1_unit|FIR:FIR_unit"
+ 18. State Machine - |PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state
+ 19. State Machine - |PROJECT|Milestone_2:M2_unit|FS:FS_unit|state
+ 20. Registers Removed During Synthesis
+ 21. Removed Registers Triggering Further Register Optimizations
+ 22. General Register Statistics
+ 23. Inverted Register Statistics
+ 24. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 25. Source assignments for Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component|altsyncram_tq92:auto_generated
+ 26. Source assignments for Milestone_2:M2_unit|dual_port_RAM1:dual_port_RAM_inst1|altsyncram:altsyncram_component|altsyncram_uq92:auto_generated
+ 27. Source assignments for Milestone_2:M2_unit|dual_port_RAM2:dual_port_RAM_inst2|altsyncram:altsyncram_component|altsyncram_vq92:auto_generated
+ 28. Parameter Settings for User Entity Instance: Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component
+ 29. Parameter Settings for User Entity Instance: Milestone_2:M2_unit|dual_port_RAM1:dual_port_RAM_inst1|altsyncram:altsyncram_component
+ 30. Parameter Settings for User Entity Instance: Milestone_2:M2_unit|dual_port_RAM2:dual_port_RAM_inst2|altsyncram:altsyncram_component
+ 31. Parameter Settings for User Entity Instance: SRAM_Controller:SRAM_unit|Clock_100_PLL:Clock_100_PLL_inst|altpll:altpll_component
+ 32. Parameter Settings for User Entity Instance: VGA_SRAM_interface:VGA_unit
+ 33. Parameter Settings for User Entity Instance: VGA_SRAM_interface:VGA_unit|VGA_Controller:VGA_unit
+ 34. altsyncram Parameter Settings by Entity Instance
+ 35. altpll Parameter Settings by Entity Instance
+ 36. Port Connectivity Checks: "convert_hex_to_seven_segment:unit3"
+ 37. Port Connectivity Checks: "VGA_SRAM_interface:VGA_unit"
+ 38. Port Connectivity Checks: "UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX"
+ 39. Port Connectivity Checks: "UART_SRAM_interface:UART_unit"
+ 40. Port Connectivity Checks: "PB_Controller:PB_unit"
  41. Port Connectivity Checks: "Milestone_2:M2_unit|dual_port_RAM2:dual_port_RAM_inst2"
  42. Port Connectivity Checks: "Milestone_2:M2_unit|dual_port_RAM1:dual_port_RAM_inst1"
  43. Port Connectivity Checks: "Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0"
- 44. Port Connectivity Checks: "Milestone_2:M2_unit|FS:FS_unit"
+ 44. Port Connectivity Checks: "Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT"
  45. Elapsed Time Per Partition
  46. Analysis & Synthesis Messages
 
@@ -77,15 +77,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 22 17:41:25 2018           ;
+; Analysis & Synthesis Status        ; Successful - Fri Nov 23 13:30:12 2018           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PROJECT                                         ;
 ; Top-level Entity Name              ; PROJECT                                         ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 448                                             ;
-;     Total combinational functions  ; 372                                             ;
-;     Dedicated logic registers      ; 255                                             ;
-; Total registers                    ; 255                                             ;
+; Total logic elements               ; 374                                             ;
+;     Total combinational functions  ; 322                                             ;
+;     Dedicated logic registers      ; 179                                             ;
+; Total registers                    ; 179                                             ;
 ; Total pins                         ; 165                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -196,6 +196,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                               ; Library ;
 +----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------+---------+
+; MATRIX_MULTIPLIER.v              ; yes             ; User Verilog HDL File                  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/MATRIX_MULTIPLIER.v            ;         ;
 ; FS.v                             ; yes             ; User Verilog HDL File                  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/FS.v                           ;         ;
 ; Milestone_2.v                    ; yes             ; User Verilog HDL File                  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/Milestone_2.v                  ;         ;
 ; dual_port_RAM2.v                 ; yes             ; User Verilog HDL File                  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_RAM2.v               ;         ;
@@ -225,11 +226,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc               ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc             ;         ;
 ; db/altsyncram_tq92.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/db/altsyncram_tq92.tdf         ;         ;
-; dual_port_RAM0.hex               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_RAM0.hex             ;         ;
+; dual_port_ram0.hex               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_ram0.hex             ;         ;
 ; db/altsyncram_uq92.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/db/altsyncram_uq92.tdf         ;         ;
-; dual_port_RAM1.hex               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_RAM1.hex             ;         ;
+; dual_port_ram1.hex               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_ram1.hex             ;         ;
 ; db/altsyncram_vq92.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/db/altsyncram_vq92.tdf         ;         ;
-; dual_port_RAM2.hex               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_RAM2.hex             ;         ;
+; dual_port_ram2.hex               ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/dual_port_ram2.hex             ;         ;
 ; altpll.tdf                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altpll.tdf               ;         ;
 ; stratix_pll.inc                  ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_pll.inc          ;         ;
 ; stratixii_pll.inc                ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratixii_pll.inc        ;         ;
@@ -242,20 +243,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+------------+
 ; Resource                                    ; Usage      ;
 +---------------------------------------------+------------+
-; Estimated Total logic elements              ; 448        ;
+; Estimated Total logic elements              ; 374        ;
 ;                                             ;            ;
-; Total combinational functions               ; 372        ;
+; Total combinational functions               ; 322        ;
 ; Logic element usage by number of LUT inputs ;            ;
-;     -- 4 input functions                    ; 176        ;
-;     -- 3 input functions                    ; 33         ;
-;     -- <=2 input functions                  ; 163        ;
+;     -- 4 input functions                    ; 154        ;
+;     -- 3 input functions                    ; 59         ;
+;     -- <=2 input functions                  ; 109        ;
 ;                                             ;            ;
 ; Logic elements by mode                      ;            ;
-;     -- normal mode                          ; 279        ;
-;     -- arithmetic mode                      ; 93         ;
+;     -- normal mode                          ; 220        ;
+;     -- arithmetic mode                      ; 102        ;
 ;                                             ;            ;
-; Total registers                             ; 255        ;
-;     -- Dedicated logic registers            ; 255        ;
+; Total registers                             ; 179        ;
+;     -- Dedicated logic registers            ; 179        ;
 ;     -- I/O registers                        ; 0          ;
 ;                                             ;            ;
 ; I/O pins                                    ; 165        ;
@@ -264,9 +265,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- PLLs                                 ; 1          ;
 ;                                             ;            ;
 ; Maximum fan-out node                        ; CLOCK_50_I ;
-; Maximum fan-out                             ; 257        ;
-; Total fan-out                               ; 2261       ;
-; Average fan-out                             ; 2.85       ;
+; Maximum fan-out                             ; 181        ;
+; Total fan-out                               ; 1813       ;
+; Average fan-out                             ; 2.72       ;
 +---------------------------------------------+------------+
 
 
@@ -275,15 +276,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node               ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                         ; Library Name ;
 +------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------+--------------+
-; |PROJECT                                 ; 372 (90)          ; 255 (34)     ; 0           ; 0            ; 0       ; 0         ; 165  ; 0            ; |PROJECT                                                                                    ; work         ;
-;    |Milestone_2:M2_unit|                 ; 2 (0)             ; 3 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|Milestone_2:M2_unit                                                                ; work         ;
-;       |FS:FS_unit|                       ; 2 (2)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit                                                     ; work         ;
-;    |PB_Controller:PB_unit|               ; 32 (32)           ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|PB_Controller:PB_unit                                                              ; work         ;
-;    |SRAM_Controller:SRAM_unit|           ; 1 (1)             ; 53 (53)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|SRAM_Controller:SRAM_unit                                                          ; work         ;
+; |PROJECT                                 ; 322 (28)          ; 179 (7)      ; 0           ; 0            ; 0       ; 0         ; 165  ; 0            ; |PROJECT                                                                                    ; work         ;
+;    |Milestone_2:M2_unit|                 ; 138 (2)           ; 55 (3)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|Milestone_2:M2_unit                                                                ; work         ;
+;       |FS:FS_unit|                       ; 136 (136)         ; 52 (52)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit                                                     ; work         ;
+;    |SRAM_Controller:SRAM_unit|           ; 1 (1)             ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|SRAM_Controller:SRAM_unit                                                          ; work         ;
 ;       |Clock_100_PLL:Clock_100_PLL_inst| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|SRAM_Controller:SRAM_unit|Clock_100_PLL:Clock_100_PLL_inst                         ; work         ;
 ;          |altpll:altpll_component|       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|SRAM_Controller:SRAM_unit|Clock_100_PLL:Clock_100_PLL_inst|altpll:altpll_component ; work         ;
-;    |UART_SRAM_interface:UART_unit|       ; 129 (79)          ; 81 (46)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|UART_SRAM_interface:UART_unit                                                      ; work         ;
-;       |UART_Receive_Controller:UART_RX|  ; 50 (50)           ; 35 (35)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX                      ; work         ;
+;    |UART_SRAM_interface:UART_unit|       ; 37 (36)           ; 27 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|UART_SRAM_interface:UART_unit                                                      ; work         ;
+;       |UART_Receive_Controller:UART_RX|  ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX                      ; work         ;
 ;    |VGA_SRAM_interface:VGA_unit|         ; 65 (11)           ; 54 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|VGA_SRAM_interface:VGA_unit                                                        ; work         ;
 ;       |VGA_Controller:VGA_unit|          ; 54 (54)           ; 53 (53)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|VGA_SRAM_interface:VGA_unit|VGA_Controller:VGA_unit                                ; work         ;
 ;    |convert_hex_to_seven_segment:unit0|  ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PROJECT|convert_hex_to_seven_segment:unit0                                                 ; work         ;
@@ -441,14 +441,32 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+----------------------------------------------------+
-; State Machine - |PROJECT|Milestone_2:M2_unit|state ;
-+------------------+---------------------------------+
-; Name             ; state.S_M2_START                ;
-+------------------+---------------------------------+
-; state.S_M2_IDLE  ; 0                               ;
-; state.S_M2_START ; 1                               ;
-+------------------+---------------------------------+
++--------------------------------------------------------------------+
+; State Machine - |PROJECT|Milestone_2:M2_unit|state                 ;
++------------------+------------+-----------------+------------------+
+; Name             ; state.S_FS ; state.S_M2_IDLE ; state.S_M2_START ;
++------------------+------------+-----------------+------------------+
+; state.S_M2_IDLE  ; 0          ; 0               ; 0                ;
+; state.S_FS       ; 1          ; 1               ; 0                ;
+; state.S_M2_START ; 0          ; 1               ; 1                ;
++------------------+------------+-----------------+------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state                                                                                 ;
++------------------+-----------------+-----------------+-----------------+---------------+-----------------+-----------------+------------------+-----------------+
+; Name             ; state.S_MM_LO_2 ; state.S_MM_LO_1 ; state.S_MM_LO_0 ; state.S_MM_CC ; state.S_MM_LI_1 ; state.S_MM_LI_0 ; state.S_MM_START ; state.S_MM_IDLE ;
++------------------+-----------------+-----------------+-----------------+---------------+-----------------+-----------------+------------------+-----------------+
+; state.S_MM_IDLE  ; 0               ; 0               ; 0               ; 0             ; 0               ; 0               ; 0                ; 0               ;
+; state.S_MM_START ; 0               ; 0               ; 0               ; 0             ; 0               ; 0               ; 1                ; 1               ;
+; state.S_MM_LI_0  ; 0               ; 0               ; 0               ; 0             ; 0               ; 1               ; 0                ; 1               ;
+; state.S_MM_LI_1  ; 0               ; 0               ; 0               ; 0             ; 1               ; 0               ; 0                ; 1               ;
+; state.S_MM_CC    ; 0               ; 0               ; 0               ; 1             ; 0               ; 0               ; 0                ; 1               ;
+; state.S_MM_LO_0  ; 0               ; 0               ; 1               ; 0             ; 0               ; 0               ; 0                ; 1               ;
+; state.S_MM_LO_1  ; 0               ; 1               ; 0               ; 0             ; 0               ; 0               ; 0                ; 1               ;
+; state.S_MM_LO_2  ; 1               ; 0               ; 0               ; 0             ; 0               ; 0               ; 0                ; 1               ;
++------------------+-----------------+-----------------+-----------------+---------------+-----------------+-----------------+------------------+-----------------+
 
 
 Encoding Type:  One-Hot
@@ -469,287 +487,364 @@ Encoding Type:  One-Hot
 +------------------------+-----------------+-----------------+------------------------+-----------------+-----------------+-----------------+-----------------+------------------+-----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                           ;
-+---------------------------------------------------------------------------+------------------------------------------------------------------+
-; Register name                                                             ; Reason for Removal                                               ;
-+---------------------------------------------------------------------------+------------------------------------------------------------------+
-; Milestone_2:M2_unit|FS:FS_unit|FS_write_enable                            ; Lost fanout                                                      ;
-; Milestone_1:M1_unit|Y_compare_address[0..4]                               ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_1:M1_unit|Y_buff[8..31]                                         ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[31]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[31] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[30]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[30] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[29]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[29] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[28]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[28] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[27]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[27] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[26]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[26] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[25]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[25] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[24]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[24] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[23]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[23] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[22]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[22] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[21]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[21] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[20]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[20] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[19]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[19] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[18]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[18] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[17]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[17] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[16]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[16] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[15]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[15] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[14]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[14] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[13]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[13] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[12]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[12] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[11]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[11] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[10]                      ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[10] ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[9]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[9]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[8]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[8]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[7]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[7]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[6]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[6]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[5]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[5]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[4]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[4]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[3]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[3]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[2]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[2]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[1]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[1]  ;
-; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[0]                       ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[0]  ;
-; VGA_SRAM_interface:VGA_unit|VGA_blue[1]                                   ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
-; VGA_SRAM_interface:VGA_unit|VGA_green[0,1]                                ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
-; VGA_SRAM_interface:VGA_unit|VGA_red[0,1]                                  ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
-; Milestone_1:M1_unit|Y_RGB[8,9,11..31]                                     ; Merged with Milestone_1:M1_unit|Y_RGB[10]                        ;
-; Milestone_1:M1_unit|U_RGB[24..31]                                         ; Merged with Milestone_1:M1_unit|U_RGB[23]                        ;
-; Milestone_1:M1_unit|V_RGB[24..31]                                         ; Merged with Milestone_1:M1_unit|V_RGB[23]                        ;
-; Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_U[24..31]                       ; Merged with Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_U[23]      ;
-; Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_V[24..31]                       ; Merged with Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_V[23]      ;
-; Milestone_2:M2_unit|FS:FS_unit|C_END[1]                                   ; Merged with Milestone_2:M2_unit|FS:FS_unit|C_END[0]              ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[17]                           ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[14]      ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[9]                            ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[15]      ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[13]                           ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[10]      ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[1..8]                         ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[0]       ;
-; Milestone_2:M2_unit|FS:FS_unit|C_END[5]                                   ; Merged with Milestone_2:M2_unit|FS:FS_unit|C_END[2]              ;
-; Milestone_2:M2_unit|FS:FS_unit|C_END[0]                                   ; Stuck at VCC due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[11]                           ; Stuck at VCC due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[0]                            ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|C_END[3]                                   ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_1:M1_unit|Y_RGB[10]                                             ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LI_1                            ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LI_2                            ; Lost fanout                                                      ;
-; state~9                                                                   ; Lost fanout                                                      ;
-; state~10                                                                  ; Lost fanout                                                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~14                             ; Lost fanout                                                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~15                             ; Lost fanout                                                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~16                             ; Lost fanout                                                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~17                             ; Lost fanout                                                      ;
-; UART_SRAM_interface:UART_unit|UART_SRAM_state~11                          ; Lost fanout                                                      ;
-; UART_SRAM_interface:UART_unit|UART_SRAM_state~12                          ; Lost fanout                                                      ;
-; UART_SRAM_interface:UART_unit|UART_SRAM_state~13                          ; Lost fanout                                                      ;
-; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state~8 ; Lost fanout                                                      ;
-; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state~9 ; Lost fanout                                                      ;
-; Milestone_1:M1_unit|state~30                                              ; Lost fanout                                                      ;
-; Milestone_1:M1_unit|state~31                                              ; Lost fanout                                                      ;
-; Milestone_1:M1_unit|state~32                                              ; Lost fanout                                                      ;
-; Milestone_1:M1_unit|state~33                                              ; Lost fanout                                                      ;
-; Milestone_1:M1_unit|state~34                                              ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|state~7                                               ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|state~8                                               ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|state~9                                               ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|state~10                                              ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|FS:FS_unit|state~9                                    ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|FS:FS_unit|state~10                                   ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|FS:FS_unit|state~11                                   ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|FS:FS_unit|state~13                                   ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LI_3                            ; Stuck at GND due to stuck port data_in                           ;
-; M2_start                                                                  ; Lost fanout                                                      ;
-; Milestone_2:M2_unit|state.S_M2_START                                      ; Lost fanout                                                      ;
-; state.S_TOP_IDLE                                                          ; Merged with Milestone_2:M2_unit|FS:FS_unit|state.S_FS_START      ;
-; state.S_TOP_M1                                                            ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_COMMON_CASE                     ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[16]                           ; Stuck at VCC due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|C_END[2]                                   ; Stuck at VCC due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LO_1                            ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LO_2                            ; Stuck at GND due to stuck port data_in                           ;
-; VGA_enable                                                                ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|SRAM_address[4..17]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LO_3                            ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|SRAM_address[0..3]                            ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][8]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][0]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][9]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][1]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][10]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][2]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][11]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][3]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][12]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][4]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][13]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][5]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][14]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][6]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][15]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][7]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][0]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][8]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][1]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][9]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][2]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][10]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][3]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][11]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][4]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][12]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][5]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][13]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][6]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][14]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][7]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][15]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][8]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][0]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][9]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][1]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][10]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][2]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][11]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][3]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][12]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][4]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][13]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][5]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][14]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][6]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][15]                          ; Stuck at GND due to stuck port clock_enable                      ;
-; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][7]                           ; Stuck at GND due to stuck port clock_enable                      ;
-; state.S_TOP_VGA                                                           ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[4..9,12,14,15,17]             ; Stuck at GND due to stuck port data_in                           ;
-; M1_start                                                                  ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|CB[1]                                      ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_WAIT_NEW_PIXEL_ROW        ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_3        ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_2        ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_0        ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_5     ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_4     ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_3     ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_1        ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_2     ; Stuck at GND due to stuck port data_in                           ;
-; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_1     ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|CB[2..4]                                   ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|RB[0..4]                                   ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|CB[5]                                      ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[12,14,15]                     ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|CB[0]                                      ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[0..3]                         ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|C_END[4]                                   ; Stuck at GND due to stuck port data_in                           ;
-; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[16]                           ; Merged with Milestone_2:M2_unit|FS:FS_unit|SRAM_address[13]      ;
-; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[13]                           ; Merged with Milestone_2:M2_unit|FS:FS_unit|SRAM_address[11]      ;
-; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[11]                           ; Merged with Milestone_2:M2_unit|FS:FS_unit|SRAM_address[10]      ;
-; VGA_SRAM_interface:VGA_unit|VGA_red[2..9]                                 ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
-; VGA_SRAM_interface:VGA_unit|VGA_green[2..9]                               ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
-; VGA_SRAM_interface:VGA_unit|VGA_blue[2..9]                                ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[10]                           ; Stuck at VCC due to stuck port data_in                           ;
-; Total Number of Removed Registers = 313                                   ;                                                                  ;
-+---------------------------------------------------------------------------+------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                             ;
++---------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+; Register name                                                                               ; Reason for Removal                                               ;
++---------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+; Milestone_2:M2_unit|SRAM_we_n                                                               ; Stuck at VCC due to stuck port data_in                           ;
+; Milestone_2:M2_unit|FS:FS_unit|FS_write_enable                                              ; Lost fanout                                                      ;
+; Milestone_1:M1_unit|Y_compare_address[0..4]                                                 ; Stuck at GND due to stuck port data_in                           ;
+; Milestone_1:M1_unit|Y_buff[8..31]                                                           ; Stuck at GND due to stuck port data_in                           ;
+; Milestone_2:M2_unit|SRAM_write_data[0..15]                                                  ; Stuck at GND due to stuck port data_in                           ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[31]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[31] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[30]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[30] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[29]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[29] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[28]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[28] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[27]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[27] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[26]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[26] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[25]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[25] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[24]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[24] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[23]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[23] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[22]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[22] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[21]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[21] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[20]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[20] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[19]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[19] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[18]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[18] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[17]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[17] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[16]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[16] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[15]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[15] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[14]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[14] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[13]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[13] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[12]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[12] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[11]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[11] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[10]                                        ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[10] ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[9]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[9]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[8]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[8]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[7]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[7]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[6]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[6]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[5]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[5]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[4]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[4]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[3]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[3]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[2]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[2]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[1]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[1]  ;
+; Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_acc[0]                                         ; Merged with Milestone_1:M1_unit|RGB_Converter:RGB_unit|R_acc[0]  ;
+; VGA_SRAM_interface:VGA_unit|VGA_blue[1]                                                     ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
+; VGA_SRAM_interface:VGA_unit|VGA_green[0,1]                                                  ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
+; VGA_SRAM_interface:VGA_unit|VGA_red[0,1]                                                    ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
+; Milestone_1:M1_unit|Y_RGB[8,9,11..31]                                                       ; Merged with Milestone_1:M1_unit|Y_RGB[10]                        ;
+; Milestone_1:M1_unit|U_RGB[24..31]                                                           ; Merged with Milestone_1:M1_unit|U_RGB[23]                        ;
+; Milestone_1:M1_unit|V_RGB[24..31]                                                           ; Merged with Milestone_1:M1_unit|V_RGB[23]                        ;
+; Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_U[24..31]                                         ; Merged with Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_U[23]      ;
+; Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_V[24..31]                                         ; Merged with Milestone_1:M1_unit|FIR:FIR_unit|FIR_BUFF_V[23]      ;
+; Milestone_2:M2_unit|FS:FS_unit|C_END[1]                                                     ; Merged with Milestone_2:M2_unit|FS:FS_unit|C_END[0]              ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[17]                                             ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[14]      ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[9]                                              ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[15]      ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[13]                                             ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[10]      ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[1..8]                                           ; Merged with Milestone_2:M2_unit|FS:FS_unit|Base_address[0]       ;
+; Milestone_2:M2_unit|FS:FS_unit|C_END[5]                                                     ; Merged with Milestone_2:M2_unit|FS:FS_unit|C_END[2]              ;
+; Milestone_2:M2_unit|FS:FS_unit|C_END[0]                                                     ; Stuck at VCC due to stuck port data_in                           ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[11]                                             ; Stuck at VCC due to stuck port data_in                           ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[0]                                              ; Stuck at GND due to stuck port data_in                           ;
+; Milestone_2:M2_unit|FS:FS_unit|C_END[3]                                                     ; Stuck at GND due to stuck port data_in                           ;
+; Milestone_1:M1_unit|Y_RGB[10]                                                               ; Stuck at GND due to stuck port data_in                           ;
+; Milestone_2:M2_unit|state.S_M2_START                                                        ; Lost fanout                                                      ;
+; state~9                                                                                     ; Lost fanout                                                      ;
+; state~10                                                                                    ; Lost fanout                                                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~14                                               ; Lost fanout                                                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~15                                               ; Lost fanout                                                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~16                                               ; Lost fanout                                                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state~17                                               ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_SRAM_state~11                                            ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_SRAM_state~12                                            ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_SRAM_state~13                                            ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state~8                   ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state~9                   ; Lost fanout                                                      ;
+; Milestone_1:M1_unit|state~30                                                                ; Lost fanout                                                      ;
+; Milestone_1:M1_unit|state~31                                                                ; Lost fanout                                                      ;
+; Milestone_1:M1_unit|state~32                                                                ; Lost fanout                                                      ;
+; Milestone_1:M1_unit|state~33                                                                ; Lost fanout                                                      ;
+; Milestone_1:M1_unit|state~34                                                                ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|state~8                                                                 ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|state~10                                                                ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|state~11                                                                ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state~12                                   ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state~13                                   ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state~14                                   ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state~15                                   ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state~16                                   ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|FS:FS_unit|state~9                                                      ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|FS:FS_unit|state~10                                                     ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|FS:FS_unit|state~11                                                     ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|FS:FS_unit|state~13                                                     ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_START                           ; Stuck at GND due to stuck port data_in                           ;
+; Milestone_2:M2_unit|MM_start                                                                ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|w_counter[0..6]                            ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|god_counter[0..6]                          ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_IDLE                            ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LI_0                            ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LI_1                            ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_CC                              ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LO_0                            ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LO_1                            ; Lost fanout                                                      ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LO_2                            ; Lost fanout                                                      ;
+; state.S_TOP_UART                                                                            ; Merged with state.S_TOP_M1                                       ;
+; state.S_TOP_M1                                                                              ; Stuck at GND due to stuck port data_in                           ;
+; UART_rx_initialize                                                                          ; Stuck at GND due to stuck port clock_enable                      ;
+; UART_rx_enable                                                                              ; Stuck at GND due to stuck port clock_enable                      ;
+; UART_timer[0..25]                                                                           ; Stuck at GND due to stuck port clock_enable                      ;
+; SRAM_Controller:SRAM_unit|SRAM_WE_N_O                                                       ; Stuck at VCC due to stuck port data_in                           ;
+; UART_done                                                                                   ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_enable                                                                                  ; Stuck at GND due to stuck port clock_enable                      ;
+; UART_state.S_UART_IDLE                                                                      ; Stuck at GND due to stuck port data_in                           ;
+; UART_state.S_WAIT_UART_RX                                                                   ; Stuck at GND due to stuck port data_in                           ;
+; UART_state.S_ENABLE_UART_RX                                                                 ; Stuck at GND due to stuck port data_in                           ;
+; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[0..15]                                        ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|SRAM_address[0..17]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][8]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][0]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][9]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][1]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][10]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][2]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][11]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][3]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][12]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][4]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][13]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][5]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][14]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][6]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][15]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][7]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][0]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][8]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][1]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][9]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][2]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][10]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][3]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][11]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][4]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][12]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][5]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][13]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][6]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][14]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][7]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][15]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][8]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][0]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][9]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][1]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][10]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][2]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][11]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][3]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][12]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][4]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][13]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][5]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][14]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][6]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][15]                                            ; Stuck at GND due to stuck port clock_enable                      ;
+; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][7]                                             ; Stuck at GND due to stuck port clock_enable                      ;
+; state.S_TOP_VGA                                                                             ; Stuck at GND due to stuck port data_in                           ;
+; M1_start                                                                                    ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_WAIT_NEW_PIXEL_ROW                          ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_3                          ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_2                          ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_0                          ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_5                       ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_4                       ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_3                       ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_FETCH_PIXEL_DATA_1                          ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_2                       ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_1                       ; Stuck at GND due to stuck port data_in                           ;
+; VGA_SRAM_interface:VGA_unit|VGA_red[2..9]                                                   ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
+; VGA_SRAM_interface:VGA_unit|VGA_green[2..9]                                                 ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
+; VGA_SRAM_interface:VGA_unit|VGA_blue[2..9]                                                  ; Merged with VGA_SRAM_interface:VGA_unit|VGA_blue[0]              ;
+; UART_SRAM_interface:UART_unit|UART_rx_enable                                                ; Stuck at GND due to stuck port data_in                           ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_SYNC          ; Stuck at GND due to stuck port data_in                           ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_ASSEMBLE_DATA ; Stuck at GND due to stuck port data_in                           ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[0..7]             ; Stuck at GND due to stuck port clock_enable                      ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[0..7]                 ; Stuck at GND due to stuck port data_in                           ;
+; UART_SRAM_interface:UART_unit|new_line_count[1]                                             ; Stuck at GND due to stuck port clock                             ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_count[0..2]              ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|new_line_count[0]                                             ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_STOP_BIT      ; Stuck at GND due to stuck port data_in                           ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data_in                    ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[0..9]             ; Lost fanout                                                      ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_IDLE          ; Lost fanout                                                      ;
+; Total Number of Removed Registers = 400                                                     ;                                                                  ;
++---------------------------------------------------------------------------------------------+------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                        ;
-+-------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------+
-; Register name                                         ; Reason for Removal        ; Registers Removed due to This Register                                         ;
-+-------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------+
-; state.S_TOP_M1                                        ; Stuck at GND              ; VGA_enable, VGA_SRAM_interface:VGA_unit|SRAM_address[4],                       ;
-;                                                       ; due to stuck port data_in ; VGA_SRAM_interface:VGA_unit|SRAM_address[5],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[6],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[7],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[8],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[9],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[10],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[11],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[12],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[13],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[14],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[15],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[16],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[17],                                  ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[3],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[2],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[1],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|SRAM_address[0],                                   ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][8],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][0],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][9],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][1],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][10],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][2],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][11],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][3],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][12],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][4],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][13],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][5],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][14],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][6],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][15],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][7],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][0],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][8],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][1],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][9],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][2],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][10],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][3],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][11],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][4],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][12],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][5],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][13],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][6],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][14],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][7],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][15],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][8],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][0],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][9],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][1],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][10],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][2],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][11],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][3],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][12],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][4],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][13],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][5],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][14],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][6],                               ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][15],                              ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][7], M1_start,                     ;
-;                                                       ;                           ; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_1          ;
-; Milestone_2:M2_unit|FS:FS_unit|C_END[3]               ; Stuck at GND              ; Milestone_2:M2_unit|FS:FS_unit|Base_address[16],                               ;
-;                                                       ; due to stuck port data_in ; Milestone_2:M2_unit|FS:FS_unit|C_END[2], Milestone_2:M2_unit|FS:FS_unit|CB[1], ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|CB[2], Milestone_2:M2_unit|FS:FS_unit|CB[3],    ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|CB[4], Milestone_2:M2_unit|FS:FS_unit|RB[1],    ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|RB[0], Milestone_2:M2_unit|FS:FS_unit|RB[3],    ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|RB[2], Milestone_2:M2_unit|FS:FS_unit|CB[5],    ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|CB[0],                                          ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|Base_address[10]                                ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LI_3        ; Stuck at GND              ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[4],                                ;
-;                                                       ; due to stuck port data_in ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[5],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[6],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[7],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[8],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[9],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[0],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[1],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[2],                                ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[3]                                 ;
-; Milestone_2:M2_unit|FS:FS_unit|Base_address[11]       ; Stuck at VCC              ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[12],                               ;
-;                                                       ; due to stuck port data_in ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[14],                               ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[15],                               ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|SRAM_address[17]                                ;
-; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_COMMON_CASE ; Stuck at GND              ; Milestone_2:M2_unit|FS:FS_unit|state.S_FS_LO_1,                                ;
-;                                                       ; due to stuck port data_in ; Milestone_2:M2_unit|FS:FS_unit|Base_address[14],                               ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|Base_address[12],                               ;
-;                                                       ;                           ; Milestone_2:M2_unit|FS:FS_unit|C_END[4]                                        ;
-; Milestone_2:M2_unit|state~8                           ; Lost Fanouts              ; M2_start, Milestone_2:M2_unit|state.S_M2_START                                 ;
-; Milestone_1:M1_unit|Y_buff[10]                        ; Stuck at GND              ; Milestone_1:M1_unit|Y_RGB[10]                                                  ;
-;                                                       ; due to stuck port data_in ;                                                                                ;
-+-------------------------------------------------------+---------------------------+--------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                               ;
++---------------------------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------------------------+
+; Register name                                                             ; Reason for Removal             ; Registers Removed due to This Register                                                       ;
++---------------------------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------------------------+
+; state.S_TOP_M1                                                            ; Stuck at GND                   ; UART_rx_initialize, UART_rx_enable, UART_timer[21], UART_timer[20], UART_timer[19],          ;
+;                                                                           ; due to stuck port data_in      ; UART_timer[18], UART_timer[17], UART_timer[16], UART_timer[15], UART_timer[14],              ;
+;                                                                           ;                                ; UART_timer[13], UART_timer[12], UART_timer[11], UART_timer[10], UART_timer[9],               ;
+;                                                                           ;                                ; UART_timer[8], UART_timer[7], UART_timer[6], UART_timer[5], UART_timer[4], UART_timer[3],    ;
+;                                                                           ;                                ; UART_timer[2], UART_timer[1], UART_timer[0], VGA_enable, UART_state.S_WAIT_UART_RX,          ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[4],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[5],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[6],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[7],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[8],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[9],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[10],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[11],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[12],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[13],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[14],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[15],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[16],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[17],                                                ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[3],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[2],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[1],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|SRAM_address[0],                                                 ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][8],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][0],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][9],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][1],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][10],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][2],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][11],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][3],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][12],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][4],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][13],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][5],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][14],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][6],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][15],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][7],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][0],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][8],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][1],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][9],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][2],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][10],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][3],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][11],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][4],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][12],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][5],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][13],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][6],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][14],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[2][7],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][15],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][8],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][0],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][9],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][1],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][10],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][2],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][11],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][3],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][12],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][4],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][13],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][5],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][14],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][6],                                             ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[1][15],                                            ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_sram_data[0][7], M1_start,                                   ;
+;                                                                           ;                                ; VGA_SRAM_interface:VGA_unit|VGA_SRAM_state.S_VS_NEW_PIXEL_ROW_DELAY_1,                       ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_rx_enable,                                                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_SYNC,          ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_ASSEMBLE_DATA, ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[7],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[6],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[5],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[4],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[3],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[2],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[1],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[0],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[7],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[6],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[5],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[4],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[3],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[2],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[1],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data[0],                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|new_line_count[1],                                             ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_count[2],                 ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_count[1],                 ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_count[0],                 ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|new_line_count[0],                                             ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_STOP_BIT,      ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RX_data_in,                    ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[0],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[1],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[2],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[3],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[4],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[5],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[7],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state.S_RXC_IDLE           ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state~12                 ; Lost Fanouts                   ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|w_counter[6],                               ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|god_counter[6],                             ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|god_counter[5],                             ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_IDLE,                            ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LI_0,                            ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LI_1,                            ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LO_0,                            ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LO_2                             ;
+; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_START         ; Stuck at GND                   ; Milestone_2:M2_unit|MM_start,                                                                ;
+;                                                                           ; due to stuck port data_in      ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|w_counter[5],                               ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|w_counter[4],                               ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|god_counter[4],                             ;
+;                                                                           ;                                ; Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state.S_MM_LO_1                             ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|RXC_state~8 ; Lost Fanouts                   ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[8],                ;
+;                                                                           ;                                ; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[9]                 ;
+; UART_timer[25]                                                            ; Stuck at GND                   ; UART_done, UART_state.S_UART_IDLE                                                            ;
+;                                                                           ; due to stuck port clock_enable ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_we_n                                             ; Stuck at VCC                   ; SRAM_Controller:SRAM_unit|SRAM_WE_N_O                                                        ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_1:M1_unit|Y_buff[10]                                            ; Stuck at GND                   ; Milestone_1:M1_unit|Y_RGB[10]                                                                ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[0]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[0]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[15]                                   ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[15]                                            ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[14]                                   ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[14]                                            ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[13]                                   ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[13]                                            ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[12]                                   ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[12]                                            ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[11]                                   ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[11]                                            ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[10]                                   ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[10]                                            ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[9]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[9]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[8]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[8]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[7]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[7]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[6]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[6]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[5]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[5]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[4]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[4]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[3]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[3]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[2]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[2]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
+; Milestone_2:M2_unit|SRAM_write_data[1]                                    ; Stuck at GND                   ; SRAM_Controller:SRAM_unit|SRAM_write_data_buf[1]                                             ;
+;                                                                           ; due to stuck port data_in      ;                                                                                              ;
++---------------------------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -757,12 +852,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 255   ;
-; Number of registers using Synchronous Clear  ; 82    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 255   ;
+; Total registers                              ; 179   ;
+; Number of registers using Synchronous Clear  ; 58    ;
+; Number of registers using Synchronous Load   ; 18    ;
+; Number of registers using Asynchronous Clear ; 179   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 150   ;
+; Number of registers using Clock Enable       ; 92    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -772,13 +867,12 @@ Encoding Type:  One-Hot
 +---------------------------------------------------------------------+---------+
 ; Inverted Register                                                   ; Fan out ;
 +---------------------------------------------------------------------+---------+
-; SRAM_Controller:SRAM_unit|SRAM_WE_N_O                               ; 17      ;
 ; SRAM_Controller:SRAM_unit|SRAM_CE_N_O                               ; 2       ;
-; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|Empty ; 19      ;
-; UART_SRAM_interface:UART_unit|SRAM_we_n                             ; 3       ;
-; PB_Controller:PB_unit|clock_1kHz_buf                                ; 1       ;
-; PB_Controller:PB_unit|clock_1kHz                                    ; 3       ;
-; Total number of inverted registers = 6                              ;         ;
+; UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|Empty ; 11      ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[10]                     ; 12      ;
+; Milestone_2:M2_unit|FS:FS_unit|Base_address[16]                     ; 5       ;
+; Milestone_2:M2_unit|FS:FS_unit|C_END[2]                             ; 3       ;
+; Total number of inverted registers = 5                              ;         ;
 +---------------------------------------------------------------------+---------+
 
 
@@ -787,61 +881,64 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|G_buff[0]                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_in_buffer[0][4]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_in_buffer[0][6]                           ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|G_acc[10]                         ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|FIR_accum[27]                               ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|FIR_accum[2]                                ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[5][0]                                ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|SRAM_write_data[15]                            ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|SRAM_write_data[1]                             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|B_out_buffer[1]                                          ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|G_buff[1]                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_in_buffer[0][3]                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_in_buffer[0][2]                           ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|G_acc[20]                         ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|FIR_accum[29]                               ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|FIR_accum[12]                               ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[4][0]                                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|SRAM_write_data[10]                            ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|SRAM_write_data[2]                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PROJECT|Milestone_1:M1_unit|B_out_buffer[2]                                          ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|SRAM_address[16]                              ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|new_line_count[1]                              ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][5]                                ;
-; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][5]                                ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|SRAM_Controller:SRAM_unit|SRAM_ADDRESS_O[1]                                  ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[3] ;
-; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][6]                                ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_RGB[1]                                                 ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|U_RGB[8]                                                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|U_RGB[0]                                                 ;
-; 6:1                ; 24 bits   ; 96 LEs        ; 72 LEs               ; 24 LEs                 ; Yes        ; |PROJECT|VGA_SRAM_interface:VGA_unit|VGA_green[4]                                     ;
-; 6:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_compare_address[13]                                    ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][4]                                ;
-; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][3]                                ;
-; 7:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|SC[2]                                         ;
-; 7:1                ; 18 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|SRAM_address[16]                               ;
-; 7:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_address[2]                                             ;
-; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][4]                                ;
-; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|SRAM_write_data[1]                                       ;
-; 8:1                ; 18 bits   ; 90 LEs        ; 18 LEs               ; 72 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|V_address[10]                                            ;
-; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[0][5]                                ;
-; 9:1                ; 3 bits    ; 18 LEs        ; 3 LEs                ; 15 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_count[2]  ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[4] ;
-; 10:1               ; 14 bits   ; 84 LEs        ; 28 LEs               ; 56 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|U_address[10]                                            ;
-; 11:1               ; 12 bits   ; 84 LEs        ; 12 LEs               ; 72 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_address[8]                                           ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[1][0]                                ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[2][6]                                ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |PROJECT|SRAM_Controller:SRAM_unit|SRAM_ADDRESS_O[3]                                  ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|god_counter[3]              ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_buffer[7] ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[5][7]                                ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_RGB[7]                                                 ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|V_RGB[17]                                                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|U_RGB[7]                                                 ;
+; 6:1                ; 24 bits   ; 96 LEs        ; 72 LEs               ; 24 LEs                 ; Yes        ; |PROJECT|VGA_SRAM_interface:VGA_unit|VGA_blue[4]                                      ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|w_counter[6]                ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_compare_address[10]                                    ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[1][2]                                ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[2][5]                                ;
+; 7:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|SC[3]                                         ;
+; 7:1                ; 18 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|SRAM_address[2]                                ;
+; 7:1                ; 14 bits   ; 56 LEs        ; 14 LEs               ; 42 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_address[6]                                             ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|U_SReg[0][6]                                ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|SRAM_write_data[7]                                       ;
+; 8:1                ; 18 bits   ; 90 LEs        ; 18 LEs               ; 72 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|V_address[11]                                            ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|V_SReg[0][0]                                ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 3 LEs                ; 15 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|data_count[0]  ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 10 LEs               ; 50 LEs                 ; Yes        ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|clock_count[3] ;
+; 10:1               ; 14 bits   ; 84 LEs        ; 28 LEs               ; 56 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|U_address[11]                                            ;
+; 11:1               ; 12 bits   ; 84 LEs        ; 12 LEs               ; 72 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_address[4]                                           ;
 ; 12:1               ; 2 bits    ; 16 LEs        ; 2 LEs                ; 14 LEs                 ; Yes        ; |PROJECT|VGA_SRAM_interface:VGA_unit|SRAM_address[1]                                  ;
-; 12:1               ; 16 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |PROJECT|VGA_SRAM_interface:VGA_unit|SRAM_address[5]                                  ;
-; 15:1               ; 14 bits   ; 140 LEs       ; 42 LEs               ; 98 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|SRAM_address[6]                                          ;
+; 12:1               ; 16 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |PROJECT|VGA_SRAM_interface:VGA_unit|SRAM_address[6]                                  ;
+; 15:1               ; 14 bits   ; 140 LEs       ; 42 LEs               ; 98 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|SRAM_address[1]                                          ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|C_END[0]                                      ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_address[10]                                            ;
-; 8:1                ; 3 bits    ; 15 LEs        ; 6 LEs                ; 9 LEs                  ; Yes        ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|Base_address[10]                              ;
-; 10:1               ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|U_address[8]                                             ;
-; 11:1               ; 6 bits    ; 42 LEs        ; 6 LEs                ; 36 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_address[9]                                           ;
-; 15:1               ; 4 bits    ; 40 LEs        ; 12 LEs               ; 28 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|SRAM_address[9]                                          ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|Y_address[12]                                            ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 6 LEs                ; 9 LEs                  ; Yes        ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|Base_address[11]                              ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|U_address[14]                                            ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 6 LEs                ; 36 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|RGB_address[11]                                          ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 12 LEs               ; 28 LEs                 ; Yes        ; |PROJECT|Milestone_1:M1_unit|SRAM_address[12]                                         ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |PROJECT|VGA_SRAM_interface:VGA_unit|VGA_SRAM_state                                   ;
 ; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|CB                                            ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_buffer[3]                       ;
-; 3:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; No         ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|Selector23                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|B_buffer[1]                       ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; No         ; |PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|Selector29                        ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|C_END                                         ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|RB                                            ;
-; 5:1                ; 14 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |PROJECT|Selector23                                                                   ;
+; 5:1                ; 14 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |PROJECT|Selector12                                                                   ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |PROJECT|Milestone_2:M2_unit|FS:FS_unit|Base_address                                  ;
 ; 6:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|Add0                                        ;
-; 7:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |PROJECT|Selector5                                                                    ;
-; 11:1               ; 4 bits    ; 28 LEs        ; 16 LEs               ; 12 LEs                 ; No         ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|Selector2      ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; No         ; |PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|Selector15                  ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 10 LEs               ; 15 LEs                 ; No         ; |PROJECT|Selector3                                                                    ;
+; 11:1               ; 4 bits    ; 28 LEs        ; 16 LEs               ; 12 LEs                 ; No         ; |PROJECT|UART_SRAM_interface:UART_unit|UART_Receive_Controller:UART_RX|Selector1      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 
 
@@ -1569,15 +1666,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Milestone_1:M1_unit|FIR:FIR_unit"                                                                                                                  ;
-+-------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port        ; Type  ; Severity ; Details                                                                                                                                      ;
-+-------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; common_case ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+-------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 +------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "Milestone_2:M2_unit|dual_port_RAM2:dual_port_RAM_inst2"                               ;
 +--------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1615,13 +1703,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Milestone_2:M2_unit|FS:FS_unit"                                                        ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; FS_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT"                                              ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; MM_done         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; T_S             ; Input  ; Info     ; Stuck at GND                                                                        ;
+; A_read_data     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; A_read_address  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; A_write_enable  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; C_read_data     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; C_read_address  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; P_write_data    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; P_write_address ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; P_write_enable  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -1639,11 +1736,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Thu Nov 22 17:41:20 2018
+    Info: Processing started: Fri Nov 23 13:30:07 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PROJECT -c PROJECT
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 1 design units, including 1 entities, in source file matrix_mult.v
-    Info (12023): Found entity 1: MATRIX_MULT
+Info (12021): Found 1 design units, including 1 entities, in source file matrix_multiplier.v
+    Info (12023): Found entity 1: MATRIX_MULTIPLIER
 Info (12021): Found 1 design units, including 1 entities, in source file fs.v
     Info (12023): Found entity 1: FS
 Info (12021): Found 1 design units, including 1 entities, in source file milestone_2.v
@@ -1662,7 +1759,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file uart_re
     Info (12023): Found entity 1: UART_Receive_Controller
 Info (12021): Found 1 design units, including 1 entities, in source file tb_sram_emulator.v
     Info (12023): Found entity 1: tb_SRAM_Emulator
-Warning (10274): Verilog HDL macro warning at tb_project_v2.v(45): overriding existing definition for macro "INPUT_FILE_NAME", which was defined in "tb_project_v2.v", line 42
 Info (12021): Found 1 design units, including 1 entities, in source file tb_project_v2.v
     Info (12023): Found entity 1: tb_project_v2
 Info (12021): Found 1 design units, including 1 entities, in source file convert_hex_to_seven_segment.v
@@ -1685,15 +1781,27 @@ Info (12021): Found 1 design units, including 1 entities, in source file clock_1
     Info (12023): Found entity 1: Clock_100_PLL
 Info (12127): Elaborating entity "PROJECT" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at PROJECT.v(112): object "start" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at PROJECT.v(115): object "start_counter" assigned a value but never read
 Info (10264): Verilog HDL Case Statement information at PROJECT.v(244): all case item expressions in this case statement are onehot
 Warning (10034): Output port "LED_GREEN_O" at PROJECT.v(30) has no driver
 Info (12128): Elaborating entity "Milestone_2" for hierarchy "Milestone_2:M2_unit"
-Warning (10034): Output port "SRAM_write_data" at Milestone_2.v(22) has no driver
-Warning (10034): Output port "SRAM_we_n" at Milestone_2.v(23) has no driver
+Warning (10858): Verilog HDL warning at Milestone_2.v(128): object MM_CT_RAM2_read_data used but never assigned
+Warning (10036): Verilog HDL or VHDL warning at Milestone_2.v(129): object "MM_CT_RAM2_address" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at Milestone_2.v(66): truncated value with size 18 to match size of target (16)
+Warning (10030): Net "MM_CT_RAM0_read_data" at Milestone_2.v(124) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MM_CT_RAM2_read_data" at Milestone_2.v(128) has no driver or initial value, using a default initial value '0'
 Warning (10034): Output port "M2_done" at Milestone_2.v(26) has no driver
 Info (12128): Elaborating entity "FS" for hierarchy "Milestone_2:M2_unit|FS:FS_unit"
-Info (10264): Verilog HDL Case Statement information at FS.v(61): all case item expressions in this case statement are onehot
+Info (10264): Verilog HDL Case Statement information at FS.v(62): all case item expressions in this case statement are onehot
+Info (12128): Elaborating entity "MATRIX_MULTIPLIER" for hierarchy "Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT"
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(46): object "count_enable" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(50): object "A_counter" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(51): object "C_counter" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(52): object "R_counter" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(63): object "CT_start" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(63): object "CT_done" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(63): object "CS_start" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at MATRIX_MULTIPLIER.v(63): object "CS_done" assigned a value but never read
+Warning (10034): Output port "A_write_enable" at MATRIX_MULTIPLIER.v(29) has no driver
 Info (12128): Elaborating entity "dual_port_RAM0" for hierarchy "Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component"
@@ -1958,7 +2066,7 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component|altsyncram_tq92:auto_generated|q_a[29]"
         Warning (14320): Synthesized away node "Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component|altsyncram_tq92:auto_generated|q_a[30]"
         Warning (14320): Synthesized away node "Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component|altsyncram_tq92:auto_generated|q_a[31]"
-Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
@@ -1973,11 +2081,12 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LED_GREEN_O[7]" is stuck at GND
     Warning (13410): Pin "LED_GREEN_O[8]" is stuck at GND
     Warning (13410): Pin "VGA_SYNC_O" is stuck at GND
+    Warning (13410): Pin "SRAM_WE_N_O" is stuck at VCC
     Warning (13410): Pin "UART_TX_O" is stuck at VCC
-Info (17049): 29 registers lost all their fanouts during netlist optimizations.
+Info (17049): 68 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 20 input pin(s) that do not drive logic
+Warning (21074): Design contains 22 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "PUSH_BUTTON_I[1]"
     Warning (15610): No output dependent on input pin "PUSH_BUTTON_I[2]"
     Warning (15610): No output dependent on input pin "PUSH_BUTTON_I[3]"
@@ -1998,15 +2107,17 @@ Warning (21074): Design contains 20 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SWITCH_I[14]"
     Warning (15610): No output dependent on input pin "SWITCH_I[15]"
     Warning (15610): No output dependent on input pin "SWITCH_I[16]"
-Info (21057): Implemented 637 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "PUSH_BUTTON_I[0]"
+    Warning (15610): No output dependent on input pin "UART_RX_I"
+Info (21057): Implemented 555 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 24 input pins
     Info (21059): Implemented 125 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 471 logic cells
+    Info (21061): Implemented 389 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 141 warnings
-    Info: Peak virtual memory: 4624 megabytes
-    Info: Processing ended: Thu Nov 22 17:41:25 2018
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 154 warnings
+    Info: Peak virtual memory: 4639 megabytes
+    Info: Processing ended: Fri Nov 23 13:30:12 2018
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:05
 

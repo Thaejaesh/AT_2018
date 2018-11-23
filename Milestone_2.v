@@ -50,6 +50,16 @@ logic  		 FS_done;
 logic  		 FS_start;
 
 logic 		 MM_done, MM_start; 
+logic [31:0] MM_CT_RAM0_read_data;
+logic [6:0]  MM_CT_RAM0_address;
+logic 		 MM_CT_RAM0_write_enable;
+
+logic [31:0] MM_CT_RAM2_read_data [1:0];
+logic [6:0]  MM_CT_RAM2_address	  [1:0];
+
+logic [31:0] MM_CT_RAM1_write_data;
+logic [6:0]  MM_CT_RAM1_address;	
+logic 		 MM_CT_RAM1_write_enable;
 
 
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
@@ -71,18 +81,24 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		end
 		
 		S_M2_START: begin
-			
+			FS_start <= 1'b1;
 			state <= S_FS;
 		end
 		
 		S_FS: begin
 			
-			FS_start <= 1'b1;
+			
  			if (FS_done) begin
 				FS_start <= 1'b0;
+				MM_start <= 1'b1;
 			end 
 			
-			MM_start <= 1'b1;
+			if (MM_done) begin
+				FS_start <= 1'b0;
+				MM_start <= 1'b0;
+			end
+			
+			
 		end
 		
 
@@ -116,11 +132,30 @@ FS FS_unit (
 );
 
 //FS assignments
-assign
+/* assign
 	RAM0_address[1]  	 = FS_write_address,
 	RAM0_write_data[1]	 = FS_write_data,
-	RAM0_write_enable[1] = FS_write_enable;
+	RAM0_write_enable[1] = FS_write_enable; */
+	
+always_comb begin
 
+	//T
+	MM_CT_RAM0_read_data = RAM1_read_data[0];
+	RAM1_address	  = MM_CT_RAM0_address;
+	
+	//C
+	RAM2_address[0] = MM_CT_RAM2_address[0];
+	RAM2_address[1] = MM_CT_RAM2_address[1];
+	//C
+	MM_CT_RAM2_read_data[0] = RAM2_read_data[0];
+	MM_CT_RAM2_read_data[1] = RAM2_read_data[1];
+	
+
+	
+end
+
+
+	
 MATRIX_MULTIPLIER MM_unit_CT(
 	.CLOCK_50_I(CLOCK_50_I),
 	.Resetn(Resetn),
@@ -130,17 +165,18 @@ MATRIX_MULTIPLIER MM_unit_CT(
 	
 	.T_S(1'b0),
 	
+	//[1]
+	.A_read_data(MM_CT_RAM0_read_data), 
+	.A_read_address(MM_CT_RAM0_address),
+	.A_write_enable(MM_CT_RAM0_write_enable),
 	
-	.A_read_data(RAM0_read_data[1]),
-	.A_read_address(RAM0_address[1]),
-	.A_write_enable(RAM0_write_enable[1]),
+	.C_read_data(MM_CT_RAM2_read_data),
+	.C_read_address(MM_CT_RAM2_address),
 	
-	.C_read_data(RAM2_read_data),
-	.C_read_address(RAM2_address),
 	
-	.P_write_data(RAM1_write_data),
-	.P_write_address(RAM1_address),
-	.P_write_enable(RAM1_write_enable)
+	.P_write_data(MM_CT_RAM1_write_data),
+	.P_write_address(MM_CT_RAM1_address),
+	.P_write_enable(MM_CT_RAM1_write_enable)
 	
 
 );

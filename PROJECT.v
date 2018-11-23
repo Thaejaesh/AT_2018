@@ -261,8 +261,7 @@ always_comb begin
 			SRAM_we_n = M2_SRAM_we_n;
 		end
 		
-		S_TOP_VGA: begin
-			
+		S_TOP_VGA: begin			
 			SRAM_address = VGA_SRAM_address;
 			SRAM_we_n = 1'b1;
 			SRAM_write_data = 16'd0;

@@ -159,26 +159,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			
 			if (SC == 6'd63) begin //Counter Logic to determine Read/Write Addresses
 				
-				if (CB == C_END) begin //Change C_END depending on whether in Y or U/V
-					CB <= 6'd0;
-					if (RB == 5'd29) begin
-						RB <= 5'd0;
-						C_END <= 6'd19;
-						
-						if (Base_address == 18'd76800) begin
-							Base_address <= 18'd153600;
-						end else if (Base_address == 18'd153600) begin
-							Base_address <= 18'd192000;
-						end
-						
-					end else begin
-						RB <= RB + 5'd1;
-						
-					end
-				end else begin
-					CB <= CB + 6'd1;
-				end
-				
+
 				state <= S_FS_LO_1;
 				
 				SC <= 6'd0;
@@ -196,6 +177,27 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		end
 		
 		S_FS_LO_3: begin
+			if (CB == C_END) begin //Change C_END depending on whether in Y or U/V
+				CB <= 6'd0;
+				if (RB == 5'd29) begin
+					RB <= 5'd0;
+					C_END <= 6'd19;
+					
+					if (Base_address == 18'd76800) begin
+						Base_address <= 18'd153600;
+					end else if (Base_address == 18'd153600) begin
+						Base_address <= 18'd192000;
+					end
+					
+				end else begin
+					RB <= RB + 5'd1;
+					
+				end
+			end else begin
+				CB <= CB + 6'd1;
+			end
+					
+		
 			FS_write_enable <= 1'b0;
 			FS_done <= 1'b1;
 			state <= S_FS_IDLE;
