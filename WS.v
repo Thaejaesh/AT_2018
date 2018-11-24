@@ -36,7 +36,7 @@ module WS (
 WS_state_type state;
  
 
-logic [4:0]  SC; //SC 0 -> 31 //Add 0 & 1 to read two values
+logic [5:0]  SC; //SC 0 -> 31 //Add 0 & 1 to read two values
 logic [5:0]  CB, C_END;
 logic [4:0]  RB;
 logic [17:0] Y_address, U_address, V_address, Base_address;
@@ -52,10 +52,10 @@ assign s_write_enable = 0;
 always_comb begin
 	if (Base_address == 18'd0) begin
 		//For Y: address = 160*RA + CA = (128 + 32)*RA + CA
-		write_address = {3'd0, RB, 1'd0, SC[4:3], 7'd0} + {5'd0, RB, 1'd0, SC[4:3], 5'd0} + {9'd0, CB, SC[2:0]} + Base_address;
+		write_address = {3'd0, RB, SC[5:3], 7'd0} + {5'd0, RB, SC[5:3], 5'd0} + {9'd0, CB, SC[2:0]} + Base_address;
 	end else begin
 		//For U and V: address = 80*RA + CA = (64 + 16)*RA + CA
-		write_address = {4'd0, RB, 1'd0, SC[4:3], 6'd0} + {6'd0, RB, 1'd0, SC[4:3], 4'd0} + {9'd0, CB, SC[2:0]} + Base_address;
+		write_address = {4'd0, RB, SC[5:3], 6'd0} + {6'd0, RB, SC[5:3], 4'd0} + {9'd0, CB, SC[2:0]} + Base_address;
 	end
 end 
 
