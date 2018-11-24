@@ -19,6 +19,7 @@ module FS (
 		/////// M2 FSM
 		input  logic            Resetn, 
 		output logic 			FS_done,
+		output logic			FS_memory_end,
 		input  logic 			FS_start,		
 		
 		/////// SRAM
@@ -91,16 +92,17 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		
 		//SRAM_we_n <= 1'b1;	
 		
-		FS_done <= 1'b0;
+		FS_done 		<= 1'b0;
+		FS_memory_end 	<= 1'b0;
 		FS_write_enable <= 1'b0;
-		SRAM_address <= 18'd76800;				
-		Base_address <= 18'd76800;
-		SC <= 6'd0;
-		CB <= 6'd0;
-		RB <= 5'd0;
-		C_END <= 6'd39;
+		SRAM_address 	<= 18'd76800;				
+		Base_address 	<= 18'd76800;
+		SC 				<= 6'd0;
+		CB 				<= 6'd0;
+		RB 				<= 5'd0;
+		C_END 			<= 6'd39;
 		
-		SRAM_address <= 18'd0;
+		SRAM_address 	<= 18'd0;
 	end else begin
 
 		case (state)
@@ -108,16 +110,17 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		S_FS_START: begin
 
 			//SRAM_we_n <= 1'b1;
-			FS_done <= 1'b0;
+			FS_done 		<= 1'b0;
+			FS_memory_end 	<= 1'b0;
 			
-			SRAM_address <= 18'd76800;				
-			Base_address <= 18'd76800;
-			C_END <= 6'd39;
-			SC <= 6'd0;
-			CB <= 6'd0;
-			RB <= 5'd0;			
+			SRAM_address 	<= 18'd76800;				
+			Base_address 	<= 18'd76800;
+			C_END 			<= 6'd39;
+			SC 				<= 6'd0;
+			CB 				<= 6'd0;
+			RB				<= 5'd0;			
 			
-			state <= S_FS_IDLE;
+			state			<= S_FS_IDLE;
 		end		
 		
 		S_FS_IDLE: begin
@@ -188,6 +191,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 						Base_address <= 18'd153600;
 					end else if (Base_address == 18'd153600) begin
 						Base_address <= 18'd192000;
+					end else if (Base_address == 18'd192000) begin
+						FS_memory_end <= 1'b1;
 					end
 					
 				end else begin

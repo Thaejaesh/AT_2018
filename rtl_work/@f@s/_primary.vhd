@@ -5,6 +5,7 @@ entity FS is
         CLOCK_50_I      : in     vl_logic;
         Resetn          : in     vl_logic;
         FS_done         : out    vl_logic;
+        FS_memory_end   : out    vl_logic;
         FS_start        : in     vl_logic;
         SRAM_address    : out    vl_logic_vector(17 downto 0);
         SRAM_read_data  : in     vl_logic_vector(15 downto 0);

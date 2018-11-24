@@ -47,6 +47,7 @@ logic [31:0] FS_write_data;
 logic [6:0]  FS_write_address;
 logic  		 FS_write_enable;
 logic  		 FS_done;
+logic		 FS_memory_end;
 logic  		 FS_start;
 
 //Compute T
@@ -66,7 +67,7 @@ logic 		 MM_CT_RAM1_write_enable;
 logic 		 MM_CS_done, MM_CS_start; 
 logic [31:0] MM_CS_RAM1_read_data;
 logic [6:0]	 MM_CS_RAM1_address;
-logic 		 MM_CT_RAM1_write_enable;
+logic 		 MM_CS_RAM1_write_enable;
 
 logic [31:0] MM_CS_RAM2_read_data [1:0];
 logic [6:0]  MM_CS_RAM2_address	  [1:0];
@@ -115,24 +116,45 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		
 		S_CT: begin
 			
-						
+									
 			if (MM_CT_done) begin
 				FS_start 	<= 1'b1;
 				MM_CT_start <= 1'b0;
 				MM_CS_start <= 1'b1;
+				state		<= S_CS;
+			end	else begin
+				MM_CT_start <= 1'b0;
+				FS_start 	<= 1'b0;
 			end
 			
+		end
+		
+		S_CS: begin
+						
 			if (MM_CS_done) begin
-				MM_CT_start <= 1'b1;
-				WS_start 	<= 1'b1;
+				MM_CS_start <= 1'b0;				
+				WS_start	<= 1'b1;
+				
+				if (FS_memory_end) begin
+					state 	<= S_WS;
+				end else begin
+					MM_CT_start	<= 1'b1;
+					state 	<= S_CT;
+				end
+				
+			end else begin
+				MM_CS_start <= 1'b0;	
+				FS_start	<= 1'b0;
+				MM_CT_start <= 1'b0;
+			
 			end
-			
-			if (WS_done) begin
-				WS_start <= 1'b0;
-			
-			end
-			
-			
+		
+		end
+		
+		
+		S_WS: begin
+		
+		
 		end
 		
 
@@ -152,6 +174,7 @@ FS FS_unit (
 	.SRAM_read_data(SRAM_read_data),
 	
 	.FS_done(FS_done),
+	.FS_memory_end(FS_memory_end),
 	.FS_start(FS_start),
 	
 	.FS_write_data(FS_write_data),

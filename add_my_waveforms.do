@@ -9,11 +9,18 @@ add wave uut/state
 add wave uut/M2_unit/state
 add wave -divider 
 add wave -divider 
+
+add wave uut/M2_unit/FS_memory_end
 add wave uut/M2_unit/FS_start
 add wave uut/M2_unit/FS_done
+
+add wave -divider 
 add wave uut/M2_unit/MM_CT_start
 add wave uut/M2_unit/MM_CT_done
-
+add wave -divider 
+add wave uut/M2_unit/MM_CS_start
+add wave uut/M2_unit/MM_CS_done
+add wave -divider 
 
 add wave uut/M2_unit/FS_unit/state
 add wave -unsigned uut/M2_unit/FS_unit/write_address

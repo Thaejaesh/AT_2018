@@ -205,7 +205,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		end
 		
 		S_MM_IDLE: begin
-			
+			MM_done <= 1'b0;
 			if (MM_start) begin
 				//count_enable <= 1'b1;
 				state <= S_MM_LI_0;
@@ -214,7 +214,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 				end else begin
 					CS_start <= 1'b1;
 				end
-				MM_done <= 1'b0;
+				
 			end
 
 		end
