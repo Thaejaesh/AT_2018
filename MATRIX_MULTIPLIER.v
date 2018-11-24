@@ -111,6 +111,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		product[2]  	<= 32'd0;
 		product[3]  	<= 32'd0;	
 		product_counter <=  6'd0;
+		P_write_enable 	<=  1'b0;
 	end else begin
 	
 		if (w_counter[2:0] == 3'd0) begin
@@ -130,10 +131,10 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		
 		if (w_counter[2:0] == 3'd7) begin
 
-			product_out[0] <= product[0];
-			product_out[1] <= product[1];
-			product_out[2] <= product[2];
-			product_out[3] <= product[3];		
+			product_out[0] <= product[0] + mult_out[0];
+			product_out[1] <= product[1] + mult_out[1];
+			product_out[2] <= product[2] + mult_out[2];
+			product_out[3] <= product[3] + mult_out[3];		
 		
 		end
 		
@@ -144,22 +145,26 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 				P_write_enable <= 1'b1;
 			end else if ( w_counter[2:0] == 3'd1) begin
 				P_write_data 	<= product_out[0];
-				P_write_address <= product_counter;
+				//P_write_address <= product_counter;
+				P_write_address <= {product_counter[2:0] , product_counter[5:3]};
 				product_counter <= product_counter + 6'd1;
 			
 			end else if ( w_counter[2:0] == 3'd2) begin
 				P_write_data	<= product_out[1];
-				P_write_address <= product_counter;
+				//P_write_address <= product_counter;
+				P_write_address <= {product_counter[2:0] , product_counter[5:3]};
 				product_counter <= product_counter + 6'd1;
 			
 			end else if ( w_counter[2:0] == 3'd3) begin
 				P_write_data	<= product_out[2];
-				P_write_address <= product_counter;
+				//P_write_address <= product_counter;
+				P_write_address <= {product_counter[2:0] , product_counter[5:3]};
 				product_counter <= product_counter + 6'd1;			
 			
 			end else if ( w_counter[2:0] == 3'd4) begin
 				P_write_data 	<= product_out[3];
-				P_write_address <= product_counter;
+				//P_write_address <= product_counter;
+				P_write_address <= {product_counter[2:0] , product_counter[5:3]};
 				product_counter <= product_counter + 6'd1;
 			
 			end else if ( w_counter[2:0] == 3'd5) begin
@@ -263,8 +268,9 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			
 			w_counter <= w_counter + 7'd1;
 			
-			
-			if (w_counter == 7'd6) begin
+			if (w_counter == 7'd5) begin
+				MM_done <= 1'b1;
+			end else if (w_counter == 7'd6) begin
 				MM_done <= 1'b1;
 				state <= S_MM_IDLE;
 			end

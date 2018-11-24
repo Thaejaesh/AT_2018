@@ -42,14 +42,15 @@ logic [31:0] RAM0_write_data[1:0], RAM1_write_data;
 logic        RAM0_write_enable[1:0], RAM1_write_enable;
 logic [31:0] RAM0_read_data[1:0], RAM1_read_data[1:0], RAM2_read_data[1:0];
 
-	
+//Fetch S'
 logic [31:0] FS_write_data;
 logic [6:0]  FS_write_address;
 logic  		 FS_write_enable;
 logic  		 FS_done;
 logic  		 FS_start;
 
-logic 		 MM_done, MM_start; 
+//Compute T
+logic 		 MM_CT_done, MM_CT_start; 
 logic [31:0] MM_CT_RAM0_read_data;
 logic [6:0]  MM_CT_RAM0_address;
 logic 		 MM_CT_RAM0_write_enable;
@@ -61,18 +62,36 @@ logic [31:0] MM_CT_RAM1_write_data;
 logic [6:0]  MM_CT_RAM1_address;	
 logic 		 MM_CT_RAM1_write_enable;
 
+//Compute S
+logic 		 MM_CS_done, MM_CS_start; 
+logic [31:0] MM_CS_RAM1_read_data;
+logic [6:0]	 MM_CS_RAM1_address;
+logic 		 MM_CT_RAM1_write_enable;
+
+logic [31:0] MM_CS_RAM2_read_data [1:0];
+logic [6:0]  MM_CS_RAM2_address	  [1:0];
+
+logic [31:0] MM_CS_RAM0_write_data;
+logic [6:0]  MM_CS_RAM0_address;
+logic 		 MM_CS_RAM0_write_enable;
+
+//Write S
+logic 		 WS_done, WS_start;
+
 
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (Resetn == 1'b0) begin
-		state <= S_M2_IDLE;	
-		SRAM_we_n <= 1'b1;
-		FS_start <= 1'b0;
-		MM_start <= 1'b0;
+		state 		<= S_M2_IDLE;	
+		SRAM_we_n 	<= 1'b1;
+		FS_start 	<= 1'b0;
+		MM_CT_start <= 1'b0;
+		MM_CS_start <= 1'b0;
+		WS_start 	<= 1'b0;
 	end else begin
 
 		case (state)
-		S_M2_IDLE	: begin
-			SRAM_we_n <= 1'b1;
+		S_M2_IDLE: begin
+			SRAM_we_n 		<= 1'b1;
 			SRAM_write_data <= 18'd0;
 			if (M2_start) begin
 				state <= S_M2_START;		
@@ -82,20 +101,35 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		
 		S_M2_START: begin
 			FS_start <= 1'b1;
-			state <= S_FS;
+			state <= S_FS;			
 		end
 		
 		S_FS: begin
 			
+			if (FS_done) begin
+				FS_start 	<= 1'b0;
+				MM_CT_start <= 1'b1;
+				state <= S_CT;
+			end
+		end
+		
+		S_CT: begin
 			
- 			if (FS_done) begin
-				FS_start <= 1'b0;
-				MM_start <= 1'b1;
-			end 
+						
+			if (MM_CT_done) begin
+				FS_start 	<= 1'b1;
+				MM_CT_start <= 1'b0;
+				MM_CS_start <= 1'b1;
+			end
 			
-			if (MM_done) begin
-				FS_start <= 1'b0;
-				MM_start <= 1'b0;
+			if (MM_CS_done) begin
+				MM_CT_start <= 1'b1;
+				WS_start 	<= 1'b1;
+			end
+			
+			if (WS_done) begin
+				WS_start <= 1'b0;
+			
 			end
 			
 			
@@ -106,11 +140,6 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		default: state <= S_M2_IDLE;
 		endcase
 	end
-end
-
-//Determine SRAM access
-always_comb begin
-
 end
 
 
@@ -140,7 +169,7 @@ FS FS_unit (
 always_comb begin
 
 	//T
-	MM_CT_RAM0_read_data = RAM1_read_data[0];
+	MM_CT_RAM0_read_data = RAM1_read_data[1];
 	RAM1_address	  = MM_CT_RAM0_address;
 	
 	//C
@@ -160,8 +189,8 @@ MATRIX_MULTIPLIER MM_unit_CT(
 	.CLOCK_50_I(CLOCK_50_I),
 	.Resetn(Resetn),
 
-	.MM_start(MM_start),
-	.MM_done(MM_done),
+	.MM_start(MM_CT_start),
+	.MM_done(MM_CT_done),
 	
 	.T_S(1'b0),
 	
@@ -180,6 +209,33 @@ MATRIX_MULTIPLIER MM_unit_CT(
 	
 
 );
+
+MATRIX_MULTIPLIER MM_unit_CS(
+	.CLOCK_50_I(CLOCK_50_I),
+	.Resetn(Resetn),
+
+	.MM_start(MM_CS_start),
+	.MM_done(MM_CS_done),
+	
+	.T_S(1'b1),
+	
+	//[1]
+	.A_read_data(MM_CS_RAM1_read_data), 
+	.A_read_address(MM_CS_RAM1_address),
+	.A_write_enable(MM_CS_RAM1_write_enable),
+	
+	.C_read_data(MM_CS_RAM2_read_data),
+	.C_read_address(MM_CS_RAM2_address),
+	
+	
+	.P_write_data(MM_CS_RAM0_write_data),
+	.P_write_address(MM_CS_RAM0_address),
+	.P_write_enable(MM_CS_RAM0_write_enable)
+	
+
+);
+
+
 
 //DPRAM for S and S' values
 dual_port_RAM0 dual_port_RAM_inst0 (
