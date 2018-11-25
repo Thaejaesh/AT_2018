@@ -33,19 +33,393 @@ M3_state_type state;
  
 logic common_case;
 
-logic [5:0]  SC, CB, C_END;
+logic [5:0]  SC;
+logic [5:0]  CB;
 logic [4:0]  RB;
+logic [1:0]  YUV;
 logic [17:0] Base_address;
 
+logic		 first_run;
+
+logic [5:0]  Num_write_cycles;
+logic [4:0]  Num_shifted;
+logic  		 Decode_enable;
+logic [47:0] M3_SReg;
+logic [47:0] Barrel_SReg;
+logic [5:0]  SReg_end;
+
+logic [5:0]  ZZ_position, next_ZZ;
+logic [5:0]  position;
+logic [3:0]  diagonal_index;
+logic		 Q_matrix;
+logic [2:0]  Q_shift;
+
+logic [15:0] WIDTH;
+logic [15:0] HEIGHT;
+
+
+//SRAM
+logic [17:0] read_address;
+//DPRAM
 logic [31:0] RAM3_write_data[1:0];
 logic [31:0] RAM3_read_data[1:0];
 logic [6:0]  RAM3_address[1:0];
 logic        RAM3_write_enable[1:0];
 
-logic [5:0]  ZZ_position, next_ZZ;
+assign SRAM_we_n = 1'b1;
+
+//Determine diagonal_index
+assign diagonal_index = {1'b0, ZZ_position[5:3]} + {1'b0, ZZ_position[2:0]};
+
+
+//Determine number of shifts for Q matrix point multiplication
+always_comb begin
+
+	case(Q_matrix) 
+	
+		1'b0: begin
+			
+			case(diagonal_index) 
+				
+				4'd0:  begin
+					Q_shift = 3'd3;
+				end
+				
+				4'd1:  begin
+					Q_shift = 3'd2;
+				end
+				
+				4'd2:  begin
+					Q_shift = 3'd3;
+				end
+				
+				4'd3:  begin
+					Q_shift = 3'd3;
+				end
+				
+				4'd4:  begin
+					Q_shift = 3'd4;
+				end
+				
+				4'd5:  begin
+					Q_shift = 3'd4;
+				end
+				
+				4'd6:  begin
+					Q_shift = 3'd5;
+				end
+				
+				4'd7:  begin
+					Q_shift = 3'd5;
+				end
+				
+				4'd8:  begin
+					Q_shift = 3'd6;
+				end
+				
+				4'd9:  begin
+					Q_shift = 3'd6;
+				end
+				
+				4'd10:  begin
+					Q_shift = 3'd6;
+				end
+				
+				4'd11:  begin
+					Q_shift = 3'd6;
+				end
+				
+				4'd12:  begin
+					Q_shift = 3'd6;
+				end
+				
+				4'd13:  begin
+					Q_shift = 3'd6;
+				end
+				
+				4'd14:  begin
+					Q_shift = 3'd6;
+				end
+				
+				default: begin 
+					Q_shift = 3'd0;
+				end
+			
+			endcase
+		
+		end
+		
+		
+		
+		1'b1: begin
+		
+			case(diagonal_index) 
+			
+				4'd0:  begin
+					Q_shift = 3'd3;
+				end
+				
+				4'd1:  begin
+					Q_shift = 3'd1;
+				end
+				
+				4'd2:  begin
+					Q_shift = 3'd1;
+				end
+				
+				4'd3:  begin
+					Q_shift = 3'd1;
+				end
+				
+				4'd4:  begin
+					Q_shift = 3'd2;
+				end
+				
+				4'd5:  begin
+					Q_shift = 3'd2;
+				end
+				
+				4'd6:  begin
+					Q_shift = 3'd3;
+				end
+				
+				4'd7:  begin
+					Q_shift = 3'd3;
+				end
+				
+				4'd8:  begin
+					Q_shift = 3'd4;
+				end
+				
+				4'd9:  begin
+					Q_shift = 3'd4;
+				end
+				
+				4'd10:  begin
+					Q_shift = 3'd4;
+				end
+				
+				4'd11:  begin
+					Q_shift = 3'd5;
+				end
+				
+				4'd12:  begin
+					Q_shift = 3'd5;
+				end
+				
+				4'd13:  begin
+					Q_shift = 3'd5;
+				end
+				
+				4'd14:  begin
+					Q_shift = 3'd5;
+				end
+				
+				default: begin 
+					Q_shift = 3'd0;
+				end	
+			endcase
+		
+		end
+
+	endcase
+end
+
+
+//Determine write data
+
+always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
+	if (Resetn == 1'b0) begin
+		first_run 		<= 1'b1;
+		Q_matrix		<= 1'b0;
+		ZZ_position 	<= 6'd0;
+		position		<= 6'd0;
+		Num_write_cycles<= 6'd0;
+		Num_shifted 	<= 5'd0;
+		Decode_enable	<= 1'b0;
+		SReg_end		<= 6'd47;
+		SC				<= 6'd0;
+		CB				<= 6'd0;
+		RB				<= 5'd0;
+		YUV				<= 2'd0;
+		read_address	<= 18'd76800;
+		M3_done 		<= 1'b0;
+		state 			<= S_M3_START;
+	end else begin
+
+		case (state)
+		S_M3_START: begin
+			first_run 		<= 1'b1;
+			Q_matrix		<= 1'b0;
+			ZZ_position 	<= 6'd0;
+			position		<= 6'd0;
+			Num_write_cycles<= 6'd0;
+			Num_shifted 	<= 5'd0;
+			Decode_enable	<= 1'b0;
+			SReg_end		<= 6'd47;
+			SC				<= 6'd0;
+			CB				<= 6'd0;
+			RB				<= 5'd0;
+			YUV				<= 2'd0;
+			read_address	<= 18'd76800;
+			M3_done 		<= 1'b0;
+			state 			<= S_M3_IDLE;			
+		end
+		
+		S_M3_IDLE: begin
+			M3_done <= 1'b0;
+			if (M3_start) begin
+				if (first_run) begin
+					state 	  <= S_M3_LI_H1;
+					first_run <= 1'b0;
+				end else begin
+					state     <= S_M3_CC;
+				end
+			end
+			
+		end
+		
+		/////////////////////////////////////////////////////
+		S_M3_LI_H1: begin
+			SRAM_address <= read_address;
+			read_address <= read_address + 18'd1;
+			state 		 <= S_M3_LI_H2;
+		end
+		
+		S_M3_LI_H2: begin
+			SRAM_address <= read_address;
+			read_address <= read_address + 18'd1;		
+			state <= S_M3_LI_H3;
+		end
+		
+		S_M3_LI_H3: begin
+			SRAM_address <= read_address;
+			read_address <= read_address + 18'd1;			
+			state	  <= S_M3_READ_DEAD;
+		end
+		
+		S_M3_READ_DEAD: begin
+			SRAM_address <= read_address;
+			read_address <= read_address + 18'd1;			
+			
+			if (SRAM_read_data == 16'hDEAD)
+				state <= S_M3_READ_BEEF;
+		end
+		
+		S_M3_READ_BEEF: begin
+			
+			if (SRAM_read_data == 16'hBEEF)
+				state <= S_M3_READ_WIDTH;
+		end
+		
+		S_M3_READ_WIDTH: begin
+			
+			Q_matrix <= SRAM_read_data[15];
+			//SHOULD ALWAYS BE 320 FOR OUR IMPLEMENTATION
+			WIDTH	 <=	{1'b0, SRAM_read_data[14:0]};	
+			state 	 <= S_M3_READ_HEIGHT;
+		end
+		
+		S_M3_READ_HEIGHT: begin
+			//SHOULD ALWAYS BE 240 FOR OUR IMPLEMENTATION
+			HEIGHT	 <= SRAM_read_data;
+			state	 <= S_M3_LI_1;
+		end
+		
+		
+		/////////////////////////////////////////////////////
+		S_M3_LI_1: begin
+			SRAM_address <= read_address;
+			read_address <= read_address + 18'd1;
+			state		 <= S_M3_LI_2;
+		end
+		
+		S_M3_LI_2: begin
+			SRAM_address <= read_address;
+			read_address <= read_address + 18'd1;
+			state 		 <= S_M3_LI_3;
+		end		
+		
+		S_M3_LI_3: begin
+			SRAM_address <= read_address;
+			read_address <= read_address + 18'd1;
+			state		 <= S_M3_LI_4;
+		end
+		
+		S_M3_LI_4: begin
+			M3_SReg[47:32]<= SRAM_read_data;
+			SReg_end	  <= 6'd32;
+			state		  <= S_M3_LI_5;
+		end	
+		
+		S_M3_LI_5: begin
+			M3_SReg[31:16] <= SRAM_read_data;
+			SReg_end	   <= 6'd16;
+			state 		   <= S_M3_LI_6;
+		end
+		
+		S_M3_LI_6: begin
+			M3_SReg[31:16] <= SRAM_read_data;
+			SReg_end	   <= 6'd0;
+			Decode_enable  <= 1'b1;
+			state 		   <= S_M3_CC;
+		end
+		
+		S_M3_CC: begin
+			
+			if (Decode_enable) begin
+			
+				case(M3_SReg[47:46]) 
+					
+					2'b00: begin
+
+					end
+					
+					2'b01: begin
+					
+					end
+					
+					2'b10: begin
+					
+					end
+					
+					
+					2'b11: begin
+					
+					end
+								
+				endcase			
+			
+			
+			end else begin
+			
+			
+			end		
+			
+		end
+		
+		default: state <= S_M3_IDLE;
+		endcase
+	end
+end
 
 
 
+
+//DPRAM for S and S' values
+dual_port_RAM0 dual_port_RAM_inst3 (
+	.address_a ( RAM3_address[0] ),  //S
+	.address_b ( RAM3_address[1] ),  //S'
+	.clock 	( CLOCK_50_I ),
+	.data_a ( RAM3_write_data[0] ),   //S
+	.data_b ( RAM3_write_data[1] ),   //S'
+	.wren_a ( RAM3_write_enable[0] ), //S
+	.wren_b ( RAM3_write_enable[1] ), //S'
+	.q_a ( RAM3_read_data[0] ), 	  //S
+	.q_b ( RAM3_read_data[1] ) 		  //S'
+);
+	
+//Next Zig-Zag position
 always_comb begin
 
 	next_ZZ = 6'd0;
@@ -180,63 +554,7 @@ always_comb begin
 		
 		default: next_ZZ = 6'd0;
 	endcase
-end
-
-
-
-always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
-	if (Resetn == 1'b0) begin
-		state 		<= S_M3_IDLE;	
-		FS_start 	<= 1'b0;
-		MM_CT_start <= 1'b0;
-		MM_CS_start <= 1'b0;
-		WS_start 	<= 1'b0;
-		M2_done 	<= 1'b0;
-	end else begin
-
-		case (state)
-		S_M2_IDLE: begin
-			if (M3_start) begin
-				state <= S_M2_START;		
-							
-			end
-		end
-		
-		S_M3_START: begin
-			FS_start <= 1'b1;
-			state <= S_FS;			
-		end
-		
-		default: state <= S_M2_IDLE;
-		endcase
-	end
-end
-
-
-//Multiplex memory access
-always_comb begin
-
-	case (state)	
-	
-	
-	endcase
-
-end
-
-
-//DPRAM for S and S' values
-dual_port_RAM0 dual_port_RAM_inst3 (
-	.address_a ( RAM3_address[0] ),  //S
-	.address_b ( RAM3_address[1] ),  //S'
-	.clock 	( CLOCK_50_I ),
-	.data_a ( RAM3_write_data[0] ),   //S
-	.data_b ( RAM3_write_data[1] ),   //S'
-	.wren_a ( RAM3_write_enable[0] ), //S
-	.wren_b ( RAM3_write_enable[1] ), //S'
-	.q_a ( RAM3_read_data[0] ), 	  //S
-	.q_b ( RAM3_read_data[1] ) 		  //S'
-);
-	
+end	
 	 
 
 endmodule

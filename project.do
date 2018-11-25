@@ -36,6 +36,7 @@ vlog -sv -svinputport=var -work rtl_work MATRIX_MULTIPLIER.v
 vlog -sv -svinputport=var -work rtl_work dual_port_RAM2.v
 vlog -sv -svinputport=var -work rtl_work dual_port_RAM1.v
 vlog -sv -svinputport=var -work rtl_work dual_port_RAM0.v
+vlog -sv -svinputport=var -work rtl_work Milestone_3.v
 
 
 # specify library for simulation

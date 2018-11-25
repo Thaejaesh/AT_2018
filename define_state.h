@@ -5,6 +5,22 @@
 typedef enum logic [4:0] {
 	
 	S_M3_START,
+	S_M3_LI_H1,
+	S_M3_LI_H2,
+	S_M3_LI_H3,	
+	S_M3_READ_DEAD,
+	S_M3_READ_BEEF,
+	S_M3_READ_WIDTH,
+	S_M3_READ_HEIGHT,
+	S_M3_LI_1,
+	S_M3_LI_2,
+	S_M3_LI_3,
+	S_M3_LI_4,
+	S_M3_LI_5,
+	
+	S_M3_CC,
+	S_M3_ZERO_TO_END,
+	
 	S_M3_IDLE
 	
 }M3_state_type;

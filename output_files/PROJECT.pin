@@ -71,50 +71,50 @@ Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage 
 GND                          : A2        : gnd    :                   :         :           :                
 VCCIO3                       : A3        : power  :                   : 3.3V    : 3         :                
 GND*                         : A4        :        :                   :         : 3         :                
-GND*                         : A5        :        :                   :         : 3         :                
+LED_GREEN_O[2]               : A5        : output : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : A6        :        :                   :         : 3         :                
-SEVEN_SEGMENT_N_O[1][6]      : A7        : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_ADDRESS_O[4]            : A8        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[1][4]      : A9        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[0][4]      : A10       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : A7        :        :                   :         : 3         :                
+GND*                         : A8        :        :                   :         : 3         :                
+SEVEN_SEGMENT_N_O[3][2]      : A9        : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[3][0]      : A10       : output : 3.3-V LVTTL       :         : 3         : N              
 VCCIO3                       : A11       : power  :                   : 3.3V    : 3         :                
 GND                          : A12       : gnd    :                   :         :           :                
 GND+                         : A13       :        :                   :         : 4         :                
-SRAM_DATA_IO[1]              : A14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SRAM_DATA_IO[14]             : A14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
 GND                          : A15       : gnd    :                   :         :           :                
 VCCIO4                       : A16       : power  :                   : 3.3V    : 4         :                
-SRAM_DATA_IO[8]              : A17       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[4][0]      : A18       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : A19       :        :                   :         : 4         :                
-SWITCH_I[12]                 : A20       : input  : 3.3-V LVTTL       :         : 4         : N              
-LED_GREEN_O[0]               : A21       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[4]               : A17       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[9]                : A18       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[5]                 : A19       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[0]                : A20       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[1]                 : A21       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : A22       :        :                   :         : 4         :                
 GND*                         : A23       :        :                   :         : 4         :                
 VCCIO4                       : A24       : power  :                   : 3.3V    : 4         :                
 GND                          : A25       : gnd    :                   :         :           :                
-GND*                         : AA1       :        :                   :         : 1         :                
+PUSH_BUTTON_I[3]             : AA1       : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : AA2       :        :                   :         : 1         :                
 GND*                         : AA3       :        :                   :         : 1         :                
 GND*                         : AA4       :        :                   :         : 1         :                
 GND*                         : AA5       :        :                   :         : 1         :                
 GND*                         : AA6       :        :                   :         : 1         :                
-PUSH_BUTTON_I[3]             : AA7       : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : AA7       :        :                   :         : 1         :                
 VCCA_PLL1                    : AA8       : power  :                   : 1.2V    :           :                
-GND*                         : AA9       :        :                   :         : 8         :                
+UART_TX_O                    : AA9       : output : 3.3-V LVTTL       :         : 8         : N              
 GND*                         : AA10      :        :                   :         : 8         :                
 GND*                         : AA11      :        :                   :         : 8         :                
-SEVEN_SEGMENT_N_O[0][0]      : AA12      : output : 3.3-V LVTTL       :         : 8         : N              
-GND*                         : AA13      :        :                   :         : 7         :                
-GND*                         : AA14      :        :                   :         : 7         :                
-GND*                         : AA15      :        :                   :         : 7         :                
+GND*                         : AA12      :        :                   :         : 8         :                
+SRAM_DATA_IO[9]              : AA13      : bidir  : 3.3-V LVTTL       :         : 7         : N              
+SRAM_DATA_IO[6]              : AA14      : bidir  : 3.3-V LVTTL       :         : 7         : N              
+SRAM_DATA_IO[7]              : AA15      : bidir  : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AA16      :        :                   :         : 7         :                
-SWITCH_I[5]                  : AA17      : input  : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AA17      :        :                   :         : 7         :                
 GND*                         : AA18      :        :                   :         : 7         :                
 VCCA_PLL4                    : AA19      : power  :                   : 1.2V    :           :                
 GND*                         : AA20      :        :                   :         : 7         :                
 GND_PLL4                     : AA21      : gnd    :                   :         :           :                
 VCCIO6                       : AA22      : power  :                   : 3.3V    : 6         :                
-GND*                         : AA23      :        :                   :         : 6         :                
+SWITCH_I[0]                  : AA23      : input  : 3.3-V LVTTL       :         : 6         : N              
 GND*                         : AA24      :        :                   :         : 6         :                
 GND*                         : AA25      :        :                   :         : 6         :                
 GND*                         : AA26      :        :                   :         : 6         :                
@@ -129,10 +129,10 @@ GND*                         : AB8       :        :                   :         
 VCCIO8                       : AB9       : power  :                   : 3.3V    : 8         :                
 GND*                         : AB10      :        :                   :         : 8         :                
 GND                          : AB11      : gnd    :                   :         :           :                
-SEVEN_SEGMENT_N_O[7][3]      : AB12      : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : AB12      :        :                   :         : 8         :                
 VCCIO8                       : AB13      : power  :                   : 3.3V    : 8         :                
 VCCIO7                       : AB14      : power  :                   : 3.3V    : 7         :                
-SWITCH_I[0]                  : AB15      : input  : 3.3-V LVTTL       :         : 7         : N              
+SRAM_DATA_IO[4]              : AB15      : bidir  : 3.3-V LVTTL       :         : 7         : N              
 GND                          : AB16      : gnd    :                   :         :           :                
 VCCIO7                       : AB17      : power  :                   : 3.3V    : 7         :                
 GND*                         : AB18      :        :                   :         : 7         :                
@@ -143,7 +143,7 @@ VCCIO7                       : AB22      : power  :                   : 3.3V    
 GND*                         : AB23      :        :                   :         : 6         :                
 GND*                         : AB24      :        :                   :         : 6         :                
 GND*                         : AB25      :        :                   :         : 6         :                
-LED_GREEN_O[4]               : AB26      : output : 3.3-V LVTTL       :         : 6         : N              
+GND*                         : AB26      :        :                   :         : 6         :                
 GND*                         : AC1       :        :                   :         : 1         :                
 GND*                         : AC2       :        :                   :         : 1         :                
 GND*                         : AC3       :        :                   :         : 1         :                
@@ -152,27 +152,27 @@ GND*                         : AC5       :        :                   :         
 GND*                         : AC6       :        :                   :         : 8         :                
 GND*                         : AC7       :        :                   :         : 8         :                
 SWITCH_I[10]                 : AC8       : input  : 3.3-V LVTTL       :         : 8         : N              
-LED_GREEN_O[6]               : AC9       : output : 3.3-V LVTTL       :         : 8         : N              
+LED_GREEN_O[7]               : AC9       : output : 3.3-V LVTTL       :         : 8         : N              
 GND*                         : AC10      :        :                   :         : 8         :                
-SEVEN_SEGMENT_N_O[7][1]      : AC11      : output : 3.3-V LVTTL       :         : 8         : N              
-SEVEN_SEGMENT_N_O[7][2]      : AC12      : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : AC11      :        :                   :         : 8         :                
+LED_GREEN_O[3]               : AC12      : output : 3.3-V LVTTL       :         : 8         : N              
 GND+                         : AC13      :        :                   :         : 8         :                
-GND*                         : AC14      :        :                   :         : 7         :                
-SRAM_OE_N_O                  : AC15      : output : 3.3-V LVTTL       :         : 7         : N              
+resetn                       : AC14      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AC15      :        :                   :         : 7         :                
 GND*                         : AC16      :        :                   :         : 7         :                
 GND*                         : AC17      :        :                   :         : 7         :                
-GND*                         : AC18      :        :                   :         : 7         :                
+SEVEN_SEGMENT_N_O[1][1]      : AC18      : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AC19      :        :                   :         : 7         :                
-LED_GREEN_O[8]               : AC20      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AC20      :        :                   :         : 7         :                
 GND*                         : AC21      :        :                   :         : 7         :                
-PUSH_BUTTON_I[2]             : AC22      : input  : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AC22      :        :                   :         : 7         :                
 GND*                         : AC23      :        :                   :         : 6         :                
 NC                           : AC24      :        :                   :         :           :                
 GND*                         : AC25      :        :                   :         : 6         :                
 GND*                         : AC26      :        :                   :         : 6         :                
 VCCIO1                       : AD1       : power  :                   : 3.3V    : 1         :                
 GND*                         : AD2       :        :                   :         : 1         :                
-GND*                         : AD3       :        :                   :         : 1         :                
+SWITCH_I[5]                  : AD3       : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : AD4       :        :                   :         : 8         :                
 GND*                         : AD5       :        :                   :         : 8         :                
 GND*                         : AD6       :        :                   :         : 8         :                
@@ -180,18 +180,18 @@ GND*                         : AD7       :        :                   :         
 GND*                         : AD8       :        :                   :         : 8         :                
 GND                          : AD9       : gnd    :                   :         :           :                
 GND*                         : AD10      :        :                   :         : 8         :                
-SRAM_ADDRESS_O[2]            : AD11      : output : 3.3-V LVTTL       :         : 8         : N              
-SRAM_ADDRESS_O[15]           : AD12      : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : AD11      :        :                   :         : 8         :                
+GND*                         : AD12      :        :                   :         : 8         :                
 GND+                         : AD13      :        :                   :         : 8         :                
 GND                          : AD14      : gnd    :                   :         :           :                
-GND*                         : AD15      :        :                   :         : 7         :                
+SEVEN_SEGMENT_N_O[4][1]      : AD15      : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AD16      :        :                   :         : 7         :                
 GND*                         : AD17      :        :                   :         : 7         :                
 GND                          : AD18      : gnd    :                   :         :           :                
 GND*                         : AD19      :        :                   :         : 7         :                
 VCCIO7                       : AD20      : power  :                   : 3.3V    : 7         :                
 GND*                         : AD21      :        :                   :         : 7         :                
-PUSH_BUTTON_I[0]             : AD22      : input  : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AD22      :        :                   :         : 7         :                
 GND*                         : AD23      :        :                   :         : 7         :                
 GND*                         : AD24      :        :                   :         : 6         :                
 GND*                         : AD25      :        :                   :         : 6         :                
@@ -200,25 +200,25 @@ GND                          : AE1       : gnd    :                   :         
 GND*                         : AE2       :        :                   :         : 1         :                
 GND*                         : AE3       :        :                   :         : 1         :                
 GND*                         : AE4       :        :                   :         : 8         :                
-GND*                         : AE5       :        :                   :         : 8         :                
+SWITCH_I[6]                  : AE5       : input  : 3.3-V LVTTL       :         : 8         : N              
 GND*                         : AE6       :        :                   :         : 8         :                
 GND*                         : AE7       :        :                   :         : 8         :                
 GND*                         : AE8       :        :                   :         : 8         :                
-GND*                         : AE9       :        :                   :         : 8         :                
-SEVEN_SEGMENT_N_O[7][4]      : AE10      : output : 3.3-V LVTTL       :         : 8         : N              
-SRAM_ADDRESS_O[17]           : AE11      : output : 3.3-V LVTTL       :         : 8         : N              
-SEVEN_SEGMENT_N_O[3][0]      : AE12      : output : 3.3-V LVTTL       :         : 8         : N              
-SEVEN_SEGMENT_N_O[2][0]      : AE13      : output : 3.3-V LVTTL       :         : 8         : N              
+SEVEN_SEGMENT_N_O[3][1]      : AE9       : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : AE10      :        :                   :         : 8         :                
+LED_GREEN_O[0]               : AE11      : output : 3.3-V LVTTL       :         : 8         : N              
+SEVEN_SEGMENT_N_O[7][3]      : AE12      : output : 3.3-V LVTTL       :         : 8         : N              
+SEVEN_SEGMENT_N_O[4][0]      : AE13      : output : 3.3-V LVTTL       :         : 8         : N              
 GND+                         : AE14      :        :                   :         : 7         :                
-GND*                         : AE15      :        :                   :         : 7         :                
-SRAM_CE_N_O                  : AE16      : output : 3.3-V LVTTL       :         : 7         : N              
-GND*                         : AE17      :        :                   :         : 7         :                
+SRAM_DATA_IO[2]              : AE15      : bidir  : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AE16      :        :                   :         : 7         :                
+SEVEN_SEGMENT_N_O[5][3]      : AE17      : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AE18      :        :                   :         : 7         :                
 GND*                         : AE19      :        :                   :         : 7         :                
 GND*                         : AE20      :        :                   :         : 7         :                
 GND*                         : AE21      :        :                   :         : 7         :                
 GND*                         : AE22      :        :                   :         : 7         :                
-GND*                         : AE23      :        :                   :         : 7         :                
+SWITCH_I[13]                 : AE23      : input  : 3.3-V LVTTL       :         : 7         : N              
 ~LVDS150p/nCEO~              : AE24      : output : 3.3-V LVTTL       :         : 6         : N              
 GND*                         : AE25      :        :                   :         : 6         :                
 GND                          : AE26      : gnd    :                   :         :           :                
@@ -230,44 +230,44 @@ GND*                         : AF6       :        :                   :         
 GND*                         : AF7       :        :                   :         : 8         :                
 GND*                         : AF8       :        :                   :         : 8         :                
 GND*                         : AF9       :        :                   :         : 8         :                
-SRAM_ADDRESS_O[3]            : AF10      : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : AF10      :        :                   :         : 8         :                
 VCCIO8                       : AF11      : power  :                   : 3.3V    : 8         :                
 GND                          : AF12      : gnd    :                   :         :           :                
-SEVEN_SEGMENT_N_O[3][3]      : AF13      : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : AF13      :        :                   :         : 8         :                
 GND+                         : AF14      :        :                   :         : 7         :                
 GND                          : AF15      : gnd    :                   :         :           :                
 VCCIO7                       : AF16      : power  :                   : 3.3V    : 7         :                
-GND*                         : AF17      :        :                   :         : 7         :                
+SEVEN_SEGMENT_N_O[5][2]      : AF17      : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AF18      :        :                   :         : 7         :                
 GND*                         : AF19      :        :                   :         : 7         :                
-GND*                         : AF20      :        :                   :         : 7         :                
+UART_RX_I                    : AF20      : input  : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AF21      :        :                   :         : 7         :                
 GND*                         : AF22      :        :                   :         : 7         :                
 GND*                         : AF23      :        :                   :         : 7         :                
 VCCIO7                       : AF24      : power  :                   : 3.3V    : 7         :                
 GND                          : AF25      : gnd    :                   :         :           :                
 GND                          : B1        : gnd    :                   :         :           :                
-GND*                         : B2        :        :                   :         : 2         :                
+SRAM_OE_N_O                  : B2        : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : B3        :        :                   :         : 2         :                
 GND*                         : B4        :        :                   :         : 3         :                
 GND*                         : B5        :        :                   :         : 3         :                
 GND*                         : B6        :        :                   :         : 3         :                
 GND*                         : B7        :        :                   :         : 3         :                
-SEVEN_SEGMENT_N_O[0][2]      : B8        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[0][5]      : B9        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[2][3]      : B10       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_ADDRESS_O[5]            : B11       : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[2][4]      : B12       : output : 3.3-V LVTTL       :         : 3         : N              
+LED_GREEN_O[4]               : B8        : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : B9        :        :                   :         : 3         :                
+SEVEN_SEGMENT_N_O[3][3]      : B10       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[7][0]      : B11       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[7][1]      : B12       : output : 3.3-V LVTTL       :         : 3         : N              
 GND+                         : B13       :        :                   :         : 4         :                
-SRAM_DATA_IO[12]             : B14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SRAM_DATA_IO[9]              : B15       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SRAM_DATA_IO[4]              : B16       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[4][4]      : B17       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[5][0]      : B18       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : B19       :        :                   :         : 4         :                
-GND*                         : B20       :        :                   :         : 4         :                
-GND*                         : B21       :        :                   :         : 4         :                
-SWITCH_I[8]                  : B22       : input  : 3.3-V LVTTL       :         : 4         : N              
+SRAM_DATA_IO[10]             : B14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SRAM_DATA_IO[1]              : B15       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SEVEN_SEGMENT_N_O[6][6]      : B16       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[7]                 : B17       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[6]                : B18       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[3]                 : B19       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLANK_O                  : B20       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[1]               : B21       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : B22       :        :                   :         : 4         :                
 GND*                         : B23       :        :                   :         : 4         :                
 GND*                         : B24       :        :                   :         : 5         :                
 GND*                         : B25       :        :                   :         : 5         :                
@@ -279,18 +279,18 @@ GND*                         : C4        :        :                   :         
 GND*                         : C5        :        :                   :         : 3         :                
 GND*                         : C6        :        :                   :         : 3         :                
 GND*                         : C7        :        :                   :         : 3         :                
-SEVEN_SEGMENT_N_O[7][0]      : C8        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[1][2]      : C9        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[3][6]      : C10       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_DATA_IO[15]             : C11       : bidir  : 3.3-V LVTTL       :         : 3         : N              
-SRAM_ADDRESS_O[14]           : C12       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : C8        :        :                   :         : 3         :                
+GND*                         : C9        :        :                   :         : 3         :                
+GND*                         : C10       :        :                   :         : 3         :                
+SEVEN_SEGMENT_N_O[7][4]      : C11       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[4][3]      : C12       : output : 3.3-V LVTTL       :         : 3         : N              
 GND+                         : C13       :        :                   :         : 3         :                
 GND                          : C14       : gnd    :                   :         :           :                
-SRAM_DATA_IO[7]              : C15       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SRAM_DATA_IO[10]             : C16       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[4][1]      : C17       : output : 3.3-V LVTTL       :         : 4         : N              
+SRAM_DATA_IO[3]              : C15       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SEVEN_SEGMENT_N_O[6][0]      : C16       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[4]                 : C17       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : C18       : gnd    :                   :         :           :                
-GND*                         : C19       :        :                   :         : 4         :                
+VGA_GREEN_O[5]               : C19       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : C20       : power  :                   : 3.3V    : 4         :                
 GND*                         : C21       :        :                   :         : 4         :                
 GND*                         : C22       :        :                   :         : 4         :                
@@ -299,25 +299,25 @@ GND*                         : C24       :        :                   :         
 GND*                         : C25       :        :                   :         : 5         :                
 VCCIO5                       : C26       : power  :                   : 3.3V    : 5         :                
 GND*                         : D1        :        :                   :         : 2         :                
-SEVEN_SEGMENT_N_O[3][1]      : D2        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : D2        :        :                   :         : 2         :                
 ~nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : D3        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND                          : D4        : gnd    :                   :         :           :                
 GND*                         : D5        :        :                   :         : 3         :                
-SWITCH_I[13]                 : D6        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : D6        :        :                   :         : 3         :                
 GND*                         : D7        :        :                   :         : 3         :                
-SEVEN_SEGMENT_N_O[7][6]      : D8        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[3][2]      : D9        : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[1][0]      : D10       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_ADDRESS_O[10]           : D11       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_DATA_IO[14]             : D12       : bidir  : 3.3-V LVTTL       :         : 3         : N              
+LED_GREEN_O[5]               : D8        : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : D9        :        :                   :         : 3         :                
+SRAM_ADDRESS_O[17]           : D10       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[3][4]      : D11       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[3][5]      : D12       : output : 3.3-V LVTTL       :         : 3         : N              
 GND+                         : D13       :        :                   :         : 3         :                
-SRAM_DATA_IO[13]             : D14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[6][5]      : D15       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[6][0]      : D16       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[4][2]      : D17       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[4][6]      : D18       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : D19       :        :                   :         : 4         :                
-GND*                         : D20       :        :                   :         : 4         :                
+SRAM_DATA_IO[11]             : D14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SEVEN_SEGMENT_N_O[6][4]      : D15       : output : 3.3-V LVTTL       :         : 4         : N              
+SEVEN_SEGMENT_N_O[6][3]      : D16       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[8]                : D17       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[4]                : D18       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[1]                : D19       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[9]               : D20       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : D21       :        :                   :         : 4         :                
 VCCIO4                       : D22       : power  :                   : 3.3V    : 4         :                
 GND*                         : D23       :        :                   :         : 5         :                
@@ -328,30 +328,30 @@ GND*                         : E1        :        :                   :         
 GND*                         : E2        :        :                   :         : 2         :                
 ~ASDO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : E3        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND_PLL3                     : E4        : gnd    :                   :         :           :                
-GND*                         : E5        :        :                   :         : 2         :                
+SRAM_CE_N_O                  : E5        : output : 3.3-V LVTTL       :         : 2         : N              
 VCCIO3                       : E6        : power  :                   : 3.3V    : 3         :                
 GND                          : E7        : gnd    :                   :         :           :                
 GND*                         : E8        :        :                   :         : 3         :                
 VCCIO3                       : E9        : power  :                   : 3.3V    : 3         :                
-SEVEN_SEGMENT_N_O[1][5]      : E10       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : E10       :        :                   :         : 3         :                
 GND                          : E11       : gnd    :                   :         :           :                
-SRAM_ADDRESS_O[6]            : E12       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[3][6]      : E12       : output : 3.3-V LVTTL       :         : 3         : N              
 VCCIO3                       : E13       : power  :                   : 3.3V    : 3         :                
 VCCIO4                       : E14       : power  :                   : 3.3V    : 4         :                
-SRAM_DATA_IO[6]              : E15       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SEVEN_SEGMENT_N_O[6][1]      : E15       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : E16       : gnd    :                   :         :           :                
 VCCIO4                       : E17       : power  :                   : 3.3V    : 4         :                
-SEVEN_SEGMENT_N_O[4][5]      : E18       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[2]                : E18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : E19       : gnd    :                   :         :           :                
-GND*                         : E20       :        :                   :         : 4         :                
+VGA_GREEN_O[0]               : E20       : output : 3.3-V LVTTL       :         : 4         : N              
 GND_PLL2                     : E21       : gnd    :                   :         :           :                
 GND*                         : E22       :        :                   :         : 5         :                
 GND*                         : E23       :        :                   :         : 5         :                
 GND*                         : E24       :        :                   :         : 5         :                
 GND*                         : E25       :        :                   :         : 5         :                
 GND*                         : E26       :        :                   :         : 5         :                
-VGA_RED_O[6]                 : F1        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_BLUE_O[6]                : F2        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : F1        :        :                   :         : 2         :                
+GND*                         : F2        :        :                   :         : 2         :                
 GND*                         : F3        :        :                   :         : 2         :                
 GND*                         : F4        :        :                   :         : 2         :                
 VCCIO2                       : F5        : power  :                   : 3.3V    : 2         :                
@@ -360,65 +360,65 @@ GND*                         : F7        :        :                   :         
 GNDA_PLL3                    : F8        : gnd    :                   :         :           :                
 GND*                         : F9        :        :                   :         : 3         :                
 GND*                         : F10       :        :                   :         : 3         :                
-SEVEN_SEGMENT_N_O[1][3]      : F11       : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[0][3]      : F12       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_ADDRESS_O[12]           : F13       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[2][6]      : F14       : output : 3.3-V LVTTL       :         : 4         : N              
-SRAM_WE_N_O                  : F15       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[5][6]      : F16       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[5][5]      : F17       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[2][1]      : F18       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : F11       :        :                   :         : 3         :                
+SEVEN_SEGMENT_N_O[7][2]      : F12       : output : 3.3-V LVTTL       :         : 3         : N              
+SRAM_DATA_IO[0]              : F13       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SRAM_DATA_IO[12]             : F14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[3]                : F15       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[2]                 : F16       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_VSYNC_O                  : F17       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[5]                : F18       : output : 3.3-V LVTTL       :         : 4         : N              
 GNDA_PLL2                    : F19       : gnd    :                   :         :           :                
 GND*                         : F20       :        :                   :         : 5         :                
 GND*                         : F21       :        :                   :         : 5         :                
 VCCIO5                       : F22       : power  :                   : 3.3V    : 5         :                
 GND*                         : F23       :        :                   :         : 5         :                
 GND*                         : F24       :        :                   :         : 5         :                
-GND*                         : F25       :        :                   :         : 5         :                
+VGA_RED_O[9]                 : F25       : output : 3.3-V LVTTL       :         : 5         : N              
 GND*                         : F26       :        :                   :         : 5         :                
-VGA_BLUE_O[5]                : G1        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[3]               : G2        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_BLUE_O[8]                : G3        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : G1        :        :                   :         : 2         :                
+GND*                         : G2        :        :                   :         : 2         :                
+GND*                         : G3        :        :                   :         : 2         :                
 GND*                         : G4        :        :                   :         : 2         :                
-SWITCH_I[3]                  : G5        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : G5        :        :                   :         : 2         :                
 GND*                         : G6        :        :                   :         : 2         :                
 GND_PLL3                     : G7        : gnd    :                   :         :           :                
 VCCA_PLL3                    : G8        : power  :                   : 1.2V    :           :                
-GND*                         : G9        :        :                   :         : 3         :                
-SEVEN_SEGMENT_N_O[1][1]      : G10       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_ADDRESS_O[11]           : G11       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_ADDRESS_O[8]            : G12       : output : 3.3-V LVTTL       :         : 3         : N              
-SRAM_DATA_IO[11]             : G13       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[2][5]      : G14       : output : 3.3-V LVTTL       :         : 4         : N              
-SRAM_DATA_IO[3]              : G15       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[5][4]      : G16       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[5][2]      : G17       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[4][3]      : G18       : output : 3.3-V LVTTL       :         : 4         : N              
+SWITCH_I[15]                 : G9        : input  : 3.3-V LVTTL       :         : 3         : N              
+SWITCH_I[14]                 : G10       : input  : 3.3-V LVTTL       :         : 3         : N              
+SRAM_ADDRESS_O[16]           : G11       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[4][4]      : G12       : output : 3.3-V LVTTL       :         : 3         : N              
+SRAM_DATA_IO[15]             : G13       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+SRAM_DATA_IO[13]             : G14       : bidir  : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[6]                 : G15       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_RED_O[8]                 : G16       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[2]               : G17       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[3]               : G18       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCA_PLL2                    : G19       : power  :                   : 1.2V    :           :                
 GND_PLL2                     : G20       : gnd    :                   :         :           :                
 GND*                         : G21       :        :                   :         : 5         :                
-SWITCH_I[7]                  : G22       : input  : 3.3-V LVTTL       :         : 5         : N              
-GND*                         : G23       :        :                   :         : 5         :                
+GND*                         : G22       :        :                   :         : 5         :                
+VGA_RED_O[0]                 : G23       : output : 3.3-V LVTTL       :         : 5         : N              
 GND*                         : G24       :        :                   :         : 5         :                
 GND*                         : G25       :        :                   :         : 5         :                
 GND*                         : G26       :        :                   :         : 5         :                
-VGA_BLUE_O[2]                : H1        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[7]               : H2        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_RED_O[7]                 : H3        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[5]               : H4        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : H1        :        :                   :         : 2         :                
+GND*                         : H2        :        :                   :         : 2         :                
+GND*                         : H3        :        :                   :         : 2         :                
+SWITCH_I[8]                  : H4        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND                          : H5        : gnd    :                   :         :           :                
-UART_TX_O                    : H6        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : H6        :        :                   :         : 2         :                
 VCCD_PLL3                    : H7        : power  :                   : 1.2V    :           :                
 GND*                         : H8        :        :                   :         : 3         :                
 VCCIO3                       : H9        : power  :                   : 3.3V    : 3         :                
 GND*                         : H10       :        :                   :         : 3         :                
-SRAM_ADDRESS_O[9]            : H11       : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[0][1]      : H12       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : H11       :        :                   :         : 3         :                
+GND*                         : H12       :        :                   :         : 3         :                
 GND                          : H13       : gnd    :                   :         :           :                
 GND                          : H14       : gnd    :                   :         :           :                
-SEVEN_SEGMENT_N_O[2][2]      : H15       : output : 3.3-V LVTTL       :         : 4         : N              
-SRAM_DATA_IO[2]              : H16       : bidir  : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[5][1]      : H17       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[8]               : H15       : output : 3.3-V LVTTL       :         : 4         : N              
+SEVEN_SEGMENT_N_O[6][5]      : H16       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_BLUE_O[7]                : H17       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : H18       : power  :                   : 3.3V    : 4         :                
 GND*                         : H19       :        :                   :         : 5         :                
 VCCD_PLL2                    : H20       : power  :                   : 1.2V    :           :                
@@ -428,68 +428,68 @@ GND*                         : H23       :        :                   :         
 GND*                         : H24       :        :                   :         : 5         :                
 GND*                         : H25       :        :                   :         : 5         :                
 GND*                         : H26       :        :                   :         : 5         :                
-VGA_BLUE_O[9]                : J1        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[0]               : J2        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_BLUE_O[7]                : J3        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_BLUE_O[0]                : J4        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : J1        :        :                   :         : 2         :                
+VGA_SYNC_O                   : J2        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : J3        :        :                   :         : 2         :                
+GND*                         : J4        :        :                   :         : 2         :                
 GND*                         : J5        :        :                   :         : 2         :                
-VGA_RED_O[0]                 : J6        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : J6        :        :                   :         : 2         :                
 GND*                         : J7        :        :                   :         : 2         :                
 GND*                         : J8        :        :                   :         : 2         :                
-GND*                         : J9        :        :                   :         : 3         :                
-SRAM_ADDRESS_O[7]            : J10       : output : 3.3-V LVTTL       :         : 3         : N              
-SEVEN_SEGMENT_N_O[0][6]      : J11       : output : 3.3-V LVTTL       :         : 3         : N              
+SWITCH_I[3]                  : J9        : input  : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[4][2]      : J10       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[6][2]      : J11       : output : 3.3-V LVTTL       :         : 3         : N              
 VCCIO3                       : J12       : power  :                   : 3.3V    : 3         :                
-SRAM_DATA_IO[5]              : J13       : bidir  : 3.3-V LVTTL       :         : 3         : N              
-SRAM_DATA_IO[0]              : J14       : bidir  : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[4][5]      : J13       : output : 3.3-V LVTTL       :         : 3         : N              
+SEVEN_SEGMENT_N_O[7][6]      : J14       : output : 3.3-V LVTTL       :         : 3         : N              
 VCCIO4                       : J15       : power  :                   : 3.3V    : 4         :                
-LED_GREEN_O[2]               : J16       : output : 3.3-V LVTTL       :         : 4         : N              
-SEVEN_SEGMENT_N_O[6][1]      : J17       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[6]               : J16       : output : 3.3-V LVTTL       :         : 4         : N              
+VGA_HSYNC_O                  : J17       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : J18       :        :                   :         : 4         :                
 VCCIO5                       : J19       : power  :                   : 3.3V    : 5         :                
 GND*                         : J20       :        :                   :         : 5         :                
-SWITCH_I[2]                  : J21       : input  : 3.3-V LVTTL       :         : 5         : N              
+PUSH_BUTTON_I[2]             : J21       : input  : 3.3-V LVTTL       :         : 5         : N              
 GND*                         : J22       :        :                   :         : 5         :                
-GND*                         : J23       :        :                   :         : 5         :                
-GND*                         : J24       :        :                   :         : 5         :                
-GND*                         : J25       :        :                   :         : 5         :                
-SEVEN_SEGMENT_N_O[5][3]      : J26       : output : 3.3-V LVTTL       :         : 5         : N              
-VGA_BLANK_O                  : K1        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[1]               : K2        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_RED_O[5]                 : K3        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[6]               : K4        : output : 3.3-V LVTTL       :         : 2         : N              
+LED_GREEN_O[1]               : J23       : output : 3.3-V LVTTL       :         : 5         : N              
+SWITCH_I[7]                  : J24       : input  : 3.3-V LVTTL       :         : 5         : N              
+SRAM_ADDRESS_O[1]            : J25       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[2][5]      : J26       : output : 3.3-V LVTTL       :         : 5         : N              
+GND*                         : K1        :        :                   :         : 2         :                
+GND*                         : K2        :        :                   :         : 2         :                
+GND*                         : K3        :        :                   :         : 2         :                
+GND*                         : K4        :        :                   :         : 2         :                
 GND*                         : K5        :        :                   :         : 2         :                
 GND*                         : K6        :        :                   :         : 2         :                
-VGA_GREEN_O[9]               : K7        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[4]               : K8        : output : 3.3-V LVTTL       :         : 2         : N              
-SWITCH_I[16]                 : K9        : input  : 3.3-V LVTTL       :         : 3         : N              
+SWITCH_I[12]                 : K7        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : K8        :        :                   :         : 2         :                
+GND*                         : K9        :        :                   :         : 3         :                
 VCCINT                       : K10       : power  :                   : 1.2V    :           :                
 VCCINT                       : K11       : power  :                   : 1.2V    :           :                
 VCCINT                       : K12       : power  :                   : 1.2V    :           :                
 VCCINT                       : K13       : power  :                   : 1.2V    :           :                
 VCCINT                       : K14       : power  :                   : 1.2V    :           :                
 VCCINT                       : K15       : power  :                   : 1.2V    :           :                
-SWITCH_I[11]                 : K16       : input  : 3.3-V LVTTL       :         : 4         : N              
+VGA_GREEN_O[7]               : K16       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : K17       :        :                   :         : 4         :                
 SRAM_ADDRESS_O[13]           : K18       : output : 3.3-V LVTTL       :         : 5         : N              
-SEVEN_SEGMENT_N_O[6][6]      : K19       : output : 3.3-V LVTTL       :         : 5         : N              
+SRAM_ADDRESS_O[14]           : K19       : output : 3.3-V LVTTL       :         : 5         : N              
 GND                          : K20       : gnd    :                   :         :           :                
-SEVEN_SEGMENT_N_O[6][3]      : K21       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[2][4]      : K21       : output : 3.3-V LVTTL       :         : 5         : N              
 GND*                         : K22       :        :                   :         : 5         :                
-GND*                         : K23       :        :                   :         : 5         :                
-SEVEN_SEGMENT_N_O[6][4]      : K24       : output : 3.3-V LVTTL       :         : 5         : N              
-GND*                         : K25       :        :                   :         : 5         :                
-GND*                         : K26       :        :                   :         : 5         :                
+SRAM_ADDRESS_O[12]           : K23       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[2][2]      : K24       : output : 3.3-V LVTTL       :         : 5         : N              
+SRAM_ADDRESS_O[15]           : K25       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[2][1]      : K26       : output : 3.3-V LVTTL       :         : 5         : N              
 VCCIO2                       : L1        : power  :                   : 3.3V    : 2         :                
-VGA_HSYNC_O                  : L2        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_RED_O[4]                 : L3        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_GREEN_O[8]               : L4        : output : 3.3-V LVTTL       :         : 2         : N              
+SEVEN_SEGMENT_N_O[7][5]      : L2        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : L3        :        :                   :         : 2         :                
+GND*                         : L4        :        :                   :         : 2         :                
 GND                          : L5        : gnd    :                   :         :           :                
-VGA_BLUE_O[4]                : L6        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_RED_O[3]                 : L7        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : L6        :        :                   :         : 2         :                
+GND*                         : L7        :        :                   :         : 2         :                
 TMS                          : L8        : input  :                   :         : 2         :                
-VGA_BLUE_O[3]                : L9        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_RED_O[9]                 : L10       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : L9        :        :                   :         : 2         :                
+GND*                         : L10       :        :                   :         : 2         :                
 VCCINT                       : L11       : power  :                   : 1.2V    :           :                
 GND                          : L12       : gnd    :                   :         :           :                
 GND                          : L13       : gnd    :                   :         :           :                
@@ -498,19 +498,19 @@ GND                          : L15       : gnd    :                   :         
 VCCINT                       : L16       : power  :                   : 1.2V    :           :                
 VCCINT                       : L17       : power  :                   : 1.2V    :           :                
 VCCINT                       : L18       : power  :                   : 1.2V    :           :                
-GND*                         : L19       :        :                   :         : 5         :                
-GND*                         : L20       :        :                   :         : 5         :                
-GND*                         : L21       :        :                   :         : 5         :                
+SRAM_ADDRESS_O[3]            : L19       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[2][6]      : L20       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[4][6]      : L21       : output : 3.3-V LVTTL       :         : 5         : N              
 GND                          : L22       : gnd    :                   :         :           :                
-GND*                         : L23       :        :                   :         : 5         :                
-GND*                         : L24       :        :                   :         : 5         :                
-GND*                         : L25       :        :                   :         : 5         :                
+SEVEN_SEGMENT_N_O[1][0]      : L23       : output : 3.3-V LVTTL       :         : 5         : N              
+SRAM_ADDRESS_O[2]            : L24       : output : 3.3-V LVTTL       :         : 5         : N              
+SRAM_ADDRESS_O[0]            : L25       : output : 3.3-V LVTTL       :         : 5         : N              
 VCCIO5                       : L26       : power  :                   : 3.3V    : 5         :                
 GND                          : M1        : gnd    :                   :         :           :                
-VGA_GREEN_O[2]               : M2        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_RED_O[1]                 : M3        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_RED_O[8]                 : M4        : output : 3.3-V LVTTL       :         : 2         : N              
-VGA_BLUE_O[1]                : M5        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : M2        :        :                   :         : 2         :                
+GND*                         : M3        :        :                   :         : 2         :                
+GND*                         : M4        :        :                   :         : 2         :                
+GND*                         : M5        :        :                   :         : 2         :                
 TCK                          : M6        : input  :                   :         : 2         :                
 TDO                          : M7        : output :                   :         : 2         :                
 TDI                          : M8        : input  :                   :         : 2         :                
@@ -524,13 +524,13 @@ GND                          : M15       : gnd    :                   :         
 VCCINT                       : M16       : power  :                   : 1.2V    :           :                
 VCCINT                       : M17       : power  :                   : 1.2V    :           :                
 VCCIO5                       : M18       : power  :                   : 3.3V    : 5         :                
-GND*                         : M19       :        :                   :         : 5         :                
-GND*                         : M20       :        :                   :         : 5         :                
-GND*                         : M21       :        :                   :         : 5         :                
-GND*                         : M22       :        :                   :         : 5         :                
-GND*                         : M23       :        :                   :         : 5         :                
-GND*                         : M24       :        :                   :         : 5         :                
-GND*                         : M25       :        :                   :         : 5         :                
+SEVEN_SEGMENT_N_O[0][4]      : M19       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[0][6]      : M20       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[0][1]      : M21       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[2][3]      : M22       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[2][0]      : M23       : output : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[1][5]      : M24       : output : 3.3-V LVTTL       :         : 5         : N              
+SRAM_ADDRESS_O[11]           : M25       : output : 3.3-V LVTTL       :         : 5         : N              
 GND                          : M26       : gnd    :                   :         :           :                
 SWITCH_I[17]                 : N1        : input  : 3.3-V LVTTL       :         : 2         : N              
 CLOCK_50_I                   : N2        : input  : 3.3-V LVTTL       :         : 2         : N              
@@ -540,7 +540,7 @@ VCCIO2                       : N5        : power  :                   : 3.3V    
 DCLK                         : N6        :        :                   :         : 2         :                
 nCONFIG                      : N7        :        :                   :         : 2         :                
 GND                          : N8        : gnd    :                   :         :           :                
-VGA_RED_O[2]                 : N9        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : N9        :        :                   :         : 2         :                
 VCCINT                       : N10       : power  :                   : 1.2V    :           :                
 GND                          : N11       : gnd    :                   :         :           :                
 GND                          : N12       : gnd    :                   :         :           :                
@@ -551,22 +551,22 @@ GND                          : N16       : gnd    :                   :         
 VCCINT                       : N17       : power  :                   : 1.2V    :           :                
 GND*                         : N18       :        :                   :         : 5         :                
 GND                          : N19       : gnd    :                   :         :           :                
-GND*                         : N20       :        :                   :         : 5         :                
+SEVEN_SEGMENT_N_O[0][5]      : N20       : output : 3.3-V LVTTL       :         : 5         : N              
 NC                           : N21       :        :                   :         :           :                
 VCCIO5                       : N22       : power  :                   : 3.3V    : 5         :                
-GND*                         : N23       :        :                   :         : 5         :                
-SWITCH_I[6]                  : N24       : input  : 3.3-V LVTTL       :         : 5         : N              
+SEVEN_SEGMENT_N_O[1][6]      : N23       : output : 3.3-V LVTTL       :         : 5         : N              
+SRAM_ADDRESS_O[8]            : N24       : output : 3.3-V LVTTL       :         : 5         : N              
 GND+                         : N25       :        :                   :         : 5         :                
 GND+                         : N26       :        :                   :         : 5         :                
 GND+                         : P1        :        :                   :         : 1         :                
 GND+                         : P2        :        :                   :         : 1         :                
-SRAM_UB_N_O                  : P3        : output : 3.3-V LVTTL       :         : 1         : N              
-SEVEN_SEGMENT_N_O[3][5]      : P4        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : P3        :        :                   :         : 1         :                
+SRAM_LB_N_O                  : P4        : output : 3.3-V LVTTL       :         : 1         : N              
 VCCIO1                       : P5        : power  :                   : 3.3V    : 1         :                
 GND*                         : P6        :        :                   :         : 1         :                
-UART_RX_I                    : P7        : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : P7        :        :                   :         : 1         :                
 GND                          : P8        : gnd    :                   :         :           :                
-VGA_VSYNC_O                  : P9        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : P9        :        :                   :         : 2         :                
 VCCINT                       : P10       : power  :                   : 1.2V    :           :                
 GND                          : P11       : gnd    :                   :         :           :                
 GND                          : P12       : gnd    :                   :         :           :                
@@ -574,23 +574,23 @@ GND                          : P13       : gnd    :                   :         
 GND                          : P14       : gnd    :                   :         :           :                
 GND                          : P15       : gnd    :                   :         :           :                
 GND                          : P16       : gnd    :                   :         :           :                
-GND*                         : P17       :        :                   :         : 6         :                
+SEVEN_SEGMENT_N_O[1][4]      : P17       : output : 3.3-V LVTTL       :         : 6         : N              
 GND*                         : P18       :        :                   :         : 5         :                
 GND                          : P19       : gnd    :                   :         :           :                
 MSEL0                        : P20       :        :                   :         : 6         :                
 MSEL1                        : P21       :        :                   :         : 6         :                
 VCCIO6                       : P22       : power  :                   : 3.3V    : 6         :                
-GND*                         : P23       :        :                   :         : 6         :                
-GND*                         : P24       :        :                   :         : 6         :                
+SRAM_ADDRESS_O[7]            : P23       : output : 3.3-V LVTTL       :         : 6         : N              
+SRAM_ADDRESS_O[10]           : P24       : output : 3.3-V LVTTL       :         : 6         : N              
 GND+                         : P25       :        :                   :         : 6         :                
 GND+                         : P26       :        :                   :         : 6         :                
 GND                          : R1        : gnd    :                   :         :           :                
-SRAM_LB_N_O                  : R2        : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : R3        :        :                   :         : 1         :                
-resetn                       : R4        : output : 3.3-V LVTTL       :         : 1         : N              
-SEVEN_SEGMENT_N_O[7][5]      : R5        : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : R6        :        :                   :         : 1         :                
-SWITCH_I[4]                  : R7        : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : R2        :        :                   :         : 1         :                
+SRAM_UB_N_O                  : R3        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : R4        :        :                   :         : 1         :                
+GND*                         : R5        :        :                   :         : 1         :                
+SWITCH_I[4]                  : R6        : input  : 3.3-V LVTTL       :         : 1         : N              
+SWITCH_I[11]                 : R7        : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : R8        :        :                   :         : 1         :                
 VCCIO1                       : R9        : power  :                   : 3.3V    : 1         :                
 VCCINT                       : R10       : power  :                   : 1.2V    :           :                
@@ -600,25 +600,25 @@ GND                          : R13       : gnd    :                   :         
 GND                          : R14       : gnd    :                   :         :           :                
 GND                          : R15       : gnd    :                   :         :           :                
 VCCINT                       : R16       : power  :                   : 1.2V    :           :                
-GND*                         : R17       :        :                   :         : 6         :                
+SEVEN_SEGMENT_N_O[5][1]      : R17       : output : 3.3-V LVTTL       :         : 6         : N              
 VCCIO6                       : R18       : power  :                   : 3.3V    : 6         :                
-SWITCH_I[1]                  : R19       : input  : 3.3-V LVTTL       :         : 6         : N              
-GND*                         : R20       :        :                   :         : 6         :                
+GND*                         : R19       :        :                   :         : 6         :                
+SEVEN_SEGMENT_N_O[5][5]      : R20       : output : 3.3-V LVTTL       :         : 6         : N              
 GND                          : R21       : gnd    :                   :         :           :                
 nSTATUS                      : R22       :        :                   :         : 6         :                
 CONF_DONE                    : R23       :        :                   :         : 6         :                
-GND*                         : R24       :        :                   :         : 6         :                
-GND*                         : R25       :        :                   :         : 6         :                
+SEVEN_SEGMENT_N_O[1][3]      : R24       : output : 3.3-V LVTTL       :         : 6         : N              
+SRAM_ADDRESS_O[5]            : R25       : output : 3.3-V LVTTL       :         : 6         : N              
 GND                          : R26       : gnd    :                   :         :           :                
 VCCIO1                       : T1        : power  :                   : 3.3V    : 1         :                
 GND*                         : T2        :        :                   :         : 1         :                
-VGA_SYNC_O                   : T3        : output : 3.3-V LVTTL       :         : 1         : N              
+VGA_CLOCK_O                  : T3        : output : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : T4        :        :                   :         : 1         :                
 GND                          : T5        : gnd    :                   :         :           :                
 GND*                         : T6        :        :                   :         : 1         :                
 GND*                         : T7        :        :                   :         : 1         :                
 GND*                         : T8        :        :                   :         : 1         :                
-LED_GREEN_O[7]               : T9        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : T9        :        :                   :         : 1         :                
 GND*                         : T10       :        :                   :         : 1         :                
 VCCINT                       : T11       : power  :                   : 1.2V    :           :                
 GND                          : T12       : gnd    :                   :         :           :                
@@ -626,56 +626,56 @@ GND                          : T13       : gnd    :                   :         
 GND                          : T14       : gnd    :                   :         :           :                
 GND                          : T15       : gnd    :                   :         :           :                
 VCCINT                       : T16       : power  :                   : 1.2V    :           :                
-GND*                         : T17       :        :                   :         : 6         :                
-GND*                         : T18       :        :                   :         : 6         :                
+SEVEN_SEGMENT_N_O[5][6]      : T17       : output : 3.3-V LVTTL       :         : 6         : N              
+SEVEN_SEGMENT_N_O[0][0]      : T18       : output : 3.3-V LVTTL       :         : 6         : N              
 GND*                         : T19       :        :                   :         : 6         :                
-GND*                         : T20       :        :                   :         : 6         :                
-GND*                         : T21       :        :                   :         : 6         :                
-GND*                         : T22       :        :                   :         : 6         :                
-GND*                         : T23       :        :                   :         : 6         :                
-GND*                         : T24       :        :                   :         : 6         :                
-GND*                         : T25       :        :                   :         : 6         :                
+SRAM_ADDRESS_O[6]            : T20       : output : 3.3-V LVTTL       :         : 6         : N              
+SRAM_ADDRESS_O[9]            : T21       : output : 3.3-V LVTTL       :         : 6         : N              
+SEVEN_SEGMENT_N_O[1][2]      : T22       : output : 3.3-V LVTTL       :         : 6         : N              
+SEVEN_SEGMENT_N_O[5][4]      : T23       : output : 3.3-V LVTTL       :         : 6         : N              
+SEVEN_SEGMENT_N_O[0][3]      : T24       : output : 3.3-V LVTTL       :         : 6         : N              
+SRAM_ADDRESS_O[4]            : T25       : output : 3.3-V LVTTL       :         : 6         : N              
 VCCIO6                       : T26       : power  :                   : 3.3V    : 6         :                
 GND*                         : U1        :        :                   :         : 1         :                
 GND*                         : U2        :        :                   :         : 1         :                
 GND*                         : U3        :        :                   :         : 1         :                
 GND*                         : U4        :        :                   :         : 1         :                
-VGA_CLOCK_O                  : U5        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : U5        :        :                   :         : 1         :                
 GND*                         : U6        :        :                   :         : 1         :                
 GND*                         : U7        :        :                   :         : 1         :                
 GND                          : U8        : gnd    :                   :         :           :                
 GND*                         : U9        :        :                   :         : 1         :                
 GND*                         : U10       :        :                   :         : 1         :                
 VCCINT                       : U11       : power  :                   : 1.2V    :           :                
-SRAM_ADDRESS_O[16]           : U12       : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : U12       :        :                   :         : 8         :                
 VCCINT                       : U13       : power  :                   : 1.2V    :           :                
 VCCINT                       : U14       : power  :                   : 1.2V    :           :                
 VCCINT                       : U15       : power  :                   : 1.2V    :           :                
 VCCINT                       : U16       : power  :                   : 1.2V    :           :                
-GND*                         : U17       :        :                   :         : 7         :                
+LED_GREEN_O[6]               : U17       : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : U18       :        :                   :         : 7         :                
 GND                          : U19       : gnd    :                   :         :           :                
 GND*                         : U20       :        :                   :         : 6         :                
 GND*                         : U21       :        :                   :         : 6         :                
-PUSH_BUTTON_I[1]             : U22       : input  : 3.3-V LVTTL       :         : 6         : N              
+GND*                         : U22       :        :                   :         : 6         :                
 GND*                         : U23       :        :                   :         : 6         :                
-GND*                         : U24       :        :                   :         : 6         :                
+SEVEN_SEGMENT_N_O[0][2]      : U24       : output : 3.3-V LVTTL       :         : 6         : N              
 GND*                         : U25       :        :                   :         : 6         :                
 GND*                         : U26       :        :                   :         : 6         :                
 GND*                         : V1        :        :                   :         : 1         :                
-GND*                         : V2        :        :                   :         : 1         :                
+SWITCH_I[1]                  : V2        : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : V3        :        :                   :         : 1         :                
 GND*                         : V4        :        :                   :         : 1         :                
 GND*                         : V5        :        :                   :         : 1         :                
 GND*                         : V6        :        :                   :         : 1         :                
 SWITCH_I[9]                  : V7        : input  : 3.3-V LVTTL       :         : 1         : N              
 VCCIO1                       : V8        : power  :                   : 3.3V    : 1         :                
-LED_GREEN_O[1]               : V9        : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : V9        :        :                   :         : 8         :                
 GND*                         : V10       :        :                   :         : 8         :                
-SEVEN_SEGMENT_N_O[3][4]      : V11       : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : V11       :        :                   :         : 8         :                
 VCCIO8                       : V12       : power  :                   : 3.3V    : 8         :                
-SRAM_ADDRESS_O[0]            : V13       : output : 3.3-V LVTTL       :         : 8         : N              
-SRAM_ADDRESS_O[1]            : V14       : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : V13       :        :                   :         : 8         :                
+GND*                         : V14       :        :                   :         : 8         :                
 VCCIO7                       : V15       : power  :                   : 3.3V    : 7         :                
 VCCINT                       : V16       : power  :                   : 1.2V    :           :                
 GND*                         : V17       :        :                   :         : 7         :                
@@ -689,11 +689,11 @@ GND*                         : V24       :        :                   :         
 GND*                         : V25       :        :                   :         : 6         :                
 GND*                         : V26       :        :                   :         : 6         :                
 GND*                         : W1        :        :                   :         : 1         :                
-GND*                         : W2        :        :                   :         : 1         :                
+PUSH_BUTTON_I[0]             : W2        : input  : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : W3        :        :                   :         : 1         :                
 GND*                         : W4        :        :                   :         : 1         :                
 GND                          : W5        : gnd    :                   :         :           :                
-GND*                         : W6        :        :                   :         : 1         :                
+LED_GREEN_O[8]               : W6        : output : 3.3-V LVTTL       :         : 1         : N              
 GND_PLL1                     : W7        : gnd    :                   :         :           :                
 GND*                         : W8        :        :                   :         : 8         :                
 VCCIO8                       : W9        : power  :                   : 3.3V    : 8         :                
@@ -703,32 +703,32 @@ GND*                         : W12       :        :                   :         
 GND                          : W13       : gnd    :                   :         :           :                
 GND                          : W14       : gnd    :                   :         :           :                
 GND*                         : W15       :        :                   :         : 7         :                
-GND*                         : W16       :        :                   :         : 7         :                
+SEVEN_SEGMENT_N_O[5][0]      : W16       : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : W17       :        :                   :         : 7         :                
 VCCIO7                       : W18       : power  :                   : 3.3V    : 7         :                
-SWITCH_I[15]                 : W19       : input  : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : W19       :        :                   :         : 7         :                
 GND_PLL4                     : W20       : gnd    :                   :         :           :                
-GND*                         : W21       :        :                   :         : 6         :                
+SWITCH_I[16]                 : W21       : input  : 3.3-V LVTTL       :         : 6         : N              
 GND                          : W22       : gnd    :                   :         :           :                
 GND*                         : W23       :        :                   :         : 6         :                
-GND*                         : W24       :        :                   :         : 6         :                
-GND*                         : W25       :        :                   :         : 6         :                
+SWITCH_I[2]                  : W24       : input  : 3.3-V LVTTL       :         : 6         : N              
+PUSH_BUTTON_I[1]             : W25       : input  : 3.3-V LVTTL       :         : 6         : N              
 GND*                         : W26       :        :                   :         : 6         :                
 GND*                         : Y1        :        :                   :         : 1         :                
 NC                           : Y2        :        :                   :         :           :                
 GND*                         : Y3        :        :                   :         : 1         :                
-LED_GREEN_O[3]               : Y4        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : Y4        :        :                   :         : 1         :                
 GND*                         : Y5        :        :                   :         : 1         :                
 GND_PLL1                     : Y6        : gnd    :                   :         :           :                
 VCCD_PLL1                    : Y7        : power  :                   : 1.2V    :           :                
 GNDA_PLL1                    : Y8        : gnd    :                   :         :           :                
 GND                          : Y9        : gnd    :                   :         :           :                
 GND*                         : Y10       :        :                   :         : 8         :                
-SWITCH_I[14]                 : Y11       : input  : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : Y11       :        :                   :         : 8         :                
 GND*                         : Y12       :        :                   :         : 8         :                
-GND*                         : Y13       :        :                   :         : 7         :                
-SEVEN_SEGMENT_N_O[6][2]      : Y14       : output : 3.3-V LVTTL       :         : 7         : N              
-GND*                         : Y15       :        :                   :         : 7         :                
+SRAM_DATA_IO[8]              : Y13       : bidir  : 3.3-V LVTTL       :         : 7         : N              
+SRAM_WE_N_O                  : Y14       : output : 3.3-V LVTTL       :         : 7         : N              
+SRAM_DATA_IO[5]              : Y15       : bidir  : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : Y16       :        :                   :         : 7         :                
 GND                          : Y17       : gnd    :                   :         :           :                
 GND*                         : Y18       :        :                   :         : 7         :                
@@ -737,6 +737,6 @@ VCCD_PLL4                    : Y20       : power  :                   : 1.2V    
 GND*                         : Y21       :        :                   :         : 6         :                
 GND*                         : Y22       :        :                   :         : 6         :                
 GND*                         : Y23       :        :                   :         : 6         :                
-LED_GREEN_O[5]               : Y24       : output : 3.3-V LVTTL       :         : 6         : N              
+GND*                         : Y24       :        :                   :         : 6         :                
 GND*                         : Y25       :        :                   :         : 6         :                
 GND*                         : Y26       :        :                   :         : 6         :                
