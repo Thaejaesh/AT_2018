@@ -6,8 +6,8 @@ entity Milestone_2 is
         Resetn          : in     vl_logic;
         SRAM_address    : out    vl_logic_vector(17 downto 0);
         SRAM_write_data : out    vl_logic_vector(15 downto 0);
-        SRAM_we_n       : out    vl_logic;
         SRAM_read_data  : in     vl_logic_vector(15 downto 0);
+        SRAM_we_n       : out    vl_logic;
         M2_done         : out    vl_logic;
         M2_start        : in     vl_logic
     );

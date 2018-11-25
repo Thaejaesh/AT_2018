@@ -85,10 +85,24 @@ sel_mul_in.10 0 1 1
 sel_mul_in.11 1 1 0 
 
 State Machine - |PROJECT|Milestone_2:M2_unit|state
-Name state.S_FS state.S_M2_IDLE state.S_M2_START 
-state.S_M2_IDLE 0 0 0 
-state.S_FS 1 1 0 
-state.S_M2_START 0 1 1 
+Name state.S_M2_START state.S_WS state.S_CS state.S_CT state.S_FS state.S_M2_IDLE 
+state.S_M2_IDLE 0 0 0 0 0 0 
+state.S_FS 0 0 0 0 1 1 
+state.S_CT 0 0 0 1 0 1 
+state.S_CS 0 0 1 0 0 1 
+state.S_WS 0 1 0 0 0 1 
+state.S_M2_START 1 0 0 0 0 1 
+
+State Machine - |PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CS|state
+Name state.S_MM_LO_2 state.S_MM_LO_1 state.S_MM_LO_0 state.S_MM_CC state.S_MM_LI_1 state.S_MM_LI_0 state.S_MM_START state.S_MM_IDLE 
+state.S_MM_IDLE 0 0 0 0 0 0 0 0 
+state.S_MM_START 0 0 0 0 0 0 1 1 
+state.S_MM_LI_0 0 0 0 0 0 1 0 1 
+state.S_MM_LI_1 0 0 0 0 1 0 0 1 
+state.S_MM_CC 0 0 0 1 0 0 0 1 
+state.S_MM_LO_0 0 0 1 0 0 0 0 1 
+state.S_MM_LO_1 0 1 0 0 0 0 0 1 
+state.S_MM_LO_2 1 0 0 0 0 0 0 1 
 
 State Machine - |PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|state
 Name state.S_MM_LO_2 state.S_MM_LO_1 state.S_MM_LO_0 state.S_MM_CC state.S_MM_LI_1 state.S_MM_LI_0 state.S_MM_START state.S_MM_IDLE 
@@ -112,3 +126,13 @@ state.S_FS_COMMON_CASE 0 0 1 0 0 0 0 1 0
 state.S_FS_LO_1 0 1 0 0 0 0 0 1 0 
 state.S_FS_LO_2 1 0 0 0 0 0 0 1 0 
 state.S_FS_LO_3 0 0 0 0 0 0 0 1 1 
+
+State Machine - |PROJECT|Milestone_2:M2_unit|WS:WS_unit|state
+Name state.S_WS_LO_2 state.S_WS_LO_1 state.S_WS_COMMON_CASE state.S_WS_LI_2 state.S_WS_LI_1 state.S_WS_START state.S_WS_IDLE 
+state.S_WS_IDLE 0 0 0 0 0 0 0 
+state.S_WS_START 0 0 0 0 0 1 1 
+state.S_WS_LI_1 0 0 0 0 1 0 1 
+state.S_WS_LI_2 0 0 0 1 0 0 1 
+state.S_WS_COMMON_CASE 0 0 1 0 0 0 1 
+state.S_WS_LO_1 0 1 0 0 0 0 1 
+state.S_WS_LO_2 1 0 0 0 0 0 1 

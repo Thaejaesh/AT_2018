@@ -53,7 +53,7 @@ always_comb begin
 	end
 end
 
-assign FS_write_data = {16'd0, SRAM_read_data}; // Pad 8 bit input with zeros to get an equivalent 32 bit value
+assign FS_write_data = { {16{SRAM_read_data[15]}} , SRAM_read_data}; // Pad 8 bit input with zeros to get an equivalent 32 bit value
 assign FS_write_address = {1'b1,write_address};//Concatenating with a leading zero means writing in top half of memory //+ 7'd64; //64 to write to bottom half of the memory
 
 
@@ -67,15 +67,15 @@ always_comb begin
 		end
 		
 		S_FS_LO_1: begin
-			write_address = SC - 6'd2;
+			write_address = SC - 6'd3;
 		end
 		
 		S_FS_LO_2: begin
-			write_address = SC - 6'd1;
+			write_address = SC - 6'd2;
 		end
 		
 		S_FS_LO_3: begin
-			write_address = SC - 6'd0;
+			write_address = SC - 6'd1;
 		end
 		
 		
@@ -124,8 +124,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		end		
 		
 		S_FS_IDLE: begin
+			FS_done <= 1'b0;
 			if (FS_start) begin
-				FS_done <= 1'b0;
 				state <= S_FS_LI_1;				
 			end
 		end
@@ -176,7 +176,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		end
 		
 		S_FS_LO_2: begin
-			FS_done <= 1'b1;
+			//FS_done <= 1'b1;
 			state <= S_FS_LO_3;
 		end
 		

@@ -8,7 +8,7 @@ add wave uut/state
 
 add wave uut/M2_unit/state
 add wave -divider 
-add wave -divider 
+add wave -divider {Module Conditions}
 
 add wave uut/M2_unit/FS_memory_end
 add wave uut/M2_unit/FS_start
@@ -21,45 +21,98 @@ add wave -divider
 add wave uut/M2_unit/MM_CS_start
 add wave uut/M2_unit/MM_CS_done
 add wave -divider 
+add wave uut/M2_unit/WS_start
+add wave uut/M2_unit/WS_done
 
-add wave uut/M2_unit/FS_unit/state
-add wave -unsigned uut/M2_unit/FS_unit/write_address
-add wave -unsigned uut/M2_unit/FS_unit/FS_write_address
-add wave -hexadecimal uut/M2_unit/FS_unit/FS_write_data
-add wave -unsigned uut/M2_unit/FS_unit/CB
-add wave -unsigned uut/M2_unit/FS_unit/RB
+add wave -divider {FS}
 
+add wave 				uut/M2_unit/FS_unit/state
+add wave -unsigned 		uut/M2_unit/FS_unit/write_address
+add wave -unsigned 		uut/M2_unit/FS_unit/FS_write_address
+add wave -hexadecimal 	uut/M2_unit/FS_unit/FS_write_data
+add wave -unsigned 		uut/M2_unit/FS_unit/CB
+add wave -unsigned 		uut/M2_unit/FS_unit/RB
 
-add wave -divider 
-add wave -divider 
+add wave -unsigned 		uut/M2_unit/FS_unit/Base_address
+add wave -unsigned 		uut/M2_unit/FS_unit/read_address
 
+add wave -divider {CT}
+			
+add wave -hexadecimal 	uut/M2_unit/MM_unit_CT/P_write_data
+add wave -hexadecimal 	uut/M2_unit/MM_unit_CT/product_out
+add wave -hexadecimal 	uut/M2_unit/MM_unit_CT/product
 
-add wave -unsigned uut/M2_unit/FS_unit/Base_address
-add wave -unsigned uut/M2_unit/FS_unit/read_address
-
-
-add wave -hexadecimal uut/M2_unit/SRAM_read_data
-add wave -hexadecimal uut/M2_unit/RAM1_read_data
-add wave -hexadecimal uut/M2_unit/RAM1_address
-
-
-add wave -hexadecimal uut/M2_unit/MM_unit_CT/P_write_data
-add wave -unsigned uut/M2_unit/MM_unit_CT/P_write_address
-add wave  uut/M2_unit/MM_unit_CT/P_write_enable
-add wave -unsigned uut/M2_unit/MM_unit_CT/god_counter
-add wave -unsigned uut/M2_unit/MM_unit_CT/w_counter
+add wave -unsigned 		uut/M2_unit/MM_unit_CT/P_write_address
+add wave  				uut/M2_unit/MM_unit_CT/P_write_enable
+add wave -unsigned 		uut/M2_unit/MM_unit_CT/god_counter
+add wave -unsigned 		uut/M2_unit/MM_unit_CT/w_counter
 
 
-add wave -unsigned uut/M2_unit/MM_unit_CT/mult_in_C
-add wave -unsigned uut/M2_unit/MM_unit_CT/mult_in_T_S
-add wave -unsigned uut/M2_unit/MM_unit_CT/A_read_data
+add wave -decimal		uut/M2_unit/MM_unit_CT/mult_in_C
+add wave -decimal 		uut/M2_unit/MM_unit_CT/mult_in_T_S
+add wave -hexadecimal	uut/M2_unit/MM_unit_CT/A_read_data
+
+
+add wave -divider {CS}
+
+add wave -hexadecimal 	uut/M2_unit/MM_unit_CS/P_write_data
+add wave -unsigned 		uut/M2_unit/MM_unit_CS/P_write_address
+add wave  				uut/M2_unit/MM_unit_CS/P_write_enable
+add wave -unsigned 		uut/M2_unit/MM_unit_CS/god_counter
+add wave -unsigned 		uut/M2_unit/MM_unit_CS/w_counter
+
+
+add wave -unsigned		uut/M2_unit/MM_unit_CS/mult_in_C
+add wave -unsigned 		uut/M2_unit/MM_unit_CS/mult_in_T_S
+add wave -unsigned 		uut/M2_unit/MM_unit_CS/A_read_data
+
+add wave -divider {WS}
+
+add wave 				uut/M2_unit/WS_unit/state
+add wave -unsigned 		uut/M2_unit/WS_unit/SRAM_address
+add wave -unsigned 		uut/M2_unit/WS_unit/SC
+add wave -unsigned 		uut/M2_unit/WS_unit/WC
+add wave -unsigned 		uut/M2_unit/WS_unit/CB
+add wave -unsigned 		uut/M2_unit/WS_unit/RB
+
+add wave -unsigned 		uut/M2_unit/WS_unit/Base_address
+add wave -unsigned 		uut/M2_unit/WS_unit/S_read_data
+add wave -unsigned 		uut/M2_unit/WS_unit/S_read_address
+
+
+add wave -divider {SRAM Access}
+
+add wave -hexadecimal 	uut/M2_unit/SRAM_read_data
+add wave  				uut/M2_unit/SRAM_we_n
+add wave -unsigned 		uut/SRAM_address
+add wave -hexadecimal 	uut/SRAM_write_data
+add wave -hexadecimal 	uut/SRAM_read_data
+
+
+add wave -divider {DPRAM Access}
+
+add wave -hexadecimal 	uut/M2_unit/RAM0_read_data
+add wave -hexadecimal 	uut/M2_unit/RAM0_write_data
+add wave -unsigned 	  	uut/M2_unit/RAM0_address
+add wave 			  	uut/M2_unit/RAM0_write_enable
+add wave -divider
+
+add wave -hexadecimal 	uut/M2_unit/RAM1_read_data
+add wave -hexadecimal 	uut/M2_unit/RAM1_write_data
+add wave -unsigned 		uut/M2_unit/RAM1_address
+add wave 			  	uut/M2_unit/RAM1_write_enable
+
+add wave -divider
+add wave -hexadecimal 	uut/M2_unit/RAM2_read_data
+add wave -unsigned	  	uut/M2_unit/RAM2_address
+#add wave 			  	uut/M2_unit/RAM2_write_enable
+
+
+
 
 #add wave uut/M1_unit/state
 #add wave uut/M1_unit/cycle
 
-add wave -unsigned uut/SRAM_address
-add wave -hexadecimal uut/SRAM_write_data
-add wave -hexadecimal uut/SRAM_read_data
 
 
 
