@@ -3,6 +3,13 @@
 // This defines the states
 
 typedef enum logic [4:0] {
+	
+	S_M3_START,
+	S_M3_IDLE
+	
+}M3_state_type;
+
+typedef enum logic [4:0] {
 	S_M2_START,
 	
 	S_FS,
