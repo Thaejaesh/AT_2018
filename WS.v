@@ -54,10 +54,10 @@ always_comb begin
 	
 	if (Base_address == 18'd0) begin
 		//For Y: address = 160*RA + CA = (128 + 32)*RA + CA
-		write_address = {3'd0, RB, WC[5:3], 7'd0} + {5'd0, RB, WC[5:3], 5'd0} + {9'd0, CB, 1'd0, WC[2:1]} + Base_address;
+		write_address = {3'd0, RB, WC[5:3], 7'd0} + {5'd0, RB, WC[5:3], 5'd0} + {10'd0, CB, WC[2:1]} + Base_address;
 	end else begin
 		//For U and V: address = 80*RA + CA = (64 + 16)*RA + CA
-		write_address = {4'd0, RB, WC[5:3], 6'd0} + {6'd0, RB, WC[5:3], 4'd0} + {9'd0, CB, WC[2:0]} + Base_address;
+		write_address = {4'd0, RB, WC[5:3], 6'd0} + {6'd0, RB, WC[5:3], 4'd0} + {10'd0, CB, WC[2:1]} + Base_address;
 	end
 	
 end
@@ -69,24 +69,25 @@ assign clipped_read_data = ( $signed(S_read_data[23:8]) > $signed(16'd255) )? 8'
 
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (Resetn == 1'b0) begin
-		state <= S_WS_IDLE;				
+					
 		
-		SRAM_we_n <= 1'b1;	
+		SRAM_we_n 		<= 1'b1;	
 		SRAM_write_data <= 16'd0;
 		
-		WS_done 	 <= 1'b0;
+		WS_done 		<= 1'b0;
 		
-		SRAM_address <= 18'd0;
-		Base_address <= 18'd0;
+		SRAM_address 	<= 18'd0;
+		Base_address 	<= 18'd0;
 	
-		SC		  	 <= 6'd0;
-		WC			 <= 6'd0;
-		CB 			 <= 6'd0;
-		RB 			 <= 5'd0;
-		C_END 		 <= 6'd19;
+		SC		  	 	<= 6'd0;
+		WC			 	<= 6'd0;
+		CB 			 	<= 6'd0;
+		RB 			 	<= 5'd0;
+		C_END 		 	<= 6'd39;
 		
-		first_run 	 <= 1'b1;
-		
+		first_run 	 	<= 1'b1;
+		clipped_buffer  <= 8'd0;
+		state 			<= S_WS_START;	
 	end else begin
 
 		case (state)
@@ -95,20 +96,20 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			SRAM_we_n		<= 1'b1;
 			SRAM_write_data <= 16'd0;
 
-			WS_done		 <= 1'b0;
+			WS_done			<= 1'b0;
 			
-			SRAM_address <= 18'd0;
-			Base_address <= 18'd0;
+			SRAM_address	<= 18'd0;
+			Base_address 	<= 18'd0;
 
-			SC 			 <= 6'd0;
-			WC			 <= 6'd0;
-			CB			 <= 6'd0;
-			RB			 <= 5'd0;
-			C_END		 <= 6'd19;
+			SC 			 	<= 6'd0;
+			WC			 	<= 6'd0;
+			CB			 	<= 6'd0;
+			RB			 	<= 5'd0;
+			C_END		 	<= 6'd39;
 			
-			first_run 	 <= 1'b1;
-			
-			state		 <= S_WS_IDLE;
+			first_run 	 	<= 1'b1;
+			clipped_buffer  <= 8'd0;
+			state		 	<= S_WS_IDLE;
 		end
 		
 		S_WS_IDLE: begin
@@ -116,6 +117,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			SC 		 	 <= 6'd0;
 			WC 			 <= 6'd0;
 			first_run 	 <= 1'b1;
+			SRAM_we_n 	 <= 1'b1;
 			if (WS_start) begin
 				state <= S_WS_LI_1;
 			end
@@ -132,6 +134,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			
 			SRAM_address <= write_address;
 			SC <= SC + 6'd1;
+			WC <= WC + 6'd1;
+			clipped_buffer <= clipped_read_data;
 			state <= S_WS_COMMON_CASE;
 		end
 
@@ -150,6 +154,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 				SRAM_we_n <= 1'b1;
 				if (first_run) begin
 					first_run <= 1'b0;
+					SRAM_address <= write_address;
+					SRAM_write_data <= {clipped_buffer, clipped_read_data};					
 				end else begin
 					SRAM_address <= write_address;
 					SRAM_write_data <= {clipped_buffer, clipped_read_data};
@@ -158,6 +164,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			
 			if (SC == 6'd63) begin
 				state <= S_WS_LO_1;
+				WC 	  <= WC;
+				SRAM_we_n <= 1'b0;
 				SC	  <= 6'd0;
 			end else begin
 				SC 	  <= SC + 6'd1;
@@ -168,7 +176,9 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		S_WS_LO_1: begin
 			WC <= WC + 6'd1;
 			SRAM_we_n <= 1'b0;
+			SRAM_write_data <= {clipped_buffer, clipped_read_data};
 			clipped_buffer <= clipped_read_data;
+			SRAM_address <= write_address;
 			state <= S_WS_LO_2;
 		end
 		
@@ -176,15 +186,15 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		S_WS_LO_2: begin
 			
 			SRAM_we_n <= 1'b1;
-			SRAM_address <= write_address;
-			SRAM_write_data <= {clipped_buffer, clipped_read_data};
+			
+			
 			WS_done   <= 1'b1;			
 			
 			if (CB == C_END) begin
 				CB 			<= 6'd0;
 				if (RB == 5'd29) begin
 					RB 		<= 5'd0;
-					C_END 	<= 6'd9;
+					C_END 	<= 6'd19;
 					
 					if (Base_address == 18'd0) begin	
 						Base_address <= 18'd38400;
@@ -202,6 +212,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			state 	  <= S_WS_IDLE;
 			
 		end
+		
+
 		
 		default: state <= S_WS_IDLE;
 		endcase

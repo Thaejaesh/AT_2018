@@ -49,7 +49,8 @@ typedef enum logic [3:0] {
 	S_WS_LI_2,
 	S_WS_COMMON_CASE,
 	S_WS_LO_1,
-	S_WS_LO_2
+	S_WS_LO_2,
+	S_WS_LO_3
 	
 }WS_state_type;
 

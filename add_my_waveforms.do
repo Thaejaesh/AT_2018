@@ -70,14 +70,17 @@ add wave -divider {WS}
 
 add wave 				uut/M2_unit/WS_unit/state
 add wave -unsigned 		uut/M2_unit/WS_unit/SRAM_address
+add wave -unsigned 		uut/M2_unit/WS_unit/write_address
 add wave -unsigned 		uut/M2_unit/WS_unit/SC
 add wave -unsigned 		uut/M2_unit/WS_unit/WC
 add wave -unsigned 		uut/M2_unit/WS_unit/CB
 add wave -unsigned 		uut/M2_unit/WS_unit/RB
 
 add wave -unsigned 		uut/M2_unit/WS_unit/Base_address
-add wave -unsigned 		uut/M2_unit/WS_unit/S_read_data
+add wave -hexadecimal	uut/M2_unit/WS_unit/S_read_data
 add wave -unsigned 		uut/M2_unit/WS_unit/S_read_address
+add wave -hexadecimal 	uut/M2_unit/WS_unit/clipped_read_data
+add wave -hexadecimal	uut/M2_unit/WS_unit/clipped_buffer
 
 
 add wave -divider {SRAM Access}

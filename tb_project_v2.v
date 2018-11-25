@@ -44,7 +44,7 @@ you will get false errors, so use the original testbench instead.
 `define INPUT_FILE_NAME "panda.sram_d2"
 
 //// for milestone 3 (completed project)
-//`define INPUT_FILE_NAME "motorcycle.mic12”
+//`define INPUT_FILE_NAME "panda.mic12”
 
 module tb_project_v2;
 
