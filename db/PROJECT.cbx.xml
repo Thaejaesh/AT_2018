@@ -2,14 +2,15 @@
 <LOG_ROOT>
 	<PROJECT NAME="PROJECT">
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CS|lpm_mult:Mult3" CBX_FILE_NAME="mult_m1t.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|lpm_mult:Mult2" CBX_FILE_NAME="mult_m1t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|lpm_mult:Mult2" CBX_FILE_NAME="mult_n1t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CS|lpm_mult:Mult0" CBX_FILE_NAME="mult_m1t.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|lpm_mult:Mult3" CBX_FILE_NAME="mult_m1t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|lpm_mult:Mult3" CBX_FILE_NAME="mult_n1t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|dual_port_RAM0:dual_port_RAM_inst0|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_tq92.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|dual_port_RAM2:dual_port_RAM_inst2|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_vq92.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|lpm_mult:Mult0" CBX_FILE_NAME="mult_k8t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CS|lpm_mult:Mult1" CBX_FILE_NAME="mult_m1t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CT|lpm_mult:Mult0" CBX_FILE_NAME="mult_n1t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|Milestone_3:M3_unit|dual_port_RAM3:dual_port_RAM_inst3|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_0r92.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_1:M1_unit|FIR:FIR_unit|lpm_mult:Mult0" CBX_FILE_NAME="mult_q5t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_1:M1_unit|RGB_Converter:RGB_unit|lpm_mult:Mult1" CBX_FILE_NAME="mult_r8t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|PROJECT|Milestone_2:M2_unit|MATRIX_MULTIPLIER:MM_unit_CS|lpm_mult:Mult2" CBX_FILE_NAME="mult_m1t.tdf"/>

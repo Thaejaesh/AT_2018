@@ -167,7 +167,7 @@ begin
 
 	$write("Opening file \"%s\" to get SRAM verification data\n\n", `VERIFICATION_FILE_NAME);
 	file_ptr = $fopen(`VERIFICATION_FILE_NAME, "rb");
-	for (i=76800; i<262144; i=i+1) begin
+	for (i=0; i<262144; i=i+1) begin
 		file_data = $fgetc(file_ptr);
 		buffer[15:8] = file_data & 8'hFF;
 		file_data = $fgetc(file_ptr);
@@ -307,9 +307,9 @@ end
 //then stop simulating and print debug info
 always @ (posedge Clock_50) begin
 
-/* 	if (uut.M3_unit.M3_done) begin
+	if (uut.M2_unit.M2_done) begin
 		$stop;
-	end */
+	end
 	if (uut.SRAM_we_n == 1'b0) begin	//signal names within project (instantiated as uut) should match here, assuming names from experiment4a
 	
 		//IMPORTANT: this is the "no write" memory region for milestone 1, change region for different milestones

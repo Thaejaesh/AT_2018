@@ -25,6 +25,7 @@ module WS (
 		
 		output logic 			WS_done,
 		input  logic 			WS_start,
+		output logic 			WS_memory_end,
 		
 		input  logic   [31:0] 	S_read_data,
 		output logic   [6:0]  	S_read_address,
@@ -75,6 +76,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		SRAM_write_data <= 16'd0;
 		
 		WS_done 		<= 1'b0;
+		WS_memory_end 	<= 1'b0;
 		
 		SRAM_address 	<= 18'd0;
 		Base_address 	<= 18'd0;
@@ -97,6 +99,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 			SRAM_write_data <= 16'd0;
 
 			WS_done			<= 1'b0;
+			WS_memory_end 	<= 1'b0;
 			
 			SRAM_address	<= 18'd0;
 			Base_address 	<= 18'd0;
@@ -200,6 +203,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 						Base_address <= 18'd38400;
 					end else if (Base_address == 18'd38400) begin
 						Base_address <= 18'd57600;
+					end else if (Base_address == 18'd57600) begin
+						WS_memory_end <= 1'b1;
 					end
 					
 				end else begin

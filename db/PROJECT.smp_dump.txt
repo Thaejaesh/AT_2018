@@ -127,6 +127,28 @@ state.S_FS_LO_1 0 1 0 0 0 0 0 1 0
 state.S_FS_LO_2 1 0 0 0 0 0 0 1 0 
 state.S_FS_LO_3 0 0 0 0 0 0 0 1 1 
 
+State Machine - |PROJECT|Milestone_2:M2_unit|Milestone_3:M3_unit|state
+Name state.S_M3_IDLE state.S_M3_WRITE_ZEROS state.S_M3_ZEROS_TO_END state.S_M3_3_bit state.S_M3_CC state.S_M3_LI_6 state.S_M3_LI_5 state.S_M3_LI_4 state.S_M3_LI_3 state.S_M3_LI_2 state.S_M3_LI_1 state.S_M3_READ_HEIGHT state.S_M3_READ_WIDTH state.S_M3_READ_BEEF state.S_M3_READ_DEAD state.S_M3_LI_H3 state.S_M3_LI_H2 state.S_M3_LI_H1 state.S_M3_START 
+state.S_M3_START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_M3_LI_H1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_M3_LI_H2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_M3_LI_H3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_M3_READ_DEAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_M3_READ_BEEF 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_M3_READ_WIDTH 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_M3_READ_HEIGHT 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_M3_LI_1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_M3_LI_2 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_M3_LI_3 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_LI_4 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_LI_5 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_LI_6 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_CC 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_3_bit 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_ZEROS_TO_END 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_WRITE_ZEROS 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.S_M3_IDLE 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
 State Machine - |PROJECT|Milestone_2:M2_unit|WS:WS_unit|state
 Name state.S_WS_LO_2 state.S_WS_LO_1 state.S_WS_COMMON_CASE state.S_WS_LI_2 state.S_WS_LI_1 state.S_WS_IDLE state.S_WS_START 
 state.S_WS_START 0 0 0 0 0 0 0 

@@ -56,16 +56,18 @@ view wave
 do add_my_waveforms.do
 #do add_some_more_waveforms.do
 
-# save the SRAM content for inspection
-mem save -o RAM3.mem -f mti -data hex -addr decimal -startaddress 0 -endaddress 127 -wordsperline 8 /tb_project_v2/uut/M3_unit/dual_port_RAM_inst3/altsyncram_component/mem_data
-
-
-
 # format signal names in waveform
 configure wave -signalnamewidth 1
 
 # run complete simulation
 run -all
+
+# save the SRAM content for inspection
+mem save -o simulation_RAM3.mem -f mti -data hex -addr decimal  -wordsperline 8 /tb_project_v2/uut/M2_unit/M3_unit/dual_port_RAM_inst3/altsyncram_component/mem_data
+mem save -o simulation_RAM0.mem -f mti -data hex -addr decimal  -wordsperline 8 /tb_project_v2/uut/M2_unit/dual_port_RAM_inst0/altsyncram_component/mem_data
+mem save -o simulation_RAM1.mem -f mti -data hex -addr decimal  -wordsperline 8 /tb_project_v2/uut/M2_unit/dual_port_RAM_inst1/altsyncram_component/mem_data
+
+
 
 destroy .structure
 destroy .signals

@@ -51,6 +51,19 @@ logic 		 RAM1_write_enable;
 logic [31:0] RAM2_read_data[1:0];
 logic [6:0]  RAM2_address[1:0];
 
+//Milestone 3
+logic [17:0] M3_SRAM_address;
+logic [15:0] M3_SRAM_read_data;
+logic [15:0] M3_SRAM_write_data;
+logic 		 M3_SRAM_we_n;
+logic 		 M3_done;
+logic		 M3_memory_end;
+logic		 M3_start;
+logic [31:0] RAM3_write_data;
+logic [31:0] RAM3_read_data[1:0];
+logic [6:0]  RAM3_address[1:0];
+logic 		 RAM3_write_enable;
+
 
 //Fetch S'
 logic [31:0] FS_write_data;
@@ -96,16 +109,18 @@ logic 		 WS_DPRAM0_write_enable;
 logic [17:0] WS_SRAM_address;
 logic [15:0] WS_SRAM_write_data;
 logic 		 WS_SRAM_we_n;
+logic		 WS_memory_end;
 
 
 always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 	if (Resetn == 1'b0) begin
 		state 		<= S_M2_IDLE;	
-		FS_start 	<= 1'b0;
+		//FS_start 	<= 1'b0;
 		MM_CT_start <= 1'b0;
 		MM_CS_start <= 1'b0;
 		WS_start 	<= 1'b0;
 		M2_done 	<= 1'b0;
+		M3_start	<= 1'b0;
 	end else begin
 
 		case (state)
@@ -117,28 +132,38 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		end
 		
 		S_M2_START: begin
-			FS_start <= 1'b1;
+			M3_start <= 1'b1;
+			//FS_start <= 1'b1;
 			state <= S_FS;			
 		end
 		
-		S_FS: begin
-			FS_start <= 1'b0;
+		S_FS: begin //First Run of M3 
+			
+			M3_start <= 1'b0;
+			if (M3_done) begin
+				MM_CT_start <= 1'b1;
+				state 		<= S_CT;
+			end
+						
+/* 			FS_start <= 1'b0;
 			if (FS_done) begin
 				MM_CT_start <= 1'b1;
 				state <= S_CT;
-			end
+			end */
 		end
 		
 		S_CT: begin
 			
 									
 			if (MM_CT_done) begin
-				FS_start 	<= 1'b1;
+				//FS_start 	<= 1'b1;
+				M3_start 	<= 1'b1;
 				MM_CT_start <= 1'b0;
 				MM_CS_start <= 1'b1;
 				state		<= S_CS;
 			end	else begin
-				FS_start 	<= 1'b0;
+				//FS_start 	<= 1'b0;
+				M3_start 	<= 1'b0;
 				MM_CT_start <= 1'b0;
 				WS_start 	<= 1'b0;
 			end
@@ -151,7 +176,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 				MM_CS_start <= 1'b0;				
 				WS_start	<= 1'b1;
 				
-				if (FS_memory_end) begin
+				//if (FS_memory_end) begin
+				if (M3_memory_end) begin
 					state 	<= S_WS;
 				end else begin
 					MM_CT_start	<= 1'b1;
@@ -160,7 +186,8 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 				
 			end else begin
 				MM_CS_start <= 1'b0;	
-				FS_start	<= 1'b0;
+				//FS_start	<= 1'b0;
+				M3_start 	<= 1'b0;
 				MM_CT_start <= 1'b0;
 				WS_start 	<= 1'b0;
 			end
@@ -171,7 +198,7 @@ always_ff @ (posedge CLOCK_50_I or negedge Resetn) begin
 		S_WS: begin
 			
 			WS_start <= 1'b0;
-			if (WS_done) begin
+			if (WS_done && WS_memory_end) begin
 				M2_done <= 1'b1;
 				state 	<= S_M2_IDLE;
 			end
@@ -193,14 +220,19 @@ always_comb begin
 	S_FS: begin
 		
 		//SRAM ACCESS
-		SRAM_address			= FS_SRAM_address;
+		//SRAM_address			= FS_SRAM_address;
+		SRAM_address			= M3_SRAM_address;
 		SRAM_write_data			= 16'd0;
 		SRAM_we_n				= 1'd1;
 		
 		//DPRAM ACCESS
+		/*
 		RAM0_write_data[1]		= FS_write_data;
 		RAM0_address[1] 		= FS_write_address;
-		RAM0_write_enable[1]	= FS_write_enable;
+		RAM0_write_enable[1]	= FS_write_enable;*/
+		RAM0_write_data[1]		= 32'd0; //RAM3_write_data;
+		RAM0_address[1]			= 7'd0; //RAM3_address[1];
+		RAM0_write_enable[1]	= 1'b0; //RAM3_write_enable;
 		
 		RAM0_write_data[0]	 	= 32'd0;		
 		RAM0_address[0]		 	= 7'd0;
@@ -213,8 +245,11 @@ always_comb begin
 		RAM2_address[0]		 	= 7'd0;
 		RAM2_address[1]		 	= 7'd0;
 		
+		RAM3_address[0]			= 7'd0;
+		
 		//FS ACCESS
-		FS_SRAM_read_data	 	= SRAM_read_data;
+		//FS_SRAM_read_data	 	= SRAM_read_data;
+		M3_SRAM_read_data		= SRAM_read_data;
 		
 		//CT ACCESS
 		MM_CT_RAM0_read_data 	= 32'd0;
@@ -240,7 +275,7 @@ always_comb begin
 		
 		//DPRAM ACCESS
 		RAM0_write_data[1]		= 32'd0;
-		RAM0_address[1] 		= MM_CT_RAM0_address;
+		RAM0_address[1] 		= 7'd0;//MM_CT_RAM0_address;
 		RAM0_write_enable[1]	= 1'd0;
 		
 		RAM0_write_data[0]	 	= 32'd0;		
@@ -254,11 +289,14 @@ always_comb begin
 		RAM2_address[0]		 	= MM_CT_RAM2_address[0];
 		RAM2_address[1]		 	= MM_CT_RAM2_address[1];
 		
+		RAM3_address[0]			= MM_CT_RAM0_address;
+		
 		//FS ACCESS
-		FS_SRAM_read_data	 	= 16'd0;
+		//FS_SRAM_read_data	 	= 16'd0;
+		M3_SRAM_read_data		= 16'd0;
 		
 		//CT ACCESS
-		MM_CT_RAM0_read_data 	= RAM0_read_data[1];
+		MM_CT_RAM0_read_data 	= RAM3_read_data[0];//RAM0_read_data[1];
 		MM_CT_RAM2_read_data[0] = RAM2_read_data[0];
 		MM_CT_RAM2_read_data[1] = RAM2_read_data[1];
 		
@@ -275,14 +313,20 @@ always_comb begin
 	S_CS: begin
 	
 		//SRAM ACCESS
-		SRAM_address			= FS_SRAM_address;
+		//SRAM_address			= FS_SRAM_address;
+		SRAM_address			= M3_SRAM_address;
 		SRAM_write_data			= 16'd0;
 		SRAM_we_n				= 1'd1;
 		
 		//DPRAM ACCESS
+		/*
 		RAM0_write_data[1]		= FS_write_data;
 		RAM0_address[1] 		= FS_write_address;
 		RAM0_write_enable[1]	= FS_write_enable;
+		*/
+		RAM0_write_data[1]		= 32'd0;//RAM3_write_data;
+		RAM0_address[1]			= 7'd0;//RAM3_address[1];
+		RAM0_write_enable[1]	= 1'd0;//RAM3_write_enable;
 		
 		RAM0_write_data[0]	 	= MM_CS_RAM0_write_data;		
 		RAM0_address[0]		 	= MM_CS_RAM0_address;
@@ -295,8 +339,10 @@ always_comb begin
 		RAM2_address[0]		 	= MM_CS_RAM2_address[0];
 		RAM2_address[1]		 	= MM_CS_RAM2_address[1];
 		
+		RAM3_address[0]			= 7'd0;
 		//FS ACCESS
-		FS_SRAM_read_data	 	= SRAM_read_data;
+		//FS_SRAM_read_data	 	= SRAM_read_data;
+		M3_SRAM_read_data		= SRAM_read_data;
 		
 		//CT ACCESS
 		MM_CT_RAM0_read_data 	= 32'd0;
@@ -336,8 +382,10 @@ always_comb begin
 		RAM2_address[0]		 	= 7'd0;
 		RAM2_address[1]		 	= 7'd0;
 		
+		RAM3_address[0]			= 7'd0;
 		//FS ACCESS
-		FS_SRAM_read_data	 	= 16'd0;
+		//FS_SRAM_read_data	 	= 16'd0;
+		M3_SRAM_read_data		= 16'd0;
 		
 		//CT ACCESS
 		MM_CT_RAM0_read_data 	= 32'd0;
@@ -377,8 +425,10 @@ always_comb begin
 		RAM2_address[0]		 	= 7'd0;
 		RAM2_address[1]		 	= 7'd0;
 		
+		RAM3_address[0]			= 7'd0;
 		//FS ACCESS
-		FS_SRAM_read_data	 	= 16'd0;
+		//FS_SRAM_read_data	 	= 16'd0;
+		M3_SRAM_read_data		= 16'd0;
 		
 		//CT ACCESS
 		MM_CT_RAM0_read_data 	= 32'd0;
@@ -409,6 +459,7 @@ WS WS_unit (
 	
 	.WS_done(WS_done),
 	.WS_start(WS_start),
+	.WS_memory_end(WS_memory_end),
 	
 	.S_read_data(WS_DPRAM0_read_data),
 	.S_read_address(WS_DPRAM0_read_address),
@@ -416,6 +467,29 @@ WS WS_unit (
 
 );
 
+Milestone_3 M3_unit (
+
+	.CLOCK_50_I(CLOCK_50_I),
+	
+	.Resetn(Resetn),
+	.SRAM_address(M3_SRAM_address),
+	.SRAM_write_data(M3_SRAM_write_data),
+	.SRAM_read_data(M3_SRAM_read_data),
+	.SRAM_we_n(M3_SRAM_we_n),
+	
+	.M3_memory_end(M3_memory_end),
+
+	
+	.RAM3_write_data(RAM3_write_data),
+	.RAM3_read_data(RAM3_read_data),
+	.RAM3_address_in(RAM3_address[0]),
+	.RAM3_address(RAM3_address[1]),
+	.RAM3_write_enable(RAM3_write_enable),
+	
+	.M3_done(M3_done),
+	.M3_start(M3_start)
+	
+);
 
 FS FS_unit (
 	.CLOCK_50_I(CLOCK_50_I),
@@ -441,7 +515,7 @@ MATRIX_MULTIPLIER MM_unit_CT(
 	.MM_start(MM_CT_start),
 	.MM_done(MM_CT_done),
 	
-	.T_S(1'b0),
+	.T_S(1'b1),
 	
 	//[1]
 	.A_read_data(MM_CT_RAM0_read_data), 

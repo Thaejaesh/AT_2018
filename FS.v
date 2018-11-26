@@ -54,7 +54,7 @@ always_comb begin
 end
 
 assign FS_write_data = { {16{SRAM_read_data[15]}} , SRAM_read_data}; // Pad 8 bit input with zeros to get an equivalent 32 bit value
-assign FS_write_address = {1'b1,write_address};//Concatenating with a leading zero means writing in top half of memory //+ 7'd64; //64 to write to bottom half of the memory
+assign FS_write_address = {1'b1,write_address};//Concatenating with a leading one means writing in bottom half of memory //+ 7'd64; //64 to write to bottom half of the memory
 
 
 //Determine FS_write_address
