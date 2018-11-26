@@ -33,6 +33,7 @@ vlog -sv -svinputport=var -work rtl_work Milestone_2.v
 vlog -sv -svinputport=var -work rtl_work FS.v
 vlog -sv -svinputport=var -work rtl_work WS.v
 vlog -sv -svinputport=var -work rtl_work MATRIX_MULTIPLIER.v
+vlog -sv -svinputport=var -work rtl_work dual_port_RAM3.v
 vlog -sv -svinputport=var -work rtl_work dual_port_RAM2.v
 vlog -sv -svinputport=var -work rtl_work dual_port_RAM1.v
 vlog -sv -svinputport=var -work rtl_work dual_port_RAM0.v
@@ -54,6 +55,10 @@ view wave
 # or just add the waveforms here like done the labs
 do add_my_waveforms.do
 #do add_some_more_waveforms.do
+
+# save the SRAM content for inspection
+mem save -o RAM3.mem -f mti -data hex -addr decimal -startaddress 0 -endaddress 127 -wordsperline 8 /tb_project_v2/uut/M3_unit/dual_port_RAM_inst3/altsyncram_component/mem_data
+
 
 
 # format signal names in waveform

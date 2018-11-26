@@ -6,6 +6,47 @@ add wave -divider {some label for my divider}
 add wave uut/SRAM_we_n
 add wave uut/state
 
+
+add wave 				uut/M3_unit/state
+add wave 				uut/M3_unit/M3_done
+add wave				uut/M3_unit/Decode_enable
+add wave 				uut/M3_unit/M3_SReg
+add wave -unsigned		uut/M3_unit/Num_write_cycles
+add wave -unsigned		uut/M3_unit/SReg_end
+add wave -unsigned		uut/M3_unit/Q_shift
+
+add wave 				uut/M3_unit/M3_memory_end
+add wave -decimal		uut/M3_unit/BC
+add wave 				uut/M3_unit/Q_matrix
+add wave -decimal		uut/M3_unit/WIDTH
+add wave -decimal		uut/M3_unit/HEIGHT
+add wave 				uut/M3_unit/first_run
+add wave -unsigned		uut/M3_unit/ZZ_position
+add wave -unsigned		uut/M3_unit/next_ZZ
+add wave -decimal		uut/M3_unit/diagonal_index
+
+add wave -divider
+
+add wave -hexadecimal	uut/M3_unit/read_address
+add wave -unsigned		uut/M3_unit/RAM3_address
+add wave -decimal 		uut/M3_unit/RAM3_write_data
+add wave -decimal		uut/M3_unit/RAM3_read_data
+add wave 				uut/M3_unit/RAM3_write_enable
+
+add wave -divider {SRAM Access}
+
+add wave -hexadecimal 	uut/M3_unit/SRAM_read_data
+add wave  				uut/M3_unit/SRAM_we_n
+add wave -unsigned 		uut/SRAM_address
+add wave -hexadecimal 	uut/SRAM_write_data
+add wave -hexadecimal 	uut/SRAM_read_data
+
+add wave -divider {Not Now}
+add wave -divider {Not Now}
+add wave -divider {Not Now}
+add wave -divider {Not Now}
+add wave -divider {Not Now}
+
 add wave uut/M2_unit/state
 add wave -divider 
 add wave -divider {Module Conditions}
@@ -154,3 +195,5 @@ add wave -unsigned	  	uut/M2_unit/RAM2_address
 #add wave -unsigned uut/M1_unit/RGB_unit/V_in_RGB
 
 #add wave -hexadecimal SRAM_ARRAY[uut.SRAM_address]
+
+

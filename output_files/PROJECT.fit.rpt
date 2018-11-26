@@ -1,5 +1,5 @@
 Fitter report for PROJECT
-Sun Nov 25 12:53:37 2018
+Sun Nov 25 16:23:41 2018
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -68,7 +68,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Sun Nov 25 12:53:37 2018           ;
+; Fitter Status                      ; Successful - Sun Nov 25 16:23:41 2018           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PROJECT                                         ;
 ; Top-level Entity Name              ; PROJECT                                         ;
@@ -3237,7 +3237,7 @@ Info (176215): I/O bank details before I/O pin placement
         Info (176213): I/O bank number 6 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  58 pins available
         Info (176213): I/O bank number 7 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  58 pins available
         Info (176213): I/O bank number 8 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  56 pins available
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:03
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:02
 Info (170191): Fitter placement operations beginning
@@ -3246,11 +3246,11 @@ Info (170192): Fitter placement operations ending: elapsed time is 00:00:03
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 4% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 36% of the available device resources in the region that extends from location X33_Y12 to location X43_Y23
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 2.14 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 2.11 seconds.
 Info (306004): Started post-fitting delay annotation
 Warning (306006): Found 141 output pins without output pin load capacitance assignment
     Info (306007): Pin "SRAM_DATA_IO[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
@@ -3402,10 +3402,10 @@ Info (176045): Design uses memory blocks. Violating setup or hold times of memor
 Warning (169174): The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
 Info (144001): Generated suppressed messages file C:/Users/sstje/Desktop/3DQ5_PROJECT/PROJECT/output_files/PROJECT.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 4886 megabytes
-    Info: Processing ended: Sun Nov 25 12:53:38 2018
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Peak virtual memory: 4891 megabytes
+    Info: Processing ended: Sun Nov 25 16:23:42 2018
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:19
 
 
 +----------------------------+

@@ -41,10 +41,10 @@ you will get false errors, so use the original testbench instead.
 //`define INPUT_FILE_NAME "panda.sram_d1"
 
 // for milestone 2
-`define INPUT_FILE_NAME "panda.sram_d2"
+//`define INPUT_FILE_NAME "panda.sram_d2"
 
 //// for milestone 3 (completed project)
-//`define INPUT_FILE_NAME "panda.mic12”
+`define INPUT_FILE_NAME "panda.mic12"
 
 module tb_project_v2;
 
@@ -156,10 +156,10 @@ task init_sram;
 begin
 	$write("Opening file \"%s\" for initializing SRAM\n\n", `INPUT_FILE_NAME);
 	file_ptr = $fopen(`INPUT_FILE_NAME, "rb");
-	for (i=0; i<262144; i=i+1) begin
+	for (i=76800; i<262144; i=i+1) begin
 		file_data = $fgetc(file_ptr);
 		buffer[15:8] = file_data & 8'hFF;
-		file_data = $fgetc(file_ptr);
+		file_data =	 $fgetc(file_ptr);
 		buffer[7:0] = file_data & 8'hFF;
 		SRAM_component.SRAM_data[i] = buffer;
 	end
@@ -167,7 +167,7 @@ begin
 
 	$write("Opening file \"%s\" to get SRAM verification data\n\n", `VERIFICATION_FILE_NAME);
 	file_ptr = $fopen(`VERIFICATION_FILE_NAME, "rb");
-	for (i=0; i<262144; i=i+1) begin
+	for (i=76800; i<262144; i=i+1) begin
 		file_data = $fgetc(file_ptr);
 		buffer[15:8] = file_data & 8'hFF;
 		file_data = $fgetc(file_ptr);
@@ -306,6 +306,10 @@ end
 //if the incoming data does not match the expected data
 //then stop simulating and print debug info
 always @ (posedge Clock_50) begin
+
+/* 	if (uut.M3_unit.M3_done) begin
+		$stop;
+	end */
 	if (uut.SRAM_we_n == 1'b0) begin	//signal names within project (instantiated as uut) should match here, assuming names from experiment4a
 	
 		//IMPORTANT: this is the "no write" memory region for milestone 1, change region for different milestones

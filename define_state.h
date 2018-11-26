@@ -17,9 +17,14 @@ typedef enum logic [4:0] {
 	S_M3_LI_3,
 	S_M3_LI_4,
 	S_M3_LI_5,
+	S_M3_LI_6,
 	
 	S_M3_CC,
-	S_M3_ZERO_TO_END,
+	S_M3_3_bit,
+	S_M3_6_bit,
+	S_M3_9_bit,
+	S_M3_ZEROS_TO_END,
+	S_M3_WRITE_ZEROS,
 	
 	S_M3_IDLE
 	
