@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at ws.v(91): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at ws.v(66): always construct contains both blocking and non-blocking assignments
